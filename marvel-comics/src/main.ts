@@ -1,3 +1,4 @@
+import "./composition-api";
 import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
