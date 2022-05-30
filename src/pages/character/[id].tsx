@@ -87,7 +87,7 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
           {character.comics.available === 0 && (
             <p className="mt-2">No comics found</p>
           )}
-          <Row md={3} lg={4} className="g-4">
+          <Row xs={6} md={3} lg={4} className="g-4">
             {comics.map((resource) => (
               <ResourceItem item={resource} key={resource.id} />
             ))}
