@@ -5,7 +5,7 @@ import { Col } from "reactstrap";
 import { Character as CharacterItemProps } from "@/@types/character";
 
 type CharacterProps = {
-  character: CharacterItemProps;
+  character: Pick<CharacterItemProps, "id" | "name" | "thumbnail">;
 };
 
 export function Character({ character }: CharacterProps) {

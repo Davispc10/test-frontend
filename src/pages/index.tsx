@@ -13,7 +13,7 @@ import { Character } from "@/components/Character";
 import { api } from "@/services/api";
 
 type HomeProps = {
-  baseCharacters: CharacterItemProps[];
+  baseCharacters: Pick<CharacterItemProps, "id" | "name" | "thumbnail">[];
   total: number;
 };
 

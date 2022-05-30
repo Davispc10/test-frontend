@@ -40,9 +40,9 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
             offset: (nextPage - 1) * 20, // offset is 0 based and page is 1 based (offset = (page - 1) * 20) so we need to subtract 1 from page to get the offset value
           },
         });
+
         setComics((oldComics) => [...oldComics, ...response.data.data.results]);
         setCurrentComicsPage(nextPage);
-      } catch {
       } finally {
         setIsLoadingMoreComics(false);
       }
@@ -52,7 +52,7 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
 
   useEffect(() => {
     async function fetchComics() {
-      handleLoadMoreComics(currentComicsPage);
+      await handleLoadMoreComics(currentComicsPage);
     }
     fetchComics();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -78,9 +78,12 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
         </div>
 
         <h1 className="text-center fw-bold mt-3">{character.name}</h1>
-        <p className="text-center">
-          {character.description || "description not informed"}
-        </p>
+        <div
+          className="text-center"
+          dangerouslySetInnerHTML={{
+            __html: character.description || "description not informed",
+          }}
+        />
 
         <section className="mt-5">
           <h4>Comics</h4>
