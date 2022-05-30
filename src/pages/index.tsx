@@ -96,7 +96,7 @@ const Home: NextPage<HomeProps> = ({ baseCharacters, total }) => {
 
         {isSearching && <Spinner color="primary" />}
 
-        <Row md={3} lg={4} className="g-4 mt-3">
+        <Row xs={2} md={3} lg={4} className="g-4 mt-3">
           {characters.map((character) => (
             <Character character={character} key={character.id} />
           ))}
