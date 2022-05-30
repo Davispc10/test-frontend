@@ -7,6 +7,8 @@
 :root {
   --bs-danger: #e52e4d;
   --bs-red: #e52e4d;
+  --bs-primary: #f0131e;
+  --bs-primary-rgb: 240, 19, 30;
 }
 
 @media (max-width: 1080px) {
@@ -77,4 +79,39 @@ button {
 .load-more-comics:hover,
 .load-more-comics:disabled {
   background-color: var(--bs-gray-200);
+}
+
+.character-item-link span {
+  position: relative;
+  display: block;
+}
+
+.character-item-link span:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--bs-primary-rgb), 0.3);
+  opacity: 0;
+  transform: scale(0.9);
+
+  transition: all 0.25s;
+}
+
+.character-item-link:hover span:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.95);
+  border-color: rgba(var(--bs-primary-rgb), 0.8);
+}
+
+.text-primary {
+  color: var(--bs-primary);
 }

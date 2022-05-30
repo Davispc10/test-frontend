@@ -35,7 +35,7 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
         return;
       setIsLoadingMoreComics(true);
       try {
-        const response = await api.get(character.comics.collectionURI, {
+        const response = await api.get(`characters/${character.id}/comics`, {
           params: {
             offset: (nextPage - 1) * 20, // offset is 0 based and page is 1 based (offset = (page - 1) * 20) so we need to subtract 1 from page to get the offset value
           },
@@ -47,11 +47,7 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
         setIsLoadingMoreComics(false);
       }
     },
-    [
-      character.comics.available,
-      character.comics.collectionURI,
-      isLoadingMoreComics,
-    ]
+    [character.comics.available, character.id, isLoadingMoreComics]
   );
 
   useEffect(() => {
@@ -88,6 +84,9 @@ const Character: NextPage<CharacterPageProps> = ({ character }) => {
 
         <section className="mt-5">
           <h4>Comics</h4>
+          {character.comics.available === 0 && (
+            <p className="mt-2">No comics found</p>
+          )}
           <Row md={3} lg={4} className="g-4">
             {comics.map((resource) => (
               <ResourceItem item={resource} key={resource.id} />
