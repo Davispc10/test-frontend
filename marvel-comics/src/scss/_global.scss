@@ -11,13 +11,18 @@ body,
 #app {
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
+
+	::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
 	width: 15px;
 	height: 15px;
-    transition: 500ms;
+	transition: 500ms;
 }
 /* Track */
 ::-webkit-scrollbar-track {
