@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bs-danger: #e52e4d;
+  --bs-red: #e52e4d;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  width: 100% !important;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 400 1rem "Montserrat", sans-serif;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.search-input {
+  max-width: 400px;
+}
+
+.object-center {
+  object-position: center;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.load-more-comics {
+  height: 285px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--bs-gray-400);
+
+  transition: background-color 0.25s;
+}
+
+.load-more-comics:hover,
+.load-more-comics:disabled {
+  background-color: var(--bs-gray-200);
+}
