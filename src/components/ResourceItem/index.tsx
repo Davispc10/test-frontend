@@ -28,7 +28,7 @@ export function ResourceItem({ item: resource }: ResourceItemProps) {
   return (
     <Col>
       <Link href={url || "/"}>
-        <a className="w-100 d-block rounded text-decoration-none text-black overflow-hidden shadow-sm">
+        <a className="w-100 d-block rounded text-decoration-none text-black overflow-hidden shadow-sm character-item-link">
           <Image
             src={`${resource.thumbnail.path}.${resource.thumbnail.extension}`}
             alt={resource.title}

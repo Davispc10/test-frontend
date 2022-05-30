@@ -81,12 +81,12 @@ button {
   background-color: var(--bs-gray-200);
 }
 
-.character-item-link span {
+.character-item-link > span {
   position: relative;
   display: block;
 }
 
-.character-item-link span:after {
+.character-item-link > span:after {
   content: "";
   position: absolute;
   inset: 0;
@@ -97,7 +97,7 @@ button {
   transition: all 0.25s;
 }
 
-.character-item-link:hover span:after {
+.character-item-link:hover > span:after {
   opacity: 1;
   transform: scale(1);
 }
