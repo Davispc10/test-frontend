@@ -1,7 +1,7 @@
 export interface State {
   selectedCharacter: Characters;
   charactersList: Characters[];
-  charactersListSearched: unknown[];
+  tempList: Characters[];
   offset: number;
   limit: number;
 }
@@ -78,5 +78,11 @@ export interface CharactersList {
 }
 
 export interface HomeState {
-  characters: CharactersList[];
+  characters: Characters[];
+}
+
+export interface NotificationState {
+  text: string;
+  color: string;
+  status?: boolean;
 }

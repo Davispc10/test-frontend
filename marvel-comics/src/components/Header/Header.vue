@@ -22,7 +22,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header {
   width: 100vw;
-  height: 100px;
+  height: 100%;
+  max-height: 100px;
   background: black;
   box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.8);
 
@@ -33,7 +34,7 @@ export default defineComponent({
   transition: 500ms;
 
   &:hover {
-    box-shadow: 0 0 40px rgba($color: #000000, $alpha: 0.8);
+    box-shadow: 0 0 25px rgba($color: #000000, $alpha: 0.8);
   }
 
   &__logo {

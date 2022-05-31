@@ -5,7 +5,7 @@
       type="text"
       :placeholder="placeholder"
       v-model="state.valueToSearch"
-      @keypress.enter="() => searchCharacter()"
+      @input="() => searchCharacter()"
     />
     <button class="searcher__button" @click="() => searchCharacter()">
       <span class="mdi mdi-magnify" />
@@ -26,15 +26,20 @@ export default defineComponent({
   },
   setup(_, { root }) {
     const $store = root.$store;
-    const $router = root.$$router;
     const state = reactive({
       valueToSearch: null,
     });
 
     async function searchCharacter() {
-      await $store.dispatch("getCharacter", state.valueToSearch).then(() => {
-        $router.push("/hero");
-      });
+      if (!state.valueToSearch.length) {
+        $store.commit("setTempList", []);
+        $store.dispatch("showNotification", {
+          text: "Lista de herois reiniciada!",
+          color: "blue",
+        });
+        return;
+      }
+      await $store.dispatch("getCharactersByName", state.valueToSearch);
     }
 
     return {
@@ -53,7 +58,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
 
   &__field {
     width: 100%;
