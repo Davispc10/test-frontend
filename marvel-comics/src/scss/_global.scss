@@ -1,0 +1,55 @@
+@import "./fonts";
+@import "./variables";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+	width: 100vw;
+	height: 100vh;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 15px;
+	height: 15px;
+	transition: 500ms;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: $primary;
+	border: 4px solid transparent;
+	border-radius: 8px;
+	background-clip: padding-box;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: $primary-dark;
+	border: 4px solid transparent;
+	border-radius: 8px;
+	background-clip: padding-box;
+}
+
+/* Animations to transitions */
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
