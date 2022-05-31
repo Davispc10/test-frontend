@@ -41,13 +41,13 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { computed, defineComponent, reactive } from "@vue/composition-api";
 import { renderImage } from "@/utils/imageHelper";
 import { getComic } from "@/services/modules/characters";
 import * as Types from "@/types";
 
-function hasDescription(hero: Types.Characters) {
+function hasDescription(hero) {
   return hero.description.trim().length
     ? hero.description
     : "description not informed.";

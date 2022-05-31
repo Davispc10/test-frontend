@@ -18,18 +18,19 @@
           </section>
         </template>
       </default-card>
-      <v-btn
-        @click="() => init()"
-        max-width="300px"
-        class="justify-center"
-        v-if="characters.length"
-        >Carregar mais</v-btn
-      >
     </section>
+    <v-btn
+      @click="() => init()"
+      color="red"
+      class="justify-center"
+      :loading="state.isLoading"
+      v-if="characters.length"
+      >Carregar mais</v-btn
+    >
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, reactive, computed } from "@vue/composition-api";
 import { renderImage } from "@/utils/imageHelper";
 
@@ -42,12 +43,16 @@ export default defineComponent({
     const $store = root.$store;
     const state = reactive({
       characters: $store.getters.characters,
+      isLoading: false,
     });
 
     const characters = computed(() => $store.getters.characters);
 
     async function init() {
-      await $store.dispatch("getCharacters");
+      state.isLoading = true;
+      await $store
+        .dispatch("getCharacters")
+        .then(() => (state.isLoading = false));
     }
 
     init();
@@ -83,7 +88,7 @@ export default defineComponent({
     width: 100%;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     row-gap: 30px;
     column-gap: 30px;

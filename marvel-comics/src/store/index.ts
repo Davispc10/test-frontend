@@ -31,7 +31,7 @@ export default new Vuex.Store<Types.State>({
     charactersList: [],
     tempList: [],
     offset: 0,
-    limit: 20,
+    limit: 8,
   },
   mutations: {
     setSelectedCharacter(state, character: Types.Characters) {

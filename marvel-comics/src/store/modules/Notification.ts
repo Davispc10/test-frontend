@@ -27,8 +27,6 @@ export default {
       { commit }: { commit: Commit },
       payload: Types.NotificationState
     ): void {
-      console.log(payload);
-
       commit("showNotification", payload);
     },
   },

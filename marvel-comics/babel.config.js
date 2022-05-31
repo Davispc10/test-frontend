@@ -1,3 +1,3 @@
 module.exports = {
-  presets: ["@vue/cli-plugin-babel/preset", '@babel/preset-typescript'],
+  presets: ["@vue/cli-plugin-babel/preset", "@babel/preset-typescript"],
 };
