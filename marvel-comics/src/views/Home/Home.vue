@@ -21,7 +21,6 @@
     </section>
     <v-btn
       @click="() => init()"
-      color="red"
       class="justify-center"
       :loading="state.isLoading"
       v-if="characters.length"

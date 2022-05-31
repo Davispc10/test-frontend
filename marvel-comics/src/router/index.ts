@@ -11,6 +11,7 @@ const routes: Array<RouteConfig> = [
     component: () => import("@/views/Home/Home.vue"),
     beforeEnter: (_to, _from, next) => {
       Store.commit("resetSelectedCharacter");
+      Store.commit("resetComics");
       next();
     },
   },

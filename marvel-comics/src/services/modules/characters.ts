@@ -20,6 +20,6 @@ export const getCharactersByName = async (
   return await api.get("/characters", { params: { nameStartsWith } });
 };
 
-export const getComic = async (): Promise<unknown[]> => {
-  return await api.get("/comics/21366");
+export const getComic = async (id: number): Promise<Types.Comic> => {
+  return await api.get(`/characters/${id}/comics`);
 };
