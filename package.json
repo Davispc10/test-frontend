@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"@babel/preset-typescript": "^7.16.7",
-		"@vue/composition-api": "^1.6.2",
+		"@vue/composition-api": "^1.7.0",
 		"axios": "^0.27.2",
 		"core-js": "^3.6.5",
 		"register-service-worker": "^1.7.1",

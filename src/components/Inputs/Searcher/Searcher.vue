@@ -63,15 +63,20 @@ export default defineComponent({
     width: 100%;
     max-width: 300px;
     line-height: 30px;
-    font: 500 30px "Poppins" sans-serif;
+    font: 500 25px "Poppins", sans-serif;
     transition: 200ms;
     border-radius: 5px;
     padding: 5px;
-    border: 2px solid black;
+    border: 2px solid $primary;
     outline: none;
+    background: white;
 
     &:focus {
       border: 2px solid $primary;
+    }
+
+    @media (max-width: 600px) {
+      max-width: 500px;
     }
   }
 
@@ -79,7 +84,7 @@ export default defineComponent({
     width: 30px;
     height: 30px;
     padding: 0 10px;
-
+    color: white;
     background: transparent;
     border: none;
     outline: none;

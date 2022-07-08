@@ -1,8 +1,5 @@
 <template>
   <section class="home">
-    <section class="home__searcher">
-      <searcher placeholder="Pesquise pelo nome de um personagem." />
-    </section>
     <section class="home__characters">
       <default-card
         v-for="(hero, index) in characters"
