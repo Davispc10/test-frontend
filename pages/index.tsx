@@ -15,6 +15,11 @@ const Home: NextPage = () => {
 
       <S.Main>
         <S.Grid>
+          <div>
+            <h1 style={{color: 'white'}}>Choice your Character:</h1>
+          </div>
+        </S.Grid>
+        <S.Grid>
           <Box />
         </S.Grid>
       </S.Main>

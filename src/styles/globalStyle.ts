@@ -16,6 +16,11 @@ ul {
   padding: 0px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .selected {
   background-color: white;
   border-radius: 5px;

@@ -7,9 +7,10 @@ export const Container = styled.div`
 export const Main = styled.main`
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: gray;
 `;
 export const Header = styled.header`
   width: 100%;
@@ -49,6 +50,7 @@ export const Footer = styled.footer`
   align-items: center;
 
   a {
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
