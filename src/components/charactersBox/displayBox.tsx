@@ -9,13 +9,13 @@ import Loading from "../loading";
 
 export const Container = styled.div`
   background-color: gray;
-  width: 100%;
+  width: 50%;
 `;
 export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
 
   li {
     text-decoration: none;

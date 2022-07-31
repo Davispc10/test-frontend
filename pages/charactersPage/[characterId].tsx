@@ -143,7 +143,7 @@ const CharactersPage: NextPage<ICharactersPage> = (props) => {
               </div>
               <div style={{width: '50%', display:'flex', justifyContent:'center'}}>
                 <Image
-                  src={props.data.results[0].thumbnail.path + imageSize ? props.data.results[0].thumbnail.path + imageSize : Marvel }
+                  src={props.data.results[0].thumbnail.path.includes('image_not_available') ? Marvel  :  props.data.results[0].thumbnail.path + imageSize}
                   width={300}
                   height={300}
                   alt="characters images"
