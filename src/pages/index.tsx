@@ -1,17 +1,15 @@
-import { Grid, Heading, Input, Box } from "@chakra-ui/react"
+import { Grid, Heading, Input, Box, Spinner, Center } from "@chakra-ui/react"
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router";
 import { CharacterCard } from "../modules/character/components/CharacterCard";
-import { useFetchCharacters } from "../modules/character/context/Actions";
+import { useFetchCharacters } from "../modules/character/context/CharacterController";
 import { Pagination } from "../components/Pagination";
 import { Parser } from "../utils/Parser";
 import { Layout } from "../components/Layout";
 import Link from "next/link";
 import { Header } from "../components/Header";
-import { useState } from "react";
 import { Character } from "../modules/character/models/Character";
-import { useSelectorGetCharacterByName } from "../modules/character/context/CharacterSelectors";
 import { useCharacter } from "../modules/character/context/CharacterContext";
 import { CharacterRepository } from "../modules/character/repository/CharacterRepository";
 
@@ -34,12 +32,10 @@ const renderList = (data?: Character[]) => {
 
 export default function Home (props: any) {
     const router = useRouter();
-    const {characters} = useCharacter()
     const {offset} = Parser.pagination(router.query.offset)
-    const {data, isLoading} = useFetchCharacters(offset)
-    const [name, setName] = useState('')
-    const searchedCharacters = useSelectorGetCharacterByName(characters, name)
-
+    const {setSearchedName, searchedName} = useCharacter()
+    const {isLoading, data} = useFetchCharacters( offset , searchedName)
+   
     return (
         <Layout>
             <Header />
@@ -67,27 +63,33 @@ export default function Home (props: any) {
                 
                 <Pagination 
                     //@ts-ignore
-                    total={searchedCharacters.length ? searchedCharacters.length : data?.total}
+                    total={ data?.total}
                     offset={offset}
                     buttonsPerPage={5}
                 />
                  <Input 
                     placeholder="Pesquisar Herói" 
-                    width='360px' 
+                    maxWidth='360px' 
                     textAlign='center'
                     _placeholder={{textAlign: 'center'}}
                     _focus={{borderColor: 'red'}}
                     height='48px'
                     marginBottom='24px'
                     backgroundColor='gray.30'
-                    value={name}
+                    value={searchedName}
                     onChange={(e) => {
-                        setName(e.target.value)
+                        setSearchedName(e.target.value)
                     }}
                 />
             </Box>
+            {
+                isLoading ? 
+                    <Center mt='300px'>
+                            <Spinner />
+                    </Center>
+                : 
                 <Grid 
-                    as='article' 
+                as='article' 
                     templateColumns='repeat(2, 1fr)' 
                     h='full'
                     gap='30px' 
@@ -100,11 +102,9 @@ export default function Home (props: any) {
                         }
                     }}
                     >
-                    {
-                        searchedCharacters.length ? renderList(searchedCharacters) : 
-                        isLoading && !searchedCharacters.length  ? 'carregando...' : renderList(data?.results)
-                    }
+                    {renderList(data?.results)}
                 </Grid>
+            }
             
         </Layout> 
     )

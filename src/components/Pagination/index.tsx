@@ -8,9 +8,11 @@ import { ArrowLeft, ArrowRight } from "./Icons";
 type PaginationProps = {
     total: number,
     offset: number,
-    buttonsPerPage: number
+    buttonsPerPage: number,
   }
-export const Pagination = ({total, offset, buttonsPerPage }: PaginationProps) => {
+
+ 
+export const Pagination = ({total, offset, buttonsPerPage}: PaginationProps) => {
     const helper = new PaginationHelper(LIMIT, offset, buttonsPerPage, total)
     const router = useRouter();
     
@@ -34,7 +36,6 @@ export const Pagination = ({total, offset, buttonsPerPage }: PaginationProps) =>
               fontSize='12px'
               onClick={() => onPageChange(helper.decrementPage())}
               disabled={helper.currentPageNumber === 1}
-              
               borderRadius='100%'
               background='none'
              

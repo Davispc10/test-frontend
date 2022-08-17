@@ -1,14 +1,13 @@
 import { createContext, Dispatch, useContext, useState, SetStateAction, useMemo } from "react";
-import { Character } from "../models/Character";
 
 type CharacterContextType = {
-    characters: Character[],
-    setCharacters:  Dispatch<SetStateAction<Character[]>>
+    searchedName: string,
+    setSearchedName:  Dispatch<SetStateAction<string>>
 }
 
 const CharacterContext = createContext<CharacterContextType>({
-    characters: [], 
-    setCharacters: () => {}
+    searchedName: '',
+    setSearchedName: () => {}
 })
 
 type CharacterProviderProps = {
@@ -16,11 +15,12 @@ type CharacterProviderProps = {
 }
 
 const CharacterProvider = ({ children }: CharacterProviderProps) => {
-    const [characters, setCharacters] = useState<Character[]>([])
+    const [searchedName, setSearchedName] = useState('')
 
     const value = useMemo(() => ({
-        characters, setCharacters
-      }), [characters]);
+        searchedName,
+        setSearchedName,
+      }), [searchedName]);
 
     return (
         <CharacterContext.Provider value={value}>

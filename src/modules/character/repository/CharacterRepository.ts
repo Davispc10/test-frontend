@@ -17,4 +17,10 @@ export class CharacterRepository {
         const respo = await axios.get(url)
         return respo.data
     }
+
+    getOne = async (id: number | string) => {
+        const url = `${UrlHelper.urlBase}${this.#route}/${id}?${UrlHelper.authApi}`
+        const respo = await axios.get(url)
+        return respo.data
+    }
 }

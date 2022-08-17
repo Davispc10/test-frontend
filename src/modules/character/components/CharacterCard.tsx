@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image } from "@chakra-ui/react"
+import { Flex, Heading, Image } from "@chakra-ui/react"
 import { Character } from "../models/Character"
 
 type CharacterCardPropType = {
