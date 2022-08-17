@@ -1,0 +1,16 @@
+{
+	"name": "Node.js",
+	"build": {
+		"dockerfile": "Dockerfile",		
+		"args": { "VARIANT": "16" }
+	},
+	"customizations": {		
+		"vscode": {			
+			"extensions": [
+					"dbaeumer.vscode-eslint",
+					"rangav.vscode-thunder-client"
+				]
+		}
+	},
+	"remoteUser": "node"
+}
