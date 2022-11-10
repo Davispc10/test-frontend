@@ -22,9 +22,13 @@ API DOCS: https://developer.marvel.com/docs
 - If the character has no description: displays the text "description not informed".
 
 💻 Technology
-- Use Vue or React/NextJs.
-- Tests are optional.
-- Typescript will be a plus.
+- Use Vue or React/NextJs;
+- Tests with jest;
+- Typescript will be a plus;
+- Clean architecture;
+- React Query.
+- Documentation.
+- Redux optional;
 
 ## Por onde começo?
 Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
