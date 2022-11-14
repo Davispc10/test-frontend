@@ -26,6 +26,14 @@
   }
 }
 
+.loadingWrapper {
+  height: calc(100vh - 5rem);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 600px) {
   .homeWrapper {
     padding: 2rem;

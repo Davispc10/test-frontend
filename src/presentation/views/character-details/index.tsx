@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { LoadCharactersComics, LoadCharactersComicsResult } from "@/domain/features";
-import { ComicCard, Pagination } from "@/presentation/components";
+import { ComicCard, Loading, Pagination } from "@/presentation/components";
 import { useStringFilterSetup } from "@/presentation/hooks";
 import { RequestHandler } from "@/data/contracts";
 
@@ -35,41 +35,48 @@ export const CharacterDetails: React.FC<CharacterDetailsProps> = ({ loadCharacte
   });
 
   const { totalComics, comics } = data || {};
-
-  return (
-    <div className={styles.characterDetailsWrapper}>
-      <Link data-testid="back-button" to={{ pathname: "/" }} className={styles.backButton}>
-        <div>&larr;</div>
-        <span>Back</span>
-      </Link>
-      {filteredComics.length > 0 && (
-        <div className={styles.searchFilter}>
-          <input
-            data-testid="search-filter"
-            type="text"
-            placeholder="Filtrar por titulo"
-            onChange={(event) => useStringFilter(event.target.value, comics, "title")}
-          />
-        </div>
-      )}
-
-      <div className={styles.comicCardsWrapper}>
-        {filteredComics.length === 0 ? (
-          <div className={styles.noData}>Nenhum dado encontrado</div>
-        ) : (
-          filteredComics.map((item) => <ComicCard {...item} key={item.id} />)
-        )}
+  if (isLoading) {
+    return (
+      <div className={styles.loadingWrapper}>
+        <Loading />
       </div>
+    );
+  } else {
+    return (
+      <div className={styles.characterDetailsWrapper}>
+        <Link data-testid="back-button" to={{ pathname: "/" }} className={styles.backButton}>
+          <div>&larr;</div>
+          <span>Back</span>
+        </Link>
+        {filteredComics.length > 0 && (
+          <div className={styles.searchFilter}>
+            <input
+              data-testid="search-filter"
+              type="text"
+              placeholder="Filtrar por titulo"
+              onChange={(event) => useStringFilter(event.target.value, comics, "title")}
+            />
+          </div>
+        )}
 
-      {filteredComics.length > 0 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(totalComics / reqLength)}
-          handleNextPage={handleNextPage}
-          handlePrevPage={handlePrevPage}
-        />
-      )}
-      {error && <div data-testid="load-error">{error}</div>}
-    </div>
-  );
+        <div className={styles.comicCardsWrapper}>
+          {filteredComics.length === 0 ? (
+            <div className={styles.noData}>Nenhum dado encontrado</div>
+          ) : (
+            filteredComics.map((item) => <ComicCard {...item} key={item.id} />)
+          )}
+        </div>
+
+        {filteredComics.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={Math.ceil(totalComics / reqLength)}
+            handleNextPage={handleNextPage}
+            handlePrevPage={handlePrevPage}
+          />
+        )}
+        {error && <div data-testid="load-error">{error}</div>}
+      </div>
+    );
+  }
 };
