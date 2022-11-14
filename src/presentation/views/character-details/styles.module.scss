@@ -1,0 +1,76 @@
+.characterDetailsWrapper {
+  padding: 2rem;
+
+  .backButton {
+    width: max-content;
+    padding: 0.35rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #636363;
+    border-radius: 0.3rem;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    div {
+      &:first-child {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background: #636363;
+        color: #fff;
+        font-size: 1rem;
+        margin-right: 0.3rem;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .searchFilter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    input {
+      height: 2.4rem;
+      width: 15rem;
+      padding: 0 0.5rem;
+      outline: 0;
+    }
+  }
+
+  .comicCardsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .noData {
+      padding: 0.5rem;
+      border: 1px solid #636363;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .characterDetailsWrapper {
+    padding: 2rem;
+
+    .comicCardsWrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 350px);
+      gap: 0 2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+  }
+}

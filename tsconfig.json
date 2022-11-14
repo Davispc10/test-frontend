@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "esModuleInterop": true,
+    "module": "ESNEXT",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "rootDir": "",
+    "baseUrl": "src",
+    "paths": {
+      "@/tests/*": ["../tests/*"],
+      "@/*": ["*"]
+    },
+    "allowJs": true,
+    "resolveJsonModule": true,
+  },
+  "include": [
+    "src",
+    "tests"
+  ],
+  "exclude": [
+    "src/main/test/cypress"
+  ]
+}
