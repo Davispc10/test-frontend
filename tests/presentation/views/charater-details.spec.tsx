@@ -107,4 +107,21 @@ describe("CharacterDetails View", () => {
       expect(screen.queryByTestId("load-error")).toBeInTheDocument();
     });
   });
+
+  test("Should present loading component on request", async () => {
+    const loadCharactersComicsSpy = new LoadCharactersComicsSpy();
+    const requestHandlerSpy = new RequestHandlerSpy();
+    jest.spyOn(requestHandlerSpy, "handle").mockReturnValueOnce({
+      isLoading: true,
+      data: null,
+      error: null,
+    });
+
+    makeSut(loadCharactersComicsSpy, requestHandlerSpy);
+
+    await waitFor(() => {
+      const loading = screen.getByTestId("loading");
+      expect(loading).toBeInTheDocument();
+    });
+  });
 });

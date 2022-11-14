@@ -108,4 +108,21 @@ describe("Home View", () => {
       expect(history.location.pathname).toBe("/characters/details/1");
     });
   });
+
+  test("Should present loading component on request", async () => {
+    const loadCharactersSpy = new LoadCharactersSpy();
+    const requestHandlerSpy = new RequestHandlerSpy();
+    jest.spyOn(requestHandlerSpy, "handle").mockReturnValueOnce({
+      isLoading: true,
+      data: null,
+      error: null,
+    });
+
+    makeSut(loadCharactersSpy, requestHandlerSpy);
+
+    await waitFor(() => {
+      const loading = screen.getByTestId("loading");
+      expect(loading).toBeInTheDocument();
+    });
+  });
 });

@@ -38,6 +38,13 @@ export const Home: React.FC<HomeProps> = ({ loadCharacters, requestHandler }: Ho
     return result;
   });
 
+  console.log({
+    data: characters,
+    isLoading,
+    error,
+  });
+  
+
   if (isLoading) {
     return <div className={styles.loadingWrapper}>
       <Loading />
