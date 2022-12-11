@@ -5,7 +5,7 @@ const axiosHttp = {
   marvelHttpApi: axios.create({
     baseURL: config.marvelEndpoint,
     params: {
-      apiKey: config.marvelPublicApiKey,
+      apikey: config.marvelPublicApiKey,
     },
   }),
 };
