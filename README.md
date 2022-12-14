@@ -13,11 +13,10 @@ Este projeto segue todas as regras mostradas no arquivo [test-description.md](te
 - Typescript
 - Clean Architecture
 - React Query
-- Story Book
 - Context API
 - Tailwind CSS
 - Husky + Commitlint + LintStaged
-- Eslint + Prettier
+- Eslint
 - Axios
 
 ### Usuário Visitante
@@ -26,13 +25,13 @@ Usuário que tem como objetivo aprender mais sobre os personagens da Marvel util
 
 ### Project Backlog
 
-- [ ] Eu como **VISITANTE**, quero visualizar os nomes e imagens dos personagens na tela inicial para poder saber quais são os personagens da Marvel.
+- [x] Eu como **VISITANTE**, quero visualizar os nomes e imagens dos personagens na tela inicial para poder saber quais são os personagens da Marvel.
 
 - [ ] Eu como **VISITANTE**, quero visualizar poucos personagens por página na tela inicial para poder visualizar uma tela mais amigável, com menos informações.
 
 - [ ] Eu como **VISITANTE**, quero poder visualizar o nome, descrição e informações de quadrinhos do personagem ao clicar nele, para conseguir aprender mais sobre o personagem.
 
-- [ ] Eu como **VISITANTE**, quero poder visualizar a logo da Marvel em vez da foto do personagem quando sua imagem não esteja disponível, para assim eu entender que aquele personagem não tem uma imagem para ser visualizada e não acontecer de perder tempo aguardando uma imagem ser carregada.
+- [x] Eu como **VISITANTE**, quero poder visualizar a logo da Marvel em vez da foto do personagem quando sua imagem não esteja disponível, para assim eu entender que aquele personagem não tem uma imagem para ser visualizada e não acontecer de perder tempo aguardando uma imagem ser carregada.
 
 - [ ] Eu como **VISITANTE**, quero ser avisado de forma visível quando o personagem não possuir descrição, para eu não ficar procurando sua descrição.
 
