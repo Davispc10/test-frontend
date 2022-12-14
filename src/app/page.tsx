@@ -29,8 +29,6 @@ export default async function Page() {
 
   return (
     <div className="container flex mx-auto mt-10 flex-col justify-center items-center">
-      <h1 className="text-4xl font-bold p-4">Personagens da Marvel</h1>
-
       <CharactersList
         limit={charactersSearchParams.limit}
         orderBy={charactersSearchParams.orderBy}
