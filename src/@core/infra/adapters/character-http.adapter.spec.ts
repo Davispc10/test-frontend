@@ -1,5 +1,6 @@
 import { CharacterHttpAdapter } from "./character-http.adapter";
 import { Character } from "../../domain/entities/character";
+import { CharacterAdapterFindAllParams } from "../../domain/adapters/character.adapter";
 import {
   mockMarvelHttpListCharactersResponseOK,
   mockMarvelHttpCharacterResponseOK,
@@ -29,7 +30,11 @@ describe("CharacterHttpAdapter", () => {
 
     const sut = makeSut();
 
-    const result = await sut.findAll();
+    const result = await sut.findAll({
+      limit: 20,
+      offset: 0,
+      orderBy: "name",
+    });
 
     // Checa se o resultado é diferente do mockResult
     expect(mockResult).not.toEqual(result);
@@ -105,7 +110,13 @@ describe("CharacterHttpAdapter", () => {
 
     const sut = makeSut();
 
-    await expect(sut.findAll()).rejects.toThrow();
+    await expect(
+      sut.findAll({
+        limit: 20,
+        offset: 0,
+        orderBy: "name",
+      })
+    ).rejects.toThrow();
     await expect(sut.findById(1)).rejects.toThrow();
   });
 
@@ -150,7 +161,13 @@ describe("CharacterHttpAdapter", () => {
 
     const sut = makeSut();
 
-    await expect(sut.findAll()).rejects.toThrow();
+    await expect(
+      sut.findAll({
+        limit: 20,
+        offset: 0,
+        orderBy: "name",
+      })
+    ).rejects.toThrow();
   });
 });
 
