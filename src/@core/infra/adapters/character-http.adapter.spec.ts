@@ -1,6 +1,5 @@
 import { CharacterHttpAdapter } from "./character-http.adapter";
 import { Character } from "../../domain/entities/character";
-import { CharacterAdapterFindAllParams } from "../../domain/adapters/character.adapter";
 import {
   mockMarvelHttpListCharactersResponseOK,
   mockMarvelHttpCharacterResponseOK,

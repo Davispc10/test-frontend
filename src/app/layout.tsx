@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <head />
-      <body className={`${rubik.variable} font-primary`}>
+      <body className={`${rubik.variable} font-primary bg-stone-200`}>
         <Providers>{children}</Providers>
       </body>
     </html>
