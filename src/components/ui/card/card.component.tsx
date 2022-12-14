@@ -26,7 +26,7 @@ export const Card: React.FC<CardProps> = ({
   );
 
   const titleClasses = twMerge(
-    "text-lg text-gray-500 font-medium w-full text-center my-2",
+    "text-lg text-marvel-typo font-medium w-full text-center my-2",
     clsx({
       truncate: truncate,
     })
@@ -35,13 +35,13 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div {...rest} className={classes}>
       {image && (
-        <div className="overflow-hidden w-full rounded-lg aspect-square">
+        <div className="relative overflow-hidden w-full rounded-lg aspect-square bg-white">
           <Image
             src={image}
             alt={`${title}`}
             width={300}
             height={300}
-            className="w-full h-full"
+            className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[unset] w-full object-fill"
           />
         </div>
       )}
