@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "target": "es5",
     "lib": ["es5", "dom"],
     "types": ["cypress", "node"]
   },
 
-  "include": ["../node_modules/cypress", "./**/*.ts"]
+  "include": [
+    "../node_modules/cypress",
+    "../tsconfig.json",
+    "../package.json",
+    "./**/*.ts"
+  ]
 }
