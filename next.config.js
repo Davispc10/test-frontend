@@ -5,6 +5,7 @@ const nextConfig = {
   },
   images: {
     domains: ["i.annihil.us"],
+    minimumCacheTTL: 60 * 10, // 10 minutes
   },
 };
 
