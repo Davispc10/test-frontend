@@ -82,3 +82,6 @@ export class Character {
     };
   }
 }
+
+type ToJSONFn = typeof Character.prototype.toJSON;
+export type CharacterJSON = ReturnType<ToJSONFn>;
