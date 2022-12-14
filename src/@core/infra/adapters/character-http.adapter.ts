@@ -1,15 +1,23 @@
 import { Character } from "@core/domain/entities/character";
-import { CharacterAdapter } from "@core/domain/adapters/character.adapter";
+import type {
+  CharacterAdapter,
+  CharacterAdapterFindAllParams,
+} from "@core/domain/adapters/character.adapter";
 import { HttpClient } from "@core/data/protocols/http-client";
 
 export class CharacterHttpAdapter implements CharacterAdapter {
   constructor(private readonly http: HttpClient) {}
 
-  async findAll(): Promise<Character[]> {
+  async findAll(params: CharacterAdapterFindAllParams): Promise<Character[]> {
     return this.http
       .request({
         method: "get",
         url: "/characters",
+        params: {
+          limit: String(params.limit),
+          orderBy: String(params.orderBy),
+          offset: String(params.offset),
+        },
       })
       .then((res) => {
         const results = res.data?.data?.results;

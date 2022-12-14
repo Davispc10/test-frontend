@@ -1,11 +1,28 @@
-import { CharacterAdapter } from "@core/domain/adapters/character.adapter";
+import {
+  CharacterAdapter,
+  CharacterOrderBy,
+} from "@core/domain/adapters/character.adapter";
 import { Character } from "@core/domain/entities/character";
 import { UseCase } from "@core/domain/use-case";
 
-export class ListCharactersUseCase implements UseCase<void, Character[]> {
+export type ListCharactersUseCaseParams = {
+  limit?: number;
+  offset?: number;
+  orderBy?: CharacterOrderBy;
+};
+
+export class ListCharactersUseCase
+  implements UseCase<ListCharactersUseCaseParams, Character[]>
+{
   constructor(private characterAdapter: CharacterAdapter) {}
 
-  execute() {
-    return this.characterAdapter.findAll();
+  execute(
+    { limit, offset, orderBy }: ListCharactersUseCaseParams = {
+      limit: 20,
+      offset: 0,
+      orderBy: "name",
+    }
+  ) {
+    return this.characterAdapter.findAll({ limit, offset, orderBy });
   }
 }
