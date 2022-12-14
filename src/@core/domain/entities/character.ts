@@ -34,7 +34,15 @@ export type CharacterProps = {
  * Não depende de ninguém, será usada por outros módulos.
  */
 export class Character {
-  constructor(public props: CharacterProps) {}
+  constructor(public props: CharacterProps) {
+    // Caso a thumbnail possua image_not_available em seu caminho, a thumbnail será removida e substituída pela imagem da marvel.
+    if (props.thumbnail?.path.includes("image_not_available")) {
+      props.thumbnail = {
+        path: "/images/marvel-image",
+        extension: "jpg",
+      };
+    }
+  }
 
   get id() {
     return this.props.id;
