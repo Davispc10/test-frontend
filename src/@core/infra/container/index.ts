@@ -1,75 +1,92 @@
-import { Container } from "inversify";
+import { Container, interfaces } from "inversify";
 import { Registry } from "./registry";
 import { AxiosHttpClient } from "../protocols/axios-http-client";
 import axiosHttp from "../service/axios-http";
 import { HttpClient } from "@core/data/protocols/http-client";
 import { CharacterHttpAdapter } from "../adapters/character-http.adapter";
 import { GetCharacterUseCase } from "@core/application/character/get-character.use-case";
+import { AxiosInstance } from "axios";
+import { ListCharactersUseCase } from "@core/application/character/list-characters.use-case";
 
 export { Registry };
 export const container = new Container();
 
 /**
- * Axios Http Service. Path: src\@core\infra\service\axios-http.ts
- * Possui todas as instâncias criadas para o axios.
+ * Axios Marvel Api Http Service. Path: src\@core\infra\service\axios-http.ts
+ * @return AxiosInstance of marvel api.
  */
 container
-  .bind<typeof axiosHttp>(Registry.AxiosHttpService)
-  .toConstantValue(axiosHttp);
+  .bind<AxiosInstance>(Registry.AxiosMarvelApiHttpService)
+  .toConstantValue(axiosHttp.marvelHttpApi);
 
 /**
  * Axios Http Client. Path: src\@core\infra\protocols\axios-http-client.ts
- * Um cliente http que será utilizado por adaptadores.
+ * @return AxiosHttpClient without axios http service.
+ */
+container.bind<AxiosHttpClient>(Registry.AxiosHttpClient).toDynamicValue(() => {
+  return new AxiosHttpClient();
+});
+
+/**
+ * Axios Http Client. Path: src\@core\infra\protocols\axios-http-client.ts
+ * @return AxiosHttpClient with marvel api http service.
  */
 container
-  .bind<AxiosHttpClient>(Registry.AxiosHttpClient)
-  .toFactory((context) => {
-    const instance = context.container.get<typeof axiosHttp>(
-      Registry.AxiosHttpService
+  .bind<AxiosHttpClient>(Registry.AxiosMarvelApiHttpClient)
+  .toDynamicValue((context) => {
+    return new AxiosHttpClient(
+      context.container.get<AxiosInstance>(Registry.AxiosMarvelApiHttpService)
     );
-    type AxiosHttpServiceTypes = keyof typeof instance;
-
-    return (
-      service:
-        | AxiosHttpServiceTypes
-        | ConstructorParameters<typeof AxiosHttpClient>[0]
-    ) => {
-      const axiosHttpService =
-        typeof service === "string" ? instance[service] : service;
-      return new AxiosHttpClient(axiosHttpService);
-    };
   });
 
 /**
  * Character Http Adapter. Path: src\@core\infra\adapters\character-http.adapter.ts
- * Um adaptador http que busca informações dos personagens, que será usado por casos de usos.
- * [AxiosHttpClient] - Utilizando o client http do axios.
+ * @return CharacterHttpAdapter with axios marvel api http client.
  */
 container
   .bind<CharacterHttpAdapter>(Registry.CharacterHttpAdapter)
   .toDynamicValue((context) => {
-    const axiosHttpClient = context.container.get<HttpClient>(
-      Registry.AxiosHttpClient
+    const axiosHttpClient = context.container.get<AxiosHttpClient>(
+      Registry.AxiosMarvelApiHttpClient
     );
 
     return new CharacterHttpAdapter(axiosHttpClient);
   })
+  // Se o CharacterHttpAdapter for injetado com o tag AxiosHttpClient, ele irá retornar o CharacterHttpAdapter com o AxiosMarvelApiHttpClient.
   .whenTargetNamed(Registry.AxiosHttpClient);
 
 /**
- * Get Character Use Case. Path: src\@core\application\character\get-character.use-case.ts
- * Um caso de uso que busca informações dos personagens.
+ * List Characters Use Case. Path: src\@core\application\character\list-characters.use-case.ts
  *
- * [AxiosHttpClient] - Utilizando o client http do axios.
- * [CharacterHttpAdapter] - Utilizando o adaptador http para personagens.
+ * @return ListCharactersUseCase with CharacterHttpAdapter with AxiosMarvelApiHttpClient.
  */
 container
-  .bind(Registry.GetCharacterUseCase)
+  .bind<ListCharactersUseCase>(Registry.ListCharactersUseCase)
   .toDynamicValue((context) => {
-    const characterHttpAdapter = context.container.get<CharacterHttpAdapter>(
-      Registry.CharacterHttpAdapter
-    );
+    const characterHttpAdapter =
+      context.container.getNamed<CharacterHttpAdapter>(
+        Registry.CharacterHttpAdapter,
+        Registry.AxiosHttpClient
+      );
+
+    return new ListCharactersUseCase(characterHttpAdapter);
+  })
+  .whenTargetNamed(Registry.CharacterHttpAdapter);
+
+/**
+ * Get Character Use Case. Path: src\@core\application\character\get-character.use-case.ts
+ *
+ * @return GetCharacterUseCase with CharacterHttpAdapter with AxiosMarvelApiHttpClient.
+ */
+container
+  .bind<GetCharacterUseCase>(Registry.GetCharacterUseCase)
+  .toDynamicValue((context) => {
+    const characterHttpAdapter =
+      context.container.getNamed<CharacterHttpAdapter>(
+        Registry.CharacterHttpAdapter,
+        Registry.AxiosHttpClient
+      );
 
     return new GetCharacterUseCase(characterHttpAdapter);
   })
-  .whenTargetTagged(Registry.CharacterHttpAdapter, Registry.AxiosHttpClient);
+  .whenTargetNamed(Registry.CharacterHttpAdapter);
