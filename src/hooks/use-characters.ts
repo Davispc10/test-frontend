@@ -56,6 +56,9 @@ export const useCharacters: (
      */
     cacheTime: 1000 * 60 * 60 * 4, // 4 hours
     staleTime: 1000 * 60 * 60 * 2, // 2 hours
+
+    retryDelay: 1000 * 1, // 1 seconds
+    retry: 3, // security limit
   });
 
   return {

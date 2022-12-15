@@ -26,7 +26,8 @@
       "@mocks/*": ["mocks/*"],
       "@hooks/*": ["src/hooks/*"],
       "@components/*": ["src/components/*"],
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "@contexts/*": ["src/contexts/*"]
     }
   },
   "include": [

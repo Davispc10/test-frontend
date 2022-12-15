@@ -24,7 +24,7 @@ export type PaginationContextType = {
   pages: PaginationPage[];
 
   /** Define as páginas */
-  setPages: (pages: PaginationPage[]) => void;
+  loadPages: React.Dispatch<React.SetStateAction<PaginationPage[]>>;
 
   /** Lista de grupos de páginas. */
   groups: PaginationPagesGroup[];
@@ -89,7 +89,7 @@ const defaultContext: PaginationContextType = {
   maxPerGroup: NaN,
   currentGroup: null,
   currentPage: null,
-  setPages: () => {},
+  loadPages: () => {},
   goToPrev: () => {},
   goToNext: () => {},
   goToFirst: () => {},
@@ -238,7 +238,7 @@ export const PaginationProvider: React.FC<
         lastPage,
         firstPage,
 
-        setPages,
+        loadPages: setPages,
         goToPrev,
         goToNext,
         goToFirst,

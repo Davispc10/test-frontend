@@ -8,13 +8,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "320px",
+      },
       colors: {
         ["marvel-primary"]: "#e23636",
         ["marvel-black"]: "#202020",
         ["marvel-white"]: "#FEFEFE",
         ["marvel-typo"]: "#504a4a",
-        ["marvel-secondary"]: "#f78f3f",
-        ["marvel-accent"]: "#518cca",
+        ["marvel-secondary"]: "#518cca",
+        ["marvel-accent"]: "#f78f3f",
       },
 
       fontFamily: {

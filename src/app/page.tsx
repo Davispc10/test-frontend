@@ -3,6 +3,7 @@ import { container, Registry } from "@core/infra/container";
 import { CharactersList } from "@components/characters-list/characters-list.component";
 import { CharacterAdapterFindAllParams } from "@core/domain/adapters/character.adapter";
 import { PaginationInput } from "@components/pagination-input/pagination-input.component";
+import { PaginationState } from "@components/pagination-input/pagination-state";
 
 const listCharactersUseCase = container.getNamed<ListCharactersUseCase>(
   Registry.ListCharactersUseCase,
@@ -28,19 +29,21 @@ export default async function Page() {
   //   charactersSearchParams
   // );
 
+  const pages = Array(23)
+    .fill(0)
+    .map((_, idx) => ({ value: idx + 1 }));
+
   return (
     <div className="container flex mx-auto mt-10 flex-col justify-center items-center">
-      <PaginationInput
-        pages={Array(23)
-          .fill(0)
-          .map((_, idx) => ({ value: idx + 1 }))}
-      />
+      <PaginationState pages={pages} />
+      <PaginationInput />
       {/* <CharactersList
         limit={charactersSearchParams.limit}
         orderBy={charactersSearchParams.orderBy}
         offset={0}
         initialData={characters.map((c) => c.toJSON())}
       /> */}
+      <PaginationInput />
     </div>
   );
 }

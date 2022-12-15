@@ -1,8 +1,8 @@
-export const COMPONENT_SIZES = ["medium"] as const;
+export const COMPONENT_SIZES = ["small", "medium"] as const;
 
 export const COMPONENT_SHAPES = ["squared", "rounded", "circle"] as const;
 
-export const COMPONENT_VARIANTS = [
+export const COMPONENT_COLORS = [
   "default",
   "primary",
   "secondary",
@@ -11,3 +11,5 @@ export const COMPONENT_VARIANTS = [
   "danger",
   "info",
 ] as const;
+
+export const COMPONENT_VARIANTS = ["filled", "outlined"] as const;
