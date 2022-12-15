@@ -25,14 +25,7 @@ export const useCharacters: (
   params: UseCharactersParamsProps
 ) => UseCharactersResultProps = ({ search, initialData }) => {
   const { data, error, isLoading, isError } = useQuery({
-    queryKey: [
-      "characters",
-      search.offset,
-      search.limit,
-      search.orderBy,
-      // TODO: implementing nameStartsWith after
-      search.nameStartsWith || "",
-    ],
+    queryKey: ["characters", search],
     queryFn: () => {
       return listCharacterUseCase.execute({
         limit: search.limit,
@@ -46,6 +39,23 @@ export const useCharacters: (
         character instanceof Character ? character : new Character(character)
       ),
     }),
+
+    /**
+     * Pela necessidade de limitar a quantidade de requests por sessão,
+     * iremos aumentar o cache time e o stale time o máximo possível, para
+     * que o usuário não precise fazer muitas requisições para a API.
+     *
+     * Pois a aplicação não sofrerá grandes mudanças de dados, e o usuário
+     * não irá perceber a alteração.
+     *
+     * Em um projeto para produção, teríamos que adotar outros meios, como
+     * por exemplo, um sistema de cache no servidor e/ou um banco de dados
+     * para armazenar as informações da api, para que limitemos a quantidade
+     * dos requests realizados para API Marvel que possui apenas 3000 requests
+     * por dia como limite.
+     */
+    cacheTime: 1000 * 60 * 60 * 4, // 4 hours
+    staleTime: 1000 * 60 * 60 * 2, // 2 hours
   });
 
   return {
