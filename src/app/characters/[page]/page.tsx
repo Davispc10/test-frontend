@@ -35,15 +35,22 @@ export default async function Page() {
 
   return (
     <div className="container flex mx-auto mt-10 flex-col justify-center items-center">
-      <PaginationState pages={pages} />
-      <PaginationInput />
+      <PaginationState useKeyEvent pages={pages} />
+      <div className="flex w-full justify-start">
+        <PaginationInput
+          showCurrentPage
+          message='"Tudo é um desafio que pode ser descoberto!"'
+        />
+      </div>
       {/* <CharactersList
         limit={charactersSearchParams.limit}
         orderBy={charactersSearchParams.orderBy}
         offset={0}
         initialData={characters.map((c) => c.toJSON())}
       /> */}
-      <PaginationInput />
+      <div className="flex w-full justify-start">
+        <PaginationInput hiddenArrows />
+      </div>
     </div>
   );
 }
