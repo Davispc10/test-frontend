@@ -14,5 +14,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     className
   );
 
-  return <nav className={classes}>{children}</nav>;
+  return (
+    <nav {...rest} className={classes}>
+      {children}
+    </nav>
+  );
 };
