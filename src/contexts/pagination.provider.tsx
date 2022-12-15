@@ -29,23 +29,29 @@ export type PaginationContextType = {
   /** Lista de grupos de páginas. */
   groups: PaginationPagesGroup[];
 
+  /** Próxima página */
+  nextPage: PaginationPage | null;
+
+  /** Página anterior */
+  prevPage: PaginationPage | null;
+
+  /** Próximo grupo */
+  nextGroup: PaginationPagesGroup | null;
+
+  /** Última página */
+  lastPage: PaginationPage | null;
+
+  /** Primeira página */
+  firstPage: PaginationPage | null;
+
+  /** Grupo anterior */
+  prevGroup: PaginationPagesGroup | null;
+
   /** Página atual. */
   currentPage: PaginationPage | null;
 
   /** Grupo atual - A página deve pertencer a este grupo. */
   currentGroup: PaginationPagesGroup | null;
-
-  /** Se existe uma página a direita. */
-  canGoNext: boolean;
-
-  /** Se existe uma página a esquerda. */
-  canGoPrev: boolean;
-
-  /** Se o botão para mostrar mais páginas está disponível na esquerda. */
-  canMorePagesLeft: boolean;
-
-  /** Se o botão para mostrar mais páginas está disponível na direita. */
-  canMorePagesRight: boolean;
 
   /** Move para a próxima página se ela existir. */
   goToNext: () => void;
@@ -74,11 +80,13 @@ export type PaginationContextType = {
 const defaultContext: PaginationContextType = {
   pages: [],
   groups: [],
+  prevGroup: null,
+  lastPage: null,
+  firstPage: null,
+  nextGroup: null,
+  prevPage: null,
+  nextPage: null,
   maxPerGroup: NaN,
-  canGoNext: false,
-  canGoPrev: false,
-  canMorePagesLeft: false,
-  canMorePagesRight: true,
   currentGroup: null,
   currentPage: null,
   setPages: () => {},
@@ -102,12 +110,10 @@ export const PaginationProvider: React.FC<
 > = ({ children, maxPerGroup = 5 }) => {
   const [pages, setPages] = useState<PaginationPage[]>([]);
   const [pageSelected, setPageSelected] = useState<number>(0);
-  const [groupSelected, setGroupSelected] = useState<number>(0);
 
   useEffect(() => {
     return () => {
       setPages([]);
-      setGroupSelected(0);
       setPageSelected(0);
     };
   }, []);
@@ -117,7 +123,7 @@ export const PaginationProvider: React.FC<
     for (let i = 0; i < Math.round(pages.length / maxPerGroup); i++) {
       const groupPages = [];
       for (let j = 1; j <= maxPerGroup; j++) {
-        const pageId = i * maxPerGroup + j;
+        const pageId = i * maxPerGroup + j - 1;
         const page = pages.find((x) => x.id === pageId);
         if (page) {
           groupPages.push(page);
@@ -129,6 +135,50 @@ export const PaginationProvider: React.FC<
     return groups;
   }, [maxPerGroup, pages]);
 
+  const groupSelected = useMemo(() => {
+    const group = groups.find((x) =>
+      x.pages.find((y) => y.id === pageSelected)
+    );
+    return group ? group.id : 0;
+  }, [groups, pageSelected]);
+
+  const setGroupSelected = useCallback(
+    (groupId: number) => {
+      const groupSelected = groups.find((x) => x.id === groupId);
+      if (groupSelected) {
+        setPageSelected(groupSelected.pages[0].id || 0);
+      }
+    },
+    [groups]
+  );
+
+  const lastPage = useMemo(
+    () => (pages.length > 0 ? pages[pages.length - 1] : null),
+    [pages]
+  );
+
+  const firstPage = useMemo(
+    () => (pages.length > 0 ? pages[0] : null),
+    [pages]
+  );
+
+  const nextPage = useMemo(
+    () => pages.find(({ id }) => id === pageSelected + 1) || null,
+    [pages, pageSelected]
+  );
+  const prevPage = useMemo(
+    () => pages.find(({ id }) => id === pageSelected - 1) || null,
+    [pages, pageSelected]
+  );
+  const nextGroup = useMemo(
+    () => groups.find(({ id }) => id === groupSelected + 1) || null,
+    [groups, groupSelected]
+  );
+  const prevGroup = useMemo(
+    () => groups.find(({ id }) => id === groupSelected - 1) || null,
+    [groups, groupSelected]
+  );
+
   const currentPage = useMemo(
     () => pages.find(({ id }) => id === pageSelected) || null,
     [pages, pageSelected]
@@ -139,49 +189,31 @@ export const PaginationProvider: React.FC<
     [groups, groupSelected]
   );
 
-  const canGoNext = useMemo(
-    () => !!pages.find((x) => x.id === pageSelected + 1),
-    [pages, pageSelected]
-  );
-
-  const canGoPrev = useMemo(
-    () => !!pages.find((x) => x.id === pageSelected - 1),
-    [pages, pageSelected]
-  );
-
-  const canMorePagesLeft = useMemo(
-    () => !!groups.find((x) => x.id === groupSelected - 1),
-    [groups, groupSelected]
-  );
-
-  const canMorePagesRight = useMemo(
-    () => !!groups.find((x) => x.id === groupSelected + 1),
-    [groups, groupSelected]
-  );
-
   const goToPrev = useCallback(() => {
-    if (canGoPrev) setPageSelected((currentPage) => currentPage - 1);
-  }, [canGoPrev]);
+    if (prevPage) setPageSelected((currentPage) => currentPage - 1);
+  }, [prevPage]);
 
   const goToNext = useCallback(() => {
-    if (canGoNext) setPageSelected((currentPage) => currentPage + 1);
-  }, [canGoNext]);
+    if (nextPage) setPageSelected((currentPage) => currentPage + 1);
+  }, [nextPage]);
 
   const goToFirst = useCallback(() => {
     setPageSelected(0);
   }, []);
 
   const goToLast = useCallback(() => {
-    setPageSelected(pages.length === 0 ? 0 : pages.length - 1);
-  }, [pages]);
+    if (lastPage) {
+      setPageSelected(lastPage.id);
+    }
+  }, [lastPage]);
 
   const goToNextGroup = useCallback(() => {
-    if (canMorePagesRight) setGroupSelected((currentGroup) => currentGroup + 1);
-  }, [canMorePagesRight]);
+    if (nextGroup) setGroupSelected(nextGroup.id);
+  }, [nextGroup, setGroupSelected]);
 
   const goToPrevGroup = useCallback(() => {
-    if (canMorePagesLeft) setGroupSelected((currentGroup) => currentGroup - 1);
-  }, [canMorePagesLeft]);
+    if (prevGroup) setGroupSelected(prevGroup.id);
+  }, [prevGroup, setGroupSelected]);
 
   const goToPage = useCallback(
     (pageId: number) => {
@@ -198,11 +230,14 @@ export const PaginationProvider: React.FC<
         groups,
         currentPage,
         currentGroup,
-        canGoNext,
-        canGoPrev,
         maxPerGroup,
-        canMorePagesLeft,
-        canMorePagesRight,
+        nextPage,
+        prevPage,
+        nextGroup,
+        prevGroup,
+        lastPage,
+        firstPage,
+
         setPages,
         goToPrev,
         goToNext,
