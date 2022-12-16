@@ -9,11 +9,11 @@ const nextConfig = {
   },
 
   async redirects() {
-    const redirectToCharactersList = ["/", "/characters"];
+    const redirectToCharactersList = ["/"];
     return [
       ...redirectToCharactersList.map((path) => ({
         source: path,
-        destination: "/characters/1",
+        destination: "/characters",
         permanent: false,
       })),
     ];
