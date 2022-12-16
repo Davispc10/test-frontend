@@ -1,41 +1,50 @@
 import { ListCharactersUseCase } from "@core/application/character/list-characters.use-case";
+import { ListComicsByCharacterUseCase } from "@core/application/character/list-comics-by-character.use-case";
 import { CharacterAdapterFindAllParams } from "@core/domain/adapters/character.adapter";
+import { ComicAdapterFindAllParams } from "@core/domain/adapters/comic.adapter";
 import { Character, CharacterJSON } from "@core/domain/entities/character";
+import { Comic, ComicJSON } from "@core/domain/entities/comic";
 import { container, Registry } from "@core/infra/container";
 import { useQuery } from "@tanstack/react-query";
 import { useRef } from "react";
 
-export type UseCharactersResultProps = {
-  characters: Character[];
+export type UseComicsByCharacterResultProps = {
+  comics: Comic[];
   error: any;
   isLoading: boolean;
   isError: boolean;
 };
 
-export type UseCharactersParamsProps = {
-  search: { nameStartsWith?: string } & CharacterAdapterFindAllParams;
-  initialData?: Character[] | CharacterJSON[];
+export type UseComicsByCharacterParamsProps = {
+  search: {} & ComicAdapterFindAllParams;
+  initialData?: Comic[] | ComicJSON[];
 };
 
-// listCharacterUseCase with Http Adapter
-const listCharacterUseCase = container.getNamed<ListCharactersUseCase>(
-  Registry.ListCharactersUseCase,
-  Registry.CharacterHttpAdapter
-);
+// listComicsByCharacterUseCase with Http Adapter
+const listComicsByCharacterUseCase =
+  container.getNamed<ListComicsByCharacterUseCase>(
+    Registry.ListComicsByCharacterUseCase,
+    Registry.CharacterHttpAdapter
+  );
 
-export const useCharacters: (
-  params: UseCharactersParamsProps
-) => UseCharactersResultProps = ({ search, initialData }) => {
+export const useComicsByCharacter: (
+  characterId: number,
+  params: UseComicsByCharacterParamsProps
+) => UseComicsByCharacterResultProps = (
+  characterId,
+  { search, initialData }
+) => {
   const initialDataUsed = useRef(false);
   const { data, error, isLoading, isError } = useQuery({
     queryKey: ["characters", search],
     queryFn: async () => {
-      const { characters } = await listCharacterUseCase.execute({
+      const { comics } = await listComicsByCharacterUseCase.execute({
         limit: search.limit,
         offset: search.offset,
         orderBy: search.orderBy,
+        characterId,
       });
-      return characters;
+      return comics;
     },
     ...(initialData &&
       // Se a lista de personagens já foi carregada, não carrege novamente os dados iniciais do primeiro carregamento
@@ -43,11 +52,9 @@ export const useCharacters: (
       (() => {
         initialDataUsed.current = true;
         return {
-          initialData: initialData.map((character: Character | CharacterJSON) =>
-            // Se o objeto passado for uma lista de Character, retorna ele mesmo, senão, retorna um novo Character
-            character instanceof Character
-              ? character
-              : new Character(character)
+          initialData: initialData.map((comic: Comic | ComicJSON) =>
+            // Se o objeto passado for uma lista de Comic, retorna ele mesmo, senão, retorna um novo Comic
+            comic instanceof Comic ? comic : new Comic(comic)
           ),
         };
       })()),
@@ -74,7 +81,7 @@ export const useCharacters: (
   });
 
   return {
-    characters: data,
+    comics: data,
     error,
     isLoading,
     isError,

@@ -58,7 +58,7 @@ export const mockMarvelCharacterHttp = (): any => {
 
     stories: {
       available: storiesCount,
-      collectionURI: `http://gateway.marvel.com/v1/public/characters/${characterId}/series`,
+      collectionURI: `http://gateway.marvel.com/v1/public/characters/${characterId}/stories`,
       items: Array(storiesCount)
         .fill(0)
         .map(() => {
