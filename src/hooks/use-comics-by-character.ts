@@ -36,7 +36,7 @@ export const useComicsByCharacter: (
 ) => {
   const initialDataUsed = useRef(false);
   const { data, error, isLoading, isError } = useQuery({
-    queryKey: ["characters", search],
+    queryKey: ["comics", characterId, search],
     queryFn: async () => {
       const { comics } = await listComicsByCharacterUseCase.execute({
         limit: search.limit,
