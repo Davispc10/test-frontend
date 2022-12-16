@@ -1,12 +1,12 @@
 export default function Loading() {
   return (
-    <div className="relative flex w-full justify-center items-center z-50 h-20 mt-8">
+    <div className="relative flex w-full justify-center items-center z-50 h-20 mt-8 sm:mt-12">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="200"
-        height="200"
-        className="fill-marvel-secondary"
-        viewBox="0 0 200 200"
+        width="105"
+        height="105"
+        className="relative fill-marvel-secondary/60 w-16 h-16"
+        viewBox="0 0 105 105"
       >
         <circle cx="12.5" cy="12.5" r="12.5">
           <animate
