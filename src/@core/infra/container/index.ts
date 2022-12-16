@@ -2,11 +2,12 @@ import { Container, interfaces } from "inversify";
 import { Registry } from "./registry";
 import { AxiosHttpClient } from "../protocols/axios-http-client";
 import axiosHttp from "../service/axios-http";
-import { HttpClient } from "@core/data/protocols/http-client";
 import { CharacterHttpAdapter } from "../adapters/character-http.adapter";
 import { GetCharacterUseCase } from "@core/application/character/get-character.use-case";
 import { AxiosInstance } from "axios";
 import { ListCharactersUseCase } from "@core/application/character/list-characters.use-case";
+import { ListComicsByCharacterUseCase } from "@core/application/character/list-comics-by-character.use-case";
+import { ListAllCharactersUseCase } from "@core/application/character/list-all-characters.use-case";
 
 export { Registry };
 export const container = new Container();
@@ -88,5 +89,41 @@ container
       );
 
     return new GetCharacterUseCase(characterHttpAdapter);
+  })
+  .whenTargetNamed(Registry.CharacterHttpAdapter);
+
+/**
+ * List All Characters Use Case. Path: src\@core\application\character\list-all-characters.use-case.ts
+ *
+ * @return ListAllCharactersUseCase with CharacterHttpAdapter with AxiosMarvelApiHttpClient.
+ */
+container
+  .bind<ListAllCharactersUseCase>(Registry.ListAllCharactersUseCase)
+  .toDynamicValue((context) => {
+    const characterHttpAdapter =
+      context.container.getNamed<CharacterHttpAdapter>(
+        Registry.CharacterHttpAdapter,
+        Registry.AxiosHttpClient
+      );
+
+    return new ListAllCharactersUseCase(characterHttpAdapter);
+  })
+  .whenTargetNamed(Registry.CharacterHttpAdapter);
+
+/**
+ * List Comics By Character Use Case. Path: src\@core\application\character\list-comics-by-character.use-case.ts
+ *
+ * @return ListComicsByCharacterUseCase with CharacterHttpAdapter with AxiosMarvelApiHttpClient.
+ */
+container
+  .bind<ListComicsByCharacterUseCase>(Registry.ListComicsByCharacterUseCase)
+  .toDynamicValue((context) => {
+    const characterHttpAdapter =
+      context.container.getNamed<CharacterHttpAdapter>(
+        Registry.CharacterHttpAdapter,
+        Registry.AxiosHttpClient
+      );
+
+    return new ListComicsByCharacterUseCase(characterHttpAdapter);
   })
   .whenTargetNamed(Registry.CharacterHttpAdapter);

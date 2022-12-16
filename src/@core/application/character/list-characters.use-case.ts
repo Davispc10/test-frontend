@@ -11,7 +11,11 @@ export type ListCharactersUseCaseParams = {
   orderBy?: CharacterOrderBy;
 };
 
-export type ListCharacterUseCaseReturn = Character[];
+export type ListCharacterUseCaseReturn = {
+  characters: Character[];
+  available: number;
+  returned: number;
+};
 
 export class ListCharactersUseCase
   implements UseCase<ListCharactersUseCaseParams, ListCharacterUseCaseReturn>

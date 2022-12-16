@@ -1,15 +1,3 @@
-export type CharacterComicList = {
-  available: number;
-  returned: number;
-  collectionURI: string;
-  items: { resourceURI: string; name: string }[];
-};
-
-export type CharacterUrl = {
-  type: string;
-  url: string;
-};
-
 export type CharacterThumbnail = {
   path: string;
   extension: string;
@@ -23,10 +11,7 @@ export type CharacterProps = {
   name: string;
   description?: string;
   modified: Date;
-  resourceURI: string;
-  urls: CharacterUrl[];
   thumbnail?: CharacterThumbnail;
-  comics: CharacterComicList;
 };
 
 /**
@@ -41,6 +26,11 @@ export class Character {
         path: "/images/marvel-image",
         extension: "jpg",
       };
+    }
+
+    // Caso não venha escrição, substituir pela informada abaixo.
+    if (!props.description) {
+      props.description = "*Description not informed*";
     }
   }
 
@@ -60,20 +50,8 @@ export class Character {
     return this.props.modified;
   }
 
-  get resourceURI() {
-    return this.props.resourceURI;
-  }
-
-  get urls() {
-    return this.props.urls;
-  }
-
   get thumbnail() {
     return this.props.thumbnail;
-  }
-
-  get comics() {
-    return this.props.comics;
   }
 
   /** Irá facilitar a conversão para objeto JSON quando necessário. */
@@ -83,10 +61,7 @@ export class Character {
       name: this.name,
       description: this.description,
       modified: this.modified,
-      resourceURI: this.resourceURI,
-      urls: this.urls,
       thumbnail: this.thumbnail,
-      comics: this.comics,
     };
   }
 }
