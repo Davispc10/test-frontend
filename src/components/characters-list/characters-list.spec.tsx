@@ -8,10 +8,19 @@ import {
 } from "./characters-list.component";
 import { mockCharactersList } from "@mocks/characters-list.mock";
 import { useCharacters } from "@hooks/use-characters";
+import { useRouter } from "next/router";
 
 jest.mock("@hooks/use-characters", () => {
   return {
     useCharacters: jest.fn(),
+  };
+});
+
+jest.mock("next/navigation", () => {
+  return {
+    useRouter: jest.fn().mockImplementation(() => ({
+      push: jest.fn(),
+    })),
   };
 });
 

@@ -34,7 +34,7 @@ const ButtonElement: React.ForwardRefRenderFunction<
   ref
 ) => {
   const classes = twMerge(
-    "relative flex flex-grow flex-row flex-nowrap items-center justify-center space-x-2 transition-all duration-200 ease-in-out",
+    "relative flex flex-row flex-nowrap items-center justify-center space-x-2",
     clsx({
       "border-2": variant === "outlined",
 
@@ -74,6 +74,7 @@ const ButtonElement: React.ForwardRefRenderFunction<
       "bg-marvel-secondary/20 text-marvel-typo":
         colorStyle === "secondary" && disabled,
     }),
+    "transition duration-200 ease-in-out",
     className
   );
 
@@ -84,7 +85,7 @@ const ButtonElement: React.ForwardRefRenderFunction<
       ) : (
         <>
           {iconPrefix && <span className="h-full w-auto">{iconPrefix}</span>}
-          <span className="grow">{children}</span>
+          <span className="">{children}</span>
           {iconSufix && <span className="h-full w-auto">{iconSufix}</span>}
         </>
       ),

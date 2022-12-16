@@ -1,5 +1,3 @@
-"use client";
-
 import { twMerge } from "tailwind-merge";
 
 export type FooterProps = {} & React.HTMLAttributes<HTMLDivElement>;
@@ -10,7 +8,7 @@ export const Footer: React.FC<FooterProps> = ({
   ...rest
 }) => {
   const classes = twMerge(
-    "container flex flex-col justify-center items-center w-full mx-auto mt-20",
+    "container flex flex-col justify-center items-center w-full mx-auto py-20 px-4",
     className
   );
 

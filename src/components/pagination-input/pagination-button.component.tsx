@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@components/ui/button/button.component";
 import { forwardRef, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type PaginationButtonProps = {
   icon?: React.ReactElement;
@@ -14,12 +15,15 @@ const PaginationButtonElement: React.ForwardRefRenderFunction<
   HTMLButtonElement,
   PaginationButtonProps
 > = (
-  { label, icon, value, active = false, groupInit = false, ...rest },
+  { label, icon, value, active = false, groupInit = false, className, ...rest },
   ref
 ) => {
+  const classes = twMerge("flex-grow", className);
+
   return (
     <Button
       ref={ref}
+      className={classes}
       colorStyle={active ? "primary" : groupInit ? "secondary" : "default"}
       shape="rounded"
       variant={active ? "filled" : groupInit ? "outlined" : "filled"}
