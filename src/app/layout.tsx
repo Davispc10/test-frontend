@@ -1,11 +1,17 @@
+import "./globals.css";
+import "yet-another-react-lightbox/styles.css";
+
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
 import { FloatButtonsCredit } from "@components/float-buttons-credit/float-buttons-credit.component";
 import { Button } from "@components/ui/button/button.component";
 import { Footer } from "@components/ui/footer/footer.component";
 import { Link } from "@components/ui/link/link.component";
+import LinkNext from "next/link";
 import { Navbar } from "@components/ui/navbar/navbar.component";
 import { Rubik } from "@next/font/google";
 import localFont from "@next/font/local";
-import "./globals.css";
+
 import { Providers } from "./providers";
 
 const rubik = Rubik({
@@ -20,6 +26,10 @@ const marvel = localFont({
   preload: true,
 });
 
+// export const dynamic = "force-static";
+export const runtime = "experimental-edge";
+export const preferredRegion = "edge";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
@@ -28,11 +38,37 @@ export default function RootLayout({ children }) {
         className={`${rubik.variable} ${marvel.variable} font-primary bg-marvel-white`}
       >
         <Navbar className="bg-marvel-primary pt-2 pb-1 border-marvel-black/50">
-          <h1 className="text-6xl font-marvel text-marvel-white">MARVEL</h1>
+          <div className="container relative flex flex-row flex-grow space-x-2 justify-center items-center h-full w-full mx-auto">
+            <div className="flex justify-start items-center h-full w-full"></div>
+            <div className="flex justify-center items-center grow h-full w-full">
+              <h1 className="text-5xl sm:text-6xl font-marvel text-marvel-white mt-1 transition-transform ease-in-out duration-100 transform hover:scale-[1.025] hover:translate-y-[2px]">
+                <LinkNext href={"/characters"}>MARVEL</LinkNext>
+              </h1>
+            </div>
+            <div className="inline-flex relative flex-row space-x-2 justify-end items-center h-full w-full"></div>
+          </div>
         </Navbar>
+
+        <div className="container flex w-full justify-center items-center my-6 mx-auto">
+          <Button
+            colorStyle="default"
+            variant="outlined"
+            disabled
+            iconSufix={<MagnifyingGlassIcon className="w-[24px] h-[24px]" />}
+          >
+            <span className="hidden sm:flex whitespace-nowrap w-full">
+              Pesquise pelo nome do personagem
+            </span>
+
+            <span className="flex sm:hidden whitespace-nowrap w-full">
+              Busque Pelo Nome
+            </span>
+          </Button>
+        </div>
+
         <Providers>{children}</Providers>
 
-        <FloatButtonsCredit>
+        {/* <FloatButtonsCredit>
           <Button
             colorStyle="default"
             as={
@@ -52,9 +88,9 @@ export default function RootLayout({ children }) {
               </svg>
             }
           />
-        </FloatButtonsCredit>
+        </FloatButtonsCredit> */}
 
-        <Footer>
+        <Footer className="text-center space-y-4">
           <p className="text-marvel-typo">
             Data provided by{" "}
             <Link href="https://developer.marvel.com/" target="_blank">
@@ -63,11 +99,11 @@ export default function RootLayout({ children }) {
             . © 2014 Marvel
           </p>
           <p className="text-marvel-typo">
-            Developed by{" "}
+            Site Developed by{" "}
             <Link href={"https://github.com/sydo26"} target="_blank">
               Sydo26 💜
             </Link>
-            .
+            . @ 2022 Sydo Developer
           </p>
         </Footer>
       </body>

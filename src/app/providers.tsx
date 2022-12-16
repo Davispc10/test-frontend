@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <PaginationProvider maxPerGroup={isMobileOnly ? 3 : 5}>
+      <PaginationProvider maxPerGroup={isMobileOnly ? 3 : 6}>
         {children}
       </PaginationProvider>
     </QueryClientProvider>
