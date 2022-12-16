@@ -8,6 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+      },
       screens: {
         xs: "320px",
       },
