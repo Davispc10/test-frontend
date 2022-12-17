@@ -1,12 +1,5 @@
-
 export const Contato = () => {
+  return <div>{/* ola mundo */}</div>;
+};
 
-  return (
-    <div>
-
-      {/* ola mundo */}
-    </div>
-  )
-}
-
-export default Contato
+export default Contato;

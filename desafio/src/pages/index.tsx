@@ -1,19 +1,18 @@
-import { Backdrop, Button, Paper } from '@mui/material'
+import { Backdrop, Button, Paper } from "@mui/material";
 // import Head from 'next/head'
 // import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from "../styles/Home.module.css";
 import { AppBar, Box, Toolbar } from "@mui/material";
-import Image from 'next/image';
-import Background from '../../public/img/background3.png';
-import SearchAppBar from '../components/Search';
-import { Page } from '../components/Page';
-import Grid from '@mui/material/Grid';
-import CharacterList from '../components/CharacterList';
-
+import Image from "next/image";
+import Background from "../../public/img/background3.png";
+import SearchAppBar from "../components/Search";
+import { Page } from "../components/Page";
+import Grid from "@mui/material/Grid";
+import CharacterList from "../components/CharacterList";
+import { state } from "./store";
 
 export default function Home() {
   return (
-
     <Page>
       <Grid
         container
@@ -24,7 +23,6 @@ export default function Home() {
           gap: (theme) => theme.spacing(3),
         }}
       >
-
         <Grid
           container
           sx={{
@@ -33,15 +31,15 @@ export default function Home() {
             alignItems: "center",
             gap: (theme) => theme.spacing(3),
           }}
-
         >
           <SearchAppBar
-            onChange={(searchValue) => console.log(searchValue)}
+            onChange={(searchValue) => {
+              state.search = searchValue;
+            }}
           />
-          <CharacterList/>
-
+          <CharacterList />
         </Grid>
       </Grid>
     </Page>
-  )
+  );
 }

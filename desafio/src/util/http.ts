@@ -11,14 +11,14 @@ export const http_marvel = axios.create({
   params: {
     ts: ts,
     apikey: publicKey,
-    hash: hashMd5
+    hash: hashMd5,
   }
 });
 
 
-export function http_marvel_get(url: string) : any {
+export function http_marvel_get(url: string, params?: {}) : any {
   return new Promise((resolve, reject) => {
-    http_marvel.get(url).then(({data}: any) => {
+    http_marvel.get(url,params).then(({data}: any) => {
     resolve(data)
     }).catch(err => {
       reject(err);

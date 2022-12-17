@@ -1,30 +1,28 @@
-import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import { alpha } from '@mui/material/styles';
-import theme from '../util/theme';
-import Skeleton from '@mui/material/Skeleton';
-
+import React from "react";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import { alpha } from "@mui/material/styles";
+import theme from "../util/theme";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function AnimationsHome() {
   return (
-
-    <List 
-      dense 
+    <List
+      dense
       sx={{
-        width: '100%',
-        maxWidth: 900,
+        width: "100%",
+        maxWidth: 650,
         bgcolor: `${alpha(theme.palette.common.black, 0.9)}`,
-        position: 'relative',
-        overflow: 'auto',
+        position: "relative",
+        overflow: "auto",
         maxHeight: 410,
-        '& ul': { padding: 0 },
+        "& ul": { padding: 0 },
       }}
       subheader={<li />}
-      >
-      {[1,2,3,4,5,6,7,8,9,10].map((value) => {
+    >
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => {
         const labelId = `checkbox-list-secondary-label-${value}`;
         return (
           <ListItem
@@ -36,9 +34,14 @@ export default function AnimationsHome() {
           >
             <ListItemButton>
               <ListItemAvatar>
-                <Skeleton animation="wave" variant="circular" width={45} height={45} />
+                <Skeleton
+                  animation="wave"
+                  variant="circular"
+                  width={45}
+                  height={45}
+                />
               </ListItemAvatar>
-              <Skeleton animation="wave" height={50} width={700} />
+              <Skeleton animation="wave" height={50} width={350} />
             </ListItemButton>
           </ListItem>
         );
