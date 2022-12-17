@@ -31,14 +31,13 @@ export default function CharacterList() {
   const [characteres, setCharacteres] = useState<CharacterListType>();
   const [pages, setPages] = useState(0);
   const [scrollComplete, setScrollComplete] = useState(false);
-  // const [characteresFiltered, setCharacteresFiltered] = useState("");
 
   function getCharacter() {
     if (scrollComplete) {
       return;
     }
 
-    const limit = 20;
+    const limit = 100;
     const offset = pages * limit;
     const promise = http_marvel_get("characters", {
       params: { limit: limit, offset: offset },
