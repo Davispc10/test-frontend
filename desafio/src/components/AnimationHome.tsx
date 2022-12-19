@@ -19,16 +19,17 @@ export default function AnimationsHome() {
         overflow: "auto",
         maxHeight: 410,
         "& ul": { padding: 0 },
+        borderRadius: 5,
       }}
       subheader={<li />}
     >
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => {
+      {[1, 2, 3, 4, 5, 6, 7].map((value) => {
         const labelId = `checkbox-list-secondary-label-${value}`;
         return (
           <ListItem
             key={value}
             secondaryAction={
-              <Skeleton variant="rectangular" width={80} height={30} />
+              <Skeleton variant="rectangular" width={80} height={35} />
             }
             disablePadding
           >
@@ -36,12 +37,15 @@ export default function AnimationsHome() {
               <ListItemAvatar>
                 <Skeleton
                   animation="wave"
-                  variant="circular"
-                  width={45}
-                  height={45}
+                  variant="rectangular"
+                  width={90}
+                  height={80}
+                  style={{
+                    marginRight: 20,
+                  }}
                 />
               </ListItemAvatar>
-              <Skeleton animation="wave" height={50} width={350} />
+              <Skeleton animation="wave" height={60} width={350} />
             </ListItemButton>
           </ListItem>
         );

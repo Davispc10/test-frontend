@@ -16,7 +16,7 @@ const theme = createTheme({
     secondary: {
       main: "#0E4987",
     },
-    divider: '#1B73A7',
+    divider: "#1B73A7",
     background: {
       default: "#09345e",
       paper: "#0E4987",
@@ -33,7 +33,7 @@ const theme = createTheme({
           height: "100%",
         },
         body: {
-          background: "url(/img/background3.png) no-repeat top center fixed",
+          background: "url(/img/background9.jpg) no-repeat top center fixed",
           WebkitBackgroundSize: "cover",
           OBackgroundSize: "cover",
           BackgroundSize: "cover",

@@ -9,4 +9,4 @@ export const Page = (props: PropsWithChildren) => {
   );
 };
 
-export default Page
+export default Page;

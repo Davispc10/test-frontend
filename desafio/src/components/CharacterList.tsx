@@ -30,14 +30,25 @@ export default function CharacterList() {
 
   const [characteres, setCharacteres] = useState<CharacterListType>();
   const [pages, setPages] = useState(0);
-  const [scrollComplete, setScrollComplete] = useState(false);
 
   function getCharacter() {
-    if (scrollComplete) {
+    let limit = 100;
+
+    // stop request
+    if (
+      characteres?.total &&
+      characteres.results.length === characteres.total
+    ) {
       return;
     }
 
-    const limit = 100;
+    if (
+      characteres?.total &&
+      characteres.results.length + limit > characteres.total
+    ) {
+      limit = characteres.total - characteres.results.length;
+    }
+
     const offset = pages * limit;
     const promise = http_marvel_get("characters", {
       params: { limit: limit, offset: offset },
@@ -47,11 +58,6 @@ export default function CharacterList() {
       const lastCharacteres = characteres;
       const newCharacteres = res.data as CharacterListType;
       lastCharacteres?.results.push(...newCharacteres.results);
-
-      // stop request
-      if (newCharacteres.results.length < limit) {
-        setScrollComplete(true);
-      }
 
       setCharacteres({
         count: newCharacteres.count,
@@ -79,7 +85,6 @@ export default function CharacterList() {
       <>
         <List
           dense
-          // sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
           sx={{
             width: "100%",
             maxWidth: 650,
@@ -88,6 +93,7 @@ export default function CharacterList() {
             overflow: "auto",
             maxHeight: 410,
             "& ul": { padding: 0 },
+            borderRadius: 5,
           }}
           subheader={<li />}
           onScroll={(scroll) => {
@@ -96,9 +102,7 @@ export default function CharacterList() {
               targetList.offsetHeight + targetList.scrollTop >=
               targetList.scrollHeight
             ) {
-              if (!scrollComplete) {
-                setPages(pages + 1);
-              }
+              setPages(pages + 1);
             }
           }}
         >
@@ -118,12 +122,12 @@ export default function CharacterList() {
                       variant="outlined"
                       onClick={() => {
                         router.push({
-                          pathname: "/galeria",
+                          pathname: "/details",
                           query: { data: character.resourceURI },
                         });
                       }}
                     >
-                      Detalhes
+                      Details
                     </Button>
                   }
                   disablePadding
@@ -131,11 +135,12 @@ export default function CharacterList() {
                   <ListItemButton>
                     <ListItemAvatar>
                       <Avatar
-                        alt={`Personagem ${character.name}`}
-                        // src={`/static/images/avatar/${value + 1}.jpg`}
+                        alt={`Character ${character.name}`}
                         src={`${character.thumbnail.path}.`.concat(
                           character.thumbnail.extension
                         )}
+                        sx={{ width: 110, height: 90, marginRight: 3 }}
+                        variant="square"
                       />
                     </ListItemAvatar>
                     <ListItemText id={labelId} primary={character.name} />
@@ -144,7 +149,17 @@ export default function CharacterList() {
               );
             })}
         </List>
-        {`Mostrando ${characteres?.results?.length} de ${characteres.total}`}
+        <div
+          style={{
+            fontStyle: "normal",
+            fontSize: 25,
+            color: "whitesmoke",
+            font: "Arial bold",
+            WebkitTextStroke: "1px black",
+          }}
+        >
+          {`${characteres?.results?.length} of ${characteres.total}`}
+        </div>
       </>
     );
   }

@@ -1,10 +1,3 @@
-import { Backdrop, Button, Paper } from "@mui/material";
-// import Head from 'next/head'
-// import Image from 'next/image'
-import styles from "../styles/Home.module.css";
-import { AppBar, Box, Toolbar } from "@mui/material";
-import Image from "next/image";
-import Background from "../../public/img/background3.png";
 import SearchAppBar from "../components/Search";
 import { Page } from "../components/Page";
 import Grid from "@mui/material/Grid";

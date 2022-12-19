@@ -48,7 +48,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 type OnChangeProps = {
   onChange: (event: string) => void;
-  // const SearchAppBar = ({onChange}: {onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void } ) => {
 };
 
 export default function SearchAppBar({ onChange }: OnChangeProps) {
@@ -62,7 +61,7 @@ export default function SearchAppBar({ onChange }: OnChangeProps) {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder="Buscar..."
+          placeholder="Search..."
           inputProps={{ "aria-label": "search" }}
         />
       </Search>

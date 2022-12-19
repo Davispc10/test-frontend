@@ -16,7 +16,7 @@ export const http_marvel = axios.create({
 });
 
 
-export function http_marvel_get(url: string, params?: {}) : any {
+export function http_marvel_get(url: string, params?: {}) : Promise<any> {
   return new Promise((resolve, reject) => {
     http_marvel.get(url,params).then(({data}: any) => {
     resolve(data)
@@ -24,31 +24,14 @@ export function http_marvel_get(url: string, params?: {}) : any {
       reject(err);
     })
   });
-
-  // promise.then((res: any) => {
-  //   setCharacteres(res)
-  // });
-  // promise.catch((err) => {
-  //   console.log(err);
-  // })
 }
 
-// console.log(hashMd5)
-// console.log(ts)
-// fetch(`${process.env.NEXT_PUBLIC_MARVEL_URL}/comics?ts=${ts}&apikey=${publicKey}&hash=${hashMd5}`)
-// .then((res) => res.json())
-// .then((res) => {
-//   console.log(res)
-// }).catch((err) => {
-//   console.log(err)
-// })
-
-
-
-
-// export const fetcherStats = (url: string) =>
-//   httpStats.get(url).then((res) => res.data);
-
-// export const httpStats = axios.create({
-//   baseURL: ,
-// });
+export function http_marvel_url(url: string) : Promise<any> {
+  return new Promise((resolve, reject) => {
+    http_marvel.get(url).then(({data}: any) => {
+    resolve(data)
+    }).catch(err => {
+      reject(err);
+    })
+  });
+}
