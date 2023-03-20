@@ -18,6 +18,7 @@ export const {
             backgroundHeader: '#050007',
             white: '#fff',
             text: '#9c42cc',
+            buttons: '#c79fdd'
         }
     }
 });

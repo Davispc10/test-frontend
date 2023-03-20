@@ -7,7 +7,7 @@ export const globalStyles = globalCss({
     },
 
     body: {
-        height: '100vh',
+        // height: '100vh',
         background: '$background',
         color: '$text',
     },
