@@ -1,5 +1,5 @@
 import { memo, useMemo } from "react";
-import { Container, HeroName } from "@/styles/components/CardHero/cardHero";
+import { Container, HeroName } from "@/styles/components/cardHero";
 import { Thumbnail } from "../@core/domain/entities/Hero";
 import Image from "next/image";
 
@@ -7,9 +7,8 @@ interface props {
     name: string;
     thumbnail: Thumbnail;
     isLoading?: boolean;
-    onClick?: () => void;
 }
-function CardHero({ name, thumbnail, isLoading, onClick }: props) {
+function CardHero({ name, thumbnail, isLoading }: props) {
 
     const thumbnailFormatted = useMemo(() => {
         return thumbnail?.path?.includes("image_not_available") ?
@@ -18,9 +17,7 @@ function CardHero({ name, thumbnail, isLoading, onClick }: props) {
     }, [thumbnail]);
 
     return (
-        <Container 
-            {...(onClick && { onClick })}
-        >
+        <Container >
             <Image
                 height={280}
                 width={280}

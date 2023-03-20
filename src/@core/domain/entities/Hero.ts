@@ -1,3 +1,5 @@
+import { Comic } from "./Comic";
+
 export type Thumbnail = {
     path: string;
     extension: string;
@@ -18,7 +20,6 @@ export type HeroProps = {
     id: number;
     name: string;
     description: string;
-    modified: Date;
     resourceURI: string;
     thumbnail: Thumbnail;
     comics: Comics;
@@ -38,9 +39,9 @@ export type HeroProps = {
     get description() {
       return this.props.description;
     }
-  
-    get modified() {
-      return this.props.modified;
+
+    get comics(): Comics {
+      return this.comics;
     }
   
     get thumbnail() {

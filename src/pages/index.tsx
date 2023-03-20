@@ -1,21 +1,35 @@
-import { Button, CardsContainer, HomeContainer, PaginationContainer } from '@/styles/pages/home'
-import { FactoryMakeListHeroUseCase } from '../@core/factory/FactoryMakeListHeroUseCase'
+import { Button, CardsContainer, ContainerLoading, HomeContainer, PaginationContainer } from '@/styles/pages/home'
+import { FactoryMakeListUseCase } from '../@core/factory/factoryListAll/FactoryMakeListHeroUseCase'
 import { useQuery } from 'react-query'
 import CardHero from '../components/CardHero';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Router, useRouter } from 'next/router';
+import { Input } from '../components/Input';
+import { Hero } from '../@core/domain/entities/Hero';
 
 function Home() {
   const [offset, setOffSet] = useState(0);
-  const route = useRouter();
+  const [stringPattern, setStringPattern] = useState('');
+
   //offset como array de dependência para quando o estado mudar a função rodar novamente
   const { isLoading, error, data } = useQuery(['query', offset], async () => {
-    return FactoryMakeListHeroUseCase(offset).execute();
+    return FactoryMakeListUseCase(offset).execute();
   });
+
+  const dataAndSearch: Hero[] = useMemo(() => {
+    if (stringPattern) {
+      const search = data?.filter((hero) =>
+        hero.name.toLowerCase().includes(stringPattern.toLowerCase())
+      );
+      return search ? search : [];
+    }
+    return data ? data : [];
+  }, [stringPattern, data]);
+ 
   return (
     <>
-      <HomeContainer>
+      {isLoading ? <ContainerLoading>Carregando...</ContainerLoading>
+      : <HomeContainer>
         <PaginationContainer>
           <Button focus={offset === 0} onClick={() => setOffSet(0)}>1</Button>
           <Button focus={offset === 13} onClick={() => setOffSet(13)}>2</Button>
@@ -24,20 +38,25 @@ function Home() {
           <Button focus={offset === 43} onClick={() => setOffSet(43)}>5</Button>
           <Button focus={offset === 53} onClick={() => setOffSet(53)}>6</Button>
         </PaginationContainer>
+        <Input onChange={(event) => setStringPattern(event.target.value)}/>
         <CardsContainer>
-          {data?.map((hero) => (
+          {dataAndSearch?.map((hero) => (
+            <Link
+              key={hero.id}
+              href={`/comic/${hero.id}`}
+              style={{ textDecoration: 'none' }}
+            >
               <CardHero
-                key={hero.id}
                 name={hero.name}
                 thumbnail={hero.thumbnail}
                 isLoading={isLoading}
-                onClick={() => route.push(`/${hero.id}`)}
               />
-            
+            </Link>
+
           ))
           }
         </CardsContainer>
-      </HomeContainer>
+      </HomeContainer>}
     </>
   )
 }

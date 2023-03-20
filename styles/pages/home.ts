@@ -50,6 +50,15 @@ Button.defaultProps = {
     focus: false,
 };
 
+export const ContainerLoading = styled("div", {
+  minWidth: '100vw',
+  minHeight: '100vh',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
 export const CardsContainer = styled("div", {
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
