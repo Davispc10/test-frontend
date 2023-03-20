@@ -6,10 +6,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Router, useRouter } from 'next/router';
 
-const valuesPagination = [1, 2, 3, 4, 5, 6]
 function Home() {
   const [offset, setOffSet] = useState(0);
   const route = useRouter();
+  //offset como array de dependência para quando o estado mudar a função rodar novamente
   const { isLoading, error, data } = useQuery(['query', offset], async () => {
     return FactoryMakeListHeroUseCase(offset).execute();
   });
