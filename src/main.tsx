@@ -1,23 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import "./index.css";
+/* Global css */
+import './index.css';
 
 /* Providers */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 /* Pages */
-import Home from "./pages/Home";
-import Character from "./pages/Character";
+import Home from './pages/Home';
+import Character from './pages/Character';
+
+/* Layout */
+import Layout from './layout';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    element: <Layout />,
     children: [
       {
-        path: "character/:id",
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/character/:id',
         element: <Character />,
       },
     ],
@@ -26,11 +33,10 @@ const router = createBrowserRouter([
 
 const queryClient = new QueryClient();
 
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>
 );
