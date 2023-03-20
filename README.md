@@ -6,6 +6,9 @@
 
 - ## Project using next and typescript
 
+- ## Using @stitches/react for the stylization
+
+- ## Using React Query to make requests along with clean architecture 
 - ## Tests in Jest
 
 <h2>☕ To run the code </h2>
