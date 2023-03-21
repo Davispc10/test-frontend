@@ -10,7 +10,12 @@ function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   const apiKey = API_KEY;
 
   if (apiKey) {
+    if (!config.params) {
+      config.params = {};
+    }
+
     config.params.apikey = apiKey;
+  } else {
   }
 
   return config;
@@ -24,8 +29,21 @@ axios.interceptors.response.use(
   (error) => {
     const message = error.response?.data?.message || error.message;
 
-    toast(message, {
-      type: 'error',
+    const clientError =
+      error.response?.status >= 400 && error.response?.status < 500;
+
+    if (clientError) {
+      toast(message, {
+        type: 'error',
+      });
+    } else {
+      toast('Something went wrong, please try again later', {
+        type: 'error',
+      });
+    }
+
+    console.error({
+      err: message,
     });
   }
 );
