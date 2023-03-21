@@ -6,6 +6,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PaginationProvider } from './pagination';
 
 const ErrorFallback = () => {
   return (
@@ -37,15 +38,17 @@ const AppProvider = (props: React.PropsWithChildren) => {
     <React.Suspense fallback={<LoadingFallback />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={3000}
-            hideProgressBar={true}
-            pauseOnHover={false}
-            draggable={false}
-            closeOnClick
-          />
-          <RouterProvider router={router} />
+          <PaginationProvider>
+            <ToastContainer
+              position="bottom-right"
+              autoClose={3000}
+              hideProgressBar={true}
+              pauseOnHover={false}
+              draggable={false}
+              closeOnClick
+            />
+            <RouterProvider router={router} />
+          </PaginationProvider>
         </QueryClientProvider>
       </ErrorBoundary>
     </React.Suspense>
