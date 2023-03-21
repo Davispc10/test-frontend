@@ -27,4 +27,4 @@ $ cd assembly-of-heroes
 # install the dependencies
 $ yarn install
 # All ready to start the server
-$ yarn start
+$ yarn dev
