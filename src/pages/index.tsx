@@ -1,11 +1,19 @@
-import { Button, CardsContainer, ContainerLoading, HomeContainer, PaginationContainer } from '@/styles/pages/home'
-import { FactoryMakeListUseCase } from '../@core/factory/factoryListAll/FactoryMakeListHeroUseCase'
-import { useQuery } from 'react-query'
-import CardHero from '../components/CardHero';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { useQuery } from 'react-query'
+
+import { FactoryMakeListUseCase } from '../@core/factory/factoryListAll/FactoryMakeListHeroUseCase'
+
+import CardHero from '../components/CardHero';
 import { Input } from '../components/Input';
 import { Hero } from '../@core/domain/entities/Hero';
+import { 
+  Button, 
+  CardsContainer, 
+  ContainerLoading, 
+  HomeContainer, 
+  PaginationContainer 
+} from '@/styles/pages/home'
 
 function Home() {
   const [offset, setOffSet] = useState(0);
