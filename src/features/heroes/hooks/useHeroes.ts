@@ -13,7 +13,7 @@ type UseHeroesOptions = {
 export const useHeroes = ({
   page,
   nameStartsWith,
-  config,
+  config = {},
 }: UseHeroesOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,

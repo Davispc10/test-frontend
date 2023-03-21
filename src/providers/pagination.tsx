@@ -1,5 +1,6 @@
 import { HERO_RETURN_LIMIT } from '@/config';
 import { getTotalHeroCount } from '@/features/heroes/api/getHeroCount';
+import { useTotalHeroCount } from '@/features/heroes/hooks/useTotalHeroCount';
 import React, {
   createContext,
   useCallback,
@@ -29,17 +30,11 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
   const [totalPages, setTotalPages] = useState(1);
 
   // Obter o total de páginas da API
-  useEffect(() => {
-    async function getTotalPages() {
-      const count = await getTotalHeroCount();
-      console.log('total hero', count);
-      setTotalPages(Math.ceil(count / HERO_RETURN_LIMIT));
-    }
+  const totalHeroCount = useTotalHeroCount();
 
-    getTotalPages().catch((err) => {
-      console.log(err);
-    });
-  });
+  useEffect(() => {
+    setTotalPages(Math.ceil((totalHeroCount.data || 1) / HERO_RETURN_LIMIT));
+  }, [totalHeroCount.data]);
 
   const goToNextPage = useCallback(() => {
     setCurrentPage((curr) => {
@@ -48,7 +43,7 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
       }
       return curr;
     });
-  }, [currentPage]);
+  }, [currentPage, totalPages]);
 
   const goToPreviousPage = useCallback(() => {
     setCurrentPage((curr) => {
@@ -57,7 +52,7 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
       }
       return curr;
     });
-  }, [currentPage]);
+  }, [currentPage, totalPages]);
 
   const goToFirstPage = useCallback(() => {
     setCurrentPage(1);
@@ -66,6 +61,10 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
   const hasNextPage = currentPage < totalPages;
 
   const hasPreviousPage = currentPage > 1;
+
+  if (totalHeroCount.isLoading) return <div>Loading...</div>;
+
+  if (totalHeroCount.isError) return <div>Error</div>;
 
   return (
     <PaginationContext.Provider
