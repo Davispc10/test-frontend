@@ -15,6 +15,12 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier": "warning"
+    "prettier/prettier": "warning",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@/features/*/*"]
+      }
+    ]
   }
 }
