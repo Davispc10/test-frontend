@@ -14,6 +14,8 @@ interface props {
 }
 function CardCharacterComic({ name, thumbnail, description, push, comics }: props) {
 
+    //usando o useMemo para memorizar esses valores para:
+    //no caso do componente ser rederizado novamente as funções não precisarem ser refeitas
     const thumbnailFormatted = useMemo(() => {
         return thumbnail?.path?.includes("image_not_available") ?
             '/marvel.svg' :

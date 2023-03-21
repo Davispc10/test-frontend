@@ -6,9 +6,8 @@ import Image from "next/image";
 interface props {
     name: string;
     thumbnail: Thumbnail;
-    isLoading?: boolean;
 }
-function CardHero({ name, thumbnail, isLoading }: props) {
+function CardHero({ name, thumbnail }: props) {
 
     const thumbnailFormatted = useMemo(() => {
         return thumbnail?.path?.includes("image_not_available") ?
