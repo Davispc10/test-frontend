@@ -1,14 +1,23 @@
+import { QueryConfig, ExtractFnReturnType } from '@/lib/react-query';
 import { useQuery } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { getAllHeroes } from '../api/getAllHeroes';
-import { HeroesApiResponse } from '../types/heroesApiResponse';
+import { listHeroes } from '../api/listHeroes';
 
-export const useHeroes = (page: number, nameStartsWith?: string) => {
-  return useQuery<HeroesApiResponse, AxiosError>(
-    ['heroes', page, nameStartsWith],
-    () => getAllHeroes(page, nameStartsWith),
-    {
-      keepPreviousData: true,
-    }
-  );
+type QueryFnType = typeof listHeroes;
+
+type UseHeroesOptions = {
+  config?: QueryConfig<QueryFnType>;
+  page: number;
+  nameStartsWith?: string;
+};
+
+export const useHeroes = ({
+  page,
+  nameStartsWith,
+  config,
+}: UseHeroesOptions) => {
+  return useQuery<ExtractFnReturnType<QueryFnType>>({
+    ...config,
+    queryKey: ['heroes', page, nameStartsWith],
+    queryFn: () => listHeroes({ page, nameStartsWith }),
+  });
 };

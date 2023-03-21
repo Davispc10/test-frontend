@@ -27,7 +27,7 @@ export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
 // Aqui estamos criando um tipo que vai extrair o tipo de retorno de uma função
 // e retornar o tipo de retorno da Promise desse tipo de retorno de função (PromiseValue)
-/* export type ExtractFnReturnType<FnType extends (...args: any) => any> =
+export type ExtractFnReturnType<FnType extends (...args: any) => any> =
   PromiseValue<ReturnType<FnType>>;
 
 export type QueryConfig<QueryFnType extends (...args: any) => any> = Omit<
@@ -41,4 +41,3 @@ export type MutationConfig<MutationFnType extends (...args: any) => any> =
     AxiosError,
     Parameters<MutationFnType>[0]
   >;
- */

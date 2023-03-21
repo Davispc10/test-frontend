@@ -1,21 +1,31 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+import Axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 import { BASE_API_URL, API_KEY } from '@/config';
+import { toast } from 'react-toastify';
 
 export const axios = Axios.create({
   baseURL: BASE_API_URL,
 });
 
-export const axiosRequestConfig: AxiosRequestConfig = {
-  params: {
-    apikey: API_KEY,
-  },
-};
+function authRequestInterceptor(config: InternalAxiosRequestConfig) {
+  const apiKey = API_KEY;
 
+  if (apiKey) {
+    config.params.apikey = apiKey;
+  }
+
+  return config;
+}
+
+axios.interceptors.request.use(authRequestInterceptor);
 axios.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   (error) => {
     const message = error.response?.data?.message || error.message;
+
+    toast(message, {
+      type: 'error',
+    });
   }
 );
