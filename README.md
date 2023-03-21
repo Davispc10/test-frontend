@@ -2,7 +2,7 @@
 
 ## ASSEMBLY OF HEROES 🚀!!
 
-- ## [see the project video](https://ufcbr-my.sharepoint.com/:v:/g/personal/bruno_particular25_alu_ufc_br/ERBOX_RGcbtJhHsJSWOTNG8BtbxtFCn1-KjR4qdcjFj6xg?e=o7EbmO)
+- ## [See the project video](https://ufcbr-my.sharepoint.com/:v:/g/personal/bruno_particular25_alu_ufc_br/ERBOX_RGcbtJhHsJSWOTNG8BtbxtFCn1-KjR4qdcjFj6xg?e=o7EbmO)
 - ## This is a project for any audience that likes the community or is just as curious as the author.
 
 - ## Project using next and typescript
@@ -10,7 +10,16 @@
 - ## Using @stitches/react for the stylization
 
 - ## Using React Query to make requests along with clean architecture 
+
 - ## Tests in Jest
+- ## Included
+
+  - ## Pagination
+  -  ## Included search by hero name
+
+  - ## Hero Information on click
+
+  - ## Hero comics name
 
 <h2>☕ To run the code </h2>
 
