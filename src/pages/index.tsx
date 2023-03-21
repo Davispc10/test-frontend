@@ -24,6 +24,8 @@ function Home() {
     return FactoryMakeListUseCase(offset).execute();
   });
 
+  //DataAndSearch vai ser onde vou armazenar o meu data de Heroes
+  //E caso digita algo ele pesquisa no array o heroi com aquele nome
   const dataAndSearch: Hero[] = useMemo(() => {
     if (stringPattern) {
       const search = data?.filter((hero) =>
@@ -36,7 +38,7 @@ function Home() {
  
   return (
     <>
-      {isLoading ? <ContainerLoading>Carregando...</ContainerLoading>
+      {isLoading ? <ContainerLoading>Loading...</ContainerLoading>
       : <HomeContainer>
         <PaginationContainer>
           <Button focus={offset === 0} onClick={() => setOffSet(0)}>1</Button>
@@ -57,12 +59,9 @@ function Home() {
               <CardHero
                 name={hero.name}
                 thumbnail={hero.thumbnail}
-                isLoading={isLoading}
               />
             </Link>
-
-          ))
-          }
+          ))}
         </CardsContainer>
       </HomeContainer>}
     </>
