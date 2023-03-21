@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getAllHeroes } from '../api/getAllHeroes';
-import { Hero } from '../types/hero';
+import { HeroesApiResponse } from '../types/heroesApiResponse';
 
 export const useHeroes = (page: number, nameStartsWith?: string) => {
-  return useQuery<Hero, AxiosError>(
+  return useQuery<HeroesApiResponse, AxiosError>(
     ['heroes', page, nameStartsWith],
     () => getAllHeroes(page, nameStartsWith),
     {
