@@ -2,7 +2,7 @@ import { Comic } from "../../domain/entities/Comic";
 import { HeroGateway } from "../../domain/gateways/hero.gateway";
 
 
-export class ListHeroUseCase {
+export class ListComicsUseCase {
   constructor(private heroGateway: HeroGateway) {}
 
   async execute(id: Number): Promise<Comic[]> {
