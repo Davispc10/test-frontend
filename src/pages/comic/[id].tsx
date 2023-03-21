@@ -7,7 +7,7 @@ import CardCharacterComic from "@/src/components/CardCharacterComic";
 export default function PageComic() {
     const { query, push } = useRouter();
 
-    const { isLoading, error, data } = useQuery(['query'], async () => {
+    const { isLoading, error, data } = useQuery(['query', query.id], async () => {
         return FactoryMakeListByIdHeroUseCase().execute(Number(query.id));
     });
     
