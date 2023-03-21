@@ -2,6 +2,7 @@
 
 ## ASSEMBLY OF HEROES 🚀!!
 
+- ## [see the project video](https://ufcbr-my.sharepoint.com/:v:/g/personal/bruno_particular25_alu_ufc_br/ERBOX_RGcbtJhHsJSWOTNG8BtbxtFCn1-KjR4qdcjFj6xg?e=o7EbmO)
 - ## This is a project for any audience that likes the community or is just as curious as the author.
 
 - ## Project using next and typescript
