@@ -3,6 +3,7 @@ import { PaginationContext } from '@/providers/pagination';
 import { useHeroes } from '@/features/heroes';
 import HomeHeader from '@/pages/Home/components/HomeHeader';
 import HeroCard from '@/pages/Home/components/HeroCard';
+import HeroList from './components/HeroList';
 
 function Home() {
   const { currentPage } = useContext(PaginationContext);
@@ -23,12 +24,7 @@ function Home() {
       {/* @TODO: Componentization */}
       <HomeHeader />
 
-      <main className="grid grid-cols-1 lg:grid-cols-5 gap-4 p-8 pt-2">
-        {/* Hero list (hero card) */}
-        {heroes.data.map((hero) => (
-          <HeroCard hero={hero} key={hero.id} />
-        ))}
-      </main>
+      <HeroList heroes={heroes.data} />
     </>
   );
 }
