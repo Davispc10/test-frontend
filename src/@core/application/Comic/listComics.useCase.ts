@@ -1,9 +1,8 @@
 import { Comic } from "../../domain/entities/Comic"; 
-import { HeroGateway } from "../../domain/gateways/hero.gateway";
-
+import { ComicGateway } from "../../domain/gateways/comic.gateway";
 
 export class ListComicsUseCase {
-  constructor(private heroGateway: HeroGateway) {}
+  constructor(private heroGateway: ComicGateway) {}
 
   async execute(id: Number): Promise<Comic[]> {
     return await this.heroGateway.findComics(id);
