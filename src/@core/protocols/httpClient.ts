@@ -21,7 +21,8 @@ export enum HttpStatusCode {
     NOT_FOUND = 404,
     INTERNAL_SERVER_ERROR = 500,
 }
-  
+
+//Tipagem da minha resposta da api
 export type HttpResponse<T = Hero[] | any> = {
     statusCode: HttpStatusCode;
     data?: T;
