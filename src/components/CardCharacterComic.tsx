@@ -1,27 +1,33 @@
 import { memo, useCallback, useMemo } from "react";
-import { Comics, Thumbnail } from "../@core/domain/entities/Hero";
+import { Thumbnail } from "../@core/domain/entities/Hero";
 import Image from "next/image";
 import { ButtonBack, CarrouselContainer, Container } from "@/styles/components/cardCharacterComic";
 import Comic from "./Comic";
+import { FactoryMakeComicsUseCase } from "../@core/factory/factoryListComics/FactoryMakeListComicsUseCase";
+import { useRouter } from "next/router";
+import { useQuery } from "react-query";
+import { Comic as ComicInterface } from "../@core/domain/entities/Comic";
 
 interface props {
-    id: number;
     name: string;
     thumbnail: Thumbnail;
     description: string;
     push: (route: string) => void;
-    comics: Comics;
+    comics: ComicInterface[];
+    isLoadingComic: boolean;
 }
-function CardCharacterComic({ name, thumbnail, description, push, comics }: props) {
-
-    //usando o useMemo para memorizar esses valores para:
-    //no caso do componente ser rederizado novamente as funções não precisarem ser refeitas
-    const thumbnailFormatted = useMemo(() => {
-        return thumbnail?.path?.includes("image_not_available") ?
+function CardCharacterComic({ name, thumbnail, description, push, comics, isLoadingComic }: props) {
+    
+    //usando o useCallback para memorizar esta função
+    //useCallback memoriza funções, para não precisarem ser refeitas na proxima rederização
+    const thumbnailFormatted = useCallback((T: Thumbnail) => {
+        return T?.path?.includes("image_not_available") ?
             '/marvel.svg' :
-            `${thumbnail.path}.${thumbnail.extension}`
-    }, [thumbnail.path, thumbnail.extension]);
+            `${T.path}.${T.extension}`
+    }, []);
 
+    //usando o useMemo para memorizar esse valor
+    //useMemo memoriza valor, para não precisar ser refeito na proxima rederização
     const descriptionFormatted = useMemo(() => {
         return description ?
             description :
@@ -33,7 +39,7 @@ function CardCharacterComic({ name, thumbnail, description, push, comics }: prop
             <Image
                 height={280}
                 width={280}
-                src={thumbnailFormatted}
+                src={thumbnailFormatted(thumbnail)}
                 alt={name}
             />
             <h3>{name}</h3>
@@ -42,10 +48,13 @@ function CardCharacterComic({ name, thumbnail, description, push, comics }: prop
             {
                 <CarrouselContainer>
                     {
-                        comics?.items.map((comic) => (
+                        isLoadingComic ? <div style={{ width: '500px', background: 'white' }}>Loading...</div> :
+                        comics?.map((comic) => (
                             <Comic
-                                key={comic.name}
-                                title={comic.name}
+                                key={comic.id}
+                                title={comic.title}
+                                thumbnail={comic.thumbnail}
+                                thumbnailFormatted={thumbnailFormatted}
                             />
                         )) 
                     }
