@@ -1,12 +1,11 @@
 import { globalStyles } from '@/styles/global'
 import { Container, Header } from '@/styles/pages/app';
 import type { AppProps } from 'next/app'
-import Image from 'next/image';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import logoImg from '../assets/marvel.svg';
-
+//Rodando a função de estilo global do stitches
+//Diferente do styled-components não precisa passar via provider
 globalStyles();
 const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
