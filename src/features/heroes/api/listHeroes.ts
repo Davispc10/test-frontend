@@ -23,11 +23,24 @@ export const listHeroes = ({
         nameStartsWith,
       },
     })
-    .then(({ data }) => {
-      if (!data) {
-        throw new Error('No response from API');
-      }
+    .then((response) => {
+      // checar se há descrição, se não houver, colocar uma descrição padrão
+      // checar se há imagem, se não houver, colocar uma imagem padrão
+      const heroes = response.data.data.results.map((hero) => ({
+        id: hero.id,
+        name: hero.name,
+        description:
+          hero.description === ''
+            ? 'Description not informed'
+            : hero.description,
+        thumbnail: hero.thumbnail.path.includes('image_not_available')
+          ? {
+              path: '/images/marvel-logo',
+              extension: 'png',
+            }
+          : hero.thumbnail,
+      }));
 
-      return data.data.results;
+      return heroes;
     });
 };

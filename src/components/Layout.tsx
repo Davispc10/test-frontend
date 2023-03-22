@@ -7,12 +7,12 @@ const Layout = () => {
     <>
       <Outlet />
 
-      <footer className="fixed bottom-0 w-full">
-        <div className="bg-marvel-red/80 py-1 px-2 text-white flex lg:flex-row flex-col items-center justify-between">
+      <footer className="">
+        <div className="bg-marvel-red/90 py-1 px-8 text-white flex lg:flex-row flex-col items-center justify-between">
           <p className="text-xs lg:text-sm">
             <a
               href="http://marvel.com"
-              className="text-blue-500 underline font-semibold"
+              className="text-white hover:text-marvel-blue font-semibold underline"
             >
               Data provided by Marvel. © 2023 MARVEL
             </a>
