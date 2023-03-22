@@ -3,7 +3,6 @@ import React from 'react';
 import HeroCard from './HeroCard';
 
 const HeroList = ({ heroes }: { heroes: Hero[] }) => {
-  console.log('heroes', heroes);
   return (
     <main className="flex gap-4 flex-wrap items-center justify-center p-4">
       {/* Hero list (hero card) */}

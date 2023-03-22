@@ -1,32 +1,25 @@
-import { HERO_RETURN_LIMIT } from '@/config';
 import { axios } from '@/lib/axios';
 import { Hero } from '../types/hero';
 import { HeroesApiResponse } from '../types/heroesApiResponse';
 
-interface ListHeroesParams {
-  page: number;
-  nameStartsWith?: string;
+interface GetHeroDetailsByIdParams {
+  id: number;
 }
 
-export const listHeroes = ({
-  page,
-  nameStartsWith,
-}: ListHeroesParams): Promise<Hero[]> => {
-  const limit = HERO_RETURN_LIMIT;
-  const offset = (page - 1) * limit;
-
+export const getHeroDetailsById = ({
+  id,
+}: GetHeroDetailsByIdParams): Promise<Hero> => {
   return axios
-    .get<HeroesApiResponse>('/characters', {
+    .get<HeroesApiResponse>('/character', {
       params: {
-        limit,
-        offset,
-        nameStartsWith,
+        id,
       },
     })
     .then((response) => {
       // checar se há descrição, se não houver, colocar uma descrição padrão
       // checar se há imagem, se não houver, colocar uma imagem padrão
-      const heroes = response.data.data.results.map((hero) => ({
+      const hero = response.data.data.results[0];
+      const heroDetails = {
         id: hero.id,
         name: hero.name,
         description:
@@ -39,8 +32,8 @@ export const listHeroes = ({
               extension: 'png',
             }
           : hero.thumbnail,
-      }));
+      };
 
-      return heroes;
+      return heroDetails;
     });
 };
