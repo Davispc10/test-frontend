@@ -1,9 +1,24 @@
-import React from 'react'
+import { useComics } from '@/features/comics';
+import { useHeroDetails } from '@/features/heroes/hooks/useHeroDetails';
+import { Navigate, Params, useNavigate, useParams } from 'react-router-dom';
 
 const Character = () => {
-  return (
-    <div>Character</div>
-  )
-}
+  // Parametros de entrada
+  const id = Number(useParams().id);
 
-export default Character
+  if (isNaN(id)) {
+    return <Navigate to="/" />;
+  }
+
+  const heroDetails = useHeroDetails({
+    id,
+  });
+
+  const comicDetails = useComics({
+    id,
+  });
+
+  return <div>Character</div>;
+};
+
+export default Character;

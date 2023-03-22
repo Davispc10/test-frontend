@@ -9,7 +9,7 @@ type UseHeroesOptions = {
   id: number;
 };
 
-export const useHeroes = ({ id, config = {} }: UseHeroesOptions) => {
+export const useHeroDetails = ({ id, config = {} }: UseHeroesOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
     queryKey: ['hero_details', id],

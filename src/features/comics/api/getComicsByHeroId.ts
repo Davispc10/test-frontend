@@ -4,7 +4,7 @@ import { ComicsApiResponse } from '../types/comicsApiResponse';
 
 export const getComicsByHeroId = ({ id }: { id: number }): Promise<Comic[]> => {
   return axios
-    .get<ComicsApiResponse>(`/character/${id}/comics`)
+    .get<ComicsApiResponse>(`/characters/${id}/comics`)
     .then((response) => {
       const comics = response.data.data.results;
 

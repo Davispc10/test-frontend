@@ -13,6 +13,6 @@ export const useComics = ({ config, id }: UseComicsOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
     queryKey: ['comics', id],
-    queryFn: () => getComicsByHeroId(id),
+    queryFn: () => getComicsByHeroId({ id }),
   });
 };
