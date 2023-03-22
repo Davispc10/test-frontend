@@ -3,6 +3,7 @@ import { Container, ContainerLoading } from "@/styles/pages/comic";
 import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import CardCharacterComic from "@/src/components/CardCharacterComic";
+import { FactoryMakeComicsUseCase } from "@/src/@core/factory/factoryListComics/FactoryMakeListComicsUseCase";
 
 export default function PageComic() {
     const { query, push } = useRouter();
@@ -12,9 +13,14 @@ export default function PageComic() {
     const { isLoading, error, data } = useQuery(['query', query.id], async () => {
         return FactoryMakeListByIdHeroUseCase().execute(Number(query.id));
     });
+
+    const { isLoading: loadingComic, error: errorComic, data: dataComics } = useQuery(['query'], async () => {
+        return FactoryMakeComicsUseCase().execute(Number(query.id));
+    });
     
     //tiver erro na requisição volta para a tela de heros
-    if(error) {push('/')}
+    if(error || errorComic) {push('/')}
+
     return (
         <>
             {/* Sempre é bom pensar na experiência de usuário
@@ -25,10 +31,10 @@ export default function PageComic() {
                 <Container>
                     <CardCharacterComic
                         name={data!.name}
-                        id={data!.id}
                         description={data!.description}
                         thumbnail={data!.thumbnail}
-                        comics={data!.comics}
+                        comics={dataComics!}
+                        isLoadingComic={loadingComic}
                         push={push}
                     />
                 </Container>
