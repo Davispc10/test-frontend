@@ -17,7 +17,6 @@ const Pagination = () => {
   const setDirectPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const page = Number(event.target.value);
     if (page > 0 && page <= totalPages) {
-      alert('Changed to page ' + page + '');
       goToPage(page);
     }
   };
