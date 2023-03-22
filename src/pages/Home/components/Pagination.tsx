@@ -15,7 +15,6 @@ const Pagination = () => {
     goToPage,
     hasNextPage,
     hasPreviousPage,
-    isError,
     isLoading,
   } = useContext(PaginationContext);
 
@@ -40,7 +39,6 @@ const Pagination = () => {
             className="bg-white rounded-md w-6 px-1 text-center
               focus:outline-none focus:ring-2 text-marvel-red
             "
-            defaultValue={currentPage}
             value={currentPage}
             type="number"
             min={1}

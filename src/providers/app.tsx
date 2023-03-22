@@ -8,6 +8,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PaginationProvider } from './pagination';
 
+// @TODO: Remove later
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
 const ErrorFallback = () => {
   return (
     <div
@@ -38,6 +41,7 @@ const AppProvider = (props: React.PropsWithChildren) => {
     <React.Suspense fallback={<LoadingFallback />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
           <PaginationProvider>
             <ToastContainer
               position="bottom-right"

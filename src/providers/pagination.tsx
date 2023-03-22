@@ -1,13 +1,6 @@
 import { HERO_RETURN_LIMIT } from '@/config';
-import { getTotalHeroCount } from '@/features/heroes/api/getHeroCount';
 import { useTotalHeroCount } from '@/features/heroes/hooks/useTotalHeroCount';
-import React, {
-  createContext,
-  useCallback,
-  useState,
-  useContext,
-  useEffect,
-} from 'react';
+import React, { createContext, useCallback, useState, useEffect } from 'react';
 
 interface PaginationContextData {
   currentPage: number;

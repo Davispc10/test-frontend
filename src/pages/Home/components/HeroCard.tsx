@@ -11,7 +11,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
         <FadeInAnimation>
           <div className="bg-white flex flex-col items-center justify-center rounded-lg shadow-lg h-64 w-64 p-1 relative">
             {/* More info on hover */}
-            <div className="bg-marvel-red/30 rounded-lg absolute inset-0 bg-white flex items-center justify-center opacity-0 hover:opacity-100">
+            <div className="rounded-lg absolute inset-0 bg-marvel-red/30 flex items-center justify-center opacity-0 hover:opacity-100">
               <div className="flex items-center gap-1 bg-marvel-red px-2 py-1 rounded-lg">
                 <PlusIcon size={20} weight="fill" />
                 <span className="text-white font-bold uppercase">See more</span>
