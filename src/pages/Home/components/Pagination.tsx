@@ -22,9 +22,10 @@ const Pagination = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 bg-marvel-red rounded-lg">
-      <div className="flex flex-col gap-2">
-        <span className="text-white flex gap-1">
+    <div className="flex items-center justify-between rounded-lg">
+      <div className="flex gap-3">
+        {/* Pagination input */}
+        <span className="text-white flex gap-1 bg-marvel-red p-2 rounded-md">
           Page
           <input
             className="bg-white rounded-md w-6 px-1 text-center
@@ -41,11 +42,12 @@ const Pagination = () => {
           of <b>{totalPages}</b>
         </span>
 
-        <div className="flex items-center gap-2">
+        {/* Pagination buttons */}
+        <div className="flex items-center gap-1">
           <button
             disabled={!hasPreviousPage}
             className="
-              p-2 bg-white rounded-md text-marvel-red
+              p-3 bg-white rounded-md text-marvel-red
               disabled:opacity-50
             "
             onClick={() => {
@@ -57,7 +59,7 @@ const Pagination = () => {
           <button
             disabled={!hasNextPage}
             className="
-              p-2 bg-white rounded-md text-marvel-red
+              p-3 bg-white rounded-md text-marvel-red
               disabled:opacity-50
             "
             onClick={() => {

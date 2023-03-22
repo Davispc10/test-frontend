@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { PaginationContext } from '@/providers/pagination';
 import { useHeroes } from '@/features/heroes';
+
 import HomeHeader from '@/pages/Home/components/HomeHeader';
-import HeroCard from '@/pages/Home/components/HeroCard';
-import HeroList from './components/HeroList';
-import HeroListSkeleton from './skeletons/HeroListSkeleton';
+import HeroList from '@/pages/Home/components/HeroList';
+import HeroListSkeleton from '@/pages/Home/skeletons/HeroListSkeleton';
+import Filter from '@/pages/Home/components/Filter';
 
 function Home() {
   const { currentPage } = useContext(PaginationContext);
@@ -18,8 +19,10 @@ function Home() {
 
   return (
     <>
-      {/* @TODO: Componentization */}
       <HomeHeader />
+
+      {/* Filter  */}
+      <Filter />
 
       {heroes.isLoading || !heroes.data ? (
         <HeroListSkeleton />
