@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface FadeUpProps {
+interface FadeInProps {
   className?: string;
   options?: {
     delay?: number;
@@ -9,11 +9,11 @@ interface FadeUpProps {
   };
 }
 
-const FadeUpAnimation = ({
+const FadeInAnimation = ({
   className,
   options,
   children,
-}: React.PropsWithChildren<FadeUpProps>) => {
+}: React.PropsWithChildren<FadeInProps>) => {
   return (
     <motion.div
       className={className}
@@ -23,11 +23,9 @@ const FadeUpAnimation = ({
       variants={{
         hidden: {
           opacity: 0,
-          y: 50,
         },
         visible: {
           opacity: 1,
-          y: 0,
         },
       }}
       transition={{
@@ -40,4 +38,4 @@ const FadeUpAnimation = ({
   );
 };
 
-export default FadeUpAnimation;
+export default FadeInAnimation;

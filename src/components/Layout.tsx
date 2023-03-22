@@ -1,10 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import marvelLogo from '@/assets/images/marvel-logo.png';
-import FadeUpAnimation from './animations/FadeUp';
 
 const Layout = () => {
   return (
-    <>
+    <main className="flex flex-col w-full h-full justify-between min-h-screen">
       <Outlet />
 
       <footer className="">
@@ -31,7 +29,7 @@ const Layout = () => {
           </p>
         </div>
       </footer>
-    </>
+    </main>
   );
 };
 
