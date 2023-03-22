@@ -20,9 +20,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
             />
           </div>
           <div className="bg-marvel-red text-white w-full p-1 rounded-b-lg h-10 flex items-center justify-center">
-            <h2 className="text-center font-bold text-sm text-ellipsis break-words">
-              {hero.name}
-            </h2>
+            <h2 className="text-center font-bold truncate">{hero.name}</h2>
           </div>
         </div>
       </FadeInAnimation>

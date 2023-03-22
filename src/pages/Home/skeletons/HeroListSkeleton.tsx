@@ -1,8 +1,6 @@
-import React from 'react';
-
 const HeroListSkeleton = () => {
   return (
-    <main className="grid grid-cols-1 lg:grid-cols-5 gap-4 p-8 pt-2">
+    <main className="flex gap-4 flex-wrap items-center p-4 justify-center cursor-wait">
       {Array.from({ length: 10 }).map((_, index) => (
         <div
           key={index}
