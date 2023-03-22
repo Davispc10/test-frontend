@@ -8,12 +8,11 @@ module.exports = {
         'marvel-blue': '#518cca',
       },
       backgroundImage: {
-        comic: "url('/images/comic-texture.png')",
+        comic: "url('/images/pattern.webp')",
       },
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
-      marvel: ['Marvel', 'sans-serif'],
     },
   },
   plugins: [],

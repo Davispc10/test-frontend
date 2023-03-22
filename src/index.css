@@ -2,13 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-// Define Marvel font
-@layer base {
-  @font-face {
-    font-family: 'Marvel';
-    font-weight: 400;
-    font-style: normal;
-    display: swap;
-    src: url('/public/font/marvel.ttf') format('ttf');
-  }
-}
