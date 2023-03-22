@@ -1,3 +1,4 @@
+import { Comic } from "../domain/entities/Comic";
 import { Hero } from "../domain/entities/Hero";
 
 // PROTOCOLOS HTTP, TIPANDO OS MESMOS PARA FACILITAR O ENTENDIMENTO
@@ -23,7 +24,7 @@ export enum HttpStatusCode {
 }
 
 //Tipagem da minha resposta da api
-export type HttpResponse<T = Hero[] | any> = {
+export type HttpResponse<T = (Hero[] | Comic[]) | any> = {
     statusCode: HttpStatusCode;
     data?: T;
 };
