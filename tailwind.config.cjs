@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'marvel-red': '#e23636',
-        'marvel-blue': '#518cca',
+        'marvel-red': '#ee171f',
       },
       backgroundImage: {
         comic: "url('/images/pattern.webp')",
