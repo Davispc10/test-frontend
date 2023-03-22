@@ -19,6 +19,8 @@ interface PaginationContextData {
   goToPage(page: number): void;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
+  isLoading: boolean;
+  isError: boolean;
 }
 
 export const PaginationContext = createContext<PaginationContextData>(
@@ -70,9 +72,9 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
 
   const hasPreviousPage = currentPage > 1;
 
-  if (totalHeroCount.isLoading) return <div>Loading...</div>;
+  const isLoading = totalHeroCount.isLoading;
 
-  if (totalHeroCount.isError) return <div>Error</div>;
+  const isError = totalHeroCount.isError;
 
   return (
     <PaginationContext.Provider
@@ -86,6 +88,8 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
         goToPage,
         hasNextPage,
         hasPreviousPage,
+        isLoading,
+        isError,
       }}
     >
       {props.children}

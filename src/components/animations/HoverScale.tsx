@@ -19,7 +19,7 @@ const HoverScaleAnimation = ({
     <motion.div
       className={className}
       whileHover={{
-        scale: options?.scale || 1.1,
+        scale: options?.scale || 1.05,
       }}
       transition={{
         duration: options?.duration || 0.1,

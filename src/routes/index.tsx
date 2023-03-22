@@ -1,4 +1,6 @@
 import Layout from '@/components/Layout';
+
+// Pages
 import Character from '@/pages/Character';
 import Home from '@/pages/Home';
 
