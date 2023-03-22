@@ -16,7 +16,7 @@ interface PaginationContextData {
   setTotalPages(total: number): void;
   goToNextPage(): void;
   goToPreviousPage(): void;
-  goToFirstPage(): void;
+  goToPage(page: number): void;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
 }
@@ -54,9 +54,17 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
     });
   }, [currentPage, totalPages]);
 
-  const goToFirstPage = useCallback(() => {
-    setCurrentPage(1);
-  }, []);
+  const goToPage = useCallback(
+    (newPage: number) => {
+      setCurrentPage((curr) => {
+        if (newPage > 0 && newPage <= totalPages) {
+          return newPage;
+        }
+        return curr;
+      });
+    },
+    [currentPage, totalPages]
+  );
 
   const hasNextPage = currentPage < totalPages;
 
@@ -75,7 +83,7 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
         setTotalPages,
         goToNextPage,
         goToPreviousPage,
-        goToFirstPage,
+        goToPage,
         hasNextPage,
         hasPreviousPage,
       }}

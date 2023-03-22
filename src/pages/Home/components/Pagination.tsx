@@ -9,15 +9,37 @@ const Pagination = () => {
     totalPages,
     goToNextPage,
     goToPreviousPage,
+    goToPage,
     hasNextPage,
     hasPreviousPage,
   } = useContext(PaginationContext);
 
+  const setDirectPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const page = Number(event.target.value);
+    if (page > 0 && page <= totalPages) {
+      alert('Changed to page ' + page + '');
+      goToPage(page);
+    }
+  };
+
   return (
     <div className="flex items-center justify-between p-4 bg-marvel-red rounded-lg">
-      <div className="flex flex-col gap-1">
-        <span className="text-white">
-          Page {currentPage} of {totalPages}
+      <div className="flex flex-col gap-2">
+        <span className="text-white flex gap-1">
+          Page
+          <input
+            className="bg-white rounded-md w-6 px-1 text-center
+              focus:outline-none focus:ring-2 text-marvel-red
+            "
+            defaultValue={currentPage}
+            value={currentPage}
+            type="number"
+            min={1}
+            step={1}
+            max={totalPages}
+            onChange={setDirectPage}
+          />
+          of <b>{totalPages}</b>
         </span>
 
         <div className="flex items-center gap-2">
