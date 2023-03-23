@@ -36,7 +36,7 @@ const Pagination = () => {
         <span className="text-white flex gap-1 bg-marvel-red p-2 rounded-md">
           Page
           <input
-            className="bg-white rounded-md w-6 px-1 text-center
+            className="bg-white rounded-md w-8 text-center px-1
               focus:outline-none focus:ring-2 text-marvel-red
             "
             value={currentPage}
