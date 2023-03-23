@@ -8,6 +8,9 @@ import { FactoryMakeComicsUseCase } from "@/src/@core/factory/factoryListComics/
 export default function PageComic() {
     const { query, push } = useRouter();
 
+    //Poderia fazer essas duas requests por contexto, mas achei que ficar desorganizado
+    //o useQuery também me ajuda muito a não perder perfomance aqui
+
     //query.id no array de dependência para o caso de quando nesse componente com um id diferente
     //a requisição será refeita
     const { isLoading, error, data } = useQuery(['query', query.id], async () => {
