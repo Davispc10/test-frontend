@@ -11,29 +11,15 @@ import { PaginationProvider } from './pagination';
 // @TODO: Remove later
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import FullscrenLoader from '@/components/FullscrenLoader';
+import ErrorPage from '@/components/ErrorPage';
+
 const ErrorFallback = () => {
-  return (
-    <div
-      className="text-marvel-red w-screen h-screen flex flex-col justify-center items-center"
-      role="alert"
-    >
-      <h2 className="text-lg font-semibold">Ooops, something went wrong :( </h2>
-      <button
-        className="mt-4 rounded-lg bg-neutral-300 p-2"
-        onClick={() => window.location.assign(window.location.origin)}
-      >
-        Refresh
-      </button>
-    </div>
-  );
+  return <ErrorPage />;
 };
 
 const LoadingFallback = () => {
-  return (
-    <div className="flex items-center justify-center w-screen h-screen bg-white">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-t-2 border-marvel-red" />
-    </div>
-  );
+  return <FullscrenLoader />;
 };
 
 const AppProvider = (props: React.PropsWithChildren) => {
