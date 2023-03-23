@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 
+import { useRequest } from '../contexts/requests';
+
 import CardHero from '../components/CardHero';
 import { Input } from '../components/Input';
 import { Hero } from '../@core/domain/entities/Hero';
@@ -11,7 +13,7 @@ import {
   HomeContainer, 
   PaginationContainer 
 } from '@/styles/pages/home'
-import { useRequest } from '../hooks/requests';
+
 
 function Home() {
   // const [offset, setOffSet] = useState(0);
