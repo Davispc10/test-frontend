@@ -1,10 +1,6 @@
-import { FactoryMakeListByIdHeroUseCase } from "@/src/@core/factory/factoryListById/FactoryMakeHeroByIdUseCase";
 import { Container, ContainerLoading } from "@/styles/pages/comic";
-import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import CardCharacterComic from "@/src/components/CardCharacterComic";
-import { FactoryMakeComicsUseCase } from "@/src/@core/factory/factoryListComics/FactoryMakeListComicsUseCase";
-import { useComics } from "@/src/hooks/useComic";
 import { useHero } from "@/src/hooks/useHero";
 
 export default function PageComic() {
