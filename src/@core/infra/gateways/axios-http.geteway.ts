@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { HttpGateway } from "../../gateway/http";
 import { HttpRequest, HttpResponse } from "../../protocols/httpClient";
 
+//Isolando uso do axios
 export class AxiosHttpGateway implements HttpGateway {
     private instance: AxiosInstance | null = null;
     constructor() {
