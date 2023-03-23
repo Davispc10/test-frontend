@@ -7,17 +7,21 @@ import { FactoryMakeComicsUseCase } from "../@core/factory/factoryListComics/Fac
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import { Comic as ComicInterface } from "../@core/domain/entities/Comic";
+import { useComics } from "../hooks/useComic";
 
-interface props {
+interface CardCharacterProps {
+    id: number;
     name: string;
     thumbnail: Thumbnail;
     description: string;
     push: (route: string) => void;
-    comics: ComicInterface[];
-    isLoadingComic: boolean;
 }
-function CardCharacterComic({ name, thumbnail, description, push, comics, isLoadingComic }: props) {
+function CardCharacterComic({ name, thumbnail, description, push, id }: CardCharacterProps) {
     
+    //hook criado por mim, caso não usasse ele aqui, teria que passar os comics via props
+    //o que eu acho muito "feio"
+    const { dataComics, errorComic, loadingComic } = useComics(id);
+
     //usando o useCallback para memorizar esta função
     //useCallback memoriza funções, para não precisarem ser refeitas na proxima rederização
     const thumbnailFormatted = useCallback((T: Thumbnail) => {
@@ -34,6 +38,8 @@ function CardCharacterComic({ name, thumbnail, description, push, comics, isLoad
             'Description not informed'
     }, [description]);
 
+    if( errorComic ) {push('/')}
+
     return (
         <Container>
             <Image
@@ -48,8 +54,8 @@ function CardCharacterComic({ name, thumbnail, description, push, comics, isLoad
             {
                 <CarrouselContainer>
                     {
-                        isLoadingComic ? <div style={{ width: '500px', background: 'white' }}>Loading...</div> :
-                        comics?.map((comic) => (
+                        loadingComic ? <div style={{ width: '500px', background: 'white' }}>Loading...</div> :
+                        dataComics?.map((comic) => (
                             <Comic
                                 key={comic.id}
                                 title={comic.title}
