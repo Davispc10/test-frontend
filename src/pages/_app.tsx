@@ -3,7 +3,7 @@ import { Container, Header } from '@/styles/pages/app';
 import type { AppProps } from 'next/app'
 
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { RequestProvider } from '../hooks/requests';
+import { RequestProvider } from '../contexts/requests';
 
 //Rodando a função de estilo global do stitches
 //Diferente do styled-components não precisa passar via provider
