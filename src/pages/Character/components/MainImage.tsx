@@ -7,7 +7,7 @@ const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
   return (
     <FadeInAnimation
       className="
-      flex bg-marvel-red shadow-lg w-1/3 h-full overflow-hidden
+      flex bg-marvel-red shadow-lg md:w-1/3 h-[10%] md:h-full overflow-hidden
     "
     >
       <img

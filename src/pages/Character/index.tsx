@@ -36,7 +36,7 @@ const Character = () => {
   }
 
   return (
-    <main className="flex gap-4 items-center min-h-screen h-screen">
+    <main className="md:flex md:flex-row gap-4 items-center md:h-screen min-h-screen">
       {/* Hero image */}
       <MainImage thumbnail={heroDetails.data?.thumbnail} />
 

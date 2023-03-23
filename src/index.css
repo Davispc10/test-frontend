@@ -11,3 +11,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.custom-zoom [data-rmiz-modal-overlay="visible"] {
+  @apply bg-gray-900/90
+}
+.custom-zoom [data-rmiz-btn-unzoom] {
+  @apply bg-marvel-red text-white border-0
+}

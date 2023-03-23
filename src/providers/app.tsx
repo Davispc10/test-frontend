@@ -5,11 +5,13 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { PaginationProvider } from './pagination';
 
-// @TODO: Remove later
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-medium-image-zoom/dist/styles.css';
+
+// Debug only
+/* import { ReactQueryDevtools } from '@tanstack/react-query-devtools'; */
 
 import FullscrenLoader from '@/components/FullscrenLoader';
 import ErrorPage from '@/components/ErrorPage';
@@ -27,7 +29,7 @@ const AppProvider = (props: React.PropsWithChildren) => {
     <React.Suspense fallback={<LoadingFallback />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           <PaginationProvider>
             <ToastContainer
               position="bottom-right"
