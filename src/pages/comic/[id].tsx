@@ -4,25 +4,16 @@ import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import CardCharacterComic from "@/src/components/CardCharacterComic";
 import { FactoryMakeComicsUseCase } from "@/src/@core/factory/factoryListComics/FactoryMakeListComicsUseCase";
+import { useComics } from "@/src/hooks/useComic";
+import { useHero } from "@/src/hooks/useHero";
 
 export default function PageComic() {
     const { query, push } = useRouter();
 
-    //Poderia fazer essas duas requests por contexto, mas achei que ficar desorganizado
-    //o useQuery também me ajuda muito a não perder perfomance aqui
-
-    //query.id no array de dependência para o caso de quando nesse componente com um id diferente
-    //a requisição será refeita
-    const { isLoading, error, data } = useQuery(['query', query.id], async () => {
-        return FactoryMakeListByIdHeroUseCase().execute(Number(query.id));
-    });
-
-    const { isLoading: loadingComic, error: errorComic, data: dataComics } = useQuery(['query'], async () => {
-        return FactoryMakeComicsUseCase().execute(Number(query.id));
-    });
+    const { data, error, isLoading } = useHero(Number(query.id));
     
-    //tiver erro na requisição volta para a tela de heros
-    if(error || errorComic) {push('/')}
+    //se tiver erro na requisição volta para a tela de heros
+    if( error ) {push('/')}
 
     return (
         <>
@@ -33,11 +24,10 @@ export default function PageComic() {
                 :
                 <Container>
                     <CardCharacterComic
+                        id={data!.id}
                         name={data!.name}
                         description={data!.description}
                         thumbnail={data!.thumbnail}
-                        comics={dataComics!}
-                        isLoadingComic={loadingComic}
                         push={push}
                     />
                 </Container>
