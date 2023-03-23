@@ -24,5 +24,9 @@ export const getComicsByHeroId = ({ id }: { id: number }): Promise<Comic[]> => {
       });
 
       return comicsWithThumbnail;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error(error);
     });
 };
