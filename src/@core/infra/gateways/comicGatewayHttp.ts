@@ -1,6 +1,4 @@
-import { OrderBy } from "../../application/Hero/listHeros.useCase";
 import { Comic } from "../../domain/entities/Comic";
-import { Hero } from "../../domain/entities/Hero";
 import { ComicGateway } from "../../domain/gateways/comic.gateway";
 import { HttpGateway } from "../../gateway/http";
 import { HttpResponse } from "../../protocols/httpClient";
