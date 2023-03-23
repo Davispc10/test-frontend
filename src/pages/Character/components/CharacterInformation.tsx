@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import Zoom from 'react-medium-image-zoom';
 
 import { ArrowLeft as BackIcon } from 'phosphor-react';
+import { useNavigate } from 'react-router-dom';
 const CharacterInformation = ({
   hero,
   comics,
@@ -16,17 +17,22 @@ const CharacterInformation = ({
   hero: Hero;
   comics: Comic[];
 }) => {
+  const navigate = useNavigate();
   return (
     <FadeRightAnimation className="flex flex-col gap-8 md:w-2/3 h-3/4 md:h-full md:p-16 p-8 md:justify-center">
       <div className="flex flex-col gap-2">
-        <button
-          className="w-fit bg-marvel-red p-2 rounded-md flex items-center gap-2
-        hover:bg-white hover:text-marvel-red hover:border-marvel-red
-        "
-        >
-          <BackIcon weight="bold" />
-          <span>Go back</span>
-        </button>
+        <div>
+          <button
+            onClick={() => navigate('/')}
+            className="bg-marvel-red p-2 rounded-md flex items-center gap-2 mb-1
+              hover:bg-white hover:text-marvel-red transition ease-in-out duration-200
+            "
+          >
+            <BackIcon weight="bold" />
+            <span>Go back</span>
+          </button>
+        </div>
+
         <h1 className="text-3xl md:text-6xl font-bold break-words w-full leading-tight">
           {hero.name}
         </h1>
