@@ -3,6 +3,7 @@ import { Container, Header } from '@/styles/pages/app';
 import type { AppProps } from 'next/app'
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { RequestProvider } from '../hooks/requests';
 
 //Rodando a função de estilo global do stitches
 //Diferente do styled-components não precisa passar via provider
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Header>
           <h1>ASSEMBLY OF HEROES</h1>
         </Header>
-        <Component {...pageProps} />
+        <RequestProvider>
+          <Component {...pageProps} />
+        </RequestProvider>
       </QueryClientProvider>
     </Container>
   );
