@@ -50,7 +50,7 @@ function Home() {
           <Button focus={offset === 43} onClick={() => handleSetOffset(43)}>5</Button>
           <Button focus={offset === 53} onClick={() => handleSetOffset(53)}>6</Button>
         </PaginationContainer>
-        <Input onChange={(event) => setStringPattern(event.target.value)}/>
+        <Input placeholder='Search by name' onChange={(event) => setStringPattern(event.target.value)}/>
         <CardsContainer>
           {dataAndSearch?.map((hero) => (
             <Link
