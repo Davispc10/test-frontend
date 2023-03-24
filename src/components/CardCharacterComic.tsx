@@ -3,10 +3,6 @@ import { Thumbnail } from "../@core/domain/entities/Hero";
 import Image from "next/image";
 import { ButtonBack, CarrouselContainer, Container } from "@/styles/components/cardCharacterComic";
 import Comic from "./Comic";
-import { FactoryMakeComicsUseCase } from "../@core/factory/factoryListComics/FactoryMakeListComicsUseCase";
-import { useRouter } from "next/router";
-import { useQuery } from "react-query";
-import { Comic as ComicInterface } from "../@core/domain/entities/Comic";
 import { useComics } from "../hooks/useComic";
 
 interface CardCharacterProps {
