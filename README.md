@@ -2,6 +2,8 @@
 
 ## ASSEMBLY OF HEROES 🚀!!
 
+- ## [Project Deploy 🦸](https://assembly-of-heroes-vercel-iks0xr0xs-brunossales.vercel.app/)
+
 - ## [See the project video](https://ufcbr-my.sharepoint.com/:v:/g/personal/bruno_particular25_alu_ufc_br/EWbpwU6LHS9AjH1TuWr9vHEB0lGt-sGmEC4cGm_4ZsrxaQ?e=rYNAwm)
 - ## This is a project for any audience that likes the community or is just as curious as the author.
 
