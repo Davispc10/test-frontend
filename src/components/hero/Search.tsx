@@ -10,14 +10,15 @@ import { PaginationContext } from "@/providers/pagination";
 
 const Search = () => {
   const [_, setSearch] = useAtom(searchAtom);
-  const { setCurrentPage } = useContext(PaginationContext);
+  const { goToPage } = useContext(PaginationContext);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setCurrentPage(1); // Resetar paginação
+    goToPage(1); // Resetar paginação
     setSearch(inputRef.current?.value);
   };
+
   return (
     <form>
       <FadeRightAnimation
@@ -30,7 +31,7 @@ const Search = () => {
         "
       >
         <input
-          className="bg-transparent w-64 focus:outline-none text-marvel-red px-2"
+          className="w-64 px-2 bg-transparent focus:outline-none text-marvel-red"
           type="text"
           placeholder="Search by Name"
           ref={inputRef}
@@ -38,14 +39,8 @@ const Search = () => {
         <HoverScaleAnimation>
           <button
             type="submit" // Para funcionar com o botão enter
-            className="
-            bg-marvel-red text-white rounded-md p-2
-            active:scale-95
-            "
-            onClick={(event) => {
-              event.preventDefault();
-              setSearch(inputRef.current?.value);
-            }}
+            className="p-2 text-white rounded-md bg-marvel-red active:scale-95"
+            onClick={handleSearch}
           >
             <SearchIcon weight="bold" />
           </button>
