@@ -8,6 +8,7 @@ import HomeHeader from "@/components/hero/HomeHeader";
 import Filter from "@/components/hero/Filter";
 import HeroListSkeleton from "@/components/hero/skeletons/HeroListSkeleton";
 import HeroList from "@/components/hero/HeroList";
+import Head from "next/head";
 
 function Home() {
   const [search, _] = useAtom(searchAtom);
@@ -20,6 +21,10 @@ function Home() {
 
   return (
     <>
+      <Head>
+        <title>Marvel Characters Codex</title>
+      </Head>
+
       <HomeHeader />
 
       {/* Filter  */}

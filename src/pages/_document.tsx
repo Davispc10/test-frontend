@@ -6,7 +6,6 @@ const Document = () => {
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Marvel Characters Codex</title>
         <meta
           name="description"
           content="Learn More About your favorite Marvel Characters"
@@ -23,23 +22,23 @@ const Document = () => {
         />
       </Head>
 
-      <body className="bg-zinc-900 text-white bg-comic">
+      <body className="text-white bg-zinc-900 bg-comic">
         <Main />
         <NextScript />
       </body>
 
       <footer className="">
-        <div className="bg-marvel-red/90 py-1 px-8 text-white flex lg:flex-row flex-col items-center justify-between">
+        <div className="flex flex-col items-center justify-between px-8 py-1 text-white bg-marvel-red/90 lg:flex-row">
           <p className="text-xs lg:text-sm">
             <a
               href="http://marvel.com"
-              className="text-white hover:text-marvel-blue font-semibold underline"
+              className="font-semibold text-white underline hover:text-marvel-blue"
             >
               Data provided by Marvel. © 2023 MARVEL
             </a>
           </p>
 
-          <p className="text-xs lg:text-sm font-bold">
+          <p className="text-xs font-bold lg:text-sm">
             Made by{" "}
             <a
               href="https://rafaeldev.me/"

@@ -7,6 +7,7 @@ import MainImage from "@/components/comics/MainImage";
 import FullscrenLoader from "@/components/FullscrenLoader";
 import { useEffect } from "react";
 import ErrorPage from "@/components/ErrorPage";
+import Head from "next/head";
 
 const Character = () => {
   // Parametros de entrada
@@ -36,16 +37,22 @@ const Character = () => {
   }
 
   return (
-    <main className="md:flex md:flex-row gap-4 items-center md:h-screen min-h-screen">
-      {/* Hero image */}
-      <MainImage thumbnail={heroDetails.data?.thumbnail} />
+    <>
+      <Head>
+        <title>{heroDetails.data?.name} - Marvel Characters Codex</title>
+      </Head>
 
-      {/* Hero Information */}
-      <CharacterInformation
-        hero={heroDetails.data}
-        comics={comicDetails.data}
-      />
-    </main>
+      <main className="items-center min-h-screen gap-4 md:flex md:flex-row md:h-screen">
+        {/* Hero image */}
+        <MainImage thumbnail={heroDetails.data?.thumbnail} />
+
+        {/* Hero Information */}
+        <CharacterInformation
+          hero={heroDetails.data}
+          comics={comicDetails.data}
+        />
+      </main>
+    </>
   );
 };
 
