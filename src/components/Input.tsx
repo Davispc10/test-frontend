@@ -1,8 +1,6 @@
 import { Container, InputText } from "@/styles/components/inputComponent";
 import { useState } from "react";
 
-
-
 export function Input({ ...rest }: React.InputHTMLAttributes<HTMLInputElement>) {
     const [isFocused, setIsFocused] = useState(false);
     function handleInputFocuses(){
@@ -12,7 +10,7 @@ export function Input({ ...rest }: React.InputHTMLAttributes<HTMLInputElement>) 
         setIsFocused(false);
     }
     return (
-        <Container focus={isFocused}>
+        <Container focus={isFocused} data-testid={"input-test"}>
             🔎
             <InputText
                 onFocus={handleInputFocuses}
