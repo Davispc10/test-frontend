@@ -13,6 +13,8 @@
 
 - ## Tests in Jest and @testing-library/react
 
+  - ## Tests in @core/application/ and components/
+
 - ## Learning new technologies during the course of the project:
 
   - ## React Query - [My post on lindkedin talking about](https://www.linkedin.com/posts/bruno-sales-3a5856202_react-frontinvale-front-activity-7043768246948245504-4WXk?utm_source=share&utm_medium=member_desktop)
