@@ -2,6 +2,7 @@ import FadeInAnimation from "@/components/animations/FadeIn";
 import { HeroThumbnail } from "@/features/heroes";
 
 import clsx from "clsx";
+import Image from "next/image";
 
 const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
   return (
@@ -10,7 +11,7 @@ const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
       flex bg-marvel-red shadow-lg md:w-1/3 h-[10%] md:h-full overflow-hidden
     "
     >
-      <img
+      <Image
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt={thumbnail.path}
         className={clsx({
