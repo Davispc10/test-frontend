@@ -1,8 +1,8 @@
-import { axios } from '@/lib/axios';
-import { Comic } from '../types/comic';
-import { ComicsApiResponse } from '../types/comicsApiResponse';
+import { axios } from "@/lib/axios";
+import { Comic } from "../types/comic";
+import { ComicsApiResponse } from "../types/comicsApiResponse";
 
-export const getComicsByHeroId = ({ id }: { id: number }): Promise<Comic[]> => {
+export function getComicsByHeroId({ id }: { id: number }): Promise<Comic[]> {
   return axios
     .get<ComicsApiResponse>(`/characters/${id}/comics`)
     .then((response) => {
@@ -10,12 +10,12 @@ export const getComicsByHeroId = ({ id }: { id: number }): Promise<Comic[]> => {
 
       // Checar thumbnail
       const comicsWithThumbnail = comics.map((comic) => {
-        if (comic.thumbnail.path.includes('image_not_available')) {
+        if (comic.thumbnail.path.includes("image_not_available")) {
           return {
             ...comic,
             thumbnail: {
-              path: '/images/marvel-logo',
-              extension: 'png',
+              path: "/images/marvel-logo",
+              extension: "png",
             },
           };
         }
@@ -29,4 +29,4 @@ export const getComicsByHeroId = ({ id }: { id: number }): Promise<Comic[]> => {
       console.log(error);
       throw new Error(error);
     });
-};
+}
