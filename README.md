@@ -15,7 +15,7 @@
 
 - ## Tests in Jest and @testing-library/react
 
-  - ## Tests in @core/application/ and components/
+  - ## Tests in @core/application/, components/ and @core/infra/gateways
 
 - ## Learning new technologies during the course of the project:
 
