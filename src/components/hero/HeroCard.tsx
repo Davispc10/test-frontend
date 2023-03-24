@@ -22,9 +22,11 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
 
             <div className="flex items-center justify-center w-full h-full overflow-hidden bg-white rounded-t-lg shadow-lg">
               <Image
+                width={500}
+                height={500}
                 src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
                 alt={hero.name}
-                className="object-fill"
+                className="object-width={500} height={500}"
               />
             </div>
             <div className="flex items-center justify-center w-full h-10 p-1 text-white rounded-b-lg bg-marvel-red">

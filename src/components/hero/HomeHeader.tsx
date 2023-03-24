@@ -7,6 +7,9 @@ const HomeHeader = () => {
       {/* Brand */}
       <FadeUpAnimation className="flex flex-col items-center justify-center mt-4 lg:flex-row lg:gap-4">
         <Image
+          width={500}
+          height={500}
+          priority
           src="/images/marvel-logo.png"
           alt="Marvel Logo"
           className="w-32 lg:w-48"

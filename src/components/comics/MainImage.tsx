@@ -12,6 +12,8 @@ const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
     "
     >
       <Image
+        width={500}
+        height={500}
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt={thumbnail.path}
         className={clsx({
