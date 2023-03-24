@@ -1,9 +1,9 @@
-import { PaginationContext } from '@/providers/pagination';
-import { useContext } from 'react';
-import { ArrowLeft, ArrowRight } from 'phosphor-react';
-import HoverScaleAnimation from '@/components/animations/HoverScale';
-import FadeRightAnimation from '@/components/animations/FadeRight';
-import { PaginationSkeleton } from '../skeletons/PaginationSkeleton';
+import { PaginationContext } from "@/providers/pagination";
+import { useContext } from "react";
+import { ArrowLeft, ArrowRight } from "phosphor-react";
+import HoverScaleAnimation from "@/components/animations/HoverScale";
+import FadeRightAnimation from "@/components/animations/FadeRight";
+import { PaginationSkeleton } from "./skeletons/PaginationSkeleton";
 
 const Pagination = () => {
   // Acessar contexto de paginação (provider)

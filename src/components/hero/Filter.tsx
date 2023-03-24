@@ -1,5 +1,5 @@
-import Pagination from '@/pages/Home/components/Pagination';
-import Search from '@/pages/Home/components/Search';
+import Pagination from "./Pagination";
+import Search from "./Search";
 
 const Filter = () => {
   return (

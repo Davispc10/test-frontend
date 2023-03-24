@@ -1,20 +1,18 @@
-import React from 'react';
-import { queryClient } from '@/lib/react-query';
-import { router } from '@/routes';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { ErrorBoundary } from 'react-error-boundary';
-import { RouterProvider } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import { PaginationProvider } from './pagination';
+import React from "react";
+import { queryClient } from "@/lib/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ErrorBoundary } from "react-error-boundary";
+import { ToastContainer } from "react-toastify";
+import { PaginationProvider } from "./pagination";
 
-import 'react-toastify/dist/ReactToastify.css';
-import 'react-medium-image-zoom/dist/styles.css';
+import "react-toastify/dist/ReactToastify.css";
+import "react-medium-image-zoom/dist/styles.css";
 
 // Debug only
 /* import { ReactQueryDevtools } from '@tanstack/react-query-devtools'; */
 
-import FullscrenLoader from '@/components/FullscrenLoader';
-import ErrorPage from '@/components/ErrorPage';
+import FullscrenLoader from "@/components/FullscrenLoader";
+import ErrorPage from "@/components/ErrorPage";
 
 const ErrorFallback = () => {
   return <ErrorPage />;
@@ -39,7 +37,7 @@ const AppProvider = (props: React.PropsWithChildren) => {
               draggable={false}
               closeOnClick
             />
-            <RouterProvider router={router} />
+            {props.children}
           </PaginationProvider>
         </QueryClientProvider>
       </ErrorBoundary>

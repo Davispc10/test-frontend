@@ -1,12 +1,12 @@
-import FadeRightAnimation from '@/components/animations/FadeRight';
-import HoverScaleAnimation from '@/components/animations/HoverScale';
+import FadeRightAnimation from "@/components/animations/FadeRight";
+import HoverScaleAnimation from "@/components/animations/HoverScale";
 
-import { MagnifyingGlass as SearchIcon } from 'phosphor-react';
+import { MagnifyingGlass as SearchIcon } from "phosphor-react";
 
-import { useRef, useContext } from 'react';
-import { useAtom } from 'jotai';
-import { searchAtom } from '@/atoms/search.atom';
-import { PaginationContext } from '@/providers/pagination';
+import { useRef, useContext } from "react";
+import { useAtom } from "jotai";
+import { searchAtom } from "@/atoms/search.atom";
+import { PaginationContext } from "@/providers/pagination";
 
 const Search = () => {
   const [_, setSearch] = useAtom(searchAtom);

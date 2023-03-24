@@ -1,7 +1,7 @@
-import FadeInAnimation from '@/components/animations/FadeIn';
-import { HeroThumbnail } from '@/features/heroes';
+import FadeInAnimation from "@/components/animations/FadeIn";
+import { HeroThumbnail } from "@/features/heroes";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 
 const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
   return (
@@ -14,8 +14,8 @@ const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt={thumbnail.path}
         className={clsx({
-          'object-contain': thumbnail.path.includes('marvel-logo'),
-          'object-cover w-full h-full': !thumbnail.path.includes('marvel-logo'),
+          "object-contain": thumbnail.path.includes("marvel-logo"),
+          "object-cover w-full h-full": !thumbnail.path.includes("marvel-logo"),
         })}
       />
     </FadeInAnimation>

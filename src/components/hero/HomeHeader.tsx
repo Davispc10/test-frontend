@@ -1,4 +1,4 @@
-import FadeUpAnimation from '../../../components/animations/FadeUp';
+import FadeUpAnimation from "../animations/FadeUp";
 
 const HomeHeader = () => {
   return (

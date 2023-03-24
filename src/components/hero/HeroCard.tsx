@@ -1,12 +1,13 @@
-import FadeInAnimation from '@/components/animations/FadeIn';
-import HoverScaleAnimation from '@/components/animations/HoverScale';
-import { Hero } from '@/features/heroes';
+import FadeInAnimation from "@/components/animations/FadeIn";
+import HoverScaleAnimation from "@/components/animations/HoverScale";
+import { Hero } from "@/features/heroes";
+import Link from "next/link";
 
-import { PlusCircle as PlusIcon } from 'phosphor-react';
+import { PlusCircle as PlusIcon } from "phosphor-react";
 
 const HeroCard = ({ hero }: { hero: Hero }) => {
   return (
-    <a href={`/character/${hero.id}`}>
+    <Link href={`/character/${hero.id}`}>
       <HoverScaleAnimation className="cursor-pointer">
         <FadeInAnimation>
           <div className="bg-white flex flex-col items-center justify-center rounded-lg shadow-lg h-64 w-64 p-1 relative">
@@ -31,7 +32,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
           </div>
         </FadeInAnimation>
       </HoverScaleAnimation>
-    </a>
+    </Link>
   );
 };
 

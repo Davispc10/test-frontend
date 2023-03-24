@@ -1,6 +1,6 @@
-import Axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
-import { BASE_API_URL, API_KEY } from '@/config';
-import { toast } from 'react-toastify';
+import Axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
+import { BASE_API_URL, API_KEY } from "@/config";
+import { toast } from "react-toastify";
 
 export const axios = Axios.create({
   baseURL: BASE_API_URL,
@@ -16,6 +16,8 @@ function authRequestInterceptor(config: InternalAxiosRequestConfig) {
 
     config.params.apikey = apiKey;
   } else {
+    console.error("No API key provided");
+    console.log(API_KEY);
   }
 
   return config;
@@ -34,11 +36,11 @@ axios.interceptors.response.use(
 
     if (clientError) {
       toast(message, {
-        type: 'error',
+        type: "error",
       });
     } else {
-      toast('Something went wrong, please try again later', {
-        type: 'error',
+      toast("Something went wrong, please try again later", {
+        type: "error",
       });
     }
 
