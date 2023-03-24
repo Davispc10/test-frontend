@@ -3,9 +3,21 @@ export type ComicThumbnail = {
   extension: string;
 };
 
-export type Comic = {
+export class Comic {
   id: number;
   title: string;
   description: string;
   thumbnail: ComicThumbnail;
-};
+
+  constructor(
+    id: number,
+    title: string,
+    description: string,
+    thumbnail: ComicThumbnail
+  ) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.thumbnail = thumbnail;
+  }
+}

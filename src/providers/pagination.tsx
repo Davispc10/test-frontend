@@ -1,6 +1,6 @@
-import { HERO_RETURN_LIMIT } from '@/config';
-import { useTotalHeroCount } from '@/features/heroes/hooks/useTotalHeroCount';
-import React, { createContext, useCallback, useState, useEffect } from 'react';
+import { HERO_RETURN_LIMIT } from "@/config";
+import { useTotalHeroCount } from "@/features/heroes/hooks/useTotalHeroCount";
+import React, { createContext, useCallback, useState, useEffect } from "react";
 
 interface PaginationContextData {
   currentPage: number;
@@ -28,7 +28,7 @@ export const PaginationProvider = (props: React.PropsWithChildren) => {
   const totalHeroCount = useTotalHeroCount();
 
   useEffect(() => {
-    setTotalPages(Math.ceil((totalHeroCount.data || 1) / HERO_RETURN_LIMIT));
+    setTotalPages(Math.ceil((totalHeroCount.data || 0) / HERO_RETURN_LIMIT));
   }, [totalHeroCount.data]);
 
   const goToNextPage = useCallback(() => {

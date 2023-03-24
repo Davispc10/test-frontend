@@ -1,22 +1,22 @@
-import { HERO_RETURN_LIMIT } from '@/config';
-import { axios } from '@/lib/axios';
-import { Hero } from '../types/hero';
-import { HeroesApiResponse } from '../types/heroesApiResponse';
+import { HERO_RETURN_LIMIT } from "@/config";
+import { axios } from "@/lib/axios";
+import { Hero } from "../types/hero";
+import { HeroesApiResponse } from "../types/heroesApiResponse";
 
 interface ListHeroesParams {
   page: number;
   nameStartsWith?: string;
 }
 
-export const listHeroes = ({
+export function listHeroes({
   page,
   nameStartsWith,
-}: ListHeroesParams): Promise<Hero[]> => {
+}: ListHeroesParams): Promise<Hero[]> {
   const limit = HERO_RETURN_LIMIT;
   const offset = (page - 1) * limit;
 
   return axios
-    .get<HeroesApiResponse>('/characters', {
+    .get<HeroesApiResponse>("/characters", {
       params: {
         limit,
         offset,
@@ -30,17 +30,17 @@ export const listHeroes = ({
         id: hero.id,
         name: hero.name,
         description:
-          hero.description === ''
-            ? 'Description not informed'
+          hero.description === ""
+            ? "Description not informed"
             : hero.description,
-        thumbnail: hero.thumbnail.path.includes('image_not_available')
+        thumbnail: hero.thumbnail.path.includes("image_not_available")
           ? {
-              path: '/images/marvel-logo',
-              extension: 'png',
+              path: "/images/marvel-logo",
+              extension: "png",
             }
           : hero.thumbnail,
       }));
 
       return heroes;
     });
-};
+}

@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import React from "react";
 
-import { useComics } from "../hooks/useComics";
+import { useTotalHeroCount } from "../hooks/useTotalHeroCount";
 
 const queryClient = new QueryClient();
 const wrapper = (props: React.PropsWithChildren) => (
@@ -11,10 +11,10 @@ const wrapper = (props: React.PropsWithChildren) => (
   </QueryClientProvider>
 );
 
-const { result } = renderHook(() => useComics({ id: 1011334 }), { wrapper });
+const { result } = renderHook(() => useTotalHeroCount(), { wrapper });
 
-describe("useComics query hook", () => {
-  it("should return comics", (done) => {
+describe("useTotalHeroCount query hook", () => {
+  it("should return the total of heroes", (done) => {
     waitFor(() => {
       result.current.isSuccess;
     }).then(() => {

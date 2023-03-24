@@ -1,11 +1,11 @@
 import { Chance } from "chance";
-import { Hero } from "../heroes";
+import { Comic } from "../comics";
 
 const chance = new Chance();
 
-export const heroMock: Hero = {
+export const comicMock: Comic = {
   id: chance.integer(),
-  name: chance.name(),
+  title: chance.name(),
   description: chance.sentence(),
   thumbnail: {
     path: chance.url(),
@@ -13,9 +13,9 @@ export const heroMock: Hero = {
   },
 };
 
-export const heroUndefinedDescriptionMock: Hero = {
+export const comicUndefinedDescriptionMock: Comic = {
   id: chance.integer(),
-  name: chance.name(),
+  title: chance.name(),
   description: "",
   thumbnail: {
     path: chance.url(),
@@ -23,9 +23,9 @@ export const heroUndefinedDescriptionMock: Hero = {
   },
 };
 
-export const heroUndefinedThumbnailMock: Hero = {
+export const comicUndefinedThumbnailMock: Comic = {
   id: chance.integer(),
-  name: chance.name(),
+  title: chance.name(),
   description: chance.sentence(),
   thumbnail: {
     path: chance.word() + "_image_not_available",

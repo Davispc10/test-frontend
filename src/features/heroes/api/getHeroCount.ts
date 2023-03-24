@@ -1,9 +1,9 @@
-import { axios } from '@/lib/axios';
-import { HeroesApiResponse } from '../types/heroesApiResponse';
+import { axios } from "@/lib/axios";
+import { HeroesApiResponse } from "../types/heroesApiResponse";
 
-export const getTotalHeroCount = (): Promise<number> => {
+export function getTotalHeroCount(): Promise<number> {
   return axios
-    .get<HeroesApiResponse>('/characters')
+    .get<HeroesApiResponse>("/characters")
     .then(({ data }) => {
       return data.data.total;
     })
@@ -11,4 +11,4 @@ export const getTotalHeroCount = (): Promise<number> => {
       console.error(error);
       return 0;
     });
-};
+}
