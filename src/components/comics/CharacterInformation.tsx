@@ -43,9 +43,9 @@ const CharacterInformation = ({
         <h2 className="text-xl font-bold md:text-3xl">Appearence in Comics</h2>
         <div className="flex flex-col items-start justify-center w-full overflow-x-auto overflow-y-hidden touch-pan-x">
           <div className="inline-flex flex-row items-center justify-center w-auto h-full px-2 py-6 space-x-4 flex-nowrap">
-            {comics.map((comic) => (
+            {comics.map((comic, i) => (
               <HoverScaleAnimation
-                key={comic.id}
+                key={i}
                 className="flex items-center w-32 h-full"
               >
                 <Zoom zoomMargin={40} classDialog="custom-zoom">

@@ -1,13 +1,13 @@
-import { Hero } from '@/features/heroes';
-import React from 'react';
-import HeroCard from './HeroCard';
+import { Hero } from "@/features/heroes";
+import React from "react";
+import HeroCard from "./HeroCard";
 
 const HeroList = ({ heroes }: { heroes: Hero[] }) => {
   return (
-    <main className="flex gap-4 flex-wrap items-center justify-center p-4">
+    <main className="flex flex-wrap items-center justify-center gap-4 p-4">
       {/* Hero list (hero card) */}
-      {heroes.map((hero) => (
-        <HeroCard hero={hero} key={hero.id} />
+      {heroes.map((hero, i) => (
+        <HeroCard hero={hero} key={i} />
       ))}
     </main>
   );
