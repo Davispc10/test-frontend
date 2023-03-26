@@ -46,7 +46,9 @@ const CharacterInformation = ({
             {comics.map((comic, i) => (
               <HoverScaleAnimation
                 key={i}
-                className="flex items-center w-32 h-full"
+                className={clsx("flex items-center aspect-[3/4] w-36 h-full", {
+                  "bg-marvel-red": comic.thumbnail.path.includes("marvel-logo"),
+                })}
               >
                 <Zoom zoomMargin={40} classDialog="custom-zoom">
                   <Image
@@ -54,11 +56,9 @@ const CharacterInformation = ({
                     height={500}
                     src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                     alt={comic.title}
-                    className={clsx({
+                    className={clsx("object-cover w-full h-full", {
                       "object-contain":
                         comic.thumbnail.path.includes("marvel-logo"),
-                      "object-cover w-full h-full":
-                        !comic.thumbnail.path.includes("marvel-logo"),
                     })}
                   />
                 </Zoom>
