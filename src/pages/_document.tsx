@@ -22,6 +22,10 @@ const Document = () => {
         <meta name="og:locale" content="en_US" />
         <meta name="og:type" content="website" />
         <meta name="og:site_name" content="Marvel Characters Codex" />
+        <meta
+          name="og:image"
+          content="https://marvel-characters-codex.vercel.app/images/og-image.png"
+        />
       </Head>
 
       <body className="text-white bg-zinc-900 bg-comic">

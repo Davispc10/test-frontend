@@ -55,10 +55,6 @@ const Character = () => {
           Learn More About ${heroDetails.data?.name} on Marvel Characters Codex
         `}
         />
-        <meta
-          name="og:image"
-          content={`${heroDetails.data?.thumbnail.path}.${heroDetails.data?.thumbnail.extension}`}
-        />
       </Head>
 
       <main className="items-center min-h-screen gap-4 md:flex md:flex-row md:h-screen">

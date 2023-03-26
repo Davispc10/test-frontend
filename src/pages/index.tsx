@@ -33,10 +33,6 @@ function Home() {
           name="og:description"
           content="Learn More About your favorite Marvel Characters"
         />
-        <meta
-          name="og:image"
-          content="https://marvelcharacterscodex.vercel.app/images/marvel-logo.png"
-        />
       </Head>
 
       <HomeHeader />
