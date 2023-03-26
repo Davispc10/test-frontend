@@ -34,3 +34,7 @@ This is a project for a technical test for a front-end developer position. The p
 3. Install dependencies with `npm install`
 4. Run the development server with `npm run dev`
 5. For tests run `npm run test`
+
+## Live Demo
+
+https://marvel-characters-codex.vercel.app/
