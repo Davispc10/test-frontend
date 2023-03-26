@@ -40,6 +40,25 @@ const Character = () => {
     <>
       <Head>
         <title>{heroDetails.data?.name} - Marvel Characters Codex</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content={`${heroDetails.data?.name} - Marvel Characters Codex`}
+        />
+        <meta
+          name="og:title"
+          content={`${heroDetails.data?.name} - Marvel Characters Codex`}
+        />
+        <meta
+          name="og:description"
+          content={`
+          Learn More About ${heroDetails.data?.name} on Marvel Characters Codex
+        `}
+        />
+        <meta
+          name="og:image"
+          content={`${heroDetails.data?.thumbnail.path}.${heroDetails.data?.thumbnail.extension}`}
+        />
       </Head>
 
       <main className="items-center min-h-screen gap-4 md:flex md:flex-row md:h-screen">

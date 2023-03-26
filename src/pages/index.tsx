@@ -23,6 +23,20 @@ function Home() {
     <>
       <Head>
         <title>Marvel Characters Codex</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Learn More About your favorite Marvel Characters"
+        />
+        <meta name="og:title" content="Marvel Characters Codex" />
+        <meta
+          name="og:description"
+          content="Learn More About your favorite Marvel Characters"
+        />
+        <meta
+          name="og:image"
+          content="https://marvelcharacterscodex.vercel.app/images/marvel-logo.png"
+        />
       </Head>
 
       <HomeHeader />

@@ -5,11 +5,6 @@ const Document = () => {
       <Head>
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Learn More About your favorite Marvel Characters"
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -20,6 +15,13 @@ const Document = () => {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="google" content="nositelinkssearchbox" />
+        <meta name="google" content="notranslate" />
+        <meta name="og:locale" content="en_US" />
+        <meta name="og:type" content="website" />
+        <meta name="og:site_name" content="Marvel Characters Codex" />
       </Head>
 
       <body className="text-white bg-zinc-900 bg-comic">
@@ -27,7 +29,7 @@ const Document = () => {
         <NextScript />
       </body>
 
-      <footer className="">
+      <footer>
         <div className="flex flex-col items-center justify-between px-8 py-1 text-white bg-marvel-red/90 lg:flex-row">
           <p className="text-xs lg:text-sm">
             <a
