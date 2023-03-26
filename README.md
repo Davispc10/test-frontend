@@ -1,6 +1,6 @@
 # MARVEL CHARACTERS CODEX
 
-<img src="https://i.imgur.com/2G0l9hw.png">
+<img src="https://raw.githubusercontent.com/rafaelsilva81/test-frontend/rafael-galdino-da-silva/public/promotional.gif">
 <img src="https://i.imgur.com/1bIztci.png">
 
 ---
