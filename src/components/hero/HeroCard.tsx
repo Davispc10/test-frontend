@@ -11,7 +11,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
     <Link href={`/character/${hero.id}`}>
       <HoverScaleAnimation className="cursor-pointer">
         <FadeInAnimation>
-          <div className="relative flex flex-col items-center justify-center w-64 h-64 p-1 bg-white rounded-lg shadow-lg">
+          <div className="relative flex flex-col items-center justify-center p-1 bg-white rounded-lg shadow-lg aspect-square">
             {/* More info on hover */}
             <div className="absolute inset-0 flex items-center justify-center rounded-lg opacity-0 bg-marvel-red/30 hover:opacity-100">
               <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-marvel-red">
