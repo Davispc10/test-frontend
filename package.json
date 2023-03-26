@@ -4,8 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "test:ci": "jest --ci"
+    "test": "jest"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.6",
