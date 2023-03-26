@@ -1,6 +1,6 @@
 # MARVEL CHARACTERS CODEX
 
-<img src="https://i.imgur.com/pHGZX7V.png">
+<img src="https://i.imgur.com/2G0l9hw.png">
 <img src="https://i.imgur.com/1bIztci.png">
 
 ---
