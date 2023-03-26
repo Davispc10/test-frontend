@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PaginationContext } from "@/providers/pagination";
 import { useHeroes } from "@/features/heroes";
 import { useAtom } from "jotai";
@@ -11,13 +11,19 @@ import HeroList from "@/components/hero/HeroList";
 import Head from "next/head";
 
 function Home() {
-  const [search, _] = useAtom(searchAtom);
+  const [search, setSearch] = useAtom(searchAtom);
   const { currentPage } = useContext(PaginationContext);
 
+  // Chamadada ao query hook
   const heroes = useHeroes({
     page: currentPage,
-    nameStartsWith: search ? search : undefined,
+    nameStartsWith: search || undefined,
   });
+
+  // Quando o usuário troca de página, limpa o campo de busca
+  useEffect(() => {
+    setSearch("");
+  }, []);
 
   return (
     <>
