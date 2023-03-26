@@ -16,7 +16,7 @@ function Home() {
 
   const heroes = useHeroes({
     page: currentPage,
-    nameStartsWith: search,
+    nameStartsWith: search ? search : undefined,
   });
 
   return (

@@ -15,8 +15,9 @@ const Search = () => {
 
   const handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    const value = inputRef.current?.value || "";
     goToPage(1); // Resetar paginação
-    setSearch(inputRef.current?.value);
+    setSearch(value);
   };
 
   return (
