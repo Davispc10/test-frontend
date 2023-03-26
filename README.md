@@ -1,4 +1,4 @@
-# MARVEL CHARACTERS CODEX
+# **MARVEL CHARACTERS CODEX**
 
 <img src="https://raw.githubusercontent.com/rafaelsilva81/test-frontend/rafael-galdino-da-silva/public/promotional.gif">
 <img src="https://i.imgur.com/1bIztci.png">
@@ -26,6 +26,8 @@ This is a project for a technical test for a front-end developer position. The p
 - [x] See character details (description and comics)
 - [x] Tests
 - [x] Deployed on Vercel
+- [x] Responsive design
+- [x] [Documentation](documentation.md)
 
 ## How to run
 
@@ -35,6 +37,18 @@ This is a project for a technical test for a front-end developer position. The p
 4. Run the development server with `npm run dev`
 5. For tests run `npm run test`
 
-## Live Demo
+## Links
 
-https://marvel-characters-codex.vercel.app/
+- [Live Demo](https://marvel-characters-codex.vercel.app/)
+- [Marvel API](https://developer.marvel.com/)
+- [Documentation](documentation.md)
+
+---
+
+### All rights reserved to Marvel. © 2023 MARVEL
+
+### Data provided by Marvel. © 2023 MARVEL
+
+---
+
+<a href="https://rafaeldev.me"> <img src="https://i.imgur.com/NIMuGrX.png" width='100%'/> </a>
