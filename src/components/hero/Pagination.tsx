@@ -33,12 +33,10 @@ const Pagination = () => {
     <FadeRightAnimation className="flex items-center justify-between rounded-lg">
       <div className="flex gap-3">
         {/* Pagination input */}
-        <span className="text-white flex gap-1 bg-marvel-red p-2 rounded-md">
+        <span className="flex gap-1 p-2 text-white rounded-md bg-marvel-red">
           Page
           <input
-            className="bg-white rounded-md w-8 text-center px-1
-              focus:outline-none focus:ring-2 text-marvel-red
-            "
+            className="w-8 px-1 text-center bg-white rounded-md focus:outline-none focus:ring-2 text-marvel-red "
             value={currentPage}
             type="number"
             min={1}
@@ -54,10 +52,7 @@ const Pagination = () => {
           <HoverScaleAnimation>
             <button
               disabled={!hasPreviousPage}
-              className="
-                p-3 bg-white rounded-md text-marvel-red
-                disabled:opacity-50
-              "
+              className="p-3 bg-white rounded-md text-marvel-red disabled:opacity-50"
               onClick={() => {
                 goToPreviousPage();
               }}
@@ -69,10 +64,7 @@ const Pagination = () => {
           <HoverScaleAnimation>
             <button
               disabled={!hasNextPage}
-              className="
-                p-3 bg-white rounded-md text-marvel-red
-                disabled:opacity-50
-              "
+              className="p-3 bg-white rounded-md text-marvel-red disabled:opacity-50"
               onClick={() => {
                 goToNextPage();
               }}

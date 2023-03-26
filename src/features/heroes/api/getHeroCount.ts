@@ -1,9 +1,13 @@
 import { axios } from "@/lib/axios";
 import { HeroesApiResponse } from "../types/heroesApiResponse";
 
-export function getTotalHeroCount(): Promise<number> {
+export function getTotalHeroCount(search?: string): Promise<number> {
   return axios
-    .get<HeroesApiResponse>("/characters")
+    .get<HeroesApiResponse>("/characters", {
+      params: {
+        nameStartsWith: search,
+      },
+    })
     .then(({ data }) => {
       return data.data.total;
     })

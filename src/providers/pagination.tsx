@@ -1,5 +1,7 @@
+import { searchAtom } from "@/atoms/search.atom";
 import { HERO_RETURN_LIMIT } from "@/config";
 import { useTotalHeroCount } from "@/features/heroes/hooks/useTotalHeroCount";
+import { useAtom } from "jotai";
 import React, { createContext, useCallback, useState, useEffect } from "react";
 
 interface PaginationContextData {
@@ -23,9 +25,12 @@ export const PaginationContext = createContext<PaginationContextData>(
 export const PaginationProvider = (props: React.PropsWithChildren) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [search, _] = useAtom(searchAtom);
 
   // Obter o total de páginas da API
-  const totalHeroCount = useTotalHeroCount();
+  const totalHeroCount = useTotalHeroCount({
+    nameStartsWith: search || undefined,
+  });
 
   useEffect(() => {
     setTotalPages(Math.ceil((totalHeroCount.data || 0) / HERO_RETURN_LIMIT));
