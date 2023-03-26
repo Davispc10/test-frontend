@@ -1,29 +1,36 @@
-# Next.js + Jest
+# MARVEL CHARACTERS CODEX
 
-This example shows how to configure Jest to work with Next.js.
+<img src="https://i.imgur.com/pHGZX7V.png">
+<img src="https://i.imgur.com/1bIztci.png">
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+---
 
-## How to Use
+## About
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+This is a project for a technical test for a front-end developer position. The project consists of a web application that allows you to search for Marvel characters and see details of their comics.
 
-In your terminal, run the following command:
+## Technologies
 
-```bash
-npx create-next-app --example with-jest with-jest-app
-```
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
 
-```bash
-yarn create next-app --example with-jest with-jest-app
-```
+## Features
 
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
+- [x] Marvel API integration
+- [x] List characters with pagination
+- [x] Search characters by name
+- [x] See character details (description and comics)
+- [x] Tests
+- [x] Deployed on Vercel
 
-## Run Jest Tests
+## How to run
 
-```bash
-npm test
-```
+1. Clone the repository
+2. Edit the `.env.example` file adding your Marvel Public Key and rename it to `.env`
+3. Install dependencies with `npm install`
+4. Run the development server with `npm run dev`
+5. For tests run `npm run test`
