@@ -7,6 +7,7 @@ const HomeHeader = () => {
       {/* Brand */}
       <FadeUpAnimation className="flex flex-col items-center justify-center mt-4 lg:flex-row lg:gap-4">
         <Image
+          unoptimized
           width={500}
           height={500}
           priority

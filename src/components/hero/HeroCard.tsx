@@ -22,6 +22,7 @@ const HeroCard = ({ hero }: { hero: Hero }) => {
 
             <div className="flex items-center justify-center w-full h-full overflow-hidden bg-white rounded-t-lg shadow-lg">
               <Image
+                unoptimized
                 width={500}
                 height={500}
                 src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}

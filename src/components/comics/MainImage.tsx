@@ -12,6 +12,7 @@ const MainImage = ({ thumbnail }: { thumbnail: HeroThumbnail }) => {
     "
     >
       <Image
+        unoptimized
         width={500}
         height={500}
         src={`${thumbnail.path}.${thumbnail.extension}`}

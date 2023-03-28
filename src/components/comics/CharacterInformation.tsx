@@ -52,6 +52,8 @@ const CharacterInformation = ({
               >
                 <Zoom zoomMargin={40} classDialog="custom-zoom">
                   <Image
+                    unoptimized
+                    quality={20}
                     width={500}
                     height={500}
                     src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
