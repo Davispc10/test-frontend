@@ -1,0 +1,35 @@
+.card {
+    width: 270px;
+    border: 2px solid white;
+    padding: 1.5rem;
+    border-radius: .8rem;
+    text-decoration: none;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    position: relative;
+    transition: transform 450ms;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.imageCharacter {
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.information {
+    margin-top: 1rem;
+    color: aliceblue;
+}

@@ -1,0 +1,130 @@
+/* Input for research */
+
+.containerInput {
+    width: 275px;
+    margin: 3rem auto 3rem;
+    display: flex;
+    position: relative;
+}
+
+.inputCharacter {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    border: 1px solid rgba(255, 0, 0, 0.735);
+    background: rgb(37, 37, 37);
+    color: white;
+}
+
+.inputCharacter:focus {
+    outline: .15rem solid orange;
+    border: .15rem solid orange;
+}
+
+.buttonSearch {
+    background: none;
+    border: none;
+}
+
+.iconSearchCharacter {
+    color: gray;
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+/* navigation part */
+
+.navigatePage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 72.0rem;
+    margin: 1.5rem auto;
+    padding-inline: 3rem;
+}
+
+.buttonNavigate {
+    background: none;
+    border: 0;
+}
+
+.navigateIcon {
+    color: gray;
+    font-size: 4.2rem;
+}
+
+.showPages {
+    background: rgba(255, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: .8rem;
+    color: white;
+}
+
+.loadingTotalPages {
+    font-size: 2.4rem;
+    color: gray;
+}
+
+.disabledButton {
+    opacity: .8;
+    font-size: 4.2rem;
+    transition: opacity 300ms;
+    color: rgba(128, 128, 128, 0.295);
+}
+
+.navigateIcon:hover {
+    color: white;
+    cursor: pointer;
+}
+
+/* Loading */
+
+.spinner {
+    animation: spinnerRotate 1s linear;
+    font-size: 7.2rem;
+    display: block;
+    margin: 10% auto 100%;
+    color: lightgray;
+}
+
+/* Error */
+
+.error {
+    color: gray;
+    display: grid;
+    place-content: center;
+    font-size: 2.2rem;
+    margin-top: 2rem;
+}
+
+/* Main Container */
+
+.mainContainer {
+    padding-block: 3.4rem;
+    margin: 0 auto;
+
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.characterNotFound {
+    color: gray;
+    font-size: 2.2rem;
+    min-height: 270px;
+    padding: 1rem 6.2rem;
+    text-align: center;
+}
+
+/* Animation loading */
+
+@keyframes spinnerRotate {
+    to {
+        transform: rotate(360deg);
+    }
+}

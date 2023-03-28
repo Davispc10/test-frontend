@@ -1,0 +1,32 @@
+:root {
+  font-size: 62.5%;  /* 62.5% = 10px  */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 1.6rem; /* 1.6rem = 16px  */
+  background: rgb(37, 37, 37);
+}
+
+::-webkit-scrollbar {
+  width: 1.0rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #000A; 
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .8rem;
+  background: #BBB; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DDD;
+}
