@@ -1,38 +1,18 @@
-import axios from "axios"
-import { useQuery } from "react-query"
-import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
-import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../../utils/utils"
 import React from "react"
 import { useRouter } from "next/router"
+import { getOneHero } from "../../services/apiServices"
+import { useQuery } from "react-query"
+
+import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
+import { marvelLogo } from "../../utils/utils"
 
 const Hero = () => {
-  const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!
-  const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!
-
   const router = useRouter()
-  const stringToHash = `1${privateKey}${publicKey}`
-  const md5Hash = generateMD5Hash(stringToHash)
   const id = Number(router.query.id)
-
-
-  const getData = async () => {
-    const response = await axios.get(`${BASE_URL}/characters/${id}?ts=1&apikey=${publicKey}&hash=${md5Hash}`)
-    const image: string = response.data.data.results[0].thumbnail.path
-
-    if (image.includes('not_available')) {
-      response.data.data.results[0].thumbnail.path = marvelLogo
-    }
-
-    if (response.data.data.results[0].description === '') {
-      response.data.data.results[0].description = defaultDescription
-    }
-
-    return response.data.data.results[0]
-  }
 
   const { data } = useQuery({
     queryKey: ['heroInfo', id],
-    queryFn: getData,
+    queryFn: () => getOneHero(id),
     refetchOnMount: 'always',
     staleTime: 0,
   })
@@ -45,7 +25,7 @@ const Hero = () => {
             <div className="flex flex-col items-center justify-center">
               <img
                 onError={({ currentTarget }) => {
-                  currentTarget.onerror = null // prevents looping
+                  currentTarget.onerror = null 
                   currentTarget.src=`${marvelLogo}`
                 }}
                 className="w-44 h-44 border-2 border-slate-800 rounded-full mb-4"

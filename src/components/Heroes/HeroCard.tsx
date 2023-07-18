@@ -16,8 +16,8 @@ export const HeroCard: FC<HeroProps> = ({...props}) => {
         <div className="">
           <img
             onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src=`${marvelLogo}`;
+              currentTarget.onerror = null
+              currentTarget.src=`${marvelLogo}`
             }} 
             src={`${props.image}.jpg`}
             className="h-32 w-32 xl:h-52 xl:w-52 mb-2 rounded-full border border-red-500" 

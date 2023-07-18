@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { getHeroes } from "../services/apiServices";
+import { getAllHeroes } from "../services/apiServices";
 
 import HeroesList from "../components/Heroes/HeroesList";
 import Pagination from "../components/Pagination/Pagination";
@@ -19,7 +19,7 @@ const Home = () => {
 
   const { data, refetch } = useQuery<HeroData, Error>({
     queryKey: ["heroes", currentPage],
-    queryFn: () => getHeroes(offset, itemsPerPage, search),
+    queryFn: () => getAllHeroes(offset, itemsPerPage, search),
     onSuccess: (result) => {
       setTotalPages(result.total);
     }
