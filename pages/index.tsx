@@ -1,16 +1,14 @@
 import axios from "axios";
-import Pagination from "../utils/Pagination/Pagination";
+import React from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
-
-//import { Link } from "react-router-dom";
 import Link from "next/link";
 
+import { MagnifyingGlass, SpinnerGap } from "@phosphor-icons/react";
+import Pagination from "../utils/Pagination/Pagination";
 import { HeroCard } from "../components/HeroCard";
 import { ResponseHeroProps } from "../utils/interfaces";
 import { BASE_URL, generateMD5Hash } from "../utils/utils";
-import React from "react";
-//import { MagnifyingGlass, SpinnerGap } from "@phosphor-icons/react";
 
 const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!;
 const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!;
@@ -89,7 +87,7 @@ const Home = () => {
               onChange={handleInput}
             />
             <button className="ml-2 p-1 bg-red-500 rounded-md hover:bg-red-700 duration-300">
-              {/* <MagnifyingGlass className="text-xl" /> */}
+              <MagnifyingGlass className="text-xl" />
             </button>
           </form>
         </div>

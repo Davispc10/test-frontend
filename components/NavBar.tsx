@@ -1,5 +1,4 @@
 import Link from "next/link";
-//import Marvel from '../public/vercel.svg'
 import React from "react";
 
 export const NavBar = () => {

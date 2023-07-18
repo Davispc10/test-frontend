@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useQuery } from "react-query"
-//import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
+import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
 import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../../utils/utils"
 import React from "react";
 import { useRouter } from "next/router";
@@ -73,13 +73,13 @@ const Hero = () => {
               className="flex justify-center border-y border-black items-center w-14 my-2 rounded-full bg-red-900 p-2 hover:bg-red-700 duration-200"
               onClick={() => router.back()}
             >
-              {/* <ArrowUUpLeft className="text-3xl" /> */}
+              <ArrowUUpLeft className="text-3xl" /> 
             </button>
           </div>
         </div>
       ) : (
         <div className="flex justify-center items-center w-full h-full">
-          {/* <SpinnerGap className="text-8xl animate-spin text-red-500" /> */}
+          <SpinnerGap className="text-8xl animate-spin text-red-500" /> 
         </div>
       )}
     </div>

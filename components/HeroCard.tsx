@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { HeroProps } from "../utils/interfaces"
 import { marvelLogo } from "../utils/utils"
+import React from "react"
 
 export const HeroCard: FC<HeroProps> = ({...props}) => {
   const image: string = props.image
