@@ -1,0 +1,50 @@
+.page-link {
+  position: relative;
+  display: inline-flex;
+  border: 1px solid #dee2e6;
+  background-color: #ffffff49;
+  padding: 10px 15px;
+  color: #eee9ea;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.page-link:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.page-link:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.page-link:not(:first-child) {
+  margin-left: -1px;
+}
+
+.page-link:hover,
+.page-link:focus {
+  color: #f5040c;
+  background-color: #e9ecef;
+}
+
+.page-link:focus {
+  z-index: 3;
+}
+
+.page-link.active {
+  z-index: 2;
+  color: #ffffff;
+  border-color: black;
+  background-color: #EC1D24;
+}
+
+.page-link.disabled {
+  color: #6c757d;
+  pointer-events: none;
+}
