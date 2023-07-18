@@ -1,18 +1,24 @@
+'use client'
+
 import axios from "axios"
 import { useQuery } from "react-query"
 // import { useNavigate } from "react-router"
 //import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
-import { BASE_URL, defaultDescription, marvelLogo } from "../../utils/utils"
+import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../../utils/utils"
 
-const publicKey: string = process.env.NEXT_PUBLIC_KEY
-const hash: string = process.env.NEXT_HASH
 
-export const Hero = () => {
+const Hero = () => {
+  const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!;
+  const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!;
+
+  const stringToHash = `1${privateKey}${publicKey}`;
+  const md5Hash = generateMD5Hash(stringToHash);
+  
   const id = window.location.href.split('/').reverse()[0]
   // const navigate = useNavigate()
 
   const getData = async () => {
-    const response = await axios.get(`${BASE_URL}/characters/${id}?ts=1&apikey=${publicKey}&hash=${hash}`)
+    const response = await axios.get(`${BASE_URL}/characters/${id}?ts=1&apikey=${publicKey}&hash=${md5Hash}`)
     const image: string = response.data.data.results[0].thumbnail.path
 
     if (image.includes('not_available')) {
@@ -84,3 +90,5 @@ export const Hero = () => {
     </div>
   )
 }
+
+export default Hero
