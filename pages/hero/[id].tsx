@@ -2,19 +2,19 @@ import axios from "axios"
 import { useQuery } from "react-query"
 import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
 import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../../utils/utils"
-import React from "react";
-import { useRouter } from "next/router";
+import React from "react"
+import { useRouter } from "next/router"
 
 
 const Hero = () => {
-  const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!;
-  const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!;
+  const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!
+  const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!
 
-  const stringToHash = `1${privateKey}${publicKey}`;
-  const md5Hash = generateMD5Hash(stringToHash);
-  
-  const id = window.location.href.split('/').reverse()[0]
   const router = useRouter()
+  const stringToHash = `1${privateKey}${publicKey}`
+  const md5Hash = generateMD5Hash(stringToHash)
+  const id = Number(router.query.id)
+
 
   const getData = async () => {
     const response = await axios.get(`${BASE_URL}/characters/${id}?ts=1&apikey=${publicKey}&hash=${md5Hash}`)
@@ -39,15 +39,15 @@ const Hero = () => {
   })
 
   return (
-    <div className="w-11/12 h-[600px] self-center bg-red-200 p-1 rounded-md">
+    <div className="w-11/12 h-[600px] self-center bg-red-200 p-1 rounded-md font-bangers">
       {data ? (
         <div className="grid h-full border-4 border-black rounded-md bg-red-900">
           <div className="grid-row-2 p-4 rounded-md bg-red-800">
             <div className="flex flex-col items-center justify-center">
               <img
                 onError={({ currentTarget }) => {
-                  currentTarget.onerror = null; // prevents looping
-                  currentTarget.src=`${marvelLogo}`;
+                  currentTarget.onerror = null // prevents looping
+                  currentTarget.src=`${marvelLogo}`
                 }}
                 className="w-44 h-44 border-2 border-slate-800 rounded-full mb-4"
                 src={`${data.thumbnail.path}.jpg`}
