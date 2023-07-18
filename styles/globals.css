@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .heroCard {
     @apply 
@@ -13,7 +12,20 @@
     w-[400px] h-[900px] xl:h-[800px] xl:w-[1200px] mb-6
   }
 }
+
+@layer components {
+  #__next {
+    @apply w-full flex flex-col;
+  }
+  html,
+  body {
+    @apply h-full;
+  }
+}
+
 :root {
+  display: flex;
+  flex-direction: column;
   line-height: 1.5;
   font-weight: 400;
 
