@@ -5,22 +5,18 @@ export function getPaginationItems(
 ) {
   const res: Array<number> = [];
 
-  // from https://www.youtube.com/watch?v=ZBmAJTwalGQ
-  // handle lastPage less than maxLength
   if (lastPage <= maxLength) {
     for (let i = 1; i <= lastPage; i++) {
       res.push(i);
     }
   }
 
-  // handle ellipsis logics
-  else {
+   else {
     const firstPage = 1;
     const confirmedPagesCount = 3;
     const deductedMaxLength = maxLength - confirmedPagesCount;
     const sideLength = deductedMaxLength / 2;
 
-    // handle ellipsis in the middle
     if (
       currentPage - firstPage < sideLength ||
       lastPage - currentPage < sideLength
@@ -36,7 +32,6 @@ export function getPaginationItems(
       }
     }
 
-    // handle two ellipsis
     else if (
       currentPage - firstPage >= deductedMaxLength &&
       lastPage - currentPage >= deductedMaxLength
@@ -58,7 +53,6 @@ export function getPaginationItems(
       res.push(lastPage);
     }
 
-    // handle ellipsis not in the middle
     else {
       const isNearFirstPage = currentPage - firstPage < lastPage - currentPage;
       let remainingLength = maxLength;

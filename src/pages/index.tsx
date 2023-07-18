@@ -1,44 +1,42 @@
-import React from "react";
-import { useState } from "react";
-import { useQuery } from "react-query";
-import { getAllHeroes } from "../services/apiServices";
+import React from "react"
+import { useState } from "react"
+import { useQuery } from "react-query"
+import { getAllHeroes } from "../services/apiServices"
 
-import HeroesList from "../components/Heroes/HeroesList";
-import Pagination from "../components/Pagination/Pagination";
-import { HeroData, HeroProps } from "../utils/interfaces";
-import { MagnifyingGlass, SpinnerGap } from "@phosphor-icons/react";
+import HeroesList from "../components/Heroes/HeroesList"
+import Pagination from "../components/Pagination/Pagination"
+import { HeroData, HeroProps } from "../utils/interfaces"
+import { MagnifyingGlass, SpinnerGap } from "@phosphor-icons/react"
 
 const Home = () => {
-  const [search, setSearch] = useState<string>("");
-  const [totalPages, setTotalPages] = useState(157);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState<string>("")
+  const [totalPages, setTotalPages] = useState(157)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const itemsPerPage = 10;
-  const lastPage = Math.ceil(totalPages / itemsPerPage);
-  const offset = (itemsPerPage * currentPage) - 10;
+  const itemsPerPage = 10
+  const lastPage = Math.ceil(totalPages / itemsPerPage)
+  const offset = (itemsPerPage * currentPage) - 10
 
   const { data, refetch } = useQuery<HeroData, Error>({
     queryKey: ["heroes", currentPage],
     queryFn: () => getAllHeroes(offset, itemsPerPage, search),
     onSuccess: (result) => {
-      setTotalPages(result.total);
+      setTotalPages(result.total)
     }
-  });
+  })
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+    setSearch(e.target.value)
+  }
 
   const handleGetData = () => {
-    void refetch();
-  };
+    void refetch()
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    void refetch();
-  };
-
-  //console.log(`currentPage:${currentPage}, lastPage:${lastPage}`);
+    e.preventDefault()
+    void refetch()
+  }
 
   return (
     <div className='flex flex-col w-screen h-screen p-2 font-bangers'>
@@ -49,7 +47,7 @@ const Home = () => {
               name="search-user"
               className="border-y px-1 border-black focus:border-red-500 focus:outline-none rounded-sm"
               type="text"
-              placeholder="Procure um herói"
+              placeholder="find your hero"
               value={search}
               onChange={handleInput}
             />
@@ -78,7 +76,7 @@ const Home = () => {
         />
       </main>
     </div>
-  );
-};
+  )
+}
 
 export default Home

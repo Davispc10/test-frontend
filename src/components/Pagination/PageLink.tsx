@@ -1,8 +1,6 @@
 import { HTMLProps } from 'react';
 import cn from 'classnames';
 import React from 'react';
-//import './PageLink.css';
-
 
 export type Props = HTMLProps<HTMLAnchorElement> & { active?: boolean };
 
