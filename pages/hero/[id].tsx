@@ -1,10 +1,9 @@
-'use client'
-
 import axios from "axios"
 import { useQuery } from "react-query"
-// import { useNavigate } from "react-router"
 //import { ArrowUUpLeft, SpinnerGap } from "@phosphor-icons/react"
 import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../../utils/utils"
+import React from "react";
+import { useRouter } from "next/router";
 
 
 const Hero = () => {
@@ -15,7 +14,7 @@ const Hero = () => {
   const md5Hash = generateMD5Hash(stringToHash);
   
   const id = window.location.href.split('/').reverse()[0]
-  // const navigate = useNavigate()
+  const router = useRouter()
 
   const getData = async () => {
     const response = await axios.get(`${BASE_URL}/characters/${id}?ts=1&apikey=${publicKey}&hash=${md5Hash}`)
@@ -30,10 +29,6 @@ const Hero = () => {
     }
 
     return response.data.data.results[0]
-  }
-
-  const previousPage = () => {
-    // navigate('/')
   }
 
   const { data } = useQuery({
@@ -76,7 +71,7 @@ const Hero = () => {
           <div className="grid grid-row-1 place-items-center">
             <button
               className="flex justify-center border-y border-black items-center w-14 my-2 rounded-full bg-red-900 p-2 hover:bg-red-700 duration-200"
-              onClick={previousPage}
+              onClick={() => router.back()}
             >
               {/* <ArrowUUpLeft className="text-3xl" /> */}
             </button>
