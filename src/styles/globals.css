@@ -1,3 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .heroCard {
+    @apply 
+    grid grid-cols-2 grid-rows-5 
+    xl:grid-cols-5 xl:grid-rows-2 
+    gap-1 rounded-lg shadow-xl p-1 
+    w-[400px] h-[900px] xl:h-[800px] xl:w-[1200px] mb-6
+  }
+}
+
+@layer components {
+  #__next {
+    @apply w-full flex flex-col;
+  }
+  html,
+  body {
+    @apply h-full;
+  }
+}
+
+:root {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #691417;
+
+  width: 100vw;
+}
+
 .page-link {
   position: relative;
   display: inline-flex;

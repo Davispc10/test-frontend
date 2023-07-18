@@ -5,7 +5,6 @@ import { BASE_URL, defaultDescription, generateMD5Hash, marvelLogo } from "../..
 import React from "react"
 import { useRouter } from "next/router"
 
-
 const Hero = () => {
   const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!
   const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!

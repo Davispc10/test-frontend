@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { HeroProps } from "../utils/interfaces"
-import { marvelLogo } from "../utils/utils"
+import { HeroProps } from "../../utils/interfaces"
+import { marvelLogo } from "../../utils/utils"
 import React from "react"
 
 export const HeroCard: FC<HeroProps> = ({...props}) => {
@@ -24,7 +24,7 @@ export const HeroCard: FC<HeroProps> = ({...props}) => {
             alt="" />
         </div>
         <div className="">
-          <p className="text-md xl:text-2xl xl:text-center font-semibold">
+          <p className="text-xs xl:text-2xl xl:text-center font-semibold">
             {props.name}
           </p>
         </div>

@@ -13,7 +13,7 @@ export const NavBar = () => {
           THE MARVEL BOOK
         </p>
         <p className="text-xs">
-          procure seus heróis favoritos
+          encontre seus heróis favoritos!
         </p>
       </Link>
     </nav>
