@@ -14,3 +14,10 @@ export interface HeroData {
   results: Array<HeroProps>
 }
 
+export interface Comic {
+  id: number,
+  thumbnail: {
+    path: string,
+  },
+}
+

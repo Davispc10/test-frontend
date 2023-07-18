@@ -3,6 +3,7 @@ import { ArrowUUpLeft } from "@phosphor-icons/react"
 import { HeroProps } from "../../utils/interfaces"
 import { marvelLogo } from "../../utils/utils"
 import { useRouter } from "next/router"
+import { Comics } from "../Comics"
 
 export const HeroDetails: FC<HeroProps> = ({...props}) => {
   const router = useRouter()
@@ -24,10 +25,8 @@ export const HeroDetails: FC<HeroProps> = ({...props}) => {
             {props.name}
           </p>
         </div>
-        <div className="flex justify-center items-center">
-          <p className="text-justify">
-            Comics: 
-          </p>
+        <div className="flex justify-center items-center mt-4">
+          <Comics />
         </div>
       </div>
       <div className="grid-row-1 border-y-2 border-black bg-red-500 p-6 rounded-md grid place-items-center">

@@ -18,7 +18,7 @@ const Hero = () => {
   })
 
   return (
-    <div className="w-11/12 h-[600px] self-center bg-red-200 p-1 rounded-md font-bangers">      
+    <div className="w-11/12 h-[700px] self-center bg-red-200 p-1 rounded-md font-bangers">      
       {data ? (
         <HeroDetails {...data} />
       ) : (
