@@ -3,7 +3,7 @@ import { HeroProps } from "../../utils/interfaces";
 import { handleImageError, marvelLogo } from "../../utils/utils";
 
 export const HeroCard: FC<HeroProps> = ({ image, className, name }) => {
-  const imageUrl: string = image.includes("not_available") ? marvelLogo : image;
+  const imageUrl: string = image!.includes("not_available") ? marvelLogo : image!;
 
   return (
     <div className="w-full h-full">
