@@ -20,3 +20,8 @@ export const queryClient = new QueryClient({
 export function generateMD5Hash(input: string): string {
   return MD5(input).toString();
 };
+
+export const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+  event.currentTarget.onerror = null;
+  event.currentTarget.src = marvelLogo;
+};

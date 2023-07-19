@@ -15,6 +15,8 @@ export const Comics = () => {
     staleTime: 0,
   });
 
+  console.log(data)
+
   return (
     <div className="flex flex-col justify-center items-center">
       <p className="mb-1 text-black text-md">
@@ -37,7 +39,7 @@ export const Comics = () => {
         )}
         {!isLoading && data?.length === 0 && (
           <p>
-            no comics available
+           no comics available
           </p>
         )}      
       </div>
