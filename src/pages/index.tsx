@@ -6,7 +6,7 @@ import { getAllHeroes } from "../services/apiServices"
 import HeroesList from "../components/Heroes/HeroesList"
 import Pagination from "../components/Pagination/Pagination"
 import { HeroData, HeroProps } from "../utils/interfaces"
-import { MagnifyingGlass, SpinnerGap } from "@phosphor-icons/react"
+import { CircleNotch, MagnifyingGlass } from "@phosphor-icons/react"
 
 const Home = () => {
   const [search, setSearch] = useState<string>("")
@@ -17,7 +17,7 @@ const Home = () => {
   const lastPage = Math.ceil(totalPages / itemsPerPage)
   const offset = (itemsPerPage * currentPage) - 10
 
-  const { data, refetch } = useQuery<HeroData, Error>({
+  const { data, refetch, isLoading } = useQuery<HeroData, Error>({
     queryKey: ["heroes", currentPage],
     queryFn: () => getAllHeroes(offset, itemsPerPage, search),
     onSuccess: (result) => {
@@ -56,15 +56,14 @@ const Home = () => {
             </button>
           </form>
         </div>
-        <div className="heroCard">
-          {data ? (
+        <div className={`${data ? 'heroCard' : 'loadingCard'}`}>
+          {isLoading && (
+            <CircleNotch className="text-8xl animate-spin text-red-500" />
+          )}
+          {data && (
             data.results.map((hero: HeroProps) => (
               <HeroesList {...hero} key={hero.id} />
             ))
-          ) : (
-            <div className="w-[400px] h-[500px] mb-6">
-              <SpinnerGap className="h-12 w-12 animate-spin text-red-500" />
-            </div>
           )}
         </div>
         <Pagination

@@ -17,7 +17,7 @@ export const HeroDetails: FC<HeroProps> = ({...props}) => {
               currentTarget.onerror = null 
               currentTarget.src=`${marvelLogo}`
             }}
-            className="w-44 h-44 border-2 border-slate-800 rounded-full mb-4"
+            className="w-44 h-44 border-2 border-red-500 rounded-full mb-4"
             src={`${props.thumbnail!.path}.jpg`}
             alt=""
           />

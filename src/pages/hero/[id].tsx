@@ -3,14 +3,14 @@ import { useRouter } from "next/router"
 import { getOneHero } from "../../services/apiServices"
 import { useQuery } from "react-query"
 
-import { SpinnerGap } from "@phosphor-icons/react"
+import { CircleNotch } from "@phosphor-icons/react"
 import { HeroDetails } from "../../components/Heroes/HeroDetails"
 
 const Hero = () => {
   const router = useRouter()
   const id = Number(router.query.id)
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['heroInfo', id],
     queryFn: () => getOneHero(id),
     refetchOnMount: 'always',
@@ -18,13 +18,14 @@ const Hero = () => {
   })
 
   return (
-    <div className="w-11/12 h-[700px] self-center bg-red-200 p-1 rounded-md font-bangers">      
-      {data ? (
-        <HeroDetails {...data} />
-      ) : (
+    <div className="w-11/12 h-[700px] self-center bg-red-400 p-1 rounded-md font-bangers"> 
+      {isLoading && (
         <div className="flex justify-center items-center w-full h-full">
-          <SpinnerGap className="text-8xl animate-spin text-red-500" /> 
+          <CircleNotch className="text-8xl animate-spin text-red-500" /> 
         </div>
+      )}     
+      {data && (
+        <HeroDetails {...data} />
       )}
     </div>
   )
