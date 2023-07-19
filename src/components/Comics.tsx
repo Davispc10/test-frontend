@@ -26,14 +26,15 @@ export const Comics = () => {
         <CircleNotch className="h-12 w-12 animate-spin text-red-500" />
       )}
       <div className="flex flex-row">
-        {data?.length && (
-          data.slice(0,5).map((comic: Comic) => {
+        {data?.length! > 0 && (
+          data!.slice(0,5).map((comic: Comic) => {
             return (
-              <img 
-                className="h-20 w-12 xs:h-28 xs:w-20 mr-2 rounded-sm border-2 border-slate-800"
-                key={comic.id} 
-                src={`${comic.thumbnail.path}.jpg`} 
-              />            
+              <a href={`${comic.thumbnail.path}.jpg`} key={comic.id} target='blank'>
+                <img 
+                  className="h-20 w-12 xs:h-28 xs:w-20 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
+                  src={`${comic.thumbnail.path}.jpg`} 
+                />            
+              </a>
             )
           })
         )}
