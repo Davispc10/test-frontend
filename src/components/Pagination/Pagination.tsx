@@ -1,3 +1,4 @@
+import React from 'react';
 import PageLink from './PageLink';
 import { getPaginationItems } from './paginationLogic';
 
