@@ -40,17 +40,17 @@ const Home = () => {
   return (
     <div className="flex flex-col w-screen h-screen p-2 font-bangers">
       <main className="flex flex-col justify-center items-center w-full">
-        <div className="mb-4">
-          <form className="flex items-center" onSubmit={handleSubmit}>
+        <div className="flex justify-center w-full h-16 mb-6 mt-2">
+          <form className="flex justify-center w-2/4 h-full items-center" onSubmit={handleSubmit}>
             <input
               name="search-user"
-              className="border-y px-1 border-black focus:border-red-500 focus:outline-none rounded-sm"
+              className="border-y-2 px-1 h-3/5 w-3/4 md:w-2/4 bg-red-500 border-black focus:border-red-500 focus:outline-none rounded-md"
               type="text"
               placeholder="find your hero"
               value={search}
               onChange={handleInput}
             />
-            <button className="ml-2 p-1 bg-red-500 rounded-md hover:bg-red-700 duration-300">
+            <button className="ml-4 p-1 bg-red-500 rounded-md hover:bg-red-700 duration-300">
               <MagnifyingGlass className="text-xl" />
             </button>
           </form>

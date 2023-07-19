@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const HeroesList: FC<HeroProps> = ({ ...props }) => {
   return (
-    <div className='hover:bg-red-600 rounded-lg duration-300'>      
+    <div className='hover:bg-red-600 border-y border-red-900 rounded-lg duration-300'>      
       <Link
         className="w-full h-full"
         href={`/hero/${props.id}`}

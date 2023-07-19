@@ -6,13 +6,13 @@
 
 @layer components {
   .heroCard {
-    @apply grid grid-cols-2 grid-rows-5 xl:grid-cols-5 xl:grid-rows-2 border-red-800 border-2 
+    @apply grid grid-cols-2 grid-rows-5 xl:grid-cols-5 xl:grid-rows-2 border-black border-2 
     gap-1 rounded-lg shadow-xl p-1 mb-6 bg-red-800 w-[400px] h-[900px] 
     sm:w-[550px] lg:w-[800px] xl:h-[800px] xl:w-11/12
   }
   .loadingCard {
     @apply flex justify-center items-center border-red-900 border-2 rounded-lg 
-    w-[400px] h-[900px] xl:h-[800px] xl:w-11/12 mb-6
+    w-[400px] h-[900px] sm:w-[550px] lg:w-[800px] xl:h-[800px] xl:w-11/12 mb-6
   }
 }
 
@@ -22,7 +22,7 @@
   }
   html,
   body {
-    @apply h-full;
+    @apply h-full max-h-full overflow-x-hidden;
   }
 }
 
