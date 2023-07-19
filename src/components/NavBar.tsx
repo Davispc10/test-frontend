@@ -1,5 +1,5 @@
-import React from "react"
-import Link from "next/link"
+import React from "react";
+import Link from "next/link";
 
 export const NavBar = () => {
   return (
@@ -17,5 +17,5 @@ export const NavBar = () => {
         </p>
       </Link>
     </nav>
-  )
-}
+  );
+};

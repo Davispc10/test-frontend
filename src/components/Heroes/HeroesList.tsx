@@ -15,7 +15,7 @@ const HeroesList: FC<HeroProps> = ({ ...props }) => {
           name={props.name}
           image={props.thumbnail!.path}
           id={props.id}
-          className="w-full h-full flex flex-col justify-start items-center p-1 my-1"
+          className="w-full h-full flex flex-col justify-start xl:justify-around items-center p-1 my-1"
         />
       </Link>      
     </div>

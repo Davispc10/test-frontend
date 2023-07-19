@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         'bangers': ['Bangers', 'sans-serif'],
       },
+      screens: {
+        'xs': '450px',
+      },
     },
   },
   plugins: [],
