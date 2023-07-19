@@ -18,7 +18,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="w-11/12 h-[700px] md:w-3/5 xl:w-2/4 self-center bg-red-400 p-1 rounded-md font-bangers"> 
+    <div className="w-11/12 h-[700px] md:w-3/5 xl:w-2/6 self-center bg-red-400 p-1 rounded-md font-bangers"> 
       {isLoading && (
         <div className="flex justify-center items-center w-full h-full">
           <CircleNotch className="text-8xl animate-spin text-red-500" /> 

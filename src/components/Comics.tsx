@@ -4,6 +4,7 @@ import { getHeroComics } from "../services/apiServices";
 import { useRouter } from "next/router";
 import { Comic } from "../utils/interfaces";
 import { CircleNotch } from "@phosphor-icons/react";
+import { defaultComicsMessage } from '../utils/utils';
 
 export const Comics = () => {
   const router = useRouter();
@@ -15,8 +16,6 @@ export const Comics = () => {
     refetchOnMount: 'always',
     staleTime: 0,
   });
-
-  console.log(data)
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -40,7 +39,7 @@ export const Comics = () => {
         )}
         {!isLoading && data?.length === 0 && (
           <p>
-           no comics available
+           {defaultComicsMessage}
           </p>
         )}      
       </div>
