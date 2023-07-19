@@ -20,7 +20,7 @@ export default function Pagination({
   const pageNums = getPaginationItems(currentPage, lastPage, maxLength);
 
   return (
-    <nav className="flex wrap" aria-label="Pagination" onClick={onClick}>
+    <nav className="flex wrap mb-4" aria-label="Pagination" onClick={onClick}>
       <PageLink
         disabled={currentPage === 1}
         onClick={() => setCurrentPage(currentPage - 1)}

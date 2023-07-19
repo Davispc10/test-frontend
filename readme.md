@@ -1,38 +1,32 @@
-# Teste Dinheirow
+# THE MARVEL BOOK! :superhero:		
 
-Olá Dev! Tudo bem?
+This app uses de Marvel API to search for heroes informations, like image, description and comics info
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso!
-Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+## Feats :star2:	
 
-Vamos ao teste!
+- Pagination to loop through all heroes.
+- Hero card, with detailed infos.
+- Ability to search for heroes by the name.
+- Ability to see comic image preview.
 
-## Desafio Marvel
+## Tools :hammer_and_wrench:
 
-Create a front-end application connected with Marvel back-end developed using data and routes obtained by the official Marvel Comics API.
+- Next.JS
+- Tailwind
+- Phosphor icons
+- Jest
+- React Query
 
-API DOCS: https://developer.marvel.com/docs 
+## Previews :eyes:	
+![My Remote Image](https://github.com/gabrigomez/refs/assets/69373145/9970490c-748d-465b-872a-f6f41b8cefcc)
+![My Remote Image](https://github.com/gabrigomez/refs/assets/69373145/7b028c88-f0bb-440a-a9d7-f17a877c816e)
+![My Remote Image](https://github.com/gabrigomez/refs/assets/69373145/d3a354c7-367b-40e0-a077-2ece9ccaa40b)
 
-💻 Functionalities
-- A homepage with the character list and pagination;
-- Input to search by character name;
-- Clicking on a character displays a page with details (name, description and comics info);
-- Button on the character details page to back to homepage;
-- If the character has no image: displays the Marvel logo;
-- If the character has no description: displays the text "description not informed".
+## To run the project :desktop_computer:
 
-💻 Technology
-- Use Vue or React/NextJs;
-- Tests with jest;
-- Typescript will be a plus;
-- Clean architecture;
-- React Query.
-- Documentation.
-- Redux optional;
+- Clone the repository
+- Make sure you have the Marvel API Keys and set them to a `.env` local file. Check the [official docs here](https://developer.marvel.com/)
+- `npm i` to install all dependencies
+- `npm run dev` to start the project
+- `npm run test` to run the tests
 
-## Por onde começo?
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
-
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
-
-Boa sorte! :)
