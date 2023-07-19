@@ -1,13 +1,13 @@
 # THE MARVEL BOOK! :superhero:		
 
-This app uses de Marvel API to search for heroes informations, like image, description and comics info
+This app uses the Marvel API to search for heroes informations, like image, description and comics info.
 
 ## Feats :star2:	
 
 - Pagination to loop through all heroes.
-- Hero card, with detailed infos.
+- Hero card, with detailed info.
 - Ability to search for heroes by the name.
-- Ability to see comic image preview.
+- Ability to see comic image cover.
 
 ## Tools :hammer_and_wrench:
 
