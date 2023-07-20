@@ -2,6 +2,8 @@
 
 This app uses the Marvel API to search for heroes informations, like image, description and comics info.
 
+Available on https://the-marvel-project.vercel.app/
+
 ## Feats :star2:	
 
 - Pagination to loop through all heroes.
