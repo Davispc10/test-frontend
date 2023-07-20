@@ -33,6 +33,5 @@ export const getOneHero = async (id: number) => {
 export const getHeroComics = async (id: number) => {
   const response = await axios.get(`${BASE_URL}/characters/${id}/comics?ts=1&apikey=${publicKey}&hash=${md5Hash}`);
 
-  console.log(response)
   return response.data.data.results;
 };
