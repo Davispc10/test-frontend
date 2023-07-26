@@ -1,7 +1,8 @@
-import QueryProvider from '@/contexts/QueryClientContext'
+import QueryProvider from '@/providers/QueryClientProvider'
 import '@/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ReduxProvider from '@/providers/ReduxProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <QueryProvider>
-          {children}
-        </QueryProvider>
+        <ReduxProvider>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
+        </ReduxProvider>
       </body>
     </html>
   )

@@ -67,13 +67,18 @@ export interface CustomImageProps {
   title?: string
 }
 
-export interface PaginationProps {
-  page: number
-  totalPages: number
-}
-
 export interface PaginationItemProps {
   value: number
-  onClickFunction: () => void
   isActive: boolean
+}
+
+export interface QueryProps {
+  page: number
+  pageTotal: number
+  limit: number
+  searchName: string
+}
+
+export interface QueryStateProps {
+  queryItems: QueryProps[];
 }

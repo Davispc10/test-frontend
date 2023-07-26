@@ -1,13 +1,19 @@
+import { useEffect } from 'react'
 import { TableBodyProps } from "@/utils/types";
 import TableRow from "../atoms/TableRow";
 import TableItem from "../atoms/TableItem";
 import CustomImage from "../atoms/CustomImage";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
-export default function TableBody({ className, items, startHeroIndex, endHeroIndex }: TableBodyProps) {
+export default function TableBody({ className, items }: TableBodyProps) {
+  const page = useSelector((state: RootState) => state.query.page)
+  const limit = useSelector((state: RootState) => state.query.limit)
+
   return (
     <tbody>
-      {items && items.slice(startHeroIndex, endHeroIndex).map((item, index) => (
-        <TableRow key={index}>
+      {items && items.slice((page * limit), ((page * limit) + limit)).map((item, index) => (
+        <TableRow key={`${index}_${item.id}`}>
           <TableItem className="w-1/4" type='data' title={item.id.toString()}>
             {item.id}
           </TableItem>
