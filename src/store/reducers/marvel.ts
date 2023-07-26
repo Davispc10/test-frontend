@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  characters: [],
+  characters: {},
 }
 
 const marvelSlices = createSlice({

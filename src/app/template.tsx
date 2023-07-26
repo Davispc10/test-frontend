@@ -1,17 +1,36 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 
-import React from "react"
+import React, { useEffect } from "react"
 import { useFormik } from 'formik'
+import { params } from '@/helpers'
+import { useLazyGetCharacterByNameQuery } from "@/store/services/marvel"
+import {  setCharacters } from "@/store/reducers/marvel"
+import { useAppDispatch } from "@/store/hooks"
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  const dispatch = useAppDispatch()
+  const [getCharacter, { data = { results: [] }, isFetching }] = useLazyGetCharacterByNameQuery()
+
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
       search: '',
     },
-    onSubmit: values => {
-      console.log('onSubmit', values)
+    onSubmit: ({ search }) => {
+      const p = {
+        ...params,
+        name: search.toLowerCase(),
+      }
+
+      getCharacter({ params: p })
     }
   })
+
+  useEffect(() => {
+    if (isFetching && data?.results.length > 0) {
+      dispatch(setCharacters(data))
+    }
+  }, [data, dispatch, isFetching])
 
   return (
     <>

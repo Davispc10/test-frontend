@@ -38,7 +38,7 @@ body {
     @apply mb-8;
     @apply min-h-screen w-full mx-auto;
     @apply sm:items-center;
-    @apply lg:gap-x-4 lg:gap-y-4;
+    @apply lg:gap-x-4 lg:gap-y-4  lg:min-h-full;
   }
   .container.showLoader {
     @apply items-start pt-32;
