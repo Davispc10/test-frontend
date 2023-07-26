@@ -5,13 +5,13 @@ import TableItem from "../atoms/TableItem";
 export default function TableHeader({ className, items }: TableHeaderProps) {
   return (
     <thead>
-      <TableRow>
+      <TableRow className={`${className && className}`}>
         {items && items.map((item, index) => (
           <TableItem
             key={`${item.title && item.title.toLowerCase().replace(/\s+/g, '')}_${index}`}
             type='title'
             title={item.title}
-            className={`${className && className}`}
+            className="w-1/4"
           >
             {item.value}
           </TableItem>

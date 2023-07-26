@@ -2,6 +2,8 @@
 
 import { PaginationProps } from "@/utils/types";
 import React, { useState } from "react";
+import PageItem from "../atoms/PageItem";
+import Ellipsis from "../atoms/Ellipsis";
 
 const Pagination = (props: PaginationProps) => {
   const [currentPage, setCurrentPage] = useState(props.page);
@@ -10,68 +12,49 @@ const Pagination = (props: PaginationProps) => {
 
   const setPage = (pageNumber: React.SetStateAction<number>) => {
     setCurrentPage(pageNumber);
-    // You can also make your API call here to fetch data for the selected page.
   };
 
   const renderPagination = () => {
     const pages = [];
 
-    // Show the first page link
     pages.push(
-      <span
+      <PageItem
         key={1}
-        onClick={() => setPage(1)}
-        className={`
-        ${currentPage === 1 ? "font-bold" : ""}
-        cursor-pointer
-        `}
-      >
-        1
-      </span>
+        isActive={currentPage === 1}
+        onClickFunction={() => setPage(1)}
+        value={1}
+      />
     );
 
-    // Show the ellipsis if there are pages in between
     if (currentPage > pageRangeDisplayed + 2) {
-      pages.push(<span key="firstEllipsis">...</span>);
+      pages.push(<Ellipsis key={'firstEllipsis'} />);
     }
 
-    // Calculate the range of pages to display
     const startPage = Math.max(2, currentPage - Math.floor(pageRangeDisplayed / 2));
     const endPage = Math.min(totalPages - 1, startPage + pageRangeDisplayed - 1);
 
-    // Show the pages within the range
     for (let i = startPage; i <= endPage; i++) {
       pages.push(
-        <span
+        <PageItem
           key={i}
-          onClick={() => setPage(i)}
-          className={`
-          ${currentPage === i ? "font-bold" : ""}
-          cursor-pointer
-          `}
-        >
-          {i}
-        </span>
+          isActive={currentPage === i}
+          onClickFunction={() => setPage(i)}
+          value={i}
+        />
       );
     }
 
-    // Show the ellipsis if there are pages in between
     if (currentPage + pageRangeDisplayed + 1 < totalPages) {
-      pages.push(<span key="lastEllipsis">...</span>);
+      pages.push(<Ellipsis key={'lastEllipsis'} />);
     }
 
-    // Show the last page link
     pages.push(
-      <span
+      <PageItem
         key={totalPages}
-        onClick={() => setPage(totalPages)}
-        className={`
-        ${currentPage === totalPages ? "font-bold" : ""}
-        cursor-pointer
-        `}
-      >
-        {totalPages}
-      </span>
+        isActive={currentPage === totalPages}
+        onClickFunction={() => setPage(totalPages)}
+        value={totalPages}
+      />
     );
 
     return pages;

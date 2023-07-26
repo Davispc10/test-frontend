@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ChangeEvent, ReactNode } from "react"
 
 interface ChildrenProps {
   children?: ReactNode
@@ -42,7 +42,22 @@ export type TableHeaderProps = ClassNameProps & {
 
 export type TableBodyProps = ClassNameProps & {
   items: HeroProps[]
+  startHeroIndex: number
+  endHeroIndex: number
 };
+
+export interface InputSearchProps {
+  isRequired?: boolean
+  isDisabled?: boolean
+  onChangeFunction?: (e: ChangeEvent<HTMLInputElement>) => void
+  name?: string
+  value?: string
+  id?: string
+  label?: string
+  className?: string
+  placeholder?: string
+  size?: 'sm' | 'md' | 'lg'
+}
 
 export interface CustomImageProps {
   width: number
@@ -55,4 +70,10 @@ export interface CustomImageProps {
 export interface PaginationProps {
   page: number
   totalPages: number
+}
+
+export interface PaginationItemProps {
+  value: number
+  onClickFunction: () => void
+  isActive: boolean
 }
