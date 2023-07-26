@@ -13,7 +13,7 @@ export default defineConfig({
     globals: true,
     clearMocks: true,
     mockReset: true,
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     coverage: {
       reporter: ['text', 'json', 'html'],
