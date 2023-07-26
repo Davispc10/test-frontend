@@ -1,5 +1,6 @@
 import React from 'react'
 
+// eslint-disable-next-line no-restricted-imports
 import { render } from '@testing-library/react'
 
 import { createQueryProviderWrapper } from './create-query-provider-wrapper'

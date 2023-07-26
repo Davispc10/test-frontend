@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@radix-ui/react-select': ^1.2.2
+  '@radix-ui/react-slot': ^1.0.2
   '@t3-oss/env-nextjs': ^0.6.0
   '@tanstack/eslint-plugin-query': ^4.29.25
   '@tanstack/react-query': ^4.32.0
@@ -45,6 +46,7 @@ specifiers:
 
 dependencies:
   '@radix-ui/react-select': 1.2.2_pykdanru7vtvy3sxrufrizyr6q
+  '@radix-ui/react-slot': 1.0.2_l2ddciyqa7ein2jypfx2higwqu
   '@t3-oss/env-nextjs': 0.6.0_zno6rcmvi3mruj4xg7lanqhjom
   '@tanstack/react-query': 4.32.0_biqbaboplfbrettd7655fr4n2y
   '@types/node': 20.4.5

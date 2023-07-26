@@ -3,6 +3,7 @@ const path = require('node:path')
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  root: true,
   ignorePatterns: ['node_modules/', '.next/', 'build/'],
   env: {
     browser: true,
@@ -21,7 +22,6 @@ const config = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
-    'next/core-web-vitals',
   ],
   plugins: [
     'react',
@@ -29,6 +29,7 @@ const config = {
     '@typescript-eslint',
     'eslint-plugin-import-helpers',
     'jsx-a11y',
+    'import',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
