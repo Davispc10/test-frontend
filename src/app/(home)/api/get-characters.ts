@@ -40,7 +40,7 @@ export const getCharacters = async ({
       searchParams: {
         offset: getOffset(page),
         limit: LIMIT,
-        ...(search ? { name: search } : {}),
+        ...(search ? { nameStartsWith: search } : {}),
         orderBy,
       },
     })
