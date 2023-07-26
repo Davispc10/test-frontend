@@ -50,3 +50,5 @@ dist
 # next.js
 .next
 out
+
+!.env.example

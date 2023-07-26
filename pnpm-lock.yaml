@@ -26,6 +26,7 @@ specifiers:
   eslint-plugin-testing-library: ^5.11.0
   happy-dom: ^10.5.2
   jsdom: ^22.1.0
+  ky: ^0.33.3
   lucide-react: ^0.263.1
   next: 13.4.12
   postcss: 8.4.27
@@ -49,6 +50,7 @@ dependencies:
   class-variance-authority: 0.7.0
   clsx: 2.0.0
   eslint-config-next: 13.4.12_ko3fmmbeyij36muomfgt2u76xu
+  ky: 0.33.3
   lucide-react: 0.263.1_react@18.2.0
   next: 13.4.12_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.27
@@ -2728,6 +2730,11 @@ packages:
       array.prototype.flat: 1.3.1
       object.assign: 4.1.4
       object.values: 1.1.6
+
+  /ky/0.33.3:
+    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
+    engines: {node: '>=14.16'}
+    dev: false
 
   /language-subtag-registry/0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
