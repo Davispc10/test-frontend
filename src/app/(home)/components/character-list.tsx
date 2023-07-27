@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
+import { useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -17,7 +18,10 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 import { cn, getThumbnailAsString } from '@/utils'
 
-import { useGetCharactersQuery } from '../api/get-characters'
+import {
+  makeCharactersQueryOptions,
+  useGetCharactersQuery,
+} from '../api/get-characters'
 import {
   ORDER_BY_DEFAULT_VALUE,
   ORDER_BY_SEARCH_PARAM,
@@ -28,6 +32,7 @@ import { type Character, type OrderBy } from '../schemas'
 
 export const CharacterList = () => {
   const searchParams = useSearchParams()
+  const queryClient = useQueryClient()
 
   const orderBy = (searchParams.get(ORDER_BY_SEARCH_PARAM) ??
     ORDER_BY_DEFAULT_VALUE) as OrderBy
@@ -36,11 +41,26 @@ export const CharacterList = () => {
   const searchParamsPage = searchParams.get(PAGE_QUERY_PARAM)
   const page = searchParamsPage ? Number(searchParamsPage) : 1
 
-  const { status, data } = useGetCharactersQuery({
+  const { status, data, isPreviousData } = useGetCharactersQuery({
     page,
     orderBy,
     search,
   })
+
+  const hasMoreData = data && data?.offset + data?.limit < data?.total
+
+  // Prefetch the next page!
+  useEffect(() => {
+    if (!isPreviousData && hasMoreData) {
+      queryClient.prefetchQuery(
+        makeCharactersQueryOptions({
+          page: page + 1,
+          orderBy,
+          search,
+        }),
+      )
+    }
+  }, [data, hasMoreData, isPreviousData, orderBy, page, queryClient, search])
 
   if (status === 'loading') {
     return <CharacterListSkeleton />
@@ -102,7 +122,7 @@ const CharacterCard = ({ id, name, thumbnail }: CharacterCardProps) => {
     <div className="group relative max-w-full transition-colors">
       <Link className="no-underline" href={`/characters/${id}`}>
         <div className="overflow-hidden">
-          <figure className="relative h-52 overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-[#e62429]">
+          <figure className="relative h-52 overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-secondary">
             <Image
               className="block h-full w-full scale-100 overflow-hidden object-cover object-[top_center] transition-all ease-linear group-hover:scale-105"
               src={getThumbnailAsString(thumbnail)}
@@ -116,9 +136,9 @@ const CharacterCard = ({ id, name, thumbnail }: CharacterCardProps) => {
 
         <div
           className={cn(
-            'relative z-30 h-36 overflow-hidden bg-[#151515] p-4 transition-colors duration-300',
-            'before:absolute before:bottom-full before:left-0 before:-z-[1] before:h-full before:w-full before:transform before:bg-[#e62429] before:transition-transform before:duration-300 before:group-hover:translate-y-full',
-            'after:absolute after:bottom-0 after:right-0 after:z-40 after:border-r-[12px] after:border-t-[12px] after:border-r-white after:border-t-transparent',
+            'relative z-30 h-36 overflow-hidden bg-gray-900 p-4 transition-colors duration-300',
+            'before:absolute before:bottom-full before:left-0 before:-z-[1] before:h-full before:w-full before:transform before:bg-secondary before:transition-transform before:duration-300 before:group-hover:translate-y-full',
+            'after:absolute after:bottom-0 after:right-0 after:z-40 after:border-r-[12px] after:border-t-[12px] after:border-r-background after:border-t-transparent',
           )}
         >
           <p className="text-sm font-semibold uppercase tracking-[1px] text-white">

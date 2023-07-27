@@ -5,6 +5,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Loader2,
+  SunMedium,
+  Moon,
+  Laptop,
 } from 'lucide-react'
 
 export const Icons = {
@@ -13,4 +16,7 @@ export const Icons = {
   ChevronLeft,
   ChevronRight,
   Spinner: Loader2,
+  Sun: SunMedium,
+  Moon,
+  Laptop,
 }

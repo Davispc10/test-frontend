@@ -62,7 +62,7 @@ export const OrderBySelect = () => {
           <SelectValue placeholder="Ordenar por" />
         </SelectTrigger>
 
-        <SelectContent>
+        <SelectContent align="end">
           <SelectGroup>
             {options.map((option) => (
               <SelectItem key={option.value} value={option.value}>

@@ -13,6 +13,9 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
+const selectTriggerClassName =
+  'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
+
 const NativeSelect = React.forwardRef<
   React.ElementRef<'select'>,
   React.ComponentPropsWithoutRef<'select'> & { wrapperClassName?: string }
@@ -20,10 +23,7 @@ const NativeSelect = React.forwardRef<
   <div className={cn('relative w-full', wrapperClassName)}>
     <select
       ref={ref}
-      className={cn(
-        'flex h-10 w-full appearance-none items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-        className,
-      )}
+      className={cn(selectTriggerClassName, 'appearance-none', className)}
       {...props}
     />
 
@@ -41,10 +41,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-      className,
-    )}
+    className={cn(selectTriggerClassName, className)}
     {...props}
   >
     {children}
