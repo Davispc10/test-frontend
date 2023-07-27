@@ -12,7 +12,27 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        marvel: {
+          primary: '#e23636',
+          white: '#fff',
+        },
+        dark: '#202020',
+      },
+      fontFamily: {
+        marvel: ['marvel', 'sans-serif'],
+      },
+      keyframes: {
+        scaleIn: {
+          '0%': { transform: 'scale(0)', opacity: 0 },
+          '50%': { transform: 'scale(1.2)', opacity: 1 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+      },
+      animation: {
+        scaleIn: 'scaleIn 0.3s ease-in-out',
+      },
     },
   },
   plugins: [],
-}
+};
