@@ -28,7 +28,7 @@ body {
 
 .bg-image-marvel::before {    
     content: "";
-    background-image: url('/teste.jpg');
+    background-image: url('/backgroundMain.jpg');
     background-size: cover;
     position: absolute;
     top: 0;
