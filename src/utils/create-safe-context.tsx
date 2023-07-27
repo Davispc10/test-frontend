@@ -1,4 +1,5 @@
-import * as React from 'react'
+'use client'
+import { createContext, useContext } from 'react'
 
 type ProviderProps<ContextValue> = {
   value: ContextValue
@@ -6,10 +7,10 @@ type ProviderProps<ContextValue> = {
 }
 
 export const createSafeContext = <ContextValue,>(errorMessage: string) => {
-  const Context = React.createContext<ContextValue | null>(null)
+  const Context = createContext<ContextValue | null>(null)
 
   const useSafeContext = () => {
-    const ctx = React.useContext(Context)
+    const ctx = useContext(Context)
 
     if (ctx === null) {
       throw new Error(errorMessage)
