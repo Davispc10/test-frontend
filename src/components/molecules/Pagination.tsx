@@ -8,6 +8,7 @@ import { changePage } from "@/redux/features/querySlice";
 const Pagination = () => {
   const dispatch = useDispatch()
   const page = useSelector((state: RootState) => state.query.page)
+  const totalPages = useSelector((state: RootState) => state.query.pageTotal)
 
   const handlePageAdvance = () => {
     dispatch(changePage({ page: page + 1 }));
@@ -41,7 +42,10 @@ const Pagination = () => {
           <button onClick={handlePageReturn}>Anterior</button>
         }
         {renderPagination()}
-        <button onClick={handlePageAdvance}>Próximo</button>
+        {
+          totalPages > page &&
+          <button onClick={handlePageAdvance}>Próximo</button>
+        }
       </div>
     </div>
   );

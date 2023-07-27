@@ -11,7 +11,7 @@ export default function TableHeader({ className, items }: TableHeaderProps) {
             key={`${item.title && item.title.toLowerCase().replace(/\s+/g, '')}_${index}`}
             type='title'
             title={item.title}
-            className="w-1/4"
+            className="w-1/5"
           >
             {item.value}
           </TableItem>

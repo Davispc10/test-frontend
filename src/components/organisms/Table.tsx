@@ -5,7 +5,6 @@ import TableBody from '@/components/molecules/TableBody';
 import TableHeader from '@/components/molecules/TableHeader';
 import { HeroProps } from '@/utils/types';
 import { useEffect, useState } from 'react'
-import { useQuery } from 'react-query';
 import { Md5 } from 'ts-md5';
 import InputSearch from '../atoms/InputSearch';
 import { titleHeader } from '@/utils/titlesHeader';
@@ -25,52 +24,67 @@ export default function Table() {
   const ts = Number(new Date());
   let hash = Md5.hashStr(`${ts}${PRIVATE_KEY}${PUBLIC_KEY}`);
 
-  const getHeros = async () => {
-    const res = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${ts}${searchName ? `&nameStartsWith=${searchName}` : ''}&orderBy=name&limit=${limit}&offset=${page * limit}&apikey=${PUBLIC_KEY}&hash=${hash}`)
-    return await res.json()
-  }
+  useEffect(() => {
+    // Refatorar funções e limitar suas atividades
+    const getHeros = async () => {
+      const res = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${ts}${searchName ? `&nameStartsWith=${searchName}` : ''}&orderBy=name&limit=${limit}&offset=${page * limit}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+      const data = await res.json();
+      let paginas = Math.round(data.data.total / limit);
+      dispatch(changePageTotal({ pageTotal: paginas }));
+      if (pageTotal === 0) {
+        dispatch(changePage({ page: 0 }));
+      }
+      setHeros((prevHeros) => {
+        const updatedHeros = data.data.results.map((hero: HeroProps) => {
+          const heroExists = prevHeros.some((existingHero: HeroProps) => existingHero.id === hero.id);
+          if (!heroExists) {
+            const imageUrl = hero.thumbnail.path;
+            const parts = imageUrl.split('/');
+            const finalValue = parts[parts.length - 1];
+            if (!hero.description) {
+              hero.description = 'Descrição não informada';
+            }
+            if (finalValue === 'image_not_available') {
+              hero.thumbnail.path = 'https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-4';
+              hero.thumbnail.extension = 'png';
+            }
+            return hero;
+          }
+          return null;
+        }).filter(Boolean);
 
-  const { data, error, isLoading, isSuccess } = useQuery('heros', getHeros);
+        return [...prevHeros, ...updatedHeros];
+      })
+      if (searchName) {
+        setHeros((prevHeros) => {
+          const filteredResults = prevHeros.filter((hero: HeroProps) => hero.name.toLowerCase().includes(searchName.toLowerCase()));
+          const updatedHeros = data.data.results.map((hero: HeroProps) => {
+            const heroExists = prevHeros.some((existingHero: HeroProps) => existingHero.id === hero.id);
+            if (!heroExists) {
+              const imageUrl = hero.thumbnail.path;
+              const parts = imageUrl.split('/');
+              const finalValue = parts[parts.length - 1];
+              if (!hero.description) {
+                hero.description = 'Descrição não informada';
+              }
+              if (finalValue === 'image_not_available') {
+                hero.thumbnail.path = 'https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-4';
+                hero.thumbnail.extension = 'png';
+              }
+              return hero;
+            }
+            return null;
+          }).filter(Boolean);
+          return [...filteredResults, ...updatedHeros];
+        });
+      }
+    };
+    getHeros();
+  }, [limit, page, searchName]);
 
   useEffect(() => {
-    if (page >= 0) {
-      const getHeros = async () => {
-        const res = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${ts}${searchName ? `&nameStartsWith=${searchName}` : ''}&orderBy=name&limit=${limit}&offset=${page * limit}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        const data = await res.json();
-
-        let paginas = Math.round(data.data.total / limit);
-        dispatch(changePageTotal({ pageTotal: paginas }));
-
-        setHeros((prevHeros) => {
-          if (searchName) {
-            return data.data.results;
-          } else {
-            const updatedHeros = data.data.results.map((hero: HeroProps) => {
-              const heroExists = prevHeros.some((existingHero: HeroProps) => existingHero.id === hero.id);
-              if (!heroExists) {
-                const imageUrl = hero.thumbnail.path;
-                const parts = imageUrl.split('/');
-                const finalValue = parts[parts.length - 1];
-                if (!hero.description) {
-                  hero.description = 'Descrição não informada';
-                }
-                if (finalValue === 'image_not_available') {
-                  hero.thumbnail.path = 'https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-4';
-                  hero.thumbnail.extension = 'png';
-                }
-                return hero;
-              }
-              return null;
-            }).filter(Boolean);
-
-            return [...prevHeros, ...updatedHeros];
-          }
-        });
-      };
-
-      getHeros();
-    }
-  }, [dispatch, hash, limit, page, searchName, ts]);
+    console.log(heros)
+  }, [heros])
 
   return (
     <>
@@ -80,9 +94,16 @@ export default function Table() {
         size='lg'
         placeholder='Ex: Spider-Man'
         onChangeFunction={(e) => {
+          if (!e.target.value) {
+            setHeros([])
+          }
           dispatch(changeSearchName({ searchName: e.target.value }))
         }}
       />
+      {/* 
+        Criar um componente para tabela vazia 
+        - Uma table body que receba uma linha completa e avise que não há personagens.
+      */}
       <table className='w-full'>
         <TableHeader items={titleHeader} />
         <TableBody startHeroIndex={page * limit} endHeroIndex={(page * limit) + limit} items={heros} />

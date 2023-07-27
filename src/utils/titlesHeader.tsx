@@ -21,4 +21,9 @@ export const titleHeader: TableItemProps[] = [
     title: 'Imagem',
     value: 'Imagem'
   },
+  {
+    type: 'title',
+    title: 'Detalhes',
+    value: 'Detalhes'
+  },
 ]
