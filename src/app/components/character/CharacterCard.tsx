@@ -39,7 +39,7 @@ export default function CharacterCard() {
           </div>
         </div>
       </div>
-      <div className="hero-container w-full h-full max-[1500px]:max-w-[550px]">
+      <div className="animate-move w-full h-full max-[1500px]:max-w-[550px]">
         <div className="w-full h-full parallelogram flex justify-end max-[1500px]:justify-center">
           <Image
             src="http://i.annihil.us/u/prod/marvel/i/mg/f/50/5239c22332b00.jpg"

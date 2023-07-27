@@ -28,9 +28,25 @@ module.exports = {
           '50%': { transform: 'scale(1.2)', opacity: 1 },
           '100%': { transform: 'scale(1)', opacity: 1 },
         },
+        moveEffect: {
+          '0%': { 'background-position': '0% 50%' },
+          '100%': { 'background-position': '200% 50%' },
+        },
+        move: {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(10px)' },
+        },
+        gradient: {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
       animation: {
         scaleIn: 'scaleIn 0.3s ease-in-out',
+        moveEffect: 'moveEffect 480s linear infinite',
+        move: 'move 3s ease infinite alternate',
+        gradient: 'gradient 10s ease infinite',
       },
     },
   },

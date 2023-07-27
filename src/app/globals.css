@@ -45,7 +45,6 @@ html {
 .dark-gradient {
   background: linear-gradient(45deg, #323232, #232931, #272121, #222831);
   background-size: 300% 300%;
-  animation: gradient 10s ease infinite;
   height: calc(100% - 96px);
   overflow-y: scroll;
 }
@@ -53,7 +52,6 @@ html {
 .light-comics {
   background: url('/comics-bg.png');
   background-size: contain;
-  animation: moveEffect 480s linear infinite;
   height: calc(100% - 96px);
   overflow-y: scroll;
 }
@@ -61,39 +59,5 @@ html {
 .parallelogram {
   @media (min-width: 1500px) {
     transform: skew(-8deg);
-  }
-}
-
-.hero-container {
-  animation: move 3s ease infinite alternate;
-}
-
-@keyframes moveEffect {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
-@keyframes move {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }

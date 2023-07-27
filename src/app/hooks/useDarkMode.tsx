@@ -12,7 +12,10 @@ export default function useDarkMode() {
   );
 
   const appContainerClasses = useMemo(
-    () => (isDarkMode ? 'dark-gradient text-white' : 'light-comics text-black'),
+    () =>
+      isDarkMode
+        ? 'dark-gradient animate-gradient text-white'
+        : 'light-comics animate-moveEffect text-black',
     [isDarkMode]
   );
 
