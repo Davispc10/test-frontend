@@ -22,6 +22,7 @@ const config = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
+    'plugin:@next/next/recommended',
   ],
   plugins: [
     'react',
