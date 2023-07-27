@@ -1,4 +1,4 @@
-import { getByPlaceholderText, render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Header from ".";
 
 describe("<Header />", () => {
@@ -9,7 +9,10 @@ describe("<Header />", () => {
     expect(imgContainer).toBeInTheDocument();
 
     const img = container.querySelector("div img");
+
     expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute("alt", "Logo Marvel");
+    expect(img).toHaveAttribute("src");
   });
 
   it("it should test header search input container", () => {
