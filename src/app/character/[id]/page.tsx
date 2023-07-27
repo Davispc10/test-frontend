@@ -1,11 +1,3 @@
-import Layout from '@/components/Layout';
+import CharacterDetails from '@/modules/CharacterDetails';
 
-function teste() {
-	return (
-		<Layout>
-			<h1>character Id</h1>;
-		</Layout>
-	);
-}
-
-export default teste;
+export default CharacterDetails;

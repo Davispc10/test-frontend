@@ -5,89 +5,79 @@ import characterService from '@/services/characterService';
 import Layout from '@/components/Layout';
 import CharacterCard from '@/components/CharacterCard';
 import { thumbnailVerifier, descriptionVerifier } from '../utils/handlers';
-
+import { ICharacters } from '@/interfaces';
+import { useRouter } from 'next/navigation';
 function Home() {
-	const [characters, setCharacters] = React.useState([]);
-	const [filter, setFilter] = React.useState<string>('');
+	const route = useRouter();
+	const [filter, setFilter] = React.useState<string>(
+		localStorage.getItem('search')?.toString() || '',
+	);
 
-	const result = useQuery(['characters'], () => characterService.list(filter), {
-		onSuccess: ({ data }: any) => {
-			const information = data.data.results;
-			// setCharacters([]);
-			// information.forEach((el: any) => {
-			// 	if (el.thumbnail.path.includes('image_not_available')) {
-			// 		const arroz = { ...el };
-			// 		arroz.thumbnail.path = '/images/logo';
-			// 		arroz.thumbnail.extension = 'png';
-			// 		// arroz.thumbnail.extension = '';
-			// 		setCharacters((prev) => {
-			// 			return [...prev, arroz];
-			// 		});
-			// 	} else {
-			// 		setCharacters((prev) => {
-			// 			return [...prev, el];
-			// 		});
-			// 	}
-			// });
-
-			setCharacters(information);
-		},
-		retry: false,
-		refetchOnWindowFocus: false,
+	const { data, isLoading, refetch } = useQuery({
+		queryKey: ['characters'],
+		queryFn: () => characterService.list(filter),
+		refetchOnMount: true,
+		select: (data) => data.data.data,
 	});
-	console.log(characters);
 
-	const handleClick = (event: any) => {
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
-		result.refetch();
+		refetch();
+		localStorage.setItem('search', filter);
 	};
 
-	const handleRedirect = (event: any) => {
-		console.log(event);
+	const handleRedirect = (id: any) => {
+		route.push(`/character/${id}`);
 	};
-
 	return (
 		<Layout>
 			<div className="h-full p-[8px]">
-				<form action="">
+				<form className="flex justify-center mx-auto items-center">
+					<label className='mr-[8px] cursor-pointer' htmlFor="filter">Search</label>
 					<input
-						className="border border-black rounded-[3px]"
+						className="border w-[300px] border-black rounded-[3px] mr-[8px] h-[40px] p-[4px]"
 						onChange={({ target }) => setFilter(target.value)}
 						value={filter}
 						name="filter"
+						id="filter"
 					/>
 
 					<button
 						onClick={handleClick}
-						className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-[8px] rounded"
+						className="bg-blue-700 hover:bg-blue-400 text-white font-bold p-[8px] rounded"
 					>
 						Filtrar
 					</button>
 				</form>
-				<div className="mt-[20px]">
-					{characters.length === 0 ? (
-						"There's no characters with this name"
+				<div className="mt-[20px] border border-blue-700">
+					{isLoading ? (
+						'Loading...'
 					) : (
 						<>
-							<div className="flex flex-wrap place-content-center mx-auto w-[80%] text-center border-blue-700 border">
-								{characters.map((el: any) => (
-									<div
-										className="w-300 cursor-pointer p-1 inline-block"
-										key={el.id}
-										onClick={() => handleRedirect(el.id)}
-									>
-										<CharacterCard
-											name={el.name}
-											description={descriptionVerifier(el.description)}
-											thumbnail={`${thumbnailVerifier(
-												`${el.thumbnail.path}.${el.thumbnail.extension}`,
-											)}`}
-											// thumbnail={`${el.thumbnail.path}.${el.thumbnail.extension}`}
-											comics={el.comics.available}
-										/>
+							{data?.results.length === 0 ? (
+								"There's no characters with this name"
+							) : (
+								<div className="mx-auto w-[80%]">
+									<div className="flex flex-wrap place-content-center mx-auto	text-center w-[80%]">
+										{data?.results.map((el: ICharacters) => (
+											<div
+												className="w-300 cursor-pointer p-1 inline-block"
+												key={el.id}
+												onClick={() => handleRedirect(el.id)}
+											>
+												<CharacterCard
+													name={el.name}
+													description={descriptionVerifier(el.description)}
+													thumbnail={`${thumbnailVerifier(
+														`${el.thumbnail.path}.${el.thumbnail.extension}`,
+													)}`}
+													comics={el.comics.available}
+												/>
+											</div>
+										))}
 									</div>
-								))}
-							</div>
+								</div>
+							)}
 						</>
 					)}
 				</div>

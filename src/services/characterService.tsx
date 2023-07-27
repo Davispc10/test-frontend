@@ -9,6 +9,12 @@ class CharacterService {
 			}`,
 		);
 	}
+	getById(id: any) {
+		return api.get(
+			`v1/public/characters/${id}?apikey=${apK}&ts=1&hash=${hash}`,
+		);
+	}
 }
-const char = new CharacterService();
-export default char;
+const characterService = new CharacterService();
+
+export default characterService;
