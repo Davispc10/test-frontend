@@ -38,7 +38,13 @@ export const OrderBySelect = () => {
   return (
     <>
       {/* It's better to use the native select on mobile devices because it's easier to use and it's more accessible. */}
-      <NativeSelect wrapperClassName="flex sm:hidden" defaultValue={orderBy}>
+      <NativeSelect
+        wrapperClassName="flex sm:hidden"
+        defaultValue={orderBy}
+        onChange={(event) => {
+          setQueryStringState({ [ORDER_BY_SEARCH_PARAM]: event.target.value })
+        }}
+      >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
