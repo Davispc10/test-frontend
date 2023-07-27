@@ -7,12 +7,12 @@ export default function Home() {
     <main className="container mt-10">
       <h1 className="text-4xl font-semibold">Personagens</h1>
 
-      <div className="mt-10 flex items-center justify-between">
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <SearchCharactersInput />
         <OrderBySelect />
       </div>
 
-      <div>
+      <div className="mt-10">
         <CharacterList />
       </div>
     </main>

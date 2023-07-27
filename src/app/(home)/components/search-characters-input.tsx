@@ -2,19 +2,21 @@
 
 import { useCallback } from 'react'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useIsFetching } from '@tanstack/react-query'
+import { useSearchParams } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { useCreateQueryString } from '@/hooks/use-create-query-string'
+import { Spinner } from '@/components/ui/spinner'
+import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 
-import { SEARCH_QUERY_PARAM } from '../constants'
+import { GET_CHARACTERS_QUERY_KEY_PREFIX } from '../api/get-characters'
+import { PAGE_QUERY_PARAM, SEARCH_QUERY_PARAM } from '../constants'
 
 export const SearchCharactersInput = () => {
-  const router = useRouter()
   const searchParams = useSearchParams()
-  const pathname = usePathname()
-  const createQueryString = useCreateQueryString()
+  const setQueryStringState = useSetQueryStringState()
+  const isFetching = !!useIsFetching([GET_CHARACTERS_QUERY_KEY_PREFIX])
 
   const search = searchParams.get(SEARCH_QUERY_PARAM) ?? ''
 
@@ -25,23 +27,32 @@ export const SearchCharactersInput = () => {
       const formData = new FormData(event.currentTarget)
       const search = formData.get(SEARCH_QUERY_PARAM) as string
 
-      router.push(
-        `${pathname}?${createQueryString(SEARCH_QUERY_PARAM, search)}`,
-      )
+      setQueryStringState({
+        [SEARCH_QUERY_PARAM]: search,
+        [PAGE_QUERY_PARAM]: '1',
+      })
     },
-    [createQueryString, pathname, router],
+    [setQueryStringState],
   )
 
   return (
     <form
-      className="flex w-full max-w-sm items-center space-x-2"
+      className="flex w-full items-center space-x-2 sm:max-w-sm"
       onSubmit={handleOnSubmit}
     >
-      <Input
-        placeholder="Procure por um personagem"
-        defaultValue={search}
-        name={SEARCH_QUERY_PARAM}
-      />
+      <div className="relative w-full">
+        <Input
+          placeholder="Procure por um personagem"
+          defaultValue={search}
+          name={SEARCH_QUERY_PARAM}
+        />
+
+        {isFetching && (
+          <div className="absolute inset-y-0 right-0 flex items-center pr-1">
+            <Spinner className="h-6 w-6 text-gray-200" />
+          </div>
+        )}
+      </div>
 
       <Button type="submit">Buscar</Button>
     </form>

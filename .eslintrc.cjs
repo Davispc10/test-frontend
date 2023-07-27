@@ -46,7 +46,7 @@ const config = {
           },
           {
             group: ['tailwind-merge'],
-            message: 'Please use @/lib/utils instead.',
+            message: 'Please use @/utils instead.',
           },
           {
             group: ['lucide-react'],

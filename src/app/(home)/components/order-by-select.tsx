@@ -1,8 +1,9 @@
 'use client'
 
-import { useSearchParams, useRouter, usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 import {
+  NativeSelect,
   Select,
   SelectContent,
   SelectGroup,
@@ -10,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useCreateQueryString } from '@/hooks/use-create-query-string'
+import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 
 import { ORDER_BY_DEFAULT_VALUE, ORDER_BY_SEARCH_PARAM } from '../constants'
 import { type OrderBy } from '../schemas'
@@ -28,36 +29,43 @@ const options = [
 ] satisfies Array<Option>
 
 export const OrderBySelect = () => {
-  const router = useRouter()
-  const pathname = usePathname()
   const searchParams = useSearchParams()
-  const createQueryString = useCreateQueryString()
+  const setQueryStringState = useSetQueryStringState()
 
   const orderBy = (searchParams.get(ORDER_BY_SEARCH_PARAM) ??
     ORDER_BY_DEFAULT_VALUE) as OrderBy
 
   return (
-    <Select
-      defaultValue={orderBy}
-      onValueChange={(value) => {
-        router.push(
-          `${pathname}?${createQueryString(ORDER_BY_SEARCH_PARAM, value)}`,
-        )
-      }}
-    >
-      <SelectTrigger className="max-w-max">
-        <SelectValue placeholder="Ordenar por" />
-      </SelectTrigger>
+    <>
+      {/* It's better to use the native select on mobile devices because it's easier to use and it's more accessible. */}
+      <NativeSelect wrapperClassName="flex sm:hidden" defaultValue={orderBy}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </NativeSelect>
 
-      <SelectContent>
-        <SelectGroup>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+      <Select
+        defaultValue={orderBy}
+        onValueChange={(value) => {
+          setQueryStringState({ [ORDER_BY_SEARCH_PARAM]: value })
+        }}
+      >
+        <SelectTrigger className="hidden max-w-full sm:flex sm:max-w-max">
+          <SelectValue placeholder="Ordenar por" />
+        </SelectTrigger>
+
+        <SelectContent>
+          <SelectGroup>
+            {options.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </>
   )
 }

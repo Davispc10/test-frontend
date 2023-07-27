@@ -5,13 +5,35 @@ import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 
 import { Icons } from '@/components/icons'
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 const Select = SelectPrimitive.Root
 
 const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
+
+const NativeSelect = React.forwardRef<
+  React.ElementRef<'select'>,
+  React.ComponentPropsWithoutRef<'select'> & { wrapperClassName?: string }
+>(({ className, wrapperClassName, ...props }, ref) => (
+  <div className={cn('relative w-full', wrapperClassName)}>
+    <select
+      ref={ref}
+      className={cn(
+        'flex h-10 w-full appearance-none items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+      )}
+      {...props}
+    />
+
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-[13px]">
+      <Icons.ChevronDown className="h-4 w-4 opacity-50" />
+    </div>
+  </div>
+))
+
+NativeSelect.displayName = 'NativeSelect'
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
@@ -124,4 +146,5 @@ export {
   SelectLabel,
   SelectItem,
   SelectSeparator,
+  NativeSelect,
 }

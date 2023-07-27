@@ -5,7 +5,7 @@ import { httpClient } from '@/lib/http-client'
 import { type ExtractFnReturnType } from '@/lib/react-query'
 
 import { ORDER_BY_DEFAULT_VALUE } from '../constants'
-import { characterSchema, type OrderBy } from '../schemas'
+import { type Character, characterSchema, type OrderBy } from '../schemas'
 
 const getCharactersResponseSchema = z.object({
   offset: z.number(),
@@ -30,6 +30,22 @@ type GetCharactersParams = {
 const LIMIT = 20
 const getOffset = (page: number) => (page - 1) * LIMIT
 
+const IMAGE_PLACEHOLDER_URL = '/marvel-placeholder-image'
+const IMAGE_PLACEHOLDER_EXTENSION = 'jpg'
+
+const fixCharacterImage = (character: Character): Character => {
+  const isImageNotAvailable = character.thumbnail.path.includes(
+    'image_not_available',
+  )
+
+  return {
+    ...character,
+    thumbnail: isImageNotAvailable
+      ? { path: IMAGE_PLACEHOLDER_URL, extension: IMAGE_PLACEHOLDER_EXTENSION }
+      : character.thumbnail,
+  }
+}
+
 export const getCharacters = async ({
   page,
   search,
@@ -46,19 +62,27 @@ export const getCharacters = async ({
     })
     .json<GetCharactersResponse>()
 
-  return getCharactersResponseSchema.parse(response.data)
+  const parsedData = getCharactersResponseSchema.parse(response.data)
+
+  return {
+    ...parsedData,
+    results: parsedData.results.map(fixCharacterImage),
+  } satisfies GetCharactersResponseData
 }
 
 type QueryFnType = typeof getCharacters
 
 export const GET_CHARACTERS_QUERY_KEY_PREFIX = 'get-characters'
 
+const FIVE_MINUTES = 1000 * 60 * 5
+
 export const makeCharactersQueryOptions = (params: GetCharactersParams) => {
   return {
     queryKey: [GET_CHARACTERS_QUERY_KEY_PREFIX, params],
     queryFn: () => getCharacters(params),
-    staleTime: Infinity,
-    cacheTime: Infinity,
+    staleTime: FIVE_MINUTES,
+    cacheTime: FIVE_MINUTES * 2,
+    keepPreviousData: true,
   } satisfies UseQueryOptions<ExtractFnReturnType<QueryFnType>>
 }
 
