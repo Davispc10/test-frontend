@@ -4,11 +4,12 @@ export default function InputSearch(props: InputSearchProps) {
   return (
     <div 
       className={`
-        ${props.size === 'sm' && 'w-36'} 
-        ${props.size === 'md' && 'w-52'} 
-        ${props.size === 'lg' && 'w-80'} 
-        flex flex-col gap-2`
-      }>
+        ${props.size === 'sm' && 'md:w-36'} 
+        ${props.size === 'md' && 'md:w-52'} 
+        ${props.size === 'lg' && 'md:w-80'} 
+        flex flex-col gap-2
+        w-full  
+      `}>
       <label htmlFor={props.id}>
         {props.label}
       </label>

@@ -35,16 +35,16 @@ const Pagination = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-end justify-end">
       <div className="flex gap-2 items-center justify-center">
         {
           page > 0 &&
-          <button onClick={handlePageReturn}>Anterior</button>
+          <button className="outline-none" onClick={handlePageReturn}>&larr;</button>
         }
         {renderPagination()}
         {
           totalPages > page &&
-          <button onClick={handlePageAdvance}>Próximo</button>
+          <button className="outline-none" onClick={handlePageAdvance}>&rarr;</button>
         }
       </div>
     </div>

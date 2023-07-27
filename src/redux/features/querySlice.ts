@@ -1,4 +1,4 @@
-import { QueryProps } from "@/utils/types";
+import { HeroProps, QueryProps } from "@/utils/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
@@ -7,7 +7,8 @@ const initialState: QueryProps = {
   page: 0,
   pageTotal: 0,
   limit: 10,
-  searchName: ''
+  searchName: '',
+  heros: []
 };
 
 export const QuerySlice = createSlice({
@@ -26,8 +27,14 @@ export const QuerySlice = createSlice({
     changeSearchName: (state, action: PayloadAction<{ searchName: string }>) => {
       state.searchName = action.payload.searchName
     },
+    addHeros: (state, action: PayloadAction<{ hero: HeroProps[] }>) => {
+      state.heros = action.payload.hero
+    },
+    resetHeros: (state) => {
+      state.heros = []
+    },
   }
 });
 
 export default QuerySlice.reducer;
-export const { changeLimit, changePage, changePageTotal, changeSearchName } = QuerySlice.actions;
+export const { changeLimit, changePage, changePageTotal, changeSearchName, addHeros, resetHeros } = QuerySlice.actions;

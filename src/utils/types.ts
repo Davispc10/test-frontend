@@ -18,6 +18,7 @@ export interface HeroProps {
   name: string
   description: string
   thumbnail: ThumbnailProps
+  
 }
 
 type ChildrenWithClassName = ChildrenProps & {
@@ -42,8 +43,6 @@ export type TableHeaderProps = ClassNameProps & {
 
 export type TableBodyProps = ClassNameProps & {
   items: HeroProps[]
-  startHeroIndex: number
-  endHeroIndex: number
 };
 
 export interface InputSearchProps {
@@ -59,7 +58,7 @@ export interface InputSearchProps {
   size?: 'sm' | 'md' | 'lg'
 }
 
-export interface CustomImageProps {
+export type CustomImageProps = ClassNameProps & {
   width: number
   height: number
   src: string
@@ -77,8 +76,14 @@ export interface QueryProps {
   pageTotal: number
   limit: number
   searchName: string
+  heros: HeroProps[]
 }
 
 export interface QueryStateProps {
   queryItems: QueryProps[];
+}
+
+export type ButtonProps = ClassNameProps & {
+  title: string
+  onClickFunction?: () => void
 }

@@ -3,8 +3,9 @@ import { TableItemProps } from "./types";
 export const titleHeader: TableItemProps[] = [
   {
     type: 'title',
-    title: 'ID',
-    value: 'ID'
+    title: 'Imagem',
+    value: 'Imagem',
+    className: 'hidden md:table-cell '
   },
   {
     type: 'title',
@@ -15,11 +16,6 @@ export const titleHeader: TableItemProps[] = [
     type: 'title',
     title: 'Descrição',
     value: 'Descrição'
-  },
-  {
-    type: 'title',
-    title: 'Imagem',
-    value: 'Imagem'
   },
   {
     type: 'title',

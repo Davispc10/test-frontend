@@ -5,7 +5,6 @@ export default function PageItem(props: PaginationItemProps) {
     <span
       className={`
         ${props.isActive === true ? "font-bold" : ""}
-        cursor-pointer
       `}
     >
       {props.value}
