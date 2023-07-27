@@ -174,10 +174,15 @@ const CharactersPagination = ({
   })
 
   const stableSetCount = useRef(pagination.setCount).current
+  const stableSetPage = useRef(pagination.setPage).current
 
   useEffect(() => {
     stableSetCount(total)
   }, [stableSetCount, total])
+
+  useEffect(() => {
+    stableSetPage(page)
+  }, [page, stableSetPage])
 
   return (
     <Pagination api={pagination}>

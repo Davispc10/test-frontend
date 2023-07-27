@@ -14,6 +14,7 @@ export const Header = () => {
               alt="Marvel Logo"
               height={50}
               width={120}
+              priority
             />
           </Link>
         </div>

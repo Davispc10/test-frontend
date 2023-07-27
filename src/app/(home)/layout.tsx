@@ -23,11 +23,11 @@ export default async function HomeLayout({ children }: HomeLayoutProps) {
   const serverSearchParams = getServerSearchParams()
   const queryClient = getQueryClient()
 
-  const pageSearchParam = serverSearchParams.get('page')
+  const searchParamsPage = serverSearchParams.get('page')
 
   await queryClient.prefetchQuery(
     makeCharactersQueryOptions({
-      page: pageSearchParam ? Number(pageSearchParam) : 1,
+      page: searchParamsPage ? Number(searchParamsPage) : 1,
       orderBy:
         (serverSearchParams.get('orderBy') as OrderBy) ?? DEFAULT_ORDER_BY,
       search: serverSearchParams.get('search') ?? '',
