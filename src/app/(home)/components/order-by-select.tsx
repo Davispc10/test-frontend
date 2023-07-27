@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/select'
 import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 
-import { ORDER_BY_DEFAULT_VALUE, ORDER_BY_SEARCH_PARAM } from '../constants'
+import { DEFAULT_ORDER_BY, ORDER_BY_SEARCH_PARAM } from '../constants'
 import { type OrderBy } from '../schemas'
 
 type Option = {
@@ -33,7 +33,7 @@ export const OrderBySelect = () => {
   const setQueryStringState = useSetQueryStringState()
 
   const orderBy = (searchParams.get(ORDER_BY_SEARCH_PARAM) ??
-    ORDER_BY_DEFAULT_VALUE) as OrderBy
+    DEFAULT_ORDER_BY) as OrderBy
 
   return (
     <>

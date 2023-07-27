@@ -42,7 +42,7 @@ export const SearchCharactersInput = () => {
     >
       <div className="relative w-full">
         <Input
-          placeholder="Procure por um personagem"
+          placeholder="Buscar personagem"
           defaultValue={search}
           name={SEARCH_QUERY_PARAM}
         />

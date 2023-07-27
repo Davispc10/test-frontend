@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { httpClient } from '@/lib/http-client'
 import { type ExtractFnReturnType } from '@/lib/react-query'
 
-import { ORDER_BY_DEFAULT_VALUE } from '../constants'
+import { DEFAULT_ORDER_BY } from '../constants'
 import { type Character, characterSchema, type OrderBy } from '../schemas'
 
 const getCharactersResponseSchema = z.object({
@@ -15,7 +15,9 @@ const getCharactersResponseSchema = z.object({
   results: z.array(characterSchema),
 })
 
-type GetCharactersResponseData = z.infer<typeof getCharactersResponseSchema>
+export type GetCharactersResponseData = z.infer<
+  typeof getCharactersResponseSchema
+>
 
 type GetCharactersResponse = {
   data: GetCharactersResponseData
@@ -49,8 +51,10 @@ const fixCharacterImage = (character: Character): Character => {
 export const getCharacters = async ({
   page,
   search,
-  orderBy = ORDER_BY_DEFAULT_VALUE,
+  orderBy = DEFAULT_ORDER_BY,
 }: GetCharactersParams) => {
+  await new Promise((resolve) => setTimeout(resolve, 2000))
+
   const response = await httpClient
     .get('characters', {
       searchParams: {
@@ -88,5 +92,5 @@ export const makeCharactersQueryOptions = (params: GetCharactersParams) => {
 
 export const useGetCharactersQuery = (params: GetCharactersParams) => {
   // eslint-disable-next-line @tanstack/query/prefer-query-object-syntax
-  return useQuery(makeCharactersQueryOptions(params))
+  return useQuery({ ...makeCharactersQueryOptions(params) })
 }

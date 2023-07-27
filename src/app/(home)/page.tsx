@@ -12,9 +12,7 @@ export default function Home() {
         <OrderBySelect />
       </div>
 
-      <div className="mt-10">
-        <CharacterList />
-      </div>
+      <CharacterList />
     </main>
   )
 }

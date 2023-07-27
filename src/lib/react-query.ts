@@ -1,8 +1,8 @@
 import {
   QueryClient,
+  type DefaultOptions,
   type UseMutationOptions,
   type UseQueryOptions,
-  type DefaultOptions,
 } from '@tanstack/react-query'
 import type { HTTPError } from 'ky'
 

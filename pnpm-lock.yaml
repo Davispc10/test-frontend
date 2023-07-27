@@ -10,6 +10,7 @@ specifiers:
   '@testing-library/jest-dom': ^5.17.0
   '@testing-library/react': ^14.0.0
   '@testing-library/user-event': ^14.4.3
+  '@types/md5': ^2.3.2
   '@types/node': 20.4.5
   '@types/react': 18.2.16
   '@types/react-dom': 18.2.7
@@ -34,6 +35,7 @@ specifiers:
   jsdom: ^22.1.0
   ky: ^0.33.3
   lucide-react: ^0.263.1
+  md5: ^2.3.0
   next: 13.4.12
   next-themes: ^0.2.1
   postcss: 8.4.27
@@ -65,6 +67,7 @@ dependencies:
   eslint-config-next: 13.4.12_ko3fmmbeyij36muomfgt2u76xu
   ky: 0.33.3
   lucide-react: 0.263.1_react@18.2.0
+  md5: 2.3.0
   next: 13.4.12_biqbaboplfbrettd7655fr4n2y
   next-themes: 0.2.1_54ux7fu2vrztxgcjbkegvwjefy
   postcss: 8.4.27
@@ -82,6 +85,7 @@ devDependencies:
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 14.4.3
+  '@types/md5': 2.3.2
   '@types/testing-library__jest-dom': 5.14.9
   '@typescript-eslint/eslint-plugin': 6.2.0_w3tbsvtiyibnil5vzurrrrj72m
   '@typescript-eslint/parser': 6.2.0_ko3fmmbeyij36muomfgt2u76xu
@@ -1283,6 +1287,10 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
 
+  /@types/md5/2.3.2:
+    resolution: {integrity: sha512-v+JFDu96+UYJ3/UWzB0mEglIS//MZXgRaJ4ubUPwOM0gvLc/kcQ3TWNYwENEK7/EcXGQVrW8h/XqednSjBd/Og==}
+    dev: true
+
   /@types/node/20.4.5:
     resolution: {integrity: sha512-rt40Nk13II9JwQBdeYqmbn2Q6IVTA5uPhvSO+JVqdXw/6/4glI6oR9ezty/A9Hg5u7JH4OmYmuQ+XvjKm0Datg==}
 
@@ -1952,6 +1960,10 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
+  /charenc/0.0.2:
+    resolution: {integrity: sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==}
+    dev: false
+
   /check-error/1.0.2:
     resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
 
@@ -2034,6 +2046,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  /crypt/0.0.2:
+    resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
+    dev: false
 
   /css.escape/1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
@@ -3116,6 +3132,10 @@ packages:
       call-bind: 1.0.2
       has-tostringtag: 1.0.0
 
+  /is-buffer/1.1.6:
+    resolution: {integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==}
+    dev: false
+
   /is-callable/1.2.7:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
@@ -3509,6 +3529,14 @@ packages:
     dependencies:
       semver: 7.5.4
     dev: true
+
+  /md5/2.3.0:
+    resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
+    dev: false
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}

@@ -23,7 +23,7 @@ import {
   useGetCharactersQuery,
 } from '../api/get-characters'
 import {
-  ORDER_BY_DEFAULT_VALUE,
+  DEFAULT_ORDER_BY,
   ORDER_BY_SEARCH_PARAM,
   PAGE_QUERY_PARAM,
   SEARCH_QUERY_PARAM,
@@ -35,7 +35,7 @@ export const CharacterList = () => {
   const queryClient = useQueryClient()
 
   const orderBy = (searchParams.get(ORDER_BY_SEARCH_PARAM) ??
-    ORDER_BY_DEFAULT_VALUE) as OrderBy
+    DEFAULT_ORDER_BY) as OrderBy
 
   const search = searchParams.get(SEARCH_QUERY_PARAM) ?? ''
   const searchParamsPage = searchParams.get(PAGE_QUERY_PARAM)
