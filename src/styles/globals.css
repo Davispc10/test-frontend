@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.heroCard {
+		@apply grid grid-cols-2 grid-rows-5 xl:grid-cols-5 xl:grid-rows-2 border-black border-2 
+    gap-1 rounded-lg shadow-xl p-1 mb-6 bg-red-600 hover:text-black w-[400px] h-[900px] 
+    sm:w-[550px] lg:w-[800px] xl:h-[800px] xl:w-11/12;
+	}
+	.loadingCard {
+		@apply flex justify-center items-center border-white border-2 rounded-lg 
+    w-[400px] h-[900px] sm:w-[550px] lg:w-[800px] xl:h-[800px] xl:w-11/12 mb-6;
+	}
+}
+
+@layer components {
+	#__next {
+		@apply w-full flex flex-col;
+	}
+	html,
+	body {
+		@apply h-full max-h-full overflow-x-hidden;
+	}
+}
+
+:root {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #f5f5f5;
+
+	width: 100vw;
+}
+
+.page-link {
+	position: relative;
+	display: inline-flex;
+	border: 1px solid #dee2e6;
+	background-color: #ffffff49;
+	padding: 10px 15px;
+	color: #020202;
+	font-size: 16px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out;
+	cursor: pointer;
+}
+
+.page-link:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.page-link:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.page-link:not(:first-child) {
+	margin-left: -1px;
+}
+
+.page-link:hover,
+.page-link:focus {
+	color: #ffffff;
+	background-color: #ec1d24;
+}
+
+.page-link:focus {
+	z-index: 3;
+}
+
+.page-link.active {
+	z-index: 2;
+	color: #ffffff;
+	border-color: black;
+	background-color: #ec1d24;
+}
+
+.page-link.disabled {
+	color: #000000;
+	pointer-events: none;
+}
