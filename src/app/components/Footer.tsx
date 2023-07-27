@@ -3,11 +3,11 @@
 import useDarkMode from '../hooks/useDarkMode';
 
 export default function Footer() {
-  const { headerFooterClasses } = useDarkMode();
+  const { colorClasses } = useDarkMode();
 
   return (
     <div
-      className={`${headerFooterClasses} h-8 flex items-center justify-center gap-x-2 text-base font-medium`}
+      className={`${colorClasses} h-8 flex items-center justify-center gap-x-2 text-base font-medium`}
     >
       <h3>
         Made with{' '}

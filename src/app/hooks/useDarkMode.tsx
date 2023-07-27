@@ -6,16 +6,27 @@ import { FaSun } from 'react-icons/fa';
 export default function useDarkMode() {
   const { setIsDarkMode, isDarkMode } = useContext(ContextWrapper);
 
-  const headerFooterClasses = useMemo(
+  const colorClasses = useMemo(
     () => (isDarkMode ? 'bg-dark text-white' : 'bg-marvel-primary text-white'),
     [isDarkMode]
   );
 
   const appContainerClasses = useMemo(
-    () =>
-      isDarkMode ? 'dark-gradient text-white' : 'light-gradient text-black',
+    () => (isDarkMode ? 'dark-gradient text-white' : 'light-comics text-black'),
     [isDarkMode]
   );
+
+  const characterContainerClasses = useMemo(
+    () =>
+      !isDarkMode && 'bg-[#f2f2f2] w-fit p-5 rounded-lg shadow-3xl border-4',
+    [isDarkMode]
+  );
+
+  const setDarkMode = useCallback(() => {
+    typeof window !== 'undefined' &&
+      localStorage.setItem('darkMode', `${!isDarkMode}`);
+    setIsDarkMode(!isDarkMode);
+  }, [isDarkMode, setIsDarkMode]);
 
   const DarkModeIcons = useCallback(() => {
     return (
@@ -30,13 +41,7 @@ export default function useDarkMode() {
         )}
       </div>
     );
-  }, [isDarkMode]);
-
-  function setDarkMode() {
-    typeof window !== 'undefined' &&
-      localStorage.setItem('darkMode', `${!isDarkMode}`);
-    setIsDarkMode(!isDarkMode);
-  }
+  }, [isDarkMode, setDarkMode]);
 
   function handleDarkModeChange() {
     const darkMode =
@@ -50,8 +55,9 @@ export default function useDarkMode() {
 
   return {
     handleDarkModeChange,
-    headerFooterClasses,
-    appContainerClasses,
     DarkModeIcons,
+    colorClasses,
+    appContainerClasses,
+    characterContainerClasses,
   };
 }

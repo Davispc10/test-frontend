@@ -13,7 +13,7 @@ export default function AppContainer({ children }: AppContainerProps) {
 
   useEffect(() => {
     handleDarkModeChange();
-  }, []);
+  }, [handleDarkModeChange]);
 
   return (
     <div className={`${appContainerClasses}`}>
