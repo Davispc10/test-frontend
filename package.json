@@ -10,7 +10,7 @@
     "prepare": "husky install",
     "cy:open": "cypress open",
     "cy:headless": "cypress run --headless",
-    "test:all": "npm run lint && npm run cy:headless && npx prettier --write .",
+    "check": "npm run lint && npm run cy:headless",
     "commit": "cz"
   },
   "dependencies": {
