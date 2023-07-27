@@ -11,7 +11,7 @@ export const HeroDetails: FC<HeroProps> = ({ thumbnail, name, description }) => 
   return (
     <div className="grid h-full border-4 border-black rounded-md bg-red-900">
       <div className="grid-row-2 p-4 rounded-md bg-red-800">
-        <div className="flex flex-col items-center justify-center">
+        <picture className="flex flex-col items-center justify-center">
           <img
             onError={handleImageError}
             className="w-44 h-44 border-2 border-black rounded-full mb-4"
@@ -21,7 +21,7 @@ export const HeroDetails: FC<HeroProps> = ({ thumbnail, name, description }) => 
           <p className="text-center text-4xl">
             {name}
           </p>
-        </div>
+        </picture>
         <div className="flex justify-center items-center mt-4">
           <Comics />
         </div>

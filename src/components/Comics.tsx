@@ -30,10 +30,13 @@ export const Comics = () => {
           data!.slice(0,5).map((comic: Comic) => {
             return (
               <a href={`${comic.thumbnail.path}.jpg`} key={comic.id} target='blank'>
-                <img 
-                  className="h-20 w-12 xs:h-28 xs:w-20 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
-                  src={`${comic.thumbnail.path}.jpg`} 
-                />            
+                <picture>
+                  <img 
+                    className="h-20 w-12 xs:h-28 xs:w-20 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
+                    src={`${comic.thumbnail.path}.jpg`}
+                    alt='' 
+                  />            
+                </picture>
               </a>
             )
           })
