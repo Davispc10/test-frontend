@@ -9,6 +9,14 @@ export const defaultComicsMessage = "No Comics Available";
 export const publicKey: string = process.env.NEXT_PUBLIC_PUBLIC_KEY!;
 export const privateKey: string = process.env.NEXT_PUBLIC_PRIVATE_KEY!;
 
+export function imageUrl (image: string) {
+  if(image.includes("not_available")) {
+    return marvelLogo
+  } else {
+    return image
+  }
+} 
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { HeroProps } from "../../utils/interfaces";
-import { handleImageError, marvelLogo } from "../../utils/utils";
+import { handleImageError, imageUrl } from "../../utils/utils";
 
 export const HeroCard: FC<HeroProps> = ({ image, className, name }) => {
-  const imageUrl: string = image!.includes("not_available") ? marvelLogo : image!;
+  const src = imageUrl(image!)
 
   return (
     <div className="w-full h-full">
@@ -11,7 +11,7 @@ export const HeroCard: FC<HeroProps> = ({ image, className, name }) => {
         <picture>
           <img
             onError={handleImageError}
-            src={`${imageUrl}.jpg`}
+            src={`${src}.jpg`}
             className="h-32 w-32 xl:h-52 xl:w-52 mb-2 rounded-full border border-black"
             alt=""
           />
