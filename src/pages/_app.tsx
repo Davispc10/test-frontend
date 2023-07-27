@@ -5,7 +5,10 @@ import { NavBar } from '../components/NavBar';
 
 import '../styles/globals.css';
 
-const MyApp = ({ Component, pageProps }) => {
+import type { ReactNode } from 'react';
+import type { AppProps } from 'next/app';
+
+const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   return (
     <QueryClientProvider client={queryClient}>
       <NavBar />
