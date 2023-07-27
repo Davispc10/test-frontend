@@ -19,9 +19,11 @@ const ApplicationContainer: NextPage<Props> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <ToastContainer />
-        <Loading />
-        <HooksGrouper>{children}</HooksGrouper>
+        <HooksGrouper>
+          <ToastContainer />
+          <Loading />
+          {children}
+        </HooksGrouper>
       </Provider>
     </QueryClientProvider>
   );
