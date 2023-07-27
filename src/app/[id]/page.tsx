@@ -1,4 +1,4 @@
-import CharacterCard from "../components/character/CharacterCard";
+import CharacterCard from '../components/character/CharacterCard';
 
 export default function TaskDetails({
   params,
