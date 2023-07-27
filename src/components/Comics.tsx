@@ -18,21 +18,21 @@ export const Comics = () => {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col w-full justify-center items-center">
       <p className="mb-1 text-black text-md">
         Comics
       </p>
       {isLoading && (
         <CircleNotch className="h-12 w-12 animate-spin text-red-500" />
       )}
-      <div className="flex flex-row">
+      <div className="flex flex-row w-full justify-center">
         {data?.length! > 0 && (
           data!.slice(0,5).map((comic: Comic) => {
             return (
               <a href={`${comic.thumbnail.path}.jpg`} key={comic.id} target='blank'>
                 <picture>
                   <img 
-                    className="h-20 w-12 xs:h-28 xs:w-20 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
+                    className="h-24 w-12 xs:h-28 xs:w-16 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
                     src={`${comic.thumbnail.path}.jpg`}
                     alt='' 
                   />            
