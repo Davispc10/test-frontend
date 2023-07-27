@@ -9,16 +9,31 @@ import { ICharacters } from '@/interfaces';
 import { useRouter } from 'next/navigation';
 function Home() {
 	const route = useRouter();
-	const [filter, setFilter] = React.useState<string>(
-		localStorage.getItem('search')?.toString() || '',
-	);
+	// const [filter, setFilter] = React.useState<string>(
+	// 	localStorage?.getItem('search') || '',
+	// );
+	const [filter, setFilter] = React.useState<string>('');
 
-	const { data, isLoading, refetch } = useQuery({
+	const {
+		data,
+		isLoading,
+		refetch,
+		fetchStatus,
+	} = useQuery({
 		queryKey: ['characters'],
 		queryFn: () => characterService.list(filter),
-		refetchOnMount: true,
+		refetchOnMount: false,
 		select: (data) => data.data.data,
 	});
+
+	React.useEffect(() => {
+		if (fetchStatus === 'fetching') {
+			const ls = localStorage.getItem('search') as string;
+			setFilter(ls);
+			console.log('oi');
+		}
+		refetch();
+	}, [data]);
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
@@ -33,7 +48,9 @@ function Home() {
 		<Layout>
 			<div className="h-full p-[8px]">
 				<form className="flex justify-center mx-auto items-center">
-					<label className='mr-[8px] cursor-pointer' htmlFor="filter">Search</label>
+					<label className="mr-[8px] cursor-pointer" htmlFor="filter">
+						Search
+					</label>
 					<input
 						className="border w-[300px] border-black rounded-[3px] mr-[8px] h-[40px] p-[4px]"
 						onChange={({ target }) => setFilter(target.value)}
