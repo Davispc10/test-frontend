@@ -8,6 +8,7 @@ import {
   SunMedium,
   Moon,
   Laptop,
+  Circle,
 } from 'lucide-react'
 
 export const Icons = {
@@ -19,4 +20,5 @@ export const Icons = {
   Sun: SunMedium,
   Moon,
   Laptop,
+  Circle,
 }
