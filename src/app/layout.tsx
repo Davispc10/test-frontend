@@ -5,6 +5,8 @@ import { Fira_Code } from "next/font/google";
 
 const inter = Fira_Code({ subsets: ["latin"] });
 
+import "./globals.css";
+
 export const metadata: Metadata = {
   title: "Marvel Project",
   description: "Marvel project for FrontEnd Test",
