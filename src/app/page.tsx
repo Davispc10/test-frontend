@@ -5,8 +5,7 @@ import Footer from './homePage/footer/footer'
 
 export default function Home() {
   return (
-    <div className="grid w-screen h-screen items-center bg-image-marvel"
-      >
+    <div className="grid w-screen h-screen items-center bg-image-marvel bg-repeat">
       <Header />
       <Main />
       <Footer />
