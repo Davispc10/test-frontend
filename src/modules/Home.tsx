@@ -7,21 +7,16 @@ import CharacterCard from '@/components/CharacterCard';
 import { thumbnailVerifier, descriptionVerifier } from '../utils/handlers';
 import { ICharacters } from '@/interfaces';
 import { useRouter } from 'next/navigation';
+import ReactPaginate from 'react-paginate';
 function Home() {
 	const route = useRouter();
-	// const [filter, setFilter] = React.useState<string>(
-	// 	localStorage?.getItem('search') || '',
-	// );
 	const [filter, setFilter] = React.useState<string>('');
+	const [offset, setOffset] = React.useState(0);
+	const [select, setSelected] = React.useState(1);
 
-	const {
-		data,
-		isLoading,
-		refetch,
-		fetchStatus,
-	} = useQuery({
-		queryKey: ['characters'],
-		queryFn: () => characterService.list(filter),
+	const { data, isLoading, refetch, fetchStatus } = useQuery({
+		queryKey: ['characters', offset],
+		queryFn: () => characterService.list(filter, offset),
 		refetchOnMount: false,
 		select: (data) => data.data.data,
 	});
@@ -30,7 +25,6 @@ function Home() {
 		if (fetchStatus === 'fetching') {
 			const ls = localStorage.getItem('search') as string;
 			setFilter(ls);
-			console.log('oi');
 		}
 		refetch();
 	}, [data]);
@@ -44,6 +38,32 @@ function Home() {
 	const handleRedirect = (id: any) => {
 		route.push(`/character/${id}`);
 	};
+
+	const handlePageChange = (e: any) => {
+		const { isNext, isPrevious, nextSelectedPage, selected } = e;
+		console.log('console geral', {
+			isNext,
+			isPrevious,
+			nextSelectedPage,
+			selected,
+		});
+		console.log(select);
+
+		if (isNext && offset <= data.total - data.limit) {
+			return setOffset((prev) => prev + data.limit);
+		}
+		if (isPrevious && offset > 0) {
+			return setOffset((prev) => prev - data.limit);
+		}
+
+		if (typeof nextSelectedPage === 'number') {
+			return setOffset(nextSelectedPage * data.limit || 0);
+		}
+	};
+
+	console.log('offset', offset);
+	console.log(select);
+
 	return (
 		<Layout>
 			<div className="h-full p-[8px]">
@@ -66,7 +86,7 @@ function Home() {
 						Filtrar
 					</button>
 				</form>
-				<div className="mt-[20px] border border-blue-700">
+				<div className="mt-[20px] ">
 					{isLoading ? (
 						'Loading...'
 					) : (
@@ -97,6 +117,21 @@ function Home() {
 							)}
 						</>
 					)}
+					<ReactPaginate
+						className="flex m-auto text-lg justify-around items-center w-2/4 mt-[20px]"
+						onClick={(e) => handlePageChange(e)}
+						pageCount={Math.ceil(data?.total / data?.limit)}
+						renderOnZeroPageCount={null}
+						pageRangeDisplayed={3}
+						previousLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
+						nextLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
+						pageClassName="border border-black rounded w-fit px-[8px]"
+						// disabledClassName="disabled"
+						// onPageChange={({ selected }) => setSelected(selected + 1)}
+						// containerClassName="border border-black"
+						// breakClassName={'page'}
+						// activeClassName={'active'}
+					/>
 				</div>
 			</div>
 		</Layout>

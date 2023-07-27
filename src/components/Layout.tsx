@@ -22,7 +22,7 @@ function Layout({ children }: React.PropsWithChildren) {
 					</Link>
 				</div>
 			</div>
-			<div className="w-[80%] mx-auto border border-black">{children}</div>
+			<div className="w-[80%] mx-auto ">{children}</div>
 		</div>
 	);
 }
