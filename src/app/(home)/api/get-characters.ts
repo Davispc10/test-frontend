@@ -2,7 +2,7 @@ import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
 import { z } from 'zod'
 
 import { httpClient } from '@/lib/http-client'
-import { type ExtractFnReturnType } from '@/lib/react-query'
+import { type ExtractFnReturnType } from '@/lib/query-client'
 
 import { DEFAULT_ORDER_BY } from '../constants'
 import { type Character, characterSchema, type OrderBy } from '../schemas'

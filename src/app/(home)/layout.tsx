@@ -3,7 +3,7 @@ import { cache } from 'react'
 import { Hydrate, dehydrate } from '@tanstack/react-query'
 import { headers } from 'next/headers'
 
-import getQueryClient from '@/lib/react-query.server'
+import getQueryClient from '@/lib/query-client.server'
 
 import { makeCharactersQueryOptions } from './api/get-characters'
 import { DEFAULT_ORDER_BY } from './constants'

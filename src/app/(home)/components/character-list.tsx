@@ -73,7 +73,7 @@ export const CharacterList = () => {
   if (data.total === 0) {
     return (
       <p className="text-center text-xl">
-        Desculpa, não encontramos nenhum personagem com o nome{' '}
+        Sorry, we couldn&apos;t find any character matching
         <strong>&quot;{search}&quot;</strong>
       </p>
     )

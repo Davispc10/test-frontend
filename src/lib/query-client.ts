@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-query'
 import type { HTTPError } from 'ky'
 
-const queryConfig: DefaultOptions = {
+export const queryConfig: DefaultOptions = {
   queries: {
     refetchOnWindowFocus: false,
     retry: false,

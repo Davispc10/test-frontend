@@ -13,8 +13,8 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: 'Personagens da Marvel',
-  description: 'Lista de personagens da Marvel',
+  title: 'Marvel Characters',
+  description: 'A list of Marvel characters.',
 }
 
 type RootLayoutProps = {

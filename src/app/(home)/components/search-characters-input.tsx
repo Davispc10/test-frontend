@@ -42,7 +42,7 @@ export const SearchCharactersInput = () => {
     >
       <div className="relative w-full">
         <Input
-          placeholder="Buscar personagem"
+          placeholder="Search characters"
           defaultValue={search}
           name={SEARCH_QUERY_PARAM}
         />
@@ -54,7 +54,7 @@ export const SearchCharactersInput = () => {
         )}
       </div>
 
-      <Button type="submit">Buscar</Button>
+      <Button type="submit">Search</Button>
     </form>
   )
 }

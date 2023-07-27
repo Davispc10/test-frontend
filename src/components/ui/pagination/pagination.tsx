@@ -24,18 +24,10 @@ type PaginationProps = {
   api: ReturnType<typeof pagination.connect>
 }
 
-export const usePagination = (
-  props: Omit<pagination.Context, 'translations'>,
-) => {
+export const usePagination = (props: pagination.Context) => {
   const [state, send] = useMachine(
     pagination.machine({
       ...props,
-      translations: {
-        rootLabel: 'Paginação',
-        nextPageTriggerLabel: 'Próxima página',
-        prevPageTriggerLabel: 'Página anterior',
-        pageTriggerLabel: ({ page }) => `Página ${page}`,
-      },
     }),
   )
 
@@ -79,7 +71,7 @@ export const PaginationPrevious = ({
         {...api.prevPageTriggerProps}
       >
         <Icons.ChevronLeft className="h-5 w-5" aria-hidden="true" />
-        <span className={cn(!showLabel && 'sr-only')}>Anterior</span>
+        <span className={cn(!showLabel && 'sr-only')}>Previous</span>
       </Link>
     </li>
   )
@@ -102,7 +94,7 @@ export const PaginationNext = ({
         )}
         {...api.nextPageTriggerProps}
       >
-        <span className={cn(!showLabel && 'sr-only')}>Próximo</span>
+        <span className={cn(!showLabel && 'sr-only')}>Next</span>
         <Icons.ChevronRight className="h-5 w-5" aria-hidden="true" />
       </Link>
     </li>

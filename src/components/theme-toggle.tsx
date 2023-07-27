@@ -14,9 +14,9 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 const items = [
-  { label: 'Claro', value: 'light', Icon: Icons.Sun },
-  { label: 'Escuro', value: 'dark', Icon: Icons.Moon },
-  { label: 'Sistema', value: 'system', Icon: Icons.Laptop },
+  { label: 'Light', value: 'light', Icon: Icons.Sun },
+  { label: 'Dark', value: 'dark', Icon: Icons.Moon },
+  { label: 'System', value: 'system', Icon: Icons.Laptop },
 ]
 
 export const ThemeToggle = () => {
@@ -28,7 +28,7 @@ export const ThemeToggle = () => {
         <Button variant="ghost" size="icon">
           <Icons.Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Icons.Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Alterar tema</span>
+          <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
 

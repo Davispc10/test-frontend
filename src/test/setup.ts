@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import '@testing-library/jest-dom'
 
-import { queryClient } from '@/lib/react-query'
+import { queryClient } from '@/lib/query-client'
 
 afterEach(() => {
   queryClient.clear()

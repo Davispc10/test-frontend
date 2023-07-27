@@ -22,10 +22,10 @@ type Option = {
 }
 
 const options = [
-  { value: 'name', label: 'Nome (A-Z)' },
-  { value: '-name', label: 'Nome (Z-A)' },
-  { value: 'modified', label: 'Data de modificação (Mais antigo)' },
-  { value: '-modified', label: 'Data de modificação (Mais recente)' },
+  { value: 'name', label: 'Name (A-Z)' },
+  { value: '-name', label: 'Name (Z-A)' },
+  { value: 'modified', label: 'Modified date (Oldest)' },
+  { value: '-modified', label: 'Modified date (Newest)' },
 ] satisfies Array<Option>
 
 export const OrderBySelect = () => {
@@ -59,7 +59,7 @@ export const OrderBySelect = () => {
         }}
       >
         <SelectTrigger className="hidden max-w-full sm:flex sm:max-w-max">
-          <SelectValue placeholder="Ordenar por" />
+          <SelectValue placeholder="Order by" />
         </SelectTrigger>
 
         <SelectContent align="end">
