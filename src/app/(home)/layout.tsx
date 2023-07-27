@@ -3,8 +3,7 @@ import { cache } from 'react'
 import { Hydrate, dehydrate } from '@tanstack/react-query'
 import { headers } from 'next/headers'
 
-import { queryClient } from '@/lib/react-query'
-import { tryJsonParse } from '@/utils/json'
+import getQueryClient from '@/lib/react-query.server'
 
 import { makeCharactersQueryOptions } from './api/get-characters'
 import { DEFAULT_ORDER_BY } from './constants'
@@ -15,20 +14,20 @@ type HomeLayoutProps = {
 }
 
 const getServerSearchParams = cache(() => {
-  const query = tryJsonParse(
-    decodeURIComponent(headers().get('x-invoke-query') ?? '{}'),
-    {},
-  )
+  const query = decodeURIComponent(headers().get('x-search-params') ?? '{}')
 
   return new URLSearchParams(query)
 })
 
 export default async function HomeLayout({ children }: HomeLayoutProps) {
   const serverSearchParams = getServerSearchParams()
+  const queryClient = getQueryClient()
+
+  const pageSearchParam = serverSearchParams.get('page')
 
   await queryClient.prefetchQuery(
     makeCharactersQueryOptions({
-      page: Number(serverSearchParams.get('page')) ?? 1,
+      page: pageSearchParam ? Number(pageSearchParam) : 1,
       orderBy:
         (serverSearchParams.get('orderBy') as OrderBy) ?? DEFAULT_ORDER_BY,
       search: serverSearchParams.get('search') ?? '',

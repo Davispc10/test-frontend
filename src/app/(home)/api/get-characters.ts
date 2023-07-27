@@ -53,8 +53,6 @@ export const getCharacters = async ({
   search,
   orderBy = DEFAULT_ORDER_BY,
 }: GetCharactersParams) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
-
   const response = await httpClient
     .get('characters', {
       searchParams: {
@@ -80,10 +78,14 @@ export const GET_CHARACTERS_QUERY_KEY_PREFIX = 'get-characters'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
-export const makeCharactersQueryOptions = (params: GetCharactersParams) => {
+export const makeCharactersQueryOptions = ({
+  page,
+  orderBy,
+  search,
+}: GetCharactersParams) => {
   return {
-    queryKey: [GET_CHARACTERS_QUERY_KEY_PREFIX, params],
-    queryFn: () => getCharacters(params),
+    queryKey: [GET_CHARACTERS_QUERY_KEY_PREFIX, { page, orderBy, search }],
+    queryFn: () => getCharacters({ page, orderBy, search }),
     staleTime: FIVE_MINUTES,
     cacheTime: FIVE_MINUTES * 2,
     keepPreviousData: true,
@@ -92,5 +94,5 @@ export const makeCharactersQueryOptions = (params: GetCharactersParams) => {
 
 export const useGetCharactersQuery = (params: GetCharactersParams) => {
   // eslint-disable-next-line @tanstack/query/prefer-query-object-syntax
-  return useQuery({ ...makeCharactersQueryOptions(params) })
+  return useQuery(makeCharactersQueryOptions(params))
 }
