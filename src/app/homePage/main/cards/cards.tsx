@@ -4,7 +4,7 @@ export default function Card(props) {
     const thumbnailCharacter = `${props.heroi.thumbnail.path}.${props.heroi.thumbnail.extension}`;
 
     return (
-        <div className="w-40 h-48 m-5 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">
+        <div className="w-40 h-48 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">
             <div className="h-2/3">
                 <img
                     src= {thumbnailCharacter}
