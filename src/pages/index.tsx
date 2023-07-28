@@ -1,6 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useQuery } from "react-query";
 import { getAllHeroes } from "../services/apiServices";
+import { RootState } from "../app/store";
+import { setSearch } from "../features/HeroSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import HeroesList from "../components/Heroes/HeroesList";
 import Pagination from "../components/Pagination/Pagination";
@@ -8,16 +11,18 @@ import { HeroProps } from "../utils/interfaces";
 import { CircleNotch, MagnifyingGlass } from "@phosphor-icons/react";
 
 const Home = () => {
-  const [search, setSearch] = useState<string>("");
+  const search = useSelector((state: RootState) => state.hero.search);
+  const dispatch = useDispatch();
+
   const [totalPages, setTotalPages] = useState<number>(157);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const itemsPerPage: number = 10;
   const lastPage: number = Math.ceil(totalPages / itemsPerPage);
-  const offset: number = itemsPerPage * currentPage - 10;
+  const offset: number = itemsPerPage * currentPage - 10;  
 
   const { data, refetch, isLoading } = useQuery({
-    queryKey: ["heroes", currentPage],
+    queryKey: ["heroes", currentPage, search],
     queryFn: () => getAllHeroes(offset, itemsPerPage, search),
     onSuccess: (result) => {
       setTotalPages(result.total);
@@ -25,7 +30,7 @@ const Home = () => {
   });
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    dispatch(setSearch(e.target.value));
   };
 
   const handleGetData = () => {
@@ -55,7 +60,7 @@ const Home = () => {
             </button>
           </form>
         </div>
-        <div className={`${data ? "heroCard" : "loadingCard"}`}>
+        <div className={`${data?.results.length > 0 ? "heroCard" : "loadingCard"}`}>
           {isLoading && (
             <CircleNotch className="text-8xl animate-spin text-red-500" />
           )}
@@ -63,6 +68,11 @@ const Home = () => {
             data.results.map((hero: HeroProps) => (
               <HeroesList {...hero} key={hero.id} />
             ))
+          )}
+          {data?.results.length === 0 && !isLoading && (
+            <p className="text-3xl">
+              No heroes found!
+            </p>
           )}
         </div>
         <Pagination
