@@ -18,7 +18,7 @@ export interface HeroProps {
   name: string
   description: string
   thumbnail: ThumbnailProps
-
+  imgUrl?: string
 }
 
 type ChildrenWithClassName = ChildrenProps & {
@@ -88,11 +88,11 @@ export type ButtonProps = ClassNameProps & {
   onClickFunction?: () => void
 }
 
-export interface HeroImages {
+export interface HeroImagesProps {
   path: string
   extension: string
 }
 
-export type HeroDetails = HeroProps & {
-  images: HeroImages[]
+export type HeroDetailsProps = HeroProps & {
+  images: string[]
 }

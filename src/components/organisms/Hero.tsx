@@ -1,12 +1,15 @@
 'use client'
-import { HeroDetails, HeroImages } from "@/utils/types";
-import Link from "next/link"
+import { HeroDetailsProps } from "@/utils/types";
 import { useEffect, useState } from "react";
-import CustomImage from "@/components/atoms/CustomImage";
 import { PUBLIC_KEY, hash, ts } from "@/utils/keys";
+import HeroDetails from "../molecules/HeroDetails";
+import Loading from "../atoms/Loading";
+import ReturnLink from "../atoms/ReturnLink";
+import NoContentToPresent from "../atoms/NoContentToPresent";
+import HeroImageComics from "../molecules/HeroImageComics";
 
 export default function Hero({ params }: { params: { id: string } }) {
-  const [hero, setHero] = useState<HeroDetails>({
+  const [hero, setHero] = useState<HeroDetailsProps>({
     name: "",
     description: "",
     images: [],
@@ -16,21 +19,29 @@ export default function Hero({ params }: { params: { id: string } }) {
       path: ''
     }
   })
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     async function getHero() {
-      const images: HeroImages[] = []
+      const images: string[] = []
       const res = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${params.id}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
       const data = await res.json();
-      data.data.results[0].comics.items.forEach(async (item: { resourceURI: string }) => {
-        const res = await fetch(`${item.resourceURI}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
-        const data = await res.json();
-        data.data.results[0].images.forEach((image: HeroImages) => {
-          images.push(image)
-        })
-      })
-      if (!data.data.results[0].description) {
-        data.data.results[0].description = 'Descrição não informada'
+      const heroData = data.data.results[0];
+
+      if (heroData.comics && heroData.comics.items && heroData.comics.items.length > 0) {
+        for (const item of heroData.comics.items) {
+          const res = await fetch(
+            `${item.resourceURI}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`
+          );
+          const comicData = await res.json();
+          if (comicData.data.results[0].images) {
+            for (const image of comicData.data.results[0].images) {
+              images.push(`${image.path}.${image.extension}`);
+            }
+          }
+        }
       }
+
       setHero({
         name: data.data.results[0].name,
         description: data.data.results[0].description,
@@ -39,34 +50,31 @@ export default function Hero({ params }: { params: { id: string } }) {
         thumbnail: {
           extension: data.data.results[0].thumbnail.extension,
           path: data.data.results[0].thumbnail.path,
-        }
+        },
+        imgUrl: `${data.data.results[0].thumbnail.path
+          }.${data.data.results[0].thumbnail.extension}`
       })
+
+      setIsLoading(false);
     }
     getHero()
   }, [params.id])
 
   return (
-    <main className="px-3 md:px-10 py-3 bg-slate-50">
-      <div className="mx-auto flex flex-col gap-3 w-full">
-        <Link href={'/'}>&larr; Voltar</Link>
-        <div>
-          <CustomImage className='mx-auto rounded-full border w-[100px] object-contain h-[100px] max-w-[100px] max-h-[100px]' width={0} height={0} src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`} />
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold">{hero.name}</h2>
-            <p className="">{hero.description}</p>
-          </div>
+    <main className="px-3 md:px-2 py-3 bg-slate-50">
+      <section className="bg-white border rounded px-5 py-3 flex flex-col gap-5 min-h-screen">
+        <div className="mx-auto flex flex-col gap-10 w-full">
+          <ReturnLink path="/" />
+          <HeroDetails description={hero.description} imgUrl={hero.imgUrl} name={hero.name} />
+          {isLoading ? (
+            <Loading />
+          ) : hero.images.length > 0 ? (
+            <HeroImageComics images={hero.images} />
+          ) : (
+            <NoContentToPresent text="Não há imagens para apresentar" />
+          )}
         </div>
-
-        {
-          hero
-            ? hero.images.map((image: HeroImages, index: number) => {
-              return (
-                <CustomImage key={index} className="w-[150px] h-[200]" width={0} height={0} src={`${image.path}.${image.extension}`} />
-              )
-            })
-            : <p>Não há imagens para apresentar</p>
-        }
-      </div>
+      </section>
     </main >
   )
 }

@@ -1,6 +1,6 @@
 import InputSearch from "../atoms/InputSearch"
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSearchName, resetHeros } from '@/redux/features/querySlice';
+import { changePage, changeSearchName, resetHeros } from '@/redux/features/querySlice';
 import { RootState } from "@/redux/store";
 import { ClassNameProps } from "@/utils/types";
 
@@ -16,6 +16,7 @@ export default function SearchBar({ className }: ClassNameProps) {
         onChangeFunction={(e) => {
           if (!e.target.value) {
             dispatch(resetHeros())
+            dispatch(changePage({ page: 0 }))
           }
           dispatch(changeSearchName({ searchName: e.target.value }))
         }}
