@@ -1,6 +1,6 @@
 import React from 'react';
-import PageLink from './PageLink';
-import { getPaginationItems } from './paginationLogic';
+import PageLink from '../atoms/PageLink';
+import { getPaginationItems } from '../../utils/paginationLogic';
 
 export type Props = {
   currentPage: number;
@@ -20,7 +20,7 @@ export default function Pagination({
   const pageNums = getPaginationItems(currentPage, lastPage, maxLength);
 
   return (
-    <nav className="flex wrap mb-4" aria-label="Pagination" onClick={onClick}>
+    <nav className="flex wrap mb-4" onClick={onClick}>
       <PageLink
         disabled={currentPage === 1}
         onClick={() => setCurrentPage(currentPage - 1)}

@@ -1,14 +1,11 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { useQuery } from "react-query";
 import { getAllHeroes } from "../services/apiServices";
 import { RootState } from "../app/store";
 import { setSearch } from "../features/HeroSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import HeroesList from "../components/Heroes/HeroesList";
-import Pagination from "../components/Pagination/Pagination";
-import { HeroProps } from "../utils/interfaces";
-import { CircleNotch } from "@phosphor-icons/react";
+import HomePage from '../components/templates/HomeTemplate'
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.hero.search);
@@ -36,50 +33,21 @@ const Home = () => {
   const handleGetData = () => {
     void refetch();
   };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    void refetch();
-  };
-
+  
   return (
     <div className="flex flex-col w-screen h-screen p-2 font-bangers">
-      <main className="flex flex-col justify-center items-center w-full">
-        <div className="flex justify-center w-full h-16 mb-6 mt-2">
-          <form className="flex justify-center w-2/4 h-full items-center" onSubmit={handleSubmit}>
-            <input
-              name="search-user"
-              className="border-y-2 px-1 h-3/5 w-3/4 md:w-2/4 bg-red-500 border-black focus:border-red-500 focus:outline-none rounded-md"
-              type="text"
-              placeholder="find your hero"
-              value={search}
-              onChange={handleInput}
-            />
-          </form>
-        </div>
-        <div className={`${data?.results.length > 0 ? "heroCard" : "loadingCard"}`}>
-          {isLoading && (
-            <CircleNotch className="text-8xl animate-spin text-red-500" />
-          )}
-          {data && (
-            data.results.map((hero: HeroProps) => (
-              <HeroesList {...hero} key={hero.id} />
-            ))
-          )}
-          {data?.results.length === 0 && !isLoading && (
-            <p className="text-3xl">
-              No heroes found!
-            </p>
-          )}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          lastPage={lastPage}
-          maxLength={5}
-          setCurrentPage={setCurrentPage}
-          onClick={handleGetData}
-        />
-      </main>
+      <HomePage 
+        {...{
+          search,
+          setCurrentPage,
+          isLoading,
+          lastPage,
+          data,
+          currentPage,
+          handleInput,
+          handleGetData,
+        }}
+      />
     </div>
   );
 };
