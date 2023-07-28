@@ -28,7 +28,7 @@ export const FetchListHeroes: React.FC<PropsFetchListHeroes> = async ({
       `/characters?apikey=${
         tokens.public
       }&hash=${hash}&ts=${timestamp}&limit=30&orderBy=modified&offset=${page}${
-        search ? `&name=${search}` : ""
+        search ? `&nameStartsWith=${search}` : ""
       }`
     );
     const totalItems = data.data.total;
