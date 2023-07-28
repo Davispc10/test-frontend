@@ -10,12 +10,12 @@ interface ButtonProps {
 }
 
 export default function Button({ children, href, onClick }: ButtonProps) {
-  const { colorClasses } = useDarkMode();
+  const { buttonColorClasses } = useDarkMode();
   const router = useRouter();
 
   return (
     <button
-      className={`${colorClasses} max-w-[200px] px-5 py-3 font-medium flex items-center justify-between gap-x-3`}
+      className={`${buttonColorClasses} max-w-[200px] px-5 py-3 font-medium flex items-center justify-between gap-x-3`}
       onClick={() => {
         if (href) {
           router.push(href);

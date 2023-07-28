@@ -1,4 +1,4 @@
-import { useContext, useMemo, useCallback } from 'react';
+import { useContext, useMemo, useCallback, useState, useEffect } from 'react';
 import { ContextWrapper } from '../../components/AppContext';
 import { GiMoon } from 'react-icons/gi';
 import { FaSun } from 'react-icons/fa';
@@ -6,22 +6,30 @@ import { FaSun } from 'react-icons/fa';
 export default function useDarkMode() {
   const { setIsDarkMode, isDarkMode } = useContext(ContextWrapper);
 
+  const appContainerClasses = useMemo(
+    () =>
+      isDarkMode
+        ? `bg-dark-comics bg-contain text-white overflow-y-scroll h-calc`
+        : 'bg-light-comics bg-contain text-black overflow-y-scroll h-calc animate-moveEffect',
+    [isDarkMode]
+  );
+
   const colorClasses = useMemo(
     () => (isDarkMode ? 'bg-dark text-white' : 'bg-marvel-primary text-white'),
     [isDarkMode]
   );
 
-  const appContainerClasses = useMemo(
+  const buttonColorClasses = useMemo(
     () =>
-      isDarkMode
-        ? 'dark-gradient animate-gradient text-white'
-        : 'light-comics animate-moveEffect text-black',
+      isDarkMode ? 'bg-dark-light text-white' : 'bg-marvel-primary text-white',
     [isDarkMode]
   );
 
   const characterContainerClasses = useMemo(
     () =>
-      !isDarkMode && 'bg-[#f2f2f2] w-fit p-5 rounded-lg shadow-3xl border-4',
+      !isDarkMode
+        ? 'bg-[#f2f2f2] w-fit p-5 rounded-lg shadow-3xl border-4'
+        : 'bg-[#202020] w-fit p-5 rounded-lg shadow-3xl',
     [isDarkMode]
   );
 
@@ -62,5 +70,6 @@ export default function useDarkMode() {
     colorClasses,
     appContainerClasses,
     characterContainerClasses,
+    buttonColorClasses,
   };
 }

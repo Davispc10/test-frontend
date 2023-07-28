@@ -11,6 +11,10 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'dark-comics':
+          'url("https://res.cloudinary.com/domwy2hmn/image/upload/v1690568718/marvel-dark-bg-1_kerpvp.gif")',
+        'light-comics':
+          'url("https://res.cloudinary.com/domwy2hmn/image/upload/v1690568831/marvel-light-bg_zajmvn.png")',
       },
       colors: {
         marvel: {
@@ -18,6 +22,13 @@ module.exports = {
           white: '#fff',
         },
         dark: '#202020',
+        'dark-light': '#2a2a2a',
+      },
+      filter: {
+        grayscale: 'brightness(10%)',
+      },
+      height: {
+        calc: 'calc(100vh - 96px)',
       },
       fontFamily: {
         marvel: ['marvel', 'sans-serif'],

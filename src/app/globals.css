@@ -4,9 +4,7 @@
 
 body,
 html {
-  transition:
-    color 0.2s ease-out,
-    background 0.2s ease-out;
+  transition: color 0.2s ease-out, background 0.2s ease-out;
   height: 100%;
 }
 
@@ -40,20 +38,6 @@ html {
   to {
     background-position: 200% center;
   }
-}
-
-.dark-gradient {
-  background: linear-gradient(45deg, #323232, #232931, #272121, #222831);
-  background-size: 300% 300%;
-  height: calc(100% - 96px);
-  overflow-y: scroll;
-}
-
-.light-comics {
-  background: url('/comics-bg.png');
-  background-size: contain;
-  height: calc(100% - 96px);
-  overflow-y: scroll;
 }
 
 .parallelogram {

@@ -11,6 +11,23 @@ interface CharacterComicsProps {
   comics: any[];
 }
 
+function BaseArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: 'gray',
+        borderRadius: '50%',
+        padding: '0.1rem 0',
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
 export default function CharacterComics({ comics }: CharacterComicsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [comicIndex, setComicIndex] = useState(0);
@@ -24,6 +41,8 @@ export default function CharacterComics({ comics }: CharacterComicsProps) {
     arrows: true,
     slidesPerRow: 3,
     draggable: false,
+    nextArrow: <BaseArrow />,
+    prevArrow: <BaseArrow />,
     responsive: [
       {
         breakpoint: 550,
