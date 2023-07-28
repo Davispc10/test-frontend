@@ -7,13 +7,40 @@ export type CharacterProps = {
   thumbnail: string
 }
 
-export default function Character({ name, thumbnail }: CharacterProps) {
+export default function Character({ name, thumbnail, ...props }: CharacterProps) {
   const handleClick = () => {
-    console.log('name', name)
+    const detail = {
+      name: name,
+      thumbnail: thumbnail,
+      comics: props.comics.collectionURI,
+      description: props.description
+        ? props.description
+        : 'description not specified',
+      series: {
+        available: props.series.available,
+        items: props.series.items
+          .map(({ name }: { name: string }) => name)
+      },
+      stories: {
+        available: props.stories.available,
+        items: props.stories.items
+          .map(({ name }: { name: string }) => name)
+      },
+      events: {
+        available: props.events.available,
+        items: props.events.items
+          .map(({ name }: { name: string }) => name)
+      },
+      urls: props.urls,
+    }
+
+    localStorage.setItem('detail', JSON.stringify(detail))
+
+    window.location.href = '/detail'
   }
 
   return (
-    <button className="character" onClick={handleClick}>
+    <div className="character" onClick={handleClick}>
       <div
         className="character-thumbnail w-full h-full"
       >
@@ -26,6 +53,6 @@ export default function Character({ name, thumbnail }: CharacterProps) {
       </div>
 
       <p className="character-name">{name}</p>
-    </button>
+    </div>
   )
 }

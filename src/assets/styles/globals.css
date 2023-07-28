@@ -7,6 +7,9 @@ body {
 }
 
 @layer {
+  .layoutDefault {
+    @apply flex items-center justify-center;
+  }
   .header {
     @apply flex items-center justify-center min-w-full;
     @apply p-4 mb-10 w-full h-32;
@@ -34,7 +37,7 @@ body {
   }
 
   main {
-    @apply flex flex-col items-center justify-center;
+    @apply flex flex-col;
   }
 
   .container {
@@ -96,6 +99,7 @@ body {
 @layer {
   .character {
     @apply rounded-lg w-80 h-80 p-4 relative overflow-hidden;
+    @apply cursor-pointer;
     @apply sm:w-72 sm:h-72;
     @apply md:w-60 md:h-60;
     @apply lg:w-80 lg:h-80;
@@ -106,6 +110,114 @@ body {
     @apply text-base font-bold;
     @apply p-3 absolute bottom-0 left-0 w-full;
     @apply bg-sky-700/70;
+  }
+}
+
+/* Page Detail */
+@layer {
+  .back {
+    @apply ml-20;
+  }
+  .back button {
+    @apply flex items-center justify-center;
+    @apply w-16 h-16;
+  }
+  .detail-container {
+    @apply flex items-center justify-center;
+    @apply w-full my-10;
+  }
+  .detail {
+    @apply container;
+    @apply flex flex-wrap flex-col items-start justify-start;
+    @apply m-0;
+
+    @apply sm:flex-row;
+  }
+
+  .detail .image,
+  .detail .description {
+    @apply sm:w-1/2 !important;
+  }
+  .detail .image {
+    @apply sm:w-[75%] rounded-lg overflow-hidden;
+  }
+  .detail .description {
+    @apply xl:w-1/4 !important;
+    @apply ml-20;
+  }
+
+  .detail .description h1 {
+    @apply font-bold text-2xl text-center !important;
+    @apply w-full;
+    @apply text-white;
+  }
+  .detail .description .text {
+    @apply text-base lg:text-xl;
+    @apply block w-full mt-8 !important;
+    @apply text-white;
+  }
+
+  .detail .comics,
+  .detail .events,
+  .detail .series,
+  .detail .urls {
+    @apply lg:text-lg;
+    @apply flex flex-col mt-6;
+    @apply text-white;
+  }
+  .detail .comics h2,
+  .detail .events h2,
+  .detail .series h2,
+  .detail .urls h2 {
+    @apply text-3xl font-bold !important;
+  }
+
+  .detail .series {
+    @apply flex;
+  }
+  .detail .series h2 {
+    @apply flex-1;
+  }
+
+  .detail .urls h2 {
+    @apply w-full block;
+  }
+  .detail .urls ul {
+    @apply underline;
+    @apply flex flex-row w-full gap-4;
+    @apply mt-4 !important;
+    @apply text-blue-500;
+  }
+
+  .detail .urls .link {
+    @apply text-base uppercase font-bold;
+    @apply block w-full;
+  }
+
+  .detail .comics {
+    @apply px-4;
+  }
+
+  .detail .comics .comics-container {
+    @apply flex flex-wrap items-start justify-start gap-2;
+  }
+
+  .detail .comic {
+    @apply flex flex-col items-start justify-end;
+    @apply w-80 h-96 rounded-lg relative overflow-hidden;
+  }
+
+  .detail .comic h2,
+  .detail .comic p {
+    @apply font-bold;
+    @apply z-10 relative;
+  }
+  .detail .comic-info {
+    @apply p-2 w-full z-10;
+    @apply bg-white/90 text-black;
+  }
+  .detail .comic h2 {
+    @apply text-xl drop-shadow-md !important;
   }
 }
 
