@@ -1,6 +1,6 @@
 'use client';
 
-import useDarkMode from '../hooks/useDarkMode';
+import useDarkMode from '@/app/hooks/useDarkMode';
 
 export default function Footer() {
   const { colorClasses } = useDarkMode();

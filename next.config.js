@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['i.annihil.us'],
+    domains: ['i.annihil.us', 'res.cloudinary.com'],
     minimumCacheTTL: 60 * 5,
   },
 };

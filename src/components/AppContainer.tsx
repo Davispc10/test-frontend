@@ -2,14 +2,14 @@
 
 import { useEffect } from 'react';
 import ThemeChangeNotification from './ThemeChangeNotification';
-import useDarkModeChange from '../hooks/useDarkMode';
+import useDarkMode from '@/app/hooks/useDarkMode';
 
 interface AppContainerProps {
   children: React.ReactNode;
 }
 
 export default function AppContainer({ children }: AppContainerProps) {
-  const { handleDarkModeChange, appContainerClasses } = useDarkModeChange();
+  const { handleDarkModeChange, appContainerClasses } = useDarkMode();
 
   useEffect(() => {
     handleDarkModeChange();

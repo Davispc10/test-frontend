@@ -41,12 +41,17 @@ module.exports = {
           '50%': { 'background-position': '100% 50%' },
           '100%': { 'background-position': '0% 50%' },
         },
+        scaleFromRight: {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)' },
+        },
       },
       animation: {
         scaleIn: 'scaleIn 0.3s ease-in-out',
         moveEffect: 'moveEffect 480s linear infinite',
         move: 'move 3s ease infinite alternate',
         gradient: 'gradient 10s ease infinite',
+        scaleFromRight: 'scaleFromRight 0.6s ease-in-out',
       },
     },
   },

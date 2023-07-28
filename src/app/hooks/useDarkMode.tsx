@@ -1,5 +1,5 @@
 import { useContext, useMemo, useCallback } from 'react';
-import { ContextWrapper } from '../components/AppContext';
+import { ContextWrapper } from '../../components/AppContext';
 import { GiMoon } from 'react-icons/gi';
 import { FaSun } from 'react-icons/fa';
 

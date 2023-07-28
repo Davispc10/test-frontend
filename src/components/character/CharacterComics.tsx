@@ -7,44 +7,31 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import { useState, useRef } from 'react';
 
-export default function CharacterComics() {
+interface CharacterComicsProps {
+  comics: any[];
+}
+
+export default function CharacterComics({ comics }: CharacterComicsProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [images, setImages] = useState([
-    {
-      src: 'https://i.annihil.us/u/prod/marvel/i/mg/4/30/59809e6cb4519.jpg',
-      title: 'title',
-      description: 'description',
-      id: 1,
-    },
-    {
-      src: 'https://i.annihil.us/u/prod/marvel/i/mg/4/30/59809e6cb4519.jpg',
-      title: 'title',
-      description: 'description',
-      id: 2,
-    },
-    {
-      src: 'https://i.annihil.us/u/prod/marvel/i/mg/4/30/59809e6cb4519.jpg',
-      title: 'title',
-      description: 'description',
-      id: 3,
-    },
-    {
-      src: 'https://i.annihil.us/u/prod/marvel/i/mg/4/30/59809e6cb4519.jpg',
-      title: 'title',
-      description: 'description',
-      id: 4,
-    },
-  ]);
   const [comicIndex, setComicIndex] = useState(0);
   const captionsRef: any = useRef(null);
 
   const settings = {
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     slidesPerRow: 3,
+    draggable: false,
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesPerRow: 2,
+        },
+      },
+    ],
   };
 
   function openLightbox(index: number) {
@@ -55,14 +42,14 @@ export default function CharacterComics() {
   return (
     <div className="max-w-[550px] px-4">
       <Slider className="cursor-pointer" {...settings}>
-        {images.map((comics, i) => (
+        {comics.map((comic, i) => (
           <div
-            key={comics.id}
-            className="w-[100px] bg-red-300 h-[280px] hover:opacity-50 transition-all ease-in-out"
+            key={comic?.title}
+            className={`w-[100px] h-[280px] hover:opacity-50 transition-all ease-in-out bg-[url('https://media.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif')] bg-center`}
             onClick={() => openLightbox(i)}
           >
             <Image
-              src={comics.src}
+              src={comic?.image}
               alt="comic"
               className="w-full h-full object-cover"
               width={0}
@@ -76,11 +63,11 @@ export default function CharacterComics() {
       <Lightbox
         open={isOpen}
         close={() => setIsOpen(false)}
-        slides={images.map((comics) => ({
-          src: comics.src,
-          title: comics.title,
-          description: comics.description,
-          height: 600,
+        slides={comics.map((comic) => ({
+          src: comic?.image,
+          title: comic?.title,
+          description: comic?.descriptionText,
+          height: 700,
         }))}
         render={{ slide: NextJsImage }}
         index={comicIndex}
