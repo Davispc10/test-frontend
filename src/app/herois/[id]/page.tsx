@@ -1,10 +1,9 @@
-import Link from "next/link"
+import Hero from "@/components/organisms/Hero";
 
-export default function Hero({ params }: { params: { id: string } }) {
+export default function HeroPage({ params }: { params: { id: string } }) {
   return (
-    <main>
-      <p>{params.id}</p>
-      <Link href={'/'}>Voltar</Link>
-    </main>
+    <main className="px-3 md:px-10 py-3 bg-slate-50">
+      <Hero params={params} />
+    </main >
   )
 }

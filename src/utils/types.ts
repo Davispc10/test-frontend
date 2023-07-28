@@ -4,7 +4,7 @@ interface ChildrenProps {
   children?: ReactNode
 }
 
-interface ClassNameProps {
+export interface ClassNameProps {
   className?: string
 }
 
@@ -18,7 +18,7 @@ export interface HeroProps {
   name: string
   description: string
   thumbnail: ThumbnailProps
-  
+
 }
 
 type ChildrenWithClassName = ChildrenProps & {
@@ -86,4 +86,13 @@ export interface QueryStateProps {
 export type ButtonProps = ClassNameProps & {
   title: string
   onClickFunction?: () => void
+}
+
+export interface HeroImages {
+  path: string
+  extension: string
+}
+
+export type HeroDetails = HeroProps & {
+  images: HeroImages[]
 }
