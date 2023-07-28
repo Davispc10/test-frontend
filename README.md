@@ -6,7 +6,7 @@ This is a web project developed with Next.js, Tailwind CSS and Redux technologie
 
 ## ☁️ Deploy
 
-https://
+[https://vercel.live/link/the-marvel-heroes-junplid-git-rianjunplid-riancarlosdev.vercel.app?via=deployment-domains-list-branch](https://vercel.live/link/the-marvel-heroes-junplid-git-rianjunplid-riancarlosdev.vercel.app?via=deployment-domains-list-branch)
 
 ## 💡 Main technologies used
 
