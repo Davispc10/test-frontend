@@ -11,7 +11,7 @@ interface IParams {
 export const getParams = ({ page }: IParams) => {
   const md5 = new Md5()
   const timestamp = new Date().getTime()
-  const hash = md5.appendStr(timestamp + privateKey + publicKey)
+  const hash = md5.appendStr(timestamp + privateKey + publicKey).end()
 
   if (page) {
     const limit = 12
