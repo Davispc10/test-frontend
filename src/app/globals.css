@@ -6,14 +6,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Marvel", sans-serif;
 }
 
 body {
-  background-color: rgb(220 38 38);
+  background-color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }

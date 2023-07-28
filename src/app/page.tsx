@@ -1,25 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { BASE_URL, logoMarvel, privateKey, publicKey } from "@/utils/utils";
 import React, { useEffect, useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
-import axios from "axios";
-import { generateMD5Hash } from "@/services/serviceDataApi";
 import { ChevronLeft } from "lucide-react";
 import { Character } from "@/types/global";
 import { Character as Hero } from "@/components/index";
-
-const ts = "1";
+import { fetchCharacters } from "@/functions/functions";
+import {
+  offset,
+  hash,
+  pageNumber,
+  pageSize,
+  totalPages,
+} from "@/constants/constants";
 
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(20);
-  const hash = generateMD5Hash("1", privateKey, publicKey);
-  const offset = (pageNumber - 1) * pageSize;
-  const totalPages = Math.ceil(1562 / pageSize);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const handlePreviousClick = () => {
     if (pageNumber > 1) {
@@ -33,21 +31,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `${BASE_URL}?ts=${ts}&offset=${offset}&apikey=${publicKey}&hash=${hash}`
-      )
-      .then((response) => {
-        setCharacters(response.data.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchCharacters().then((data) => setCharacters(data));
   }, [hash, offset, pageNumber]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between gap-5 bg-red-600">
-      
+    <div className="flex min-h-screen flex-col items-center justify-between gap-5">
       <main className="flex flex-col gap-3 items-center justify-center">
         <form className="flex flex-row justify-center items-center border rounded-md w-96">
           <input
@@ -93,7 +81,6 @@ export default function Home() {
           </div>
         </footer>
       </main>
-      
     </div>
   );
 }

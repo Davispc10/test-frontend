@@ -1,11 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Marvel } from "next/font/google";
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const marvel = Marvel({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Desafio Marvel",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={marvel.className}>
         <Header />
         {children}
         <Footer />
