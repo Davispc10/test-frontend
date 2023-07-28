@@ -19,7 +19,7 @@ https://
 ## 🏃‍♂️ To run the project
 
 ```bash
-$ git clone link && \
+$ git clone -b rian_junplid https://github.com/ousadojunplid/test-frontend.git && \
     cd rian-junplid && \
     npm i && \
     npm run test && \
