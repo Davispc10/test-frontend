@@ -5,7 +5,7 @@ import { RootState } from "../app/store";
 import { setSearch } from "../features/HeroSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import HomePage from '../components/templates/HomeTemplate'
+import HomeTemplate from "../components/templates/HomeTemplate";
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.hero.search);
@@ -36,7 +36,7 @@ const Home = () => {
   
   return (
     <div className="flex flex-col w-screen h-screen p-2 font-bangers">
-      <HomePage 
+      <HomeTemplate 
         {...{
           search,
           setCurrentPage,

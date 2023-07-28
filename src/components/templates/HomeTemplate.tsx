@@ -15,7 +15,7 @@ interface HomeProps {
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const HomePage = ({ ...props } : HomeProps) => {
+const HomeTemplate = ({ ...props } : HomeProps) => {
   return (
     <main className="flex flex-col justify-center items-center w-full">
       <HomeInput search={props.search} handleInput={props.handleInput} />
@@ -31,4 +31,4 @@ const HomePage = ({ ...props } : HomeProps) => {
   )
 }
 
-export default HomePage;
+export default HomeTemplate;

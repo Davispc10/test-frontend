@@ -1,24 +1,23 @@
-import React, { FC } from 'react';
-import { HeroProps } from '../../utils/interfaces';
-import Link from 'next/link';
+import React from 'react';
 import { HeroPicture } from '../atoms/HeroPicture';
 import { HeroName } from '../atoms/HeroName';
 
-const HeroesCard: FC<HeroProps> = ({ ...props }) => {
-  return (
-    <Link 
-      className='hover:bg-red-600 border-y border-red-900 rounded-lg duration-300'
-      href={`/hero/${props.id}`}
-      key={props.id}>      
-        <div className="w-full h-full flex flex-col justify-start xl:justify-around items-center p-1 my-1">
-          <HeroPicture source={props.thumbnail?.path} />
-          <HeroName name={props.name} />
-        </div>
-    </Link>
+interface HeroCardProps {
+  name: string,
+  image: string,
+  textSize?: string,
+}
+
+const HeroCard = ({ ...props }: HeroCardProps) => {
+  return (  
+    <div className="w-full flex flex-col justify-start xl:justify-around items-center p-1 my-1">
+      <HeroPicture source={props.image!} />
+      <HeroName name={props.name} textSize={props.textSize}/>
+    </div>
   );
 };
 
-export default HeroesCard;
+export default HeroCard;
 
 
 

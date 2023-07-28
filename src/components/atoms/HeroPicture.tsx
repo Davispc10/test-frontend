@@ -2,7 +2,7 @@ import React from "react";
 import { handleImageError, imageUrl } from "../../utils/utils";
 
 interface HeroPictureProps {
-  source?: string
+  source?: string,
 }
 export const HeroPicture = ({source} : HeroPictureProps) => {
   const src = imageUrl(source!);

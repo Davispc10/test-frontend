@@ -4,7 +4,7 @@ import { getOneHero } from "../../services/apiServices";
 import { useQuery } from "react-query";
 
 import { CircleNotch } from "@phosphor-icons/react";
-import { HeroDetails } from "../../components/Heroes/HeroDetails";
+import { HeroDetailsTemplate } from "../../components/templates/HeroDetailsTemplate";
 
 const Hero = () => {
   const router = useRouter();
@@ -18,14 +18,14 @@ const Hero = () => {
   });
 
   return (
-    <div className="w-11/12 h-[700px] md:w-3/5 xl:w-2/6 self-center bg-red-400 p-1 rounded-md font-bangers"> 
+    <div className="w-11/12 h-[700px] md:w-3/5 xl:w-2/6 my-6 self-center bg-red-400 p-1 rounded-md font-bangers"> 
       {isLoading && (
         <div className="flex justify-center items-center w-full h-full">
           <CircleNotch className="text-8xl animate-spin text-red-500" /> 
         </div>
       )}     
       {data && (
-        <HeroDetails {...data} />
+        <HeroDetailsTemplate {...data} />
       )}
     </div>
   );
