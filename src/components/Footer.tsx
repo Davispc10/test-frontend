@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer>
-      <p className="text-red-600 text-center">
+      <p className="text-red-600 text-center py-5">
         Made with ❤️ by{" "}
         <Link
           href="https://github.com/jeffersondrs"

@@ -1,55 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { ChevronRight, Search } from "lucide-react";
+import React, { useContext } from "react";
+import { ChevronRight } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
-import { Character } from "@/types/global";
-import { Character as Hero } from "@/components/index";
-import { fetchCharacters, fetchSearchCharacters } from "@/functions/functions";
-import { hash, pageSize, totalPages } from "@/constants/constants";
+import { Character } from "@/components/index";
+import { pageSize } from "@/constants/constants";
 import SearchHeroes from "@/components/SearchHeroes";
-import { useSearch } from "@/hooks/useSearchHeroes";
+import { Context } from "@/context/contextApi";
 
 export default function Home() {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [searchCharacters, setSearchCharacters] = useState<Character[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const offset = (pageNumber - 1) * pageSize;
-  const { search, results, loading } = useSearch();
-    
+  const { results, page, setPage, offset, setOffset, lastPage, setSearch } =
+    useContext(Context);
+
   const handlePreviousClick = () => {
-    if (pageNumber > 1) {
-      setPageNumber(pageNumber - 1);
+    if (page > 1) {
+      setPage(page - 1);
+      setOffset(offset - pageSize);
     }
   };
 
   const handleNextClick = () => {
-    if (pageNumber < totalPages) {
-      setPageNumber(pageNumber + 1);
+    if (page < lastPage) {
+      setPage(page + 1);
+      setOffset(offset + pageSize);
     }
   };
-
-  useEffect(() => {
-    fetchCharacters(offset).then((data) => setCharacters(data));
-  }, [pageNumber, offset, hash, totalPages]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between gap-5">
       <main className="flex flex-col gap-3 items-center justify-center">
-        <SearchHeroes
-          onChange={(event) => {
-            search(event.target.value);
-          }}
-        />
-        <section className="flex flex-row flex-wrap justify-center p-10items-center gap-5">
-          {characters.map((character) => (
+        <section className="flex flex-row flex-wrap justify-center p-10 items-center gap-5">
+          <div className="px-5 w-full flex flex-row  justify-center items-center">
+            <SearchHeroes
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+            />
+          </div>
+          {results?.map((character) => (
             <Link
               href={`/characters/${character.id}`}
               key={character.id}
               passHref
             >
-              <Hero {...character} />
+              <Character {...character} />
             </Link>
           ))}
         </section>
@@ -58,18 +53,18 @@ export default function Home() {
             type="button"
             className="flex items-center justify-center p-3 text-xl font-bold text-center text-white bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
             onClick={handlePreviousClick}
-            disabled={pageNumber <= 1}
+            disabled={page <= 1}
           >
             <ChevronLeft size={28} />
           </button>
           <p className="text-red-600 text-center">
-            Page {pageNumber} of {totalPages}
+            Page {page} of {lastPage}
           </p>
           <button
             type="button"
             className="flex items-center justify-center p-3 text-xl font-bold text-center text-white bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
             onClick={handleNextClick}
-            disabled={pageNumber >= totalPages}
+            disabled={page >= lastPage}
           >
             <ChevronRight size={28} />
           </button>

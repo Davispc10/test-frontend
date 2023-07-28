@@ -1,18 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {logoMarvel} from "@/utils/utils";
+import { logoMarvel, extensionImage } from "@/utils/utils";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-5">
+    <header className="flex items-center justify-center p-5 shadow-md border-br border-red-500 w-full hover:shadow-lg transition duration-300 ease-in-out transform">
       <Link className="text-2xl font-bold" href="/">
         <Image
-          src={logoMarvel}
+          src={logoMarvel + extensionImage}
           alt="Marvel Logo"
-          width={300}
-          height={300}
-          className="object-cover cursor-pointer shadow-md hover:shadow-lg"
+          width={700}
+          height={700}
+          className="object-cover cursor-pointer shadow-md hover:shadow-lg w-80"
         />
       </Link>
     </header>

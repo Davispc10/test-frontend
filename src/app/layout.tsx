@@ -4,8 +4,9 @@ import { Marvel } from "next/font/google";
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ContextProvider } from "@/context/contextApi";
 
-const marvel = Marvel({ subsets: ["latin"], weight: "400" });
+const marvel = Marvel({ subsets: ["latin"], weight: "700" });
 
 export const metadata: Metadata = {
   title: "Desafio Marvel",
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={marvel.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ContextProvider>
       </body>
     </html>
   );
