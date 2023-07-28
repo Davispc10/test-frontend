@@ -61,3 +61,15 @@ export function getMetadataInfo(
     },
   };
 }
+
+export function clipboardCopy(text: string) {
+  navigator.clipboard.writeText(text);
+}
+
+export function shareOnTwitter(url: string, name: string) {
+  window.open(
+    `https://twitter.com/intent/tweet?url=Check the details of ${name} on ${url}`,
+    'twitter-share-dialog',
+    'width=800,height=600'
+  );
+}

@@ -14,6 +14,7 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.16",
     "@types/node": "20.4.5",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
@@ -37,7 +38,9 @@
     "commitizen": "^4.3.0",
     "cypress": "^12.17.2",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1"
   },
   "config": {
     "commitizen": {

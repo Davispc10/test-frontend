@@ -4,7 +4,9 @@
 
 body,
 html {
-  transition: color 0.2s ease-out, background 0.2s ease-out;
+  transition:
+    color 0.2s ease-out,
+    background 0.2s ease-out;
   height: 100%;
 }
 

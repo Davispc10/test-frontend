@@ -6,6 +6,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { BsFillClipboard2HeartFill } from 'react-icons/bs';
 import Image from 'next/image';
 import useDarkMode from '@/app/hooks/useDarkMode';
+import ShareModal from '../ShareModal';
+import { useState } from 'react';
 
 interface CharacterCardProps {
   name: string;
@@ -23,6 +25,7 @@ export default function CharacterCard({
   comics,
 }: CharacterCardProps) {
   const { characterContainerClasses } = useDarkMode();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex items-center justify-center min-[1500px]:mt-16 max-[1500px]:flex-col-reverse max-[1500px]:gap-y-10">
@@ -40,7 +43,7 @@ export default function CharacterCard({
                 Return
               </Button>
             </div>
-            <Button>
+            <Button onClick={() => setIsOpen(true)}>
               <BsFillClipboard2HeartFill />
               Share character
             </Button>
@@ -55,6 +58,12 @@ export default function CharacterCard({
           <Image src={image ?? ''} alt="hero" width={550} height={825} />
         </div>
       </div>
+      <ShareModal
+        isOpen={isOpen}
+        image={image}
+        name={name}
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   );
 }
