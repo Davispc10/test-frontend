@@ -13,8 +13,8 @@ import {
 } from '@/components/ui/select'
 import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 
-import { DEFAULT_ORDER_BY, ORDER_BY_SEARCH_PARAM } from '../constants'
-import { type OrderBy } from '../schemas'
+import { DEFAULT_ORDER_BY, ORDER_BY_SEARCH_PARAM } from '../../constants'
+import { type OrderBy } from '../../schemas'
 
 type Option = {
   value: OrderBy

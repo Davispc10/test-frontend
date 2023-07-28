@@ -1,7 +1,8 @@
 import ky from 'ky'
-import md5 from 'md5'
 
 import { env } from '@/env.mjs'
+
+import { md5 } from './md5'
 
 const createServerAuthSearchParams = () => {
   const isClient = typeof window !== 'undefined'

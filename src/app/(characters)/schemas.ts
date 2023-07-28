@@ -52,3 +52,21 @@ export const characterSchema = z.object({
 })
 
 export type Character = z.infer<typeof characterSchema>
+
+export const itemSchema = z.object({
+  resourceURI: z.string(),
+  name: z.string(),
+  role: z.string().optional(),
+  type: z.string().optional(),
+})
+
+export const comicSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  thumbnail: z.object({
+    path: z.string(),
+    extension: z.string(),
+  }),
+})
+
+export type Comic = z.infer<typeof comicSchema>

@@ -5,9 +5,10 @@ import { httpClient } from '@/lib/http-client'
 import { type ExtractFnReturnType } from '@/lib/query-client'
 
 import { DEFAULT_ORDER_BY } from '../constants'
-import { type Character, characterSchema, type OrderBy } from '../schemas'
+import { characterSchema, type OrderBy } from '../schemas'
+import { fixCharacterData } from './utils'
 
-const getCharactersResponseSchema = z.object({
+export const getCharactersResponseSchema = z.object({
   offset: z.number(),
   limit: z.number(),
   total: z.number(),
@@ -32,22 +33,6 @@ type GetCharactersParams = {
 const LIMIT = 20
 const getOffset = (page: number) => (page - 1) * LIMIT
 
-const IMAGE_PLACEHOLDER_URL = '/marvel-placeholder-image'
-const IMAGE_PLACEHOLDER_EXTENSION = 'jpg'
-
-const fixCharacterImage = (character: Character): Character => {
-  const isImageNotAvailable = character.thumbnail.path.includes(
-    'image_not_available',
-  )
-
-  return {
-    ...character,
-    thumbnail: isImageNotAvailable
-      ? { path: IMAGE_PLACEHOLDER_URL, extension: IMAGE_PLACEHOLDER_EXTENSION }
-      : character.thumbnail,
-  }
-}
-
 export const getCharacters = async ({
   page,
   search,
@@ -68,7 +53,7 @@ export const getCharacters = async ({
 
   return {
     ...parsedData,
-    results: parsedData.results.map(fixCharacterImage),
+    results: parsedData.results.map(fixCharacterData),
   } satisfies GetCharactersResponseData
 }
 

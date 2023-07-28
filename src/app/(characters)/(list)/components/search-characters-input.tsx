@@ -10,8 +10,8 @@ import { Input } from '@/components/ui/input'
 import { Spinner } from '@/components/ui/spinner'
 import { useSetQueryStringState } from '@/hooks/use-set-query-string-state'
 
-import { GET_CHARACTERS_QUERY_KEY_PREFIX } from '../api/get-characters'
-import { PAGE_QUERY_PARAM, SEARCH_QUERY_PARAM } from '../constants'
+import { GET_CHARACTERS_QUERY_KEY_PREFIX } from '../../api/get-characters'
+import { PAGE_QUERY_PARAM, SEARCH_QUERY_PARAM } from '../../constants'
 
 export const SearchCharactersInput = () => {
   const searchParams = useSearchParams()

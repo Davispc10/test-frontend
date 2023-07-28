@@ -5,9 +5,9 @@ import { headers } from 'next/headers'
 
 import getQueryClient from '@/lib/query-client.server'
 
-import { makeCharactersQueryOptions } from './api/get-characters'
-import { DEFAULT_ORDER_BY } from './constants'
-import { type OrderBy } from './schemas'
+import { makeCharactersQueryOptions } from '../api/get-characters'
+import { DEFAULT_ORDER_BY } from '../constants'
+import { type OrderBy } from '../schemas'
 
 type HomeLayoutProps = {
   children: React.ReactNode
