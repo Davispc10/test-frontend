@@ -60,10 +60,6 @@ export default function Table() {
     getHeros();
   }, [limit, page, searchName]);
 
-  useEffect(() => {
-    console.log(heros)
-  }, [heros])
-
   return (
     <>
       <div className='bg-white border rounded px-5 py-3 flex flex-col gap-5'>
