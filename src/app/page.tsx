@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import Header from './homePage/header/header'
 import Main from './homePage/main/main'
-import Footer from './homePage/footer/footer'
 
 export default function Home() {
   return (
