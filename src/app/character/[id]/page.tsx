@@ -93,6 +93,7 @@ export default async function CharacterPage(props: PropsNode_I) {
               <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-2">
                 {dataCharacters.comics.slice(0, 5).map((comic) => (
                   <Image
+                    key={comic.id}
                     src={comic.thumbnail}
                     alt="Image comic"
                     loading="lazy"
