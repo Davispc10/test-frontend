@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center p-8">
-      <div>
+      <div className="lg:block hidden">
         <Image src={Logo} width={250} alt="Logo Marvel" />
       </div>
 
@@ -37,7 +37,7 @@ const Header = () => {
         <GoSearch className="cursor-pointer px-2" color={"#000"} size={35} />
       </div>
 
-      <div className=" w-[250px]" />
+      <div className=" w-[250px] lg:block hidden" />
     </header>
   );
 };
