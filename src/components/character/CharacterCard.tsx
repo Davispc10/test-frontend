@@ -9,7 +9,7 @@ import useDarkMode from '@/app/hooks/useDarkMode';
 
 interface CharacterCardProps {
   name: string;
-  subName: string | boolean;
+  subName: string;
   description: string;
   image: string;
   comics: any[];
@@ -52,13 +52,7 @@ export default function CharacterCard({
       </div>
       <div className="animate-move w-full h-full max-[1500px]:max-w-[550px]">
         <div className="w-full h-full parallelogram flex justify-end max-[1500px]:justify-center">
-          <Image
-            src={image ?? ''}
-            alt="hero"
-            className="min-[1500px]:w-full object-cover"
-            width={550}
-            height={825}
-          />
+          <Image src={image ?? ''} alt="hero" width={550} height={825} />
         </div>
       </div>
     </div>

@@ -27,11 +27,12 @@ export async function retrieveCharacterInfo(id: string) {
   const { name, description, thumbnail } = characterResults;
   const descriptionText =
     description || 'This character does not have a description.';
-  const subName: string | boolean = U.getWordInParentheses(name);
+  const mainName: string = U.getTextOutsideParenthesis(name);
+  const subName: string = U.getWordInParentheses(name);
   const image = U.getThumbnailContent(thumbnail);
 
   return {
-    name,
+    mainName,
     subName,
     descriptionText,
     image,

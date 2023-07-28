@@ -10,10 +10,10 @@ export const generateMetadata = async ({
     id: string;
   };
 }): Promise<Metadata> => {
-  const { name, descriptionText, image } = await S.retrieveCharacterInfo(
+  const { mainName, descriptionText, image } = await S.retrieveCharacterInfo(
     params.id
   );
-  return U.getMetadataInfo(name, descriptionText, image, params.id);
+  return U.getMetadataInfo(mainName, descriptionText, image, params.id);
 };
 
 export default async function TaskDetails({
@@ -23,14 +23,14 @@ export default async function TaskDetails({
     id: string;
   };
 }) {
-  const { name, subName, descriptionText, image } =
+  const { mainName, subName, descriptionText, image } =
     await S.retrieveCharacterInfo(params.id);
 
   const comics = await S.retrieveCharacterComicsInfo(params.id);
 
   return (
     <CharacterCard
-      name={name}
+      name={mainName}
       subName={subName}
       description={descriptionText}
       image={image}

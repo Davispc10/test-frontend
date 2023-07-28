@@ -1,7 +1,23 @@
-export function getWordInParentheses(str: string) {
-  const regex = /\((\w+)\)/;
-  const match = RegExp(regex).exec(str);
-  return match ? match[1] : str;
+export function getWordInParentheses(inputString: string) {
+  const regex = /\((.*?)\)/;
+  const match = RegExp(regex).exec(inputString);
+
+  if (match !== null) {
+    return match[1];
+  } else {
+    return inputString;
+  }
+}
+
+export function getTextOutsideParenthesis(inputString: string) {
+  const regex = /\((.*?)\)/;
+  const match = RegExp(regex).exec(inputString);
+
+  if (match !== null) {
+    return inputString.replace(match[0], '').trim();
+  } else {
+    return inputString.trim();
+  }
 }
 
 interface Thumbnail {
