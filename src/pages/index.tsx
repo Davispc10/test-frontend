@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HeroesList from "../components/Heroes/HeroesList";
 import Pagination from "../components/Pagination/Pagination";
 import { HeroProps } from "../utils/interfaces";
-import { CircleNotch, MagnifyingGlass } from "@phosphor-icons/react";
+import { CircleNotch } from "@phosphor-icons/react";
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.hero.search);
@@ -55,9 +55,6 @@ const Home = () => {
               value={search}
               onChange={handleInput}
             />
-            <button className="ml-4 p-1 bg-red-500 rounded-md hover:bg-red-700 duration-300">
-              <MagnifyingGlass className="text-xl" />
-            </button>
           </form>
         </div>
         <div className={`${data?.results.length > 0 ? "heroCard" : "loadingCard"}`}>
