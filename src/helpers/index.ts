@@ -1,5 +1,5 @@
 export const params = {
   offset: 0,
-  limit: 25,
+  limit: 100,
   orderBy: 'name'
 }

@@ -1984,6 +1984,11 @@ p-locate@^5.0.0:
   dependencies:
     p-limit "^3.0.2"
 
+pagination-react-js@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pagination-react-js/-/pagination-react-js-1.1.0.tgz#3471c3665b1f24ff4d20ba0da916303d3f948a29"
+  integrity sha512-PIHR0Ai/Cm/2tD33DscVaRzjNpI0PaKHUQ5LJHwDOHQJM7qmvH24Uh+2U8XZxlgeG7wc+7+WgwrvwQnpKV+guQ==
+
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"

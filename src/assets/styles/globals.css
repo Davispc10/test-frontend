@@ -33,6 +33,10 @@ body {
     @apply bg-red-400 text-white;
   }
 
+  main {
+    @apply flex flex-col items-center justify-center;
+  }
+
   .container {
     @apply flex flex-wrap items-start justify-center gap-5;
     @apply mb-8;
@@ -42,6 +46,50 @@ body {
   }
   .container.showLoader {
     @apply items-start pt-32;
+  }
+
+  .pagination-container {
+    @apply mb-4;
+  }
+  .pagination-container,
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .pagination .pagination-item:not(.nav-item) {
+    border-radius: 0.3rem;
+    border-style: solid;
+    border-width: 0.1rem;
+
+    @apply p-3;
+    @apply mx-1;
+
+    @apply bg-white;
+    @apply text-black;
+  }
+  .pagination .pagination-item {
+    @apply cursor-pointer;
+    @apply select-none;
+  }
+  .pagination .pagination-item-active {
+    @apply bg-sky-700 !important;
+    @apply text-white !important;
+  }
+  .pagination .pagination-item.nav-item {
+    @apply p-3;
+
+    @apply rounded-md;
+
+    @apply bg-white;
+    @apply text-black;
+  }
+  .pagination .pagination-item.nav-prev {
+    @apply ml-4 mr-2;
+  }
+  .pagination .pagination-item.nav-next {
+    @apply ml-2 mr-4;
   }
 }
 
