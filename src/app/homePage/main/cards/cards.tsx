@@ -1,20 +1,40 @@
 import React from 'react';
+import { useState } from 'react';
+import Perfil from '@/app/character/perfil';
 
 export default function Card(props) {
-    const thumbnailCharacter = `${props.heroi.thumbnail.path}.${props.heroi.thumbnail.extension}`;
+    const thumbnailCharacter = props.character.thumbnail.path !== "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ?
+        `${props.character.thumbnail.path}.${props.character.thumbnail.extension}` :
+        `/Marvel-Logo.png`;
+
+    const [modalCard, setModalCard] = useState(false);
+
+    const viewModal = () =>{
+        setModalCard(!modalCard);
+    }
 
     return (
-        <div className="w-40 h-48 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">
-            <div className="h-2/3">
-                <img
-                    src= {thumbnailCharacter}
-                    alt={props.heroi.name}
-                    className='object-cover w-full h-full rounded-t-lg'
-                />
+        <div>
+            <div onClick={viewModal} className="h-48 w-40 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">
+                <div className="relative h-full">
+                    <img
+                        src= {thumbnailCharacter}
+                        alt={props.character.name}
+                        className="absolute object-fit w-full h-full rounded-lg z-index-0"
+                    />
+                    <div className="absolute flex container rounded-b-lg bg-gray-800 bg-opacity-80 h-1/3 mx-auto text-center justify-center items-center z-index-1 bottom-0">
+                        <p>{props.character.name}</p>
+                    </div>
+                </div>
             </div>
-            <div className="grid container rounded-b-lg bg-gray-800 bg-opacity-80 h-1/3 mx-auto items-center justify-items-center text-center">
-                <p>{props.heroi.name}</p>
-            </div>
+            <Perfil
+                showModal={modalCard}
+                eventoFecharModal={viewModal}
+                character={props.character}
+                timestamp = {props.timestamp}
+                publicKey = {props.publicKey}
+                hash = {props.hash}
+            />
         </div>
     )
 }

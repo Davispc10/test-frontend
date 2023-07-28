@@ -1,22 +1,25 @@
 "use client";
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import React  from 'react';
 import axios from 'axios';
 import md5 from 'md5';
 import Card from './cards/cards';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Loading from '@/app/loading/loading';
+import Footer from '../footer/footer';
 
 const publicKey = 'fbc4f64b3d3b579945901a02361c004e';
 const privateKey = '56510ad02017aee2e74689a77269878198c8b40f';
 
 export default function Main() {
-  const [url] = useState('https://gateway.marvel.com:443/v1/public/characters');
-  const [herois, setHerois] = useState([]);
+  const [url, setUrl] = useState('https://gateway.marvel.com:443/v1/public/characters?limit=6&offset=0');
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [characters, setCharacter] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isSearching, setIsSearching] = useState(false);
-  const carousel = useRef(null);
+  const [search, setSearch] = useState('');
   const timestamp = new Date().getTime();
   const hash = md5(timestamp + privateKey + publicKey);
 
@@ -28,106 +31,75 @@ export default function Main() {
         hash: hash,
       }
     }).then(result => {
-          setHerois(result.data.data.results);
+          setCharacter(result.data.data.results);
+          setTotal(result.data.data.total);
           setLoading(false);
           console.log(result);
         }
       ).catch(() => setLoading(true));
   }
 
-  const handleSearch = () => {
-    setIsSearching(!isSearching);
-  };
-
-  const handleScrollWithAnimation = (scrollValue, duration) => {
-    const element = carousel.current;
-    const startTime = performance.now();
-    const startScrollLeft = element.scrollLeft;
-
-    const animateScroll = (timestamp) => {
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const newScrollLeft = startScrollLeft + (scrollValue - startScrollLeft) * progress;
-      element.scrollLeft = newScrollLeft;
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-
-    requestAnimationFrame(animateScroll);
-  };
-
   const buttonRight = (e) => {
     e.preventDefault();
-    const scrollValue = carousel.current.scrollLeft - carousel.current.offsetWidth;
-    handleScrollWithAnimation(scrollValue, 300);
+    if(offset+1 < total/6){
+      setLoading(true);
+      while (characters.length) characters.pop();
+      setUrl('https://gateway.marvel.com:443/v1/public/characters?limit=6&offset='+(offset+1)*6);
+      setOffset(offset+1);
+    }
   }
 
   const buttonLeft = (e) => {
     e.preventDefault();
-    const scrollValue = carousel.current.scrollLeft + carousel.current.offsetWidth;
-    handleScrollWithAnimation(scrollValue, 300);
+    if(offset-1 >= 0){
+      setLoading(true);
+      while (characters.length) characters.pop();
+      setUrl('https://gateway.marvel.com:443/v1/public/characters?limit=6&offset='+(offset-1)*6);
+      setOffset(offset-1);
+    }
   }
 
   useEffect(() => {
     getAllCharacter(url);
   }, [url]);
 
+  useEffect(() => {
+    if(search != ''){
+      setUrl('https://gateway.marvel.com:443/v1/public/characters?limit=6&name='+search);
+    }else{
+      setUrl('https://gateway.marvel.com:443/v1/public/characters?limit=6&offset='+(offset)*6);
+    }
+  }, [search]);
+
   return (
-    loading ? (
-      <div>
-        <p>Loading</p>
-      </div>
-    ) : (
-      <div className="w-screen overflow-y-hidden">
-        <div className="grid grid-rows-3 grid-flow-col overflow-x-auto mx-1 overflow-hidden delay-150" ref={carousel}>
-          {
-            herois && herois.sort((idA, idB) =>
-                idA.id - idB.id
-            ).map((heroi, index) =>
-                <Card
-                  heroi = {heroi}
-                  key = {index}
-                />
-            )
-          }
-        </div>
-        <div className="flex grid-cols-3 w-full items-center justify-center">
-          <button className="h-9 w-9 bg-red-600 rounded-full cursor-none"
-            onClick={buttonRight}>
-            <FontAwesomeIcon icon={faArrowLeft}  className="text-white text-xl"/>
-          </button>
-          {/* {isSearching ? (
-            <input
-              type="text"
-              className={`px-4 py-2 rounded-md border border-gray-300`}
-              placeholder="Search..."
-              onBlur={handleSearch}
-            />
-          ) : (
-            <button
-              onClick={handleSearch}
-              className={`h-9 w-9 bg-red-600 rounded-full cursor-none transform ${
-                isSearching ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100 pointer-events-auto'
-              } transition-all duration-300 ease-in-out`}
-            >
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-white text-xl"/>
-            </button>
-          )} */}
-          <div className="search-box">
-            <button className="btn-search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="text-white text-xl"/>
-            </button>
-            <input
-              className="input-search"
-            />
+    <div className="w-screen overflow-y-hidden">
+      {loading ? (
+          <Loading />
+        ) : (
+          <div className="grid grid-rows-3 grid-flow-col w-full h-4/5 items-center justify-center">
+            {
+              characters && characters.sort((idA, idB) =>
+                  idA.id - idB.id
+              ).map((character, index) =>
+                  <Card
+                    character = {character}
+                    key = {index}
+                    timestamp = {timestamp}
+                    publicKey = {publicKey}
+                    hash = {hash}
+                  />
+              )
+            }
           </div>
-          <button className="h-9 w-9 bg-red-600 rounded-full cursor-none" onClick={buttonLeft}>
-            <FontAwesomeIcon icon={faArrowRight} className="text-white text-xl"/>
-          </button>
-        </div>
-      </div>
-    )
+        )
+      }
+      <Footer
+        buttonLeft = {buttonLeft}
+        buttonRight = {buttonRight}
+        search = {search}
+        setSearch = {setSearch}
+      />
+    </div>
+    
   )
 }
