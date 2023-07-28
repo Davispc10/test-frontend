@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Avengers Assemble',
-  description: '',
+  description: 'List of every character in Marvel',
+  icons: '/marvel-icon.png',
 }
 
 export default function RootLayout({
