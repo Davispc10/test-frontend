@@ -17,15 +17,15 @@ interface Props {
 
 const ApplicationContainer: NextPage<Props> = ({ children }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
         <HooksGrouper>
           <ToastContainer />
           <Loading />
           {children}
         </HooksGrouper>
-      </Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 
