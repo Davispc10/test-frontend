@@ -1,0 +1,9 @@
+.image-character {
+  min-width: 188px;
+  width: 188px;
+  height: 188px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+}
