@@ -1,13 +1,6 @@
-import { BASE_URL, privateKey, publicKey } from "@/utils/utils";
+import { BASE_URL, publicKey } from "@/utils/utils";
 import axios from "axios";
-import {
-  timestamp,
-  offset,
-  hash,
-  pageNumber,
-  pageSize,
-  totalPages,
-} from "@/constants/constants";
+import { timestamp, hash } from "@/constants/constants";
 
 interface FetchProps {
   id: string;
@@ -39,7 +32,7 @@ export const fetchDataComics = async ({ id, timestamp }: FetchProps) => {
   }
 };
 
-export const fetchCharacters = async () => {
+export const fetchCharacters = async (offset: number) => {
   try {
     const response = await axios.get(
       `${BASE_URL}?ts=${timestamp}&offset=${offset}&apikey=${publicKey}&hash=${hash}`
@@ -52,4 +45,18 @@ export const fetchCharacters = async () => {
   }
 };
 
+export const fetchSearchCharacters = async (search: string) => {
+  if (search === "") {
+    return;
+  }
+  try {
+    const response = await axios.get(
+      `${BASE_URL}?ts=${timestamp}&nameStartsWith=${search}&apikey=${publicKey}&hash=${hash}`
+    );
+    const data = response.data.data.results;
 
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

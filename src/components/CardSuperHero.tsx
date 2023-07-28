@@ -15,9 +15,9 @@ export default function CardSuperHero({ character, commics }: CharacterProps) {
     <Suspense fallback={<div>Loading...</div>} unstable_expectedLoadTime={1000}>
       <div
         key={character.id}
-        className="flex flex-col items-center justify-between bg-red-600 rounded-md hover:shadow-lg shadow-lg transition duration-500 ease-in-out transform py-3 w-[60%] gap-5"
+        className="flex flex-col items-center justify-between bg-red-600 rounded-md hover:shadow-lg shadow-lg transition duration-500 ease-in-out transform p-5 w-[60%] gap-5"
       >
-        <div className="">
+        <div>
           <Image
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name ? character.name : "No name"}
@@ -61,16 +61,16 @@ export default function CardSuperHero({ character, commics }: CharacterProps) {
             </div>
           )}
         </div>
-        <div className="flex flex-col justify-center items-center gap-3">
+        <div className="flex flex-col justify-center items-center gap-3 p-10 shadow-md">
           <h2 className="text-xl font-bold text-center text-gray-50">
             Description
           </h2>
           <p className="text-gray-50 text-center">
-            {character.description ? character.description : "No description"}
+            {character.description ? character.description : "Descrição não informada"}
           </p>
         </div>
         <button
-          className="flex flex-row items-center justify-center gap-2 bg-red-700 rounded-md hover:shadow-lg shadow-lg hover:bg-red-800 transition duration-500 ease-in-out transform p-5"
+          className="flex flex-row items-center justify-center gap-2 bg-red-800 rounded-md hover:shadow-lg shadow-lg hover:bg-red-800 transition duration-500 ease-in-out transform p-5"
           onClick={() => router.back()}
         >
           <Undo2 size={24} className="text-white" />

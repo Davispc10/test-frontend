@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { CardSuperHero } from "@/components";
 import { fetchData, fetchDataComics } from "@/functions/functions";
 import { timestamp } from "@/constants/constants";
+
 interface Params {
   id: string;
 }
