@@ -5,6 +5,12 @@ import Image from 'next/image'
 export type CharacterProps = {
   name: string
   thumbnail: string
+  comics: any
+  description: string
+  series: any
+  stories: any
+  events: any
+  urls: any
 }
 
 export default function Character({ name, thumbnail, ...props }: CharacterProps) {
@@ -34,8 +40,9 @@ export default function Character({ name, thumbnail, ...props }: CharacterProps)
       urls: props.urls,
     }
 
-    localStorage.setItem('detail', JSON.stringify(detail))
-
+    if (typeof window !== 'undefined') {
+    }
+    window.localStorage.setItem('detail', JSON.stringify(detail))
     window.location.href = '/detail'
   }
 

@@ -10,9 +10,18 @@ import { params } from '@/helpers'
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { setCharacters } from "@/store/reducers/marvel"
 
+import { CharacterProps } from '@/components/character'
+
 type dataMarvelProps = {
   id: number
   name: string
+  thumbnail: {
+    path: string
+    extension: string
+  }
+}
+type CharacterPageProps = CharacterProps & {
+  id: number
   thumbnail: {
     path: string
     extension: string
@@ -41,7 +50,7 @@ export default function Home() {
         ) : data ? (
           <div className="container">
             {characters?.results?.slice(entries.indexOfFirst, entries.indexOfLast)
-              .map(({ id, name, thumbnail, ...props }: dataMarvelProps) => (
+              .map(({ id, name, thumbnail, ...props }: CharacterPageProps) => (
                 <Character
                   key={id}
                   name={name}

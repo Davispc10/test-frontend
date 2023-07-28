@@ -14,23 +14,33 @@ type ComicDetailProps = ComicProps & {
   image: string;
 }
 
+type CharacterProps = {
+  name: string
+  thumbnail: string
+  description: string
+  comics: any
+  series: any
+  stories: any
+  events: any
+  urls: any
+}
+
 export default function Detail() {
   const [comics, setComics] = useState([])
-  const localDetail = window.localStorage.getItem('detail')
-  const detail = JSON.parse(localDetail)
+  const [localDetail, setLocalDetail] = useState<CharacterProps>()
   const [getComics, { data, isFetching }] = useLazyGetComicsQuery()
 
   useEffect(() => {
-    if (!Object.keys(detail).length) {
-      window.location.href = '/'
-
-      return
+    if (typeof window !== 'undefined') {
+      const detail = localStorage.getItem('detail')
+      const json = JSON.parse(detail ?? '')
+      setLocalDetail(json)
     }
-  }, [detail])
+  }, [])
 
   useEffect(() => {
     if (!isFetching && !comics?.length) {
-      getComics({ url: detail.comics })
+      getComics({ url: localDetail?.comics })
     }
   }, [])
 
@@ -40,82 +50,98 @@ export default function Detail() {
     }
   }, [data, isFetching, comics])
 
+  useEffect(() => {
+    const time = setTimeout(() => {
+      if (typeof localDetail === 'object' && !Object.keys(localDetail).length) {
+        location.href = '/'
+  
+        return
+      }
+    }, 100)
+
+    return () => clearInterval(time)
+  }, [localDetail])
+
   return (
     <LayoutDetail>
-      <div className="detail">
-        <div className="image w-full h-96 lg:h-[38rem] xl:h-[48rem] relative">
-          <Image
-            src={detail.thumbnail}
-            alt={detail.name}
-            style={{
-              objectFit: 'contain',
-            }}
-            fill
-          />
-        </div>
-
-        <div className="description w-full text-black">
-          <h1>{detail.name}</h1>
-
-          <p className="text">{detail.description}</p>
-
-          <div className="series">
-            <h2>
-              Series: <span className='font-bold'>{detail.series.available}</span>
-            </h2>
-
-            {detail.series.items.map((item: string) =>
-              <p className="mt-2" key={item}>{item}</p>
-            )}
+      {!localDetail ? (
+        <div className="loader" />
+      ) : (
+        <div className="detail">
+          <div className="image w-full h-96 lg:h-[38rem] xl:h-[48rem] relative">
+            <Image
+              src={localDetail?.thumbnail}
+              alt={localDetail?.name}
+              style={{
+                objectFit: 'contain',
+              }}
+              fill
+            />
           </div>
 
-          <div className="events">
-            <h2>
-              Events: <span className='font-bold'>{detail.events.available}</span>
-            </h2>
+          <div className="description w-full text-black">
+            <h1>{localDetail?.name}</h1>
 
-            {detail.events.items.map((item: string) =>
-              <p className="mt-2" key={item}>{item}</p>
-            )}
-          </div>
+            <p className="text">{localDetail?.description}</p>
 
-          <div className="urls">
-            <h2>
-              More Information:
-              <span className='font-bold'>
-                {detail.urls.available}
-              </span>
-            </h2>
+            <div className="series">
+              <h2>
+                Series: <span className='font-bold'>{localDetail?.series?.available}</span>
+              </h2>
 
-            <ul>
-              {detail.urls.map((item: { url: string, type: string }) => (
-                <li key={item.url}>
-                  <a className='link' href={item.url} target='_blank'>
-                    {item.type}
-                  </a>
-                </li>
-              ))}
-            </ul>
+              {localDetail?.series?.items.map((item: string) =>
+                <p className="mt-2" key={item}>{item}</p>
+              )}
+            </div>
 
-          </div>
-        </div>
+            <div className="events">
+              <h2>
+                Events: <span className='font-bold'>{localDetail?.events?.available}</span>
+              </h2>
 
-        {data && (
-          <div className="comics w-full">
-            <h2 className='mb-4'>Comics</h2>
-            <div className="comics-container">
-              {data.map((item: ComicDetailProps) => (
-                <Comic
-                  title={item.title}
-                  format={item.format}
-                  thumbnail={item.image}
-                  key={item.id}
-                />
+              {localDetail?.events?.items.map((item: string) =>
+                <p className="mt-2" key={item}>{item}</p>
+              )}
+            </div>
+
+            <div className="urls">
+              <h2>
+                More Information:
+                <span className='font-bold'>
+                  {localDetail?.urls?.available}
+                </span>
+              </h2>
+
+              <ul>
+                {localDetail?.urls?.map((item: { url: string, type: string }) => (
+                  <li key={item.url}>
+                    <a className='link' href={item.url} target='_blank'>
+                      {item.type}
+                    </a>
+                  </li>
                 ))}
+              </ul>
+
             </div>
           </div>
-        )}
-      </div>
+
+          {data && (
+            <div className="comics w-full">
+              <h2 className='mb-4'>Comics</h2>
+              <div className="comics-container">
+                {data.map((item: ComicDetailProps) => (
+                  <Comic
+                    title={item.title}
+                    format={item.format}
+                    thumbnail={item.image}
+                    key={item.id}
+                  />
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </LayoutDetail>
   )
 }

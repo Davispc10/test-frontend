@@ -2,9 +2,11 @@ import React from "react";
 
 export default function Detail({ children }: { children: React.ReactNode }) {
   const handleBack = () => {
-    localStorage.removeItem('detail')
+    if (typeof window !== "undefined") {
+      localStorage.removeItem('detail')
+    }
 
-    window.history.back();
+    history.back();
   }
 
   return (
