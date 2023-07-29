@@ -7,6 +7,7 @@ interface HeroDetailsTemplateProps {
   },
   name: string,
   description: string,
+  id: number,
 }
 
 export const HeroDetailsTemplate = ({ ...props }: HeroDetailsTemplateProps) => {
@@ -14,7 +15,8 @@ export const HeroDetailsTemplate = ({ ...props }: HeroDetailsTemplateProps) => {
     <HeroDetails 
       name={props.name} 
       description={props.description!} 
-      image={props.thumbnail.path}    
+      image={props.thumbnail.path}
+      id={props.id}    
     />
   );
 };

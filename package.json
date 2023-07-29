@@ -21,6 +21,7 @@
     "eslint-config-next": "13.4.10",
     "next": "13.4.10",
     "phosphor-icons": "^1.4.2",
+    "react-hot-toast": "^2.4.1",
     "react-redux": "^8.1.1",
     "typescript": "5.1.6"
   },

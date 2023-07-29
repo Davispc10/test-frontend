@@ -18,12 +18,12 @@ export const HeroesList = ({data, isLoading} : HeroesProps) => {
       {data && (
         data.results.map((hero: HeroProps) => (
           <Link
-            className='hover:bg-red-600 border-y border-red-900 rounded-lg duration-300'
+            className='flex hover:bg-red-600 border-y border-red-900 rounded-lg duration-300'
             href={`/hero/${hero.id}`}
             key={hero.id}> 
               <HeroCard 
                 name={hero.name} 
-                image={hero.thumbnail!.path} 
+                image={hero.thumbnail?.path ? hero.thumbnail.path : hero.image!} 
                 key={hero.id}              
               />
           </Link>
