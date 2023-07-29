@@ -2,11 +2,18 @@ import { useState } from "react";
 import Image from "next/image";
 import { useCharacters } from "@/hooks/useCharacters";
 import { Character } from "@/types/character";
+import { useRouter } from "next/navigation";
 
 function CharactersList() {
+  const router = useRouter();
+
   const [page, setPage] = useState<number>(0);
 
   const { data } = useCharacters(page);
+
+  const handleCharacterDetail = (id: any) => {
+    router.push(`/character/${id}`)
+  };
 
   return (
     <>
@@ -26,6 +33,7 @@ function CharactersList() {
             <div
               key={character.id}
               className="my-5 h-80 relative cursor-pointer rounded-xl"
+              onClick={() => handleCharacterDetail(character.id)}
             >
               <div>
                 <Image
