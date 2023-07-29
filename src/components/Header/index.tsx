@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
-import { GoSearch } from "react-icons/go";
 import Logo from "/public/images/marvel_logo.png";
+import SearchNameActionTypes from "@/redux/searchName/action-types";
+import { GoSearch } from "react-icons/go";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import SearchNameActionTypes from "@/redux/searchName/action-types";
 
 const Header = () => {
   const searchName = useSelector(
