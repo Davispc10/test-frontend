@@ -4,7 +4,7 @@ import { useCharacters } from "@/hooks/useCharacters";
 import { Character } from "@/types/character";
 
 function CharactersList() {
-  const [page, setPage] = useState<number>(20);
+  const [page, setPage] = useState<number>(0);
 
   const { data } = useCharacters(page);
 
@@ -21,13 +21,13 @@ function CharactersList() {
         <button onClick={() => setPage(page + 20)}>next</button>
       </div>
       <div className="w-full flex justify-center">
-        <ul className="flex w-4/5	 justify-between flex-wrap">
+        <div className="flex w-4/5 justify-between flex-wrap">
           {data?.map((character: Character) => (
             <div
               key={character.id}
               className="my-5 h-80 relative cursor-pointer rounded-xl"
             >
-              <li>
+              <div>
                 <Image
                   src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                   alt={character.name}
@@ -39,10 +39,10 @@ function CharactersList() {
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 p-2 text-white w-full text-center rounded-t-lg">
                   <h2 className="text-xl">{character.name}</h2>
                 </div>
-              </li>
+              </div>
             </div>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );
