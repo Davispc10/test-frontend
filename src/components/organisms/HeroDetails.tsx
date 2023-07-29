@@ -1,7 +1,7 @@
 import React from "react";
 import { HeroDescription } from "../atoms/HeroDescription";
 import { HeroMainInfo } from "./HeroMainInfo";
-import { BackButtonMolecule } from "../molecules/BackButtonMolecule";
+import { BackButton } from "../molecules/BackButton";
 
 interface HeroDetailsProps {
   name: string,
@@ -14,7 +14,7 @@ export const HeroDetails = ({...props} : HeroDetailsProps) => {
     <div className="grid h-full border-4 border-black rounded-md bg-red-900">
       <HeroMainInfo name={props.name} image={props.image} />
       <HeroDescription description={props.description!} />
-      <BackButtonMolecule />
+      <BackButton />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react"
-import Pagination from "../molecules/Pagination"
+import Pagination from "../organisms/Pagination"
 import { ChangeEvent } from "react"
 import { HomeInput } from "../atoms/HomeInput"
 import { HeroesList } from "../organisms/HeroesList"

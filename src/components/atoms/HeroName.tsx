@@ -6,11 +6,9 @@ interface HeroNameProps {
 }
 
 export const HeroName = ({name, textSize} : HeroNameProps ) => {
-  return (
-    <div>
-      <p className={`xl:text-2xl xl:text-center font-semibold ${textSize ? textSize : 'text-sm'}`}>
-        {name}
-      </p>
-    </div>
+  return (    
+    <p className={`xl:text-2xl xl:text-center font-semibold ${textSize ? textSize : 'text-xs'}`}>
+      {name}
+    </p>    
   )
 }

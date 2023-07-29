@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import React, { ReactNode } from "react";
 
-interface BackButtonProps {
+interface BackButtonWrapperProps {
   children: ReactNode,
 }
 
-export const BackButton = ({children} : BackButtonProps) => {
+export const BackButtonWrapper = ({children} : BackButtonWrapperProps) => {
   const router = useRouter();
 
   return (

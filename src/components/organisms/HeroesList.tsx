@@ -17,7 +17,7 @@ export const HeroesList = ({data, isLoading} : HeroesProps) => {
       )}
       {data && (
         data.results.map((hero: HeroProps) => (
-          <Link 
+          <Link
             className='hover:bg-red-600 border-y border-red-900 rounded-lg duration-300'
             href={`/hero/${hero.id}`}
             key={hero.id}> 

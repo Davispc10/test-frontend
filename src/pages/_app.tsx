@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from '../utils/utils';
-import { NavBar } from '../components/NavBar';
+import { NavBar } from '../components/organisms/NavBar';
 
 import { store } from '../app/store'
 import { Provider } from 'react-redux'

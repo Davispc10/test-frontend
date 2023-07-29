@@ -1,10 +1,13 @@
 import React from 'react';
 import { useQuery } from "react-query";
-import { getHeroComics } from "../services/apiServices";
+import { getHeroComics } from "../../services/apiServices";
 import { useRouter } from "next/router";
-import { Comic } from "../utils/interfaces";
+import { Comic } from "../../utils/interfaces";
 import { CircleNotch } from "@phosphor-icons/react";
-import { defaultComicsMessage } from '../utils/utils';
+import { defaultComicsMessage } from '../../utils/utils';
+import { ComicsTitle } from '../atoms/ComicsTitle';
+import { ComicsDefaultMessage } from '../atoms/ComicsDefaultMessage';
+import { ComicList } from '../molecules/ComicList';
 
 export const Comics = () => {
   const router = useRouter();
@@ -19,9 +22,7 @@ export const Comics = () => {
 
   return (
     <div className="flex flex-col w-full justify-center items-center">
-      <p className="mb-1 text-black text-md">
-        Comics
-      </p>
+      <ComicsTitle />
       {isLoading && (
         <CircleNotch className="h-12 w-12 animate-spin text-red-500" />
       )}
@@ -29,22 +30,12 @@ export const Comics = () => {
         {data?.length! > 0 && (
           data!.slice(0,5).map((comic: Comic) => {
             return (
-              <a href={`${comic.thumbnail.path}.jpg`} key={comic.id} target='blank'>
-                <picture>
-                  <img 
-                    className="h-24 w-12 xs:h-28 xs:w-16 mr-2 rounded-sm border-2 border-slate-800 hover:border-red-500 duration-300"                 
-                    src={`${comic.thumbnail.path}.jpg`}
-                    alt='' 
-                  />            
-                </picture>
-              </a>
+              <ComicList thumbnail={comic.thumbnail.path} id={comic.id} key={comic.id} />
             )
           })
         )}
         {!isLoading && data?.length === 0 && (
-          <p>
-           {defaultComicsMessage}
-          </p>
+          <ComicsDefaultMessage defaultMessage={defaultComicsMessage} />
         )}      
       </div>
     </div>

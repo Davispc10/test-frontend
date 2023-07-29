@@ -1,5 +1,5 @@
 import React from "react";
-import { Comics } from "../Comics";
+import { Comics } from "./Comics";
 import HeroCard from "../molecules/HeroCard";
 
 interface HeroMainInfoProps {
