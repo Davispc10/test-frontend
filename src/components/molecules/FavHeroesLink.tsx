@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import { FavHeroesTitle } from "../atoms/FavHeroesTitle";
 import { Heart } from "@phosphor-icons/react";
 

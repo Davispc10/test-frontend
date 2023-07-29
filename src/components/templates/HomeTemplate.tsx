@@ -1,8 +1,7 @@
-import React from "react"
-import Pagination from "../organisms/Pagination"
-import { ChangeEvent } from "react"
-import { HomeInput } from "../atoms/HomeInput"
-import { HeroesList } from "../organisms/HeroesList"
+import React, { ChangeEvent } from "react";
+import { HomeInput } from "../atoms/HomeInput";
+import { HeroesList } from "../organisms/HeroesList";
+import Pagination from "../organisms/Pagination";
 
 interface HomeProps {
   search: string,

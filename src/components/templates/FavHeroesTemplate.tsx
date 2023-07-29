@@ -1,5 +1,5 @@
-import React from "react"
-import { HeroesList } from "../organisms/HeroesList"
+import React from "react";
+import { HeroesList } from "../organisms/HeroesList";
 
 interface HomeProps {
   data: any,

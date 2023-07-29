@@ -1,5 +1,5 @@
-import { ArrowUUpLeft } from "@phosphor-icons/react";
 import React from "react";
+import { ArrowUUpLeft } from "@phosphor-icons/react";
 import { BackButtonWrapper } from "../atoms/BackButton";
 
 export const BackButton = () => {

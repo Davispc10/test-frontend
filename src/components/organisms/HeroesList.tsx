@@ -1,8 +1,9 @@
 import React from "react"
-import { CircleNotch } from "@phosphor-icons/react"
 import HeroCard from "../molecules/HeroCard"
 import { HeroProps } from "../../utils/interfaces"
 import Link from "next/link"
+
+import { CircleNotch } from "@phosphor-icons/react"
 
 interface HeroesProps {
   data: any,

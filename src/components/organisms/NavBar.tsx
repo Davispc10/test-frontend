@@ -1,7 +1,8 @@
 import React from "react";
-import { NavBarLogo } from "../molecules/NavBarLogo";
 import { NavBarTitle } from "../atoms/NavBarTitle";
+import { NavBarLogo } from "../molecules/NavBarLogo";
 import { NavBarDescription } from "../atoms/NavBarDescription";
+
 import { FavHeroesLink } from "../molecules/FavHeroesLink";
 import { GithubLogo } from "@phosphor-icons/react";
 

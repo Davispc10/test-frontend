@@ -1,9 +1,10 @@
 import React from "react";
-import { HeroDescription } from "../atoms/HeroDescription";
-import { HeroMainInfo } from "./HeroMainInfo";
-import { BackButton } from "../molecules/BackButton";
 import { useDispatch } from "react-redux";
 import { addHero, removeHero } from "../../features/HeroSlice";
+import { HeroMainInfo } from "./HeroMainInfo";
+
+import { HeroDescription } from "../atoms/HeroDescription";
+import { BackButton } from "../molecules/BackButton";
 import { FavHeroButton } from "../molecules/FavHeroButton";
 import { Toaster } from "react-hot-toast";
 

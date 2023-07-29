@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent } from "react";
 import { useQuery } from "react-query";
-import { getAllHeroes } from "../services/apiServices";
 import { RootState } from "../app/store";
 import { setSearch } from "../features/HeroSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 import HomeTemplate from "../components/templates/HomeTemplate";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllHeroes } from "../services/apiServices";
 
 const Home = () => {
   const search = useSelector((state: RootState) => state.hero.search);

@@ -1,15 +1,14 @@
 import React from 'react';
+import type { ReactNode } from 'react';
+import type { AppProps } from 'next/app';
+import { store } from '../app/store';
+
 import { QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
 import { queryClient } from '../utils/utils';
 import { NavBar } from '../components/organisms/NavBar';
 
-import { store } from '../app/store'
-import { Provider } from 'react-redux'
-
 import '../styles/globals.css';
-
-import type { ReactNode } from 'react';
-import type { AppProps } from 'next/app';
 
 const MyApp = ({ Component, pageProps }: AppProps): ReactNode => {
   return (

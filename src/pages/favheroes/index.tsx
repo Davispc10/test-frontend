@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import FavHeroesTemplate from "../../components/templates/FavHeroesTemplate";
 import { RootState } from "../../app/store";
+import FavHeroesTemplate from "../../components/templates/FavHeroesTemplate";
 
 const FavHeroes = () => {
   const { favHeroes } = useSelector((state: RootState) => state.hero);

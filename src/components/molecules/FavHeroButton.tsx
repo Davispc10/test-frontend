@@ -1,5 +1,5 @@
-import { Star, Trash } from "@phosphor-icons/react";
 import React from "react";
+import { Star, Trash } from "@phosphor-icons/react";
 
 interface FavHeroButtonProps {
   isFavIcon: boolean

@@ -2,12 +2,14 @@ import React from 'react';
 import { useQuery } from "react-query";
 import { getHeroComics } from "../../services/apiServices";
 import { useRouter } from "next/router";
+
 import { Comic } from "../../utils/interfaces";
-import { CircleNotch } from "@phosphor-icons/react";
-import { defaultComicsMessage } from '../../utils/utils';
+import { ComicList } from '../molecules/ComicList';
 import { ComicsTitle } from '../atoms/ComicsTitle';
 import { ComicsDefaultMessage } from '../atoms/ComicsDefaultMessage';
-import { ComicList } from '../molecules/ComicList';
+
+import { defaultComicsMessage } from '../../utils/utils';
+import { CircleNotch } from "@phosphor-icons/react";
 
 export const Comics = () => {
   const router = useRouter();
