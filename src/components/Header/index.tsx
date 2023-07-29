@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center p-8">
+    <header className="flex justify-center lg:justify-between items-center p-8">
       <div className="lg:block hidden">
         <Image src={Logo} width={250} alt="Logo Marvel" />
       </div>
