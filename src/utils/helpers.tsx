@@ -1,16 +1,20 @@
-const descriptionVerifier = (description: string, sub1 = 0, sub2 = 150) => {
-	if (description) {
-		return `${description.substring(sub1, sub2)}${sub2 === 150 ? '...' : ''}`;
-	} else {
-		return "There's no description.";
-	}
-};
+const descriptionVerifier = (
+  description: string | undefined,
+  sub1 = 0,
+  sub2 = 150
+): string => {
+  if (description) {
+    return `${description.substring(sub1, sub2)}${sub2 === 150 ? '...' : ''}`
+  } else {
+    return "There's no description."
+  }
+}
 
-const thumbnailVerifier = (thumbnail: string) => {
-	if (thumbnail.includes('image_not_available')) {
-		return '/images/logo.svg';
-	}
-	return thumbnail;
-};
+const thumbnailVerifier = (thumbnail: string): string => {
+  const placeholderImage = '/images/logo.svg'
+  return thumbnail.includes('image_not_available')
+    ? placeholderImage
+    : thumbnail
+}
 
-export { thumbnailVerifier, descriptionVerifier };
+export { thumbnailVerifier, descriptionVerifier }

@@ -1,54 +1,60 @@
-'use client';
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { descriptionVerifier, thumbnailVerifier } from '../utils/helpers';
-import Layout from '@/components/Layout';
-import HeroCard from '@/components/HeroCard';
-import heroService from '@/services/heroService';
+'use client'
+import React from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { descriptionVerifier, thumbnailVerifier } from '../utils/helpers'
+import Layout from '@/components/Layout'
+import HeroCard from '@/components/HeroCard'
+import heroService from '@/services/heroService'
 import Link from 'next/link'
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate'
 
 function Home() {
+  const [heroes, setHeroes] = React.useState([])
+  const [filter, setFilter] = React.useState<string>('')
+  const [loading, setLoading] = React.useState(true)
+  const [offset, setOffset] = React.useState(0)
 
-  const [heroes, setHeroes] = React.useState([]);
-  const [filter, setFilter] = React.useState<string>('');
-  const [loading, setLoading] = React.useState(true);
-  const [offset, setOffset] = React.useState(0);
-
-  const { data, isLoading, refetch, fetchStatus } = useQuery(['heroes', offset], () => heroService.list(offset, filter), {
-    onSuccess: ({ data }: any) => {
-      const information = data.data.results;
-      setHeroes(information);
-      setLoading(false);
-    },
-    retry: false,
-    refetchOnWindowFocus: false,
-    select: (data) => data,
-  });
+  const { data, refetch, fetchStatus } = useQuery(
+    ['heroes', offset],
+    () => heroService.list(offset, filter),
+    {
+      onSuccess: ({ data }: any) => {
+        const information = data.data.results
+        setHeroes(information)
+        setLoading(false)
+      },
+      retry: false,
+      refetchOnWindowFocus: false,
+      select: (data) => data,
+    }
+  )
 
   React.useEffect(() => {
     if (fetchStatus === 'fetching') {
-      const ls = localStorage.getItem('search') as string;
-      setFilter(ls);
+      const ls = localStorage.getItem('search') as string
+      setFilter(ls)
     }
-    refetch();
-  }, [filter]);
+    refetch()
+  }, [filter])
 
   const handleSearch = (event: React.FormEvent) => {
-    event.preventDefault();
-    setOffset(0);
-    refetch();
-  };
+    event.preventDefault()
+    setOffset(0)
+    refetch()
+  }
 
   const handlePageChange = (selected: number) => {
-    setOffset(selected * data.data.data.limit);
-    refetch();
-  };
+    setOffset(selected * data?.data.data.limit)
+    refetch()
+  }
 
   return (
     <Layout>
       <div className="h-full p-[8px]">
-        <form onSubmit={handleSearch} className="flex items-center justify-center w-full mb-8">
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center justify-center w-full mb-8"
+        >
           <input
             className="px-4 py-2 border text-gray-800 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300"
             onChange={({ target }) => setFilter(target.value)}
@@ -76,11 +82,17 @@ function Home() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {heroes.map((el: any) => (
-                  <Link className="w-300 cursor-pointer p-1 inline-block" key={el.id} href={`/hero/${el.id}`}>
+                  <Link
+                    className="w-300 cursor-pointer p-1 inline-block"
+                    key={el.id}
+                    href={`/hero/${el.id}`}
+                  >
                     <HeroCard
                       name={el.name}
                       description={descriptionVerifier(el.description)}
-                      thumbnail={`${thumbnailVerifier(`${el.thumbnail.path}.${el.thumbnail.extension}`)}`}
+                      thumbnail={`${thumbnailVerifier(
+                        `${el.thumbnail.path}.${el.thumbnail.extension}`
+                      )}`}
                       comics={el.comics.available}
                     />
                   </Link>
@@ -89,7 +101,9 @@ function Home() {
               <ReactPaginate
                 className="flex m-auto text-lg justify-around items-center w-2/4 mt-[20px]"
                 onPageChange={(selected) => handlePageChange(selected.selected)}
-                pageCount={Math.ceil(data?.data?.data.total / data?.data?.data.limit)}
+                pageCount={Math.ceil(
+                  data?.data?.data.total / data?.data?.data.limit
+                )}
                 initialPage={offset / data?.data?.data.limit}
                 pageRangeDisplayed={3}
                 previousLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
@@ -101,7 +115,7 @@ function Home() {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Home;
+export default Home
