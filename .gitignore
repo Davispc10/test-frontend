@@ -1,0 +1,9 @@
+.next/
+.swc/
+build/
+node_modules/
+
+.env
+.env.*
+
+next-env.d.ts
