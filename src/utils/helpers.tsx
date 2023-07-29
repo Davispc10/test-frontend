@@ -1,8 +1,8 @@
-const descriptionVerifier = (description: string) => {
+const descriptionVerifier = (description: string, sub1 = 0, sub2 = 150) => {
 	if (description) {
-		return `${description.substring(9, 150)}...`;
+		return `${description.substring(sub1, sub2)}${sub2 === 150 ? '...' : ''}`;
 	} else {
-		return "There's no description";
+		return "There's no description.";
 	}
 };
 

@@ -1,13 +1,14 @@
+'use client';
+
 import Layout from '@/components/Layout';
 
 function Favorites() {
 	return (
-		<Layout>
-			<div>
-				<h1>Favorites</h1>
-			</div>
+		<Layout>			
+			<h1>Favorites</h1>
 		</Layout>
 	);
 }
 
 export default Favorites;
+
