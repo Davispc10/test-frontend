@@ -1,13 +1,14 @@
 'use client';
 
-import CharacterComics from './CharacterComics';
-import Button from '../ui/Button';
+import useDarkMode from '@/app/hooks/useDarkMode';
+import Image from 'next/image';
+import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { BsFillClipboard2HeartFill } from 'react-icons/bs';
-import Image from 'next/image';
-import useDarkMode from '@/app/hooks/useDarkMode';
-import ShareModal from '../ShareModal';
-import { useState } from 'react';
+
+import Button from '../ui/Button';
+import CharacterComics from './CharacterComics';
+import ShareModal from './ShareModal';
 
 interface CharacterCardProps {
   name: string;

@@ -1,9 +1,9 @@
-import BaseModal from './ui/BaseModal';
+import BaseModal from '../ui/BaseModal';
 import { BsFillClipboard2HeartFill } from 'react-icons/bs';
 import { FaWindowClose } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import Image from 'next/image';
-import Button from './ui/Button';
+import Button from '../ui/Button';
 import * as U from '@/utils';
 import { useState } from 'react';
 

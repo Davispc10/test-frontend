@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
+import { useRef, useState } from 'react';
+import Slider from 'react-slick';
 import Lightbox from 'yet-another-react-lightbox';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
+
 import NextJsImage from '../NextImage';
-import Image from 'next/image';
-import Slider from 'react-slick';
-import { useState, useRef } from 'react';
 
 interface CharacterComicsProps {
   comics: any[];
