@@ -78,8 +78,6 @@ export const ContextProvider = ({ children }: any) => {
     }
   }, [offset, totalCharacters, pageNumber, search]);
 
-  console.log(search);
-
   return (
     <Context.Provider
       value={{

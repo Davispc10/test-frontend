@@ -10,7 +10,7 @@ import SearchHeroes from "@/components/SearchHeroes";
 import { Context } from "@/context/contextApi";
 
 export default function Home() {
-  const { results, page, setPage, offset, setOffset, lastPage, setSearch } =
+  const { results, page, setPage, offset, setOffset, lastPage, setSearch, search } =
     useContext(Context);
 
   const handlePreviousClick = () => {
@@ -48,7 +48,7 @@ export default function Home() {
             </Link>
           ))}
         </section>
-        <div className="flex flex-row items-center justify-center gap-5 py-5">
+        <div className={`flex flex-row items-center justify-center gap-5 py-5 ${search ? "hidden" : "flex"}`}>
           <button
             type="button"
             className="flex items-center justify-center p-3 text-xl font-bold text-center text-white bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"

@@ -20,7 +20,7 @@ export default function CardSuperHero({ character, commics }: CharacterProps) {
       <div className="flex flex-row items-center justify-center max-w-sm shadow-md border">
         <Image
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-          alt={character.name ? character.name : "No name"}
+          alt={character.name}
           width={500}
           height={500}
           className="object-cover"
@@ -66,9 +66,7 @@ export default function CardSuperHero({ character, commics }: CharacterProps) {
           Description
         </h2>
         <p className="text-red-600 text-center text-xl">
-          {character.description
-            ? character.description
-            : "Descrição não informada"}
+          {character.description}
         </p>
       </div>
       <button

@@ -1,6 +1,6 @@
 import { BASE_URL, publicKey } from "@/utils/utils";
 import axios from "axios";
-import { timestamp, hash } from "@/constants/constants";
+import { timestamp, hash, noImage } from "@/constants/constants";
 import { Character } from "@/types/global";
 import { logoMarvel, extensionImage } from "@/utils/utils";
 
@@ -29,6 +29,9 @@ export const fetchData = async ({ id, timestamp }: FetchProps) => {
           ? extensionImage
           : data.thumbnail.extension,
       },
+      description: data.description
+        ? data.description
+        : "Descrição não informada!",
     };
 
     return newData;
@@ -61,8 +64,6 @@ export const fetchDataComics = async ({ id, timestamp }: FetchProps) => {
 };
 
 export const fetchCharacters = async (offset: number) => {
-  const noImage =
-    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
   try {
     const response = await axios.get(
       `${BASE_URL}?ts=${timestamp}&offset=${offset}&apikey=${publicKey}&hash=${hash}`
@@ -98,15 +99,13 @@ export const fetchDataProps = async (offset: number) => {
 };
 
 export const fetchSearch = async (search: string) => {
-  const noImage =
-    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
   try {
     const response = await axios.get(
       `${BASE_URL}?ts=${timestamp}&nameStartsWith=${search}&apikey=${publicKey}&hash=${hash}`
     );
 
     const data = response.data.data.results;
-    console.log(data);
+
     const newData = data.map((hero: Character) => {
       if (hero.thumbnail.path.includes(noImage)) {
         hero.thumbnail.path = logoMarvel;

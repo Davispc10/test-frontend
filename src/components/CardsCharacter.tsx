@@ -17,7 +17,7 @@ export default function Character(character: Character) {
 
   if (loading) {
     return (
-      <div className="w-60 h-80 flex flex-col justify-center items-center shadow-md shadow-red-300">
+      <div className="flex flex-col items-center justify-between rounded-br-2xl rounded-tl-3xl hover:shadow-lg w-60 h-80 shadow-lg hover:bg-red-600 text-red-600 hover:text-white transition duration-500 ease-in-out transform pb-3">
         <Loading />
       </div>
     );
@@ -26,7 +26,7 @@ export default function Character(character: Character) {
   return (
     <div
       key={character.id}
-      className="flex flex-col items-center justify-between border border-red-600 rounded-r-xl hover:shadow-lg w-60 h-80 shadow-lg hover:bg-red-600 text-red-600 hover:text-white transition duration-500 ease-in-out transform pb-3"
+      className="flex flex-col items-center justify-between rounded-br-2xl rounded-tl-3xl hover:shadow-lg w-60 h-80 shadow-lg hover:bg-red-600 text-red-600 hover:text-white transition duration-500 ease-in-out transform pb-3"
     >
       <div className="w-full h-48">
         <Image
@@ -40,12 +40,12 @@ export default function Character(character: Character) {
                 ? "object-contain"
                 : "object-cover"
             }
-          w-full h-full rounded-tr-xl
+          w-full h-full rounded-tl-2xl
           `}
         />
       </div>
-      <div className="flex flex-col items-center justify-center p-5 tracking-widest uppercase">
-        <h2 className="text-2xl font-bold text-center p-3 rounded-md shadow-md border border-red-800 hover:scale-105 transform transition duration-300 ease-in-out">
+      <div className="flex flex-col items-center justify-center p-2 tracking-widest uppercase">
+        <h2 className="text-xl font-bold text-center p-3 rounded-md shadow-md border border-red-800 hover:scale-105 transform transition duration-300 ease-in-out">
           {character.name}
         </h2>
       </div>
