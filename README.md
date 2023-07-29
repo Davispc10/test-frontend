@@ -1,10 +1,10 @@
 # test-frontend
 
-esse projeto é um teste técnico para a [Dinheirow](https://dinheirow.com.br/). é uma aplicação web que consome a api da marvel e lista os personagens, seguindo as instruções deste repo: [test-frontend](https://github.com/Davispc10/test-frontend).
+esse projeto é um teste técnico para a [Dinheirow.](https://dinheirow.com.br/) é uma aplicação web que consome a api da marvel e lista os personagens, seguindo as instruções deste repo: [test-frontend.](https://github.com/Davispc10/test-frontend)
 
 ### como rodar
 
-eu fiz o [deploy na vercel]() para visualização, mas para rodar localmente basta:
+eu fiz o [deploy na vercel](https://test-frontend-deploy.vercel.app/) para visualização, mas para rodar localmente basta:
 
 1. clonar o repo com `git clone git@github.com:antoniopataro/test-frontend.git`
 2. instalar as dependências com `npm install` ou outro package manager
