@@ -1,5 +1,12 @@
-import Image from 'next/image'
+import { Suspense } from 'react'
+import { Characters } from './components/Characters/Characters'
 
-export default function Home() {
-  return <main className=""></main>
+export default async function Home(props: any) {
+  return (
+    <main className="">
+      <Suspense fallback={<h1>LOADING...</h1>}>
+        <Characters />
+      </Suspense>
+    </main>
+  )
 }
