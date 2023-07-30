@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import HeroesListActionTypes from "./action-types";
 import { GetHeroesResponse, Hero } from "@/types/heroes";
-import { HeroesReducer } from "@/types/redux";
 
 const initialState = {
   heroesList: null,
