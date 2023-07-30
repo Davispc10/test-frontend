@@ -1,0 +1,682 @@
+{
+  "ssrModuleMapping": {
+    "(app-client)/./node_modules/next/dist/client/components/app-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/app-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/error-boundary.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/error-boundary.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/layout-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/layout-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/image.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/link.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/shared/lib/head.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/shared/lib/head.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/cards/character/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/cards/character/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/components/search/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/components/search/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/components/search/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/components/search/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/contexts/characters.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/contexts/characters.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/home/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/home/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/home/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/home/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/nav/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/nav/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/nav/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/nav/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/navigator/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/navigator/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/navigator/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/navigator/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/paginator/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/paginator/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/utils/paginator/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/utils/paginator/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/lib/registry.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/lib/registry.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/cards/comic/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/cards/comic/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/cards/event/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/cards/event/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/cards/serie/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/cards/serie/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/cards/storie/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/cards/storie/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/parts/comics/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/parts/comics/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/parts/events/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/parts/events/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/parts/series/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/parts/series/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/parts/stories/index.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/parts/stories/index.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/core/painels/character/parts/styles.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/core/painels/character/parts/styles.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    }
+  },
+  "edgeSSRModuleMapping": {},
+  "clientModules": {
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/redirect-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/redirect-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/router-reducer/fetch-server-response.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/router-reducer/fetch-server-response.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/shared/lib/app-router-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/app-router-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/shared/lib/app-router-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/app-router-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/shared/lib/hooks-client-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/hooks-client-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/shared/lib/hooks-client-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/hooks-client-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/shared/lib/server-inserted-html.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/server-inserted-html.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/shared/lib/server-inserted-html.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/server-inserted-html.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/components/static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/image.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/image.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/client/link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/client/link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/shared/lib/head.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/node_modules/next/dist/esm/shared/lib/head.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/head.js",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/cards/character/styles.tsx": {
+      "id": "(app-client)/./src/core/cards/character/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/components/search/index.tsx": {
+      "id": "(app-client)/./src/core/components/search/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/components/search/styles.tsx": {
+      "id": "(app-client)/./src/core/components/search/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/contexts/characters.tsx": {
+      "id": "(app-client)/./src/core/contexts/characters.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/home/index.tsx": {
+      "id": "(app-client)/./src/core/painels/home/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/home/styles.tsx": {
+      "id": "(app-client)/./src/core/painels/home/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/nav/index.tsx": {
+      "id": "(app-client)/./src/core/utils/nav/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/nav/styles.tsx": {
+      "id": "(app-client)/./src/core/utils/nav/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/navigator/index.tsx": {
+      "id": "(app-client)/./src/core/utils/navigator/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/navigator/styles.tsx": {
+      "id": "(app-client)/./src/core/utils/navigator/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/paginator/index.tsx": {
+      "id": "(app-client)/./src/core/utils/paginator/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/utils/paginator/styles.tsx": {
+      "id": "(app-client)/./src/core/utils/paginator/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/lib/registry.tsx": {
+      "id": "(app-client)/./src/core/lib/registry.tsx",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/cards/comic/styles.tsx": {
+      "id": "(app-client)/./src/core/cards/comic/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/cards/event/styles.tsx": {
+      "id": "(app-client)/./src/core/cards/event/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/cards/serie/styles.tsx": {
+      "id": "(app-client)/./src/core/cards/serie/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/cards/storie/styles.tsx": {
+      "id": "(app-client)/./src/core/cards/storie/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/index.tsx": {
+      "id": "(app-client)/./src/core/painels/character/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/parts/comics/index.tsx": {
+      "id": "(app-client)/./src/core/painels/character/parts/comics/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/parts/events/index.tsx": {
+      "id": "(app-client)/./src/core/painels/character/parts/events/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/parts/series/index.tsx": {
+      "id": "(app-client)/./src/core/painels/character/parts/series/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/parts/stories/index.tsx": {
+      "id": "(app-client)/./src/core/painels/character/parts/stories/index.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    },
+    "/home/linux/Área de Trabalho/Test/src/core/painels/character/parts/styles.tsx": {
+      "id": "(app-client)/./src/core/painels/character/parts/styles.tsx",
+      "name": "*",
+      "chunks": [
+        "app/character/[id]/page:static/chunks/app/character/[id]/page.js"
+      ],
+      "async": false
+    }
+  },
+  "entryCSSFiles": {
+    "/home/linux/Área de Trabalho/Test/src/app/page": {
+      "modules": [],
+      "files": []
+    },
+    "/home/linux/Área de Trabalho/Test/src/app/layout": {
+      "modules": [
+        "/home/linux/Área de Trabalho/Test/src/app/globals.css",
+        "/home/linux/Área de Trabalho/Test/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}"
+      ],
+      "files": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/home/linux/Área de Trabalho/Test/src/app/character/[id]/page": {
+      "modules": [],
+      "files": []
+    }
+  }
+}
