@@ -19,10 +19,12 @@ export const Filters = () => {
   }
 
   return (
-    <div className="mb-10 flex items-center justify-between">
-      <div className="">
-        <h1 className="text-3xl font-bold text-red-500">Personagens</h1>
-        <p className="text-white">
+    <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-2 md:items-start">
+      <div>
+        <h1 className="text-xl font-bold text-red-500 sm:text-2xl lg:text-3xl">
+          Personagens
+        </h1>
+        <p className="text-xs text-white sm:text-sm lg:text-base">
           Veja todos os personagens de quadrinhos que a marvel ja criou!
         </p>
       </div>

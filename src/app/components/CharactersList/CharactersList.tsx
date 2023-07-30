@@ -25,7 +25,7 @@ export const CharactersList = async (props: CharactersListPropsSchema) => {
         </h1>
       ) : (
         <>
-          <div className="grid grid-cols-5 gap-8 ">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:grid-cols-5 ">
             {characters.data.results.map((character) => (
               <CharacterCard key={character.id} character={character} />
             ))}

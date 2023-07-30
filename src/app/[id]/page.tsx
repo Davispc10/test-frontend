@@ -48,17 +48,17 @@ export default async function Hero({ params }: HeroPropsSchema) {
         >
           <ArrowLeft size={18} /> Voltar
         </Link>
-        <div className="flex justify-around text-white">
+        <div className="flex flex-col items-center gap-10 text-center text-white lg:flex-row lg:justify-around lg:text-left ">
           <Image
             height={800}
             width={400}
             src={characterThumbnail}
             alt={character.name}
-            className="sticky top-14 h-96 w-72 bg-gray-950 object-cover"
+            className="top-14 h-96 w-72 bg-gray-950 object-cover lg:sticky"
           />
           <div className="flex max-w-3xl flex-col gap-3">
             <h1 className="text-3xl font-bold">{character.name}</h1>
-            <p>{description}</p>
+            <p className="max-w-lg">{description}</p>
 
             <div className="flex flex-col gap-3">
               {characterInfos.map((characterInfo) => (
