@@ -1,5 +1,4 @@
 export interface IHeros {
-  id: string
   name: string
   description: string
   thumbnail: {
@@ -7,7 +6,7 @@ export interface IHeros {
     extension: string
   }
   comics: {
-    available: number
+    items: Array<{ resourceURI: string; name: string }>
   }
 }
 

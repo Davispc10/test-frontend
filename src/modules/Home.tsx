@@ -1,4 +1,6 @@
 'use client'
+
+import 'src/styles/pagination.css'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { descriptionVerifier, thumbnailVerifier } from '../utils/helpers'
@@ -14,7 +16,7 @@ function Home() {
   const [loading, setLoading] = React.useState(true)
   const [offset, setOffset] = React.useState(0)
 
-  const { data, refetch, fetchStatus } = useQuery(
+  const { data, refetch } = useQuery(
     ['heroes', offset],
     () => heroService.list(offset, filter),
     {
@@ -29,17 +31,18 @@ function Home() {
     }
   )
 
-  React.useEffect(() => {
-    if (fetchStatus === 'fetching') {
-      const ls = localStorage.getItem('search') as string
-      setFilter(ls)
-    }
-    refetch()
-  }, [filter])
+  // const ls = localStorage.getItem('filter') as string
+  // console.log(localStorage);
+  // if (ls){
+  //   console.log(ls)
+  //   setFilter(ls)
+  //   // refetch()
+  // }
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault()
     setOffset(0)
+    localStorage.setItem('filter', filter)
     refetch()
   }
 
@@ -99,16 +102,23 @@ function Home() {
                 ))}
               </div>
               <ReactPaginate
-                className="flex m-auto text-lg justify-around items-center w-2/4 mt-[20px]"
+                className="pagination flex m-auto text-lg justify-around items-center w-2/4 mt-[20px]"
                 onPageChange={(selected) => handlePageChange(selected.selected)}
                 pageCount={Math.ceil(
                   data?.data?.data.total / data?.data?.data.limit
                 )}
                 initialPage={offset / data?.data?.data.limit}
                 pageRangeDisplayed={3}
-                previousLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
-                nextLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
-                pageClassName="border border-black rounded w-fit px-[8px]"
+                previousLinkClassName="border-2 rounded border-red-500 p-[8px] hover:bg-red-500 hover:text-white"
+                nextLinkClassName="border-2 rounded border-red-500 p-[8px] hover:bg-red-500 hover:text-white"
+                pageClassName="border border-red-500 rounded px-[8px] hover:bg-red-500 hover:text-white"
+                previousLabel="« Previous"
+                nextLabel="Next »"
+                breakLabel="..."
+                activeClassName="bg-red-500 text-white"
+                activeLinkClassName="bg-red-500 text-white"
+                breakClassName="text-red-500"
+                disabledClassName="opacity-50 pointer-events-none"
               />
             </>
           )}

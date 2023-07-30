@@ -4,27 +4,16 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 import heroService from '@/services/heroService'
+import { IHeros } from '@/interfaces/index'
 import Layout from '@/components/Layout'
 import Link from 'next/link'
 import Image from 'next/image'
-
-interface Hero {
-  name: string
-  description: string
-  thumbnail: {
-    path: string
-    extension: string
-  }
-  comics: {
-    items: Array<{ resourceURI: string; name: string }>
-  }
-}
 
 function HeroPage() {
   const router = useRouter()
   const { id } = router.query
 
-  const [hero, setHero] = React.useState<Hero | null>(null)
+  const [hero, setHero] = React.useState<IHeros | null>(null)
 
   const result = useQuery(['heroes'], () => heroService.hero(id), {
     onSuccess: ({ data }: any) => {
