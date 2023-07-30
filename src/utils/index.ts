@@ -28,7 +28,7 @@ interface Thumbnail {
 export function getThumbnailContent(thumbnail: Thumbnail) {
   return !thumbnail?.path.includes('image_not_available')
     ? `${thumbnail?.path}.${thumbnail?.extension}`
-    : 'https://static.vecteezy.com/ti/vetor-gratis/p3/19550621-download-dees-gratis-do-logotipo-da-marvel-gratis-vetor.jpg';
+    : 'https://res.cloudinary.com/domwy2hmn/image/upload/v1690702305/marvel-logo_o4rgqz.jpg';
 }
 
 export function getMetadataInfo(

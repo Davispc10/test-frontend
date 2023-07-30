@@ -17,13 +17,23 @@ export default function CharacterList() {
   const [characterNames, setCharacterNames] = useState<string[]>([]);
 
   async function getCharacters() {
-    const response = await retrieveCharactersList(offset, name);
-    return response;
+    try {
+      const response = await retrieveCharactersList(offset, name);
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async function getCharactersNames() {
-    const response = await retrieveCharactersList(offset, search);
-    return response;
+    try {
+      const response = await retrieveCharactersList(offset, search);
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   const { isLoading, error, data, refetch } = useQuery(
