@@ -2,10 +2,10 @@ import Image from "next/image";
 import React from "react";
 
 import Logo from "/public/images/marvel_logo.png";
-import SearchNameActionTypes from "@/redux/searchName/action-types";
 import { GoSearch } from "react-icons/go";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { changeName } from "@/redux/searchName/slice";
 
 const Header = () => {
   const searchName = useSelector(
@@ -14,10 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleText = (e: any) => {
-    dispatch({
-      type: SearchNameActionTypes.WRITE,
-      payload: e.target.value,
-    });
+    dispatch(changeName(e.target.value));
   };
 
   return (
