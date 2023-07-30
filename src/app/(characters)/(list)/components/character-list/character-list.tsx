@@ -67,7 +67,7 @@ export const CharacterList = () => {
   if (data.total === 0) {
     return (
       <p className="mt-10 text-center text-xl">
-        Sorry, we couldn&apos;t find any character matching
+        Sorry, we couldn&apos;t find any character matching{' '}
         <strong>&quot;{search}&quot;</strong>
       </p>
     )
@@ -77,12 +77,13 @@ export const CharacterList = () => {
     <div className="my-10 space-y-10">
       <CardsGrid>
         {data.results.map((character) => (
-          <CharacterCard
-            key={character.id}
-            id={character.id}
-            name={character.name}
-            thumbnail={character.thumbnail}
-          />
+          <li key={character.id}>
+            <CharacterCard
+              id={character.id}
+              name={character.name}
+              thumbnail={character.thumbnail}
+            />
+          </li>
         ))}
       </CardsGrid>
 

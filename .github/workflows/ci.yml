@@ -9,6 +9,7 @@ on:
 env:
   NEXT_PUBLIC_MARVEL_API_URL: 'https://gateway.marvel.com/v1/public'
   NEXT_PUBLIC_MARVEL_API_KEY: '$NEXT_PUBLIC_MARVEL_API_KEY'
+  MARVEL_API_PRIVATE_KEY: '$MARVEL_API_PRIVATE_KEY'
 
 jobs:
   build:

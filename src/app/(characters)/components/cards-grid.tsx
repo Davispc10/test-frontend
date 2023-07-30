@@ -7,13 +7,14 @@ type CardsGridProps = {
 
 export const CardsGrid = ({ children, className }: CardsGridProps) => {
   return (
-    <div
+    <ul
       className={cn(
         'grid grid-cols-[repeat(auto-fill,minmax(146px,1fr))] gap-4 xs:grid-cols-[repeat(auto-fill,minmax(190px,1fr))]',
         className,
       )}
+      data-e2e-id="cards-grid"
     >
       {children}
-    </div>
+    </ul>
   )
 }

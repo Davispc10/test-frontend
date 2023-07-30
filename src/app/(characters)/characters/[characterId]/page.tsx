@@ -13,7 +13,7 @@ import { getCharacterComics } from '../../api/get-character-comics'
 import { CardListSkeleton } from '../../components/card-list-skeleton'
 import { CardsGrid } from '../../components/cards-grid'
 import { ImageWithTitleCard } from '../../components/image-with-title-card'
-import { type Character } from '../../schemas'
+import { type Character, type Comic } from '../../schemas'
 import { getThumbnailAsString } from '../../utils'
 
 export const generateMetadata = async ({
@@ -57,7 +57,7 @@ export default async function CharacterDetailsPage({
 
       <section>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-[auto,1fr] sm:gap-10">
-          <h2 className="text-4xl font-semibold sm:hidden">{character.name}</h2>
+          <h1 className="text-4xl font-semibold sm:hidden">{character.name}</h1>
 
           <figure className="relative h-[540px] w-full overflow-hidden rounded shadow-md sm:w-[400px] md:w-[440px]">
             <Image
@@ -69,16 +69,16 @@ export default async function CharacterDetailsPage({
           </figure>
 
           <div className="">
-            <h2 className="mb-4 hidden text-4xl font-semibold sm:block">
+            <h1 className="mb-4 hidden text-4xl font-semibold sm:block">
               {character.name}
-            </h2>
+            </h1>
             <p>{character.description}</p>
           </div>
         </div>
       </section>
 
       <section>
-        <h3
+        <h2
           className={cn(
             'relative mb-10 mt-24 text-3xl font-semibold uppercase leading-[0.9] -tracking-[1px]',
             'before:absolute before:-top-[8px] before:left-[53px] before:block before:h-0.5 before:w-5 before:origin-bottom-left before:-rotate-45 before:skew-x-[45deg] before:bg-secondary',
@@ -86,7 +86,7 @@ export default async function CharacterDetailsPage({
           )}
         >
           Comics
-        </h3>
+        </h2>
 
         {hasComics ? (
           <Suspense fallback={<CardListSkeleton amount={10} />}>
@@ -116,12 +116,25 @@ const ComicList = async ({ characterId }: ComicListProps) => {
   return (
     <CardsGrid>
       {comics.map((comic) => (
-        <ImageWithTitleCard
-          key={comic.id}
-          title={comic.title}
-          thumbnail={getThumbnailAsString(comic.thumbnail)}
-        />
+        <ComicCard key={comic.id} comic={comic} />
       ))}
     </CardsGrid>
+  )
+}
+
+type ComicCardProps = {
+  comic: Comic
+}
+
+const ComicCard = ({ comic }: ComicCardProps) => {
+  const detailUrl = comic.urls.find((url) => url.type === 'detail')?.url ?? '#'
+
+  return (
+    <a href={detailUrl} target="_blank" rel="noreferrer noopener">
+      <ImageWithTitleCard
+        title={comic.title}
+        thumbnail={getThumbnailAsString(comic.thumbnail)}
+      />
+    </a>
   )
 }

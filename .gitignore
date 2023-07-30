@@ -52,3 +52,6 @@ dist
 out
 
 !.env.example
+/test-results/
+/playwright-report/
+/playwright/.cache/

@@ -16,7 +16,10 @@ import { PAGE_QUERY_PARAM, SEARCH_QUERY_PARAM } from '../../constants'
 export const SearchCharactersInput = () => {
   const searchParams = useSearchParams()
   const setQueryStringState = useSetQueryStringState()
-  const isFetching = !!useIsFetching([GET_CHARACTERS_QUERY_KEY_PREFIX])
+
+  const isFetching = !!useIsFetching([GET_CHARACTERS_QUERY_KEY_PREFIX], {
+    type: 'all',
+  })
 
   const search = searchParams.get(SEARCH_QUERY_PARAM) ?? ''
 

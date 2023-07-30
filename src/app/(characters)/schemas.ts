@@ -67,6 +67,7 @@ export const comicSchema = z.object({
     path: z.string(),
     extension: z.string(),
   }),
+  urls: z.array(z.object({ type: z.string(), url: z.string() })),
 })
 
 export type Comic = z.infer<typeof comicSchema>
