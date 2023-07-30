@@ -18,10 +18,11 @@ export default function App({ Component, pageProps }: AppProps) {
           objectFit="cover"
           priority
           sizes="(max-width: 640px) 640px, 1280px"
+          placeholder="blur"
           style={{
             width: "100%",
             height: "100%",
-            opacity: 0.05,
+            opacity: 0.1,
             position: "fixed",
             zIndex: -1,
             inset: 0,

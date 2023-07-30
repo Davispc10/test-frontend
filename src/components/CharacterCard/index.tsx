@@ -40,6 +40,7 @@ export default function CharacterCard({
         src={character.thumbnail.path + "." + character.thumbnail.extension}
         alt={`${character.name}'s photo`}
         fill
+        sizes="100vw"
         className="object-cover"
         style={{
           top: 14,

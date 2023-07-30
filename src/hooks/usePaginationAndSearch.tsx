@@ -9,6 +9,7 @@ export default function usePaginationAndSearch({
   delay = 500,
 }: UsePaginationAndSearchProps) {
   const [searchText, setSearchText] = useState("");
+
   const router = useRouter();
 
   const page = useMemo(
@@ -17,7 +18,7 @@ export default function usePaginationAndSearch({
   );
 
   const debounceText = useMemo(
-    () => String(router.query.search ?? ""),
+    () => (router.query.search ? String(router.query.search) : undefined),
     [router.query.search]
   );
 
@@ -26,7 +27,7 @@ export default function usePaginationAndSearch({
     if (!router.query.search) return;
     else if (searchText === debounceText) return;
 
-    setSearchText(String(router.query.search) ?? "");
+    setSearchText(String(router.query.search ?? ""));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.search]);
 
@@ -43,19 +44,20 @@ export default function usePaginationAndSearch({
 
   useEffect(() => {
     let handler: NodeJS.Timeout;
-    // if (!!searchText) {
+
     handler = setTimeout(() => {
-      if (!searchText) {
-        router.push({ query: {} }, undefined, { shallow: true });
-      } else {
+      if (!!searchText) {
         router.push(
           { query: { ...router.query, page: 1, search: searchText } },
           undefined,
           { shallow: true }
         );
+        // if it is undefined, it means that the user is entering the page for the first time
+        // and we don't want to clear the query
+      } else if (debounceText !== undefined) {
+        router.push({ query: {} }, undefined, { shallow: true });
       }
     }, delay);
-    // }
 
     return () => {
       clearTimeout(handler);

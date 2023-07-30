@@ -33,6 +33,8 @@ const pageButton = tv({
   },
 });
 
+// i know this component is not that good, i made it long time ago, like 1 year ago
+// but it works pretty well, trust me :D
 function _Pagination({
   className,
   size,
