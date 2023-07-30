@@ -45,6 +45,18 @@ Pontos a se destacar:
   <br />
   <small>Card exemplo de personagem compartilhado via Discord.</small>
   <br />
+   <br />
+</li>
+<li>
+Ícones espciais: alguns personagens possuem ícones especiais como mostrado abaixo
+<br />
+<br />
+<img src="https://res.cloudinary.com/domwy2hmn/image/upload/v1690756703/special-icon-showcase_midroz.png" alt="Special icons showcase">
+<br />
+<small>
+Personagens que possuem ícone especial: <strong>Wolverine, Deadpool, Thor, Thanos, Spider Man, Captain America, Captain Marvel, Magneto, Iron Man</strong>
+</small>
+<br />
 </li>
 </ol>
 
@@ -64,7 +76,7 @@ As animações são muito importantes, com elas podemos direcionar 100% da aten�
 
 Utilizei cypress para testar os fluxos de busca de personagem com sugestão, filtro de personagens, paginação e rota para detalhes de personagem e etc
 
-<img src="https://www.cypress.io/cypress_logo_social.png" alt="Testes e2e">
+<img src="https://res.cloudinary.com/domwy2hmn/image/upload/v1690758686/Screenshot_20230730_201115_kznmup.png" alt="Testes e2e">
 
 ## 📚 Stack de desenvolvimento e decisões
 
