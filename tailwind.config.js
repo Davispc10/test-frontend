@@ -10,7 +10,9 @@ module.exports = {
       fontFamily: {
         display: ["Roboto"],
       },
-      colors: {},
+      colors: {
+        red: "#ec1d24",
+      },
     },
   },
   plugins: [],
