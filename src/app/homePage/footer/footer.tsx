@@ -21,7 +21,7 @@ export default function Footer(props) {
             value={props.search}
             onChange={e => props.setSearch(e.target.value)}
           />
-        </div>direita
+        </div>
         {/* Botão listagem para a esquerda */}
         <button className="h-9 w-9 bg-red-600 rounded-full cursor-none" onClick={props.buttonRight}>
           <FontAwesomeIcon icon={faArrowRight} className="text-white text-xl" />
