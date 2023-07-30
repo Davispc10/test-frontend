@@ -19,16 +19,24 @@ export const CharactersList = async (props: CharactersListPropsSchema) => {
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-5">
-      <div className="grid grid-cols-5 gap-8 ">
-        {characters.data.results.map((character) => (
-          <CharacterCard key={character.id} character={character} />
-        ))}
-      </div>
-      <Pagination
-        currentPage={Number(props.page) || 1}
-        quantityItemsPerPage={QUANTITY_ITEMS_PER_PAGE}
-        totalItems={characters.data.total}
-      />
+      {characters.data.results.length === 0 ? (
+        <h1 className="h-full w-full text-center text-white">
+          Não encontramos um herói correspondente com a sua busca :(
+        </h1>
+      ) : (
+        <>
+          <div className="grid grid-cols-5 gap-8 ">
+            {characters.data.results.map((character) => (
+              <CharacterCard key={character.id} character={character} />
+            ))}
+          </div>
+          <Pagination
+            currentPage={Number(props.page) || 1}
+            quantityItemsPerPage={QUANTITY_ITEMS_PER_PAGE}
+            totalItems={characters.data.total}
+          />
+        </>
+      )}
     </div>
   )
 }
