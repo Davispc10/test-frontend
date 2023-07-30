@@ -1,11 +1,12 @@
-import BaseModal from '../ui/BaseModal';
+import * as U from '@/utils';
+import Image from 'next/image';
+import { useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { BsFillClipboard2HeartFill } from 'react-icons/bs';
 import { FaWindowClose } from 'react-icons/fa';
-import { AiOutlineClose } from 'react-icons/ai';
-import Image from 'next/image';
+
+import BaseModal from '../ui/BaseModal';
 import Button from '../ui/Button';
-import * as U from '@/utils';
-import { useState } from 'react';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -37,31 +38,31 @@ export default function ShareModal({
 
   return (
     <BaseModal isOpen={isOpen}>
-      <div className="bg-white w-full max-w-[600px] py-3">
-        <div className="flex justify-between items-center w-full px-3">
+      <div className="w-full max-w-[600px] bg-white py-3">
+        <div className="flex w-full items-center justify-between px-3">
           <h1 className="text-xl font-bold">Share character</h1>
           <FaWindowClose
-            className="text-3xl cursor-pointer hover:text-red-600"
+            className="cursor-pointer text-3xl hover:text-red-600"
             onClick={() => onClose?.(false)}
           />
         </div>
-        <div className="w-full h-[200px]">
+        <div className="h-[200px] w-full">
           <Image
             src={image}
             alt="hero-bg"
-            className="w-full h-full object-cover mt-3"
+            className="mt-3 h-full w-full object-cover"
             width={600}
             height={200}
           />
         </div>
-        <div className="flex gap-x-3 px-3 mt-5 max-[380px]:flex-col max-[380px]:gap-y-3">
+        <div className="mt-5 flex gap-x-3 px-3 max-[380px]:flex-col max-[380px]:gap-y-3">
           <Button onClick={share}>
             Twitter
-            <AiOutlineClose className="text-2xl ml-2" />
+            <AiOutlineClose className="ml-2 text-2xl" />
           </Button>
           <Button onClick={clipboard}>
             {isCopied ? 'Copiado!' : 'Copiar link'}
-            <BsFillClipboard2HeartFill className="text-2xl ml-2" />
+            <BsFillClipboard2HeartFill className="ml-2 text-2xl" />
           </Button>
         </div>
       </div>

@@ -1,14 +1,16 @@
-import './globals.css';
-import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/plugins/captions.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import Providers from '@/services/provider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import AppContext from '../components/AppContext';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import 'yet-another-react-lightbox/plugins/captions.css';
+import 'yet-another-react-lightbox/styles.css';
+
 import AppContainer from '../components/AppContainer';
-import Header from '../components/Header';
+import AppContext from '../components/AppContext';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,11 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppContext>
-          <Header />
-          <AppContainer>{children}</AppContainer>
-          <Footer />
-        </AppContext>
+        <Providers>
+          <AppContext>
+            <Header />
+            <AppContainer>{children}</AppContainer>
+            <Footer />
+          </AppContext>
+        </Providers>
       </body>
     </html>
   );

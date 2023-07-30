@@ -1,7 +1,8 @@
-import { useContext, useMemo, useCallback, useState, useEffect } from 'react';
-import { ContextWrapper } from '../../components/AppContext';
-import { GiMoon } from 'react-icons/gi';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { FaSun } from 'react-icons/fa';
+import { GiMoon } from 'react-icons/gi';
+
+import { ContextWrapper } from '../components/AppContext';
 
 export default function useDarkMode() {
   const { setIsDarkMode, isDarkMode } = useContext(ContextWrapper);
@@ -42,13 +43,13 @@ export default function useDarkMode() {
   const DarkModeIcons = useCallback(() => {
     return (
       <div
-        className="flex items-center justify-center cursor-pointer"
+        className="flex cursor-pointer items-center justify-center"
         onClick={setDarkMode}
       >
         {isDarkMode ? (
-          <FaSun className="text-white text-2xl animate-scaleIn" />
+          <FaSun className="animate-scaleIn text-2xl text-white" />
         ) : (
-          <GiMoon className="text-white text-2xl animate-scaleIn" />
+          <GiMoon className="animate-scaleIn text-2xl text-white" />
         )}
       </div>
     );

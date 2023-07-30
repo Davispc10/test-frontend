@@ -24,9 +24,6 @@ module.exports = {
         dark: '#202020',
         'dark-light': '#2a2a2a',
       },
-      filter: {
-        grayscale: 'brightness(10%)',
-      },
       height: {
         calc: 'calc(100vh - 96px)',
       },
@@ -37,6 +34,25 @@ module.exports = {
         scaleIn: {
           '0%': { transform: 'scale(0)', opacity: 0 },
           '50%': { transform: 'scale(1.2)', opacity: 1 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+        scaleColorsIn: {
+          '0%': { transform: 'scale(0)', opacity: 0 },
+          '50%': {
+            transform: 'scale(1.1)',
+            opacity: 1,
+            filter: 'grayscale(0%)',
+          },
+          '60%': {
+            transform: 'scale(1.1)',
+            opacity: 1,
+            filter: 'grayscale(0%)',
+          },
+          '70%': {
+            transform: 'scale(1.1)',
+            opacity: 1,
+            filter: 'grayscale(0%)',
+          },
           '100%': { transform: 'scale(1)', opacity: 1 },
         },
         moveEffect: {
@@ -59,6 +75,8 @@ module.exports = {
       },
       animation: {
         scaleIn: 'scaleIn 0.3s ease-in-out',
+        scaleIn2: 'scaleIn 0.6s ease-in-out',
+        scaleColorsIn: 'scaleColorsIn 1.3s ease-in-out',
         moveEffect: 'moveEffect 480s linear infinite',
         move: 'move 3s ease infinite alternate',
         gradient: 'gradient 10s ease infinite',

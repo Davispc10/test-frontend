@@ -1,7 +1,8 @@
-import CharacterCard from '../../components/character/CharacterCard';
-import * as U from '@/utils';
 import * as S from '@/services';
+import * as U from '@/utils';
 import { Metadata } from 'next';
+
+import CharacterCard from '../../components/character/CharacterCard';
 
 export const generateMetadata = async ({
   params,

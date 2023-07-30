@@ -5,6 +5,16 @@ const API_KEY = 'ba01d20b13afc1bc5a2c1bd6916aee66';
 const HASH = '8976acf46a2a16d9adec8a821daa0300';
 const CURRENT_TIMESTAMP = '1690512233';
 
+export async function getCharactersList(offset: number, name?: string) {
+  let url = `${BASE_URL}/characters?ts=${CURRENT_TIMESTAMP}&apikey=${API_KEY}&hash=${HASH}&offset=${offset}`;
+  if (name) {
+    url += `&nameStartsWith=${name}`;
+  }
+  const data = await fetch(url);
+
+  return data.json();
+}
+
 export async function getCharacter(id: string) {
   const data = await fetch(
     `${BASE_URL}/characters/${id}?ts=${CURRENT_TIMESTAMP}&apikey=${API_KEY}&hash=${HASH}`
@@ -19,6 +29,22 @@ export async function getCharacterComics(id: string) {
   );
 
   return data.json();
+}
+
+export async function retrieveCharactersList(offset: number, name?: string) {
+  const characters: any = await getCharactersList(offset, name);
+  const charactersResults = characters?.data?.results;
+  const charactersInfo = charactersResults.map((character: any) => {
+    const { id, name, thumbnail } = character;
+    const image = U.getThumbnailContent(thumbnail);
+    return {
+      id,
+      name,
+      image,
+    };
+  });
+
+  return charactersInfo;
 }
 
 export async function retrieveCharacterInfo(id: string) {

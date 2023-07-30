@@ -1,6 +1,7 @@
-import { GiMoon } from 'react-icons/gi';
+import { useCallback, useContext, useMemo } from 'react';
 import { FaSun } from 'react-icons/fa';
-import { useContext, useMemo, useCallback } from 'react';
+import { GiMoon } from 'react-icons/gi';
+
 import { ContextWrapper } from './AppContext';
 
 export default function ThemeChangeNotification() {
@@ -8,9 +9,9 @@ export default function ThemeChangeNotification() {
 
   const icon = useMemo(() => {
     return isDarkMode ? (
-      <GiMoon className="text-gray-100 text-[3rem] animate-scaleIn" />
+      <GiMoon className="animate-scaleIn text-[3rem] text-gray-100" />
     ) : (
-      <FaSun className="text-gray-100 text-[3rem] animate-scaleIn" />
+      <FaSun className="animate-scaleIn text-[3rem] text-gray-100" />
     );
   }, [isDarkMode]);
 
@@ -19,7 +20,7 @@ export default function ThemeChangeNotification() {
   }, [icon]);
 
   return (
-    <div className="absolute inset-0 flex justify-center items-center -z-10">
+    <div className="absolute inset-0 -z-10 flex items-center justify-center">
       {renderIcon()}
     </div>
   );

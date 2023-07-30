@@ -1,17 +1,19 @@
 'use client';
 
+import useDarkMode from '@/hooks/useDarkMode';
 import { BsGithub } from 'react-icons/bs';
-import useDarkMode from '@/app/hooks/useDarkMode';
 
 export default function Header() {
   const { colorClasses, DarkModeIcons } = useDarkMode();
 
   return (
     <header
-      className={`${colorClasses} h-16 flex justify-between items-center shadow-2xl px-4`}
+      className={`${colorClasses} flex h-16 items-center justify-between px-4 shadow-2xl`}
     >
-      <BsGithub className="text-white text-[1.9rem] animate-scaleIn bg-dark rounded p-1 cursor-pointer" />
-      <h1 className="text-[3.5rem] text-marvel-white font-marvel mt-2 linear-wipe cursor-pointer transition-all ease-in-out">
+      <a href="https://github.com/TLucas97" target="_blank" rel="noreferrer">
+        <BsGithub className="animate-scaleIn cursor-pointer rounded bg-dark p-1 text-[1.9rem] text-white" />
+      </a>
+      <h1 className="linear-wipe mt-2 cursor-pointer font-marvel text-[3.5rem] text-marvel-white transition-all ease-in-out">
         MARVEL
       </h1>
       <DarkModeIcons />

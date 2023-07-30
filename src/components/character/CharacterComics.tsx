@@ -65,13 +65,13 @@ export default function CharacterComics({ comics }: CharacterComicsProps) {
         {comics.map((comic, i) => (
           <div
             key={comic?.title}
-            className={`w-[100px] h-[280px] hover:opacity-50 transition-all ease-in-out bg-[url('https://media.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif')] bg-center`}
+            className={`h-[280px] w-[100px] bg-[url('https://media.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif')] bg-center transition-all ease-in-out hover:opacity-50`}
             onClick={() => openLightbox(i)}
           >
             <Image
               src={comic?.image}
               alt="comic"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
               width={0}
               height={0}
               sizes="100vw"
