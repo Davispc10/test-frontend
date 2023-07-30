@@ -15,6 +15,7 @@ export default function Card(props) {
 
     return (
         <div>
+            {/* Card com a imagem e o nome do personagem */}
             <div onClick={viewModal} className="h-48 w-40 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">
                 <div className="relative h-full">
                     <img
@@ -27,6 +28,7 @@ export default function Card(props) {
                     </div>
                 </div>
             </div>
+            {/* Modal feito já carregando o personagem clicado */}
             <Perfil
                 showModal={modalCard}
                 eventoFecharModal={viewModal}

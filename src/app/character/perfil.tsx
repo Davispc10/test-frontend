@@ -16,6 +16,7 @@ export default function Perfil(props) {
     const [comics, setComics] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    /* Chamada de api e salvar os elementos nas consts pré-feitas */
     const getAllComics = async (url: string) => {
         await axios.get(url, {
             params: {
@@ -27,11 +28,11 @@ export default function Perfil(props) {
             setComics(result.data.data.results);
             setTotal(result.data.data.total);
             setLoading(false);
-            console.log(result);
         }
         ).catch(() => setLoading(true));
     }
 
+    /* Funções para chamar os próximos e anteriores da lista de comics */
     const buttonRight = (e) => {
         e.preventDefault();
         if (offset + 1 < total / 4) {
@@ -52,11 +53,13 @@ export default function Perfil(props) {
         }
     }
 
+    /* Sempre que a constante url for atualizada, deve chamar novamente a api */
     useEffect(() => {
         getAllComics(url);
     }, [url]);
 
     return (
+        // Se o modal for ativado, a função será ativada e mostrará o personagem com seus detalhes e comics que ele aparece
         props.showModal &&
         <div className="absolute flex justify-center items-center top-0 left-0 h-full w-full bg-gray-800 bg-opacity-80 z-10">
             <div className="h-4/5 w-4/5 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-2">

@@ -6,6 +6,7 @@ export default function Comic(props) {
     `/Marvel-Logo.png`;
 
   return (
+    // Função para mostrar o card das comics
     <div className="h-24 w-24 m-4 rounded-lg bg-gradient-to-b from-red-500 to-red-900 columns-1 p-1">
       <div className="relative h-full">
         <img
