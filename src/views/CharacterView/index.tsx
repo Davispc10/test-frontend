@@ -56,8 +56,9 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
 
   // for any reason that doesn't make sense, the ArrowUUpLeft was causing a production error
   // so I had to use a svg instead
-  // it was causing an error on Axios, like???? why????? 
+  // it was causing an error on Axios, like???? why?????
   // I tried to use the another icon from Phosphor but it was causing the same error
+  // TODO - open an issue on Phosphor repo
   return (
     <MyContainer>
       {/* <button onClick={handleGoBack} className="hover:scale-110 mb-2 transition-all">
