@@ -1,31 +1,27 @@
-import { useState } from "react";
-import { HeroesItem } from "./HeroesItem";
+import Link from "next/link";
 import { heroesWithoutPhoto } from "@/utils/heroesWithoutPhoto";
 import { heroesWithoutDescription } from "@/utils/heroesWithoutDescription";
-import { Pagination } from "./Pagination";
+import { Thumbnail } from "./Thumbnail";
 
-export function HeroesCard({ heroes }) {
-  const [page, setPage] = useState(1);
-  // console.log(page);
+export function HeroesCard({ ...props }) {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 mt-4">
-        {heroes?.map((result) => {
-          return (
-            <HeroesItem
-              key={result.id}
-              name={result.name}
-              description={heroesWithoutDescription(result.description)}
-              image={heroesWithoutPhoto(result.thumbnail)}
-            />
-          );
-        })}
-      </div>
-      <Pagination
-        totalCountOfRegisters={100}
-        currentPage={page}
-        onPageChange={setPage}
-      />
+      <Link
+        href={`/hero/${props.id}`}
+        key={props.id}
+        className=" w-full h-full flex flex-col gap-2 bg-white/5 p-3 rounded-md hover:bg-white/10"
+      >
+        <Thumbnail
+          src={heroesWithoutPhoto(
+            `${props.thumbnail.path}.${props.thumbnail.extension}`
+          )}
+          className="w-full object-cover h-[250px]  max-h-[250px]"
+        />
+        <strong className="font-semibold">{props.name}</strong>
+        <span className="text-xs text-zinc-500">
+          {heroesWithoutDescription(props.description)}
+        </span>
+      </Link>
     </>
   );
 }

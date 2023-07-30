@@ -4,7 +4,6 @@ import { Thumbnail } from "./Thumbnail";
 import { heroesWithoutDescription } from "@/utils/heroesWithoutDescription";
 
 export function HeroesItem({ name, image, description, ...props }) {
-  console.log(props);
   return (
     <>
       <div>

@@ -10,16 +10,14 @@ const time = Number(new Date());
 
 const hash = md5(time + privateKey + publicKey);
 
-export const getHeroesSearch = async (search: string) => {
+export async function getHeroesSearch(search: string) {
   try {
-    const response = await axios.get(
-      `${BASE_URL}?ts=${time}&nameStartsWith=${search}&apikey=${publicKey}&hash=${hash}`
+    const { data } = await api.get(
+      `characters?ts=${time}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${search}}`
     );
 
-    const data = response.data.data.results;
-
-    return data;
+    return data.data.results;
   } catch (error) {
     console.log(error);
   }
-};
+}

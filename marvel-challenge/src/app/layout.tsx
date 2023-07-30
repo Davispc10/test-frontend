@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 export const metadata: Metadata = {
-  title: "Marvel Challenge",
+  title: "Teste Dinheirow",
   description: "Personagens da Marvel",
 };
 

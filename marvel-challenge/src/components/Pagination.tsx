@@ -7,7 +7,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const siblingsCount = 2;
+const siblingsCount = 4;
 
 function generatePagesArray(from: number, to: number) {
   return [...new Array(to - from)]
@@ -46,7 +46,7 @@ export function Pagination({
             <p className="mr-2 text-sm text-gray-700">
               <span className="font-medium">0</span> -{" "}
               <span className="font-medium">10</span> de{" "}
-              <span className="font-medium">100</span>
+              <span className="font-medium">1562</span>
             </p>
           </div>
 
