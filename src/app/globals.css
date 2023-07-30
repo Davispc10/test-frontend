@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+   @apply focus:outline-none focus:ring-1 focus:ring-red-700 focus:ring-offset-1 focus:ring-offset-red-600
+}
