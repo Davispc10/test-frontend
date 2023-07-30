@@ -1,3 +1,3 @@
-import { setupAPIMarvel } from '@/lib/api'
+import { setupAPIMarvel } from '@/lib/axios'
 
 export const api = setupAPIMarvel()
