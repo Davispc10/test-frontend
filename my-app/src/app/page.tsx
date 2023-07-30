@@ -1,7 +1,7 @@
 'use client'
 
 import Navbar from "@/components/Navbar";
-import CharactersList from "@/components/characters-list";
+import CharactersList from "@/components/CharacterList";
 
 export default function Home() {
   return (

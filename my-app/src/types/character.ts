@@ -1,7 +1,7 @@
 export interface Character {
   id: number,
   name: string,
-  description: string,
+  description: string | undefined,
   modified: Date,
   resourceURI: string,
   urls: [
