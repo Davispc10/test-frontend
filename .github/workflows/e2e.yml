@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - '*'
-    paths: ['src/**/*', '.github/workflows/e2e.yml']
   pull_request:
     branches: [main]
 

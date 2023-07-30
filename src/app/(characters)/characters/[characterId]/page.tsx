@@ -1,13 +1,12 @@
 import { Suspense } from 'react'
 
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
+import { GoBack } from '@/components/go-back'
 import { cn } from '@/utils'
 import { until } from '@/utils/until'
 
-import { GoBack } from '../../../../components/go-back'
 import { getCharacterById } from '../../api/get-character-by-id-'
 import { getCharacterComics } from '../../api/get-character-comics'
 import { CardListSkeleton } from '../../components/card-list-skeleton'
@@ -15,6 +14,7 @@ import { CardsGrid } from '../../components/cards-grid'
 import { ImageWithTitleCard } from '../../components/image-with-title-card'
 import { type Character, type Comic } from '../../schemas'
 import { getThumbnailAsString } from '../../utils'
+import { CharacterThumbnail } from './components/character-thumbnail'
 
 export const generateMetadata = async ({
   params: { characterId },
@@ -59,14 +59,10 @@ export default async function CharacterDetailsPage({
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-[auto,1fr] sm:gap-10">
           <h1 className="text-4xl font-semibold sm:hidden">{character.name}</h1>
 
-          <figure className="relative h-[540px] w-full overflow-hidden rounded shadow-md sm:w-[400px] md:w-[440px]">
-            <Image
-              src={getThumbnailAsString(character.thumbnail)}
-              className="block h-full w-full object-cover object-center"
-              alt={character.name ?? 'Character'}
-              fill
-            />
-          </figure>
+          <CharacterThumbnail
+            thumbnail={getThumbnailAsString(character.thumbnail)}
+            name={character.name}
+          />
 
           <div className="">
             <h1 className="mb-4 hidden text-4xl font-semibold sm:block">
