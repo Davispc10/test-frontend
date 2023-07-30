@@ -115,6 +115,11 @@ Agradeço a oportunidade de participar do processo. Espero que gostem.
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 - Node.js 18.15.0+
+- Ter uma public api key da marvel api
+- Gerar um hash md5 para as requests
+
+Site para gerar md5 para hash: [https://www.md5hashgenerator.com/](https://www.md5hashgenerator.com/) <br />
+Marvel API: [https://developer.marvel.com/](https://developer.marvel.com/)
 
 <br/>
 
