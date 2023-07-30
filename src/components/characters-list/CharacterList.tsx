@@ -4,6 +4,7 @@ import { retrieveCharactersList } from '@/services';
 import { useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
 import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../ui/Button';
 import CharacterListCards from './CharacterListCards';
@@ -11,10 +12,12 @@ import CharacterListFooter from './CharacterListFooter';
 import CharacterListHeader from './CharacterListHeader';
 
 export default function CharacterList() {
-  const [offset, setOffset] = useState(0);
-  const [search, setSearch] = useState('');
-  const [name, setName] = useState('');
+  const offset = useSelector((state: any) => state.offset.offset);
+  const name = useSelector((state: any) => state.character.name);
+  const search = useSelector((state: any) => state.character.search);
   const [characterNames, setCharacterNames] = useState<string[]>([]);
+
+  const dispatch = useDispatch();
 
   async function getCharacters() {
     try {
@@ -51,9 +54,40 @@ export default function CharacterList() {
     },
   });
 
+  function setName(name: string) {
+    dispatch({
+      type: 'character/setCharacterName',
+      payload: name,
+    });
+  }
+
+  function setSearch(search: string) {
+    dispatch({
+      type: 'character/setSearchValue',
+      payload: search,
+    });
+  }
+
+  function setOffset(action: string) {
+    if (action === 'next') {
+      dispatch({
+        type: 'offset/incrementOffset',
+        payload: 20,
+      });
+    } else {
+      dispatch({
+        type: 'offset/decrementOffset',
+        payload: 20,
+      });
+    }
+  }
+
   useEffect(() => {
     if (search === '') {
-      setName('');
+      dispatch({
+        type: 'character/setCharacterName',
+        payload: '',
+      });
     }
   }, [search]);
 
@@ -78,14 +112,14 @@ export default function CharacterList() {
           </div>
         </div>
         <CharacterListFooter
-          nextPage={() => setOffset(offset + 20)}
-          previousPage={() => setOffset(offset - 20)}
+          nextPage={() => setOffset('next')}
+          previousPage={() => setOffset('previous')}
         />
       </div>
     );
   }
 
-  if (data.length === 0) {
+  if (data?.length === 0) {
     return (
       <div className="flex flex-col items-center">
         <div className="flex w-full gap-x-2">
@@ -106,8 +140,8 @@ export default function CharacterList() {
           </div>
         </div>
         <CharacterListFooter
-          nextPage={() => setOffset(offset + 20)}
-          previousPage={() => setOffset(offset - 20)}
+          nextPage={() => setOffset('next')}
+          previousPage={() => setOffset('previous')}
         />
       </div>
     );
@@ -142,10 +176,10 @@ export default function CharacterList() {
       />
       <CharacterListCards characters={data} />
       <CharacterListFooter
-        nextPage={() => setOffset(offset + 20)}
+        nextPage={() => setOffset('next')}
         prevDisabled={offset === 0}
         previousPage={() => {
-          offset !== 0 && setOffset(offset - 20);
+          offset !== 0 && setOffset('previous');
         }}
       />
     </div>

@@ -1,9 +1,9 @@
 import * as U from '@/utils';
 
 const BASE_URL = 'https://gateway.marvel.com/v1/public';
-const API_KEY = 'ba01d20b13afc1bc5a2c1bd6916aee66';
-const HASH = '8976acf46a2a16d9adec8a821daa0300';
-const CURRENT_TIMESTAMP = '1690512233';
+const API_KEY = '3c39df8638814e5c70d677e936f922e6';
+const HASH = '4ae72289237b4e7d12eb5310f4f04339';
+const CURRENT_TIMESTAMP = '1690728768';
 
 export async function getCharactersList(offset: number, name?: string) {
   let url = `${BASE_URL}/characters?ts=${CURRENT_TIMESTAMP}&apikey=${API_KEY}&hash=${HASH}&offset=${offset}`;

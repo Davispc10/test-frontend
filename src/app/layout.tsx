@@ -1,4 +1,5 @@
 import QueryClientWrapper from '@/components/QueryClient';
+import ReduxWrapper from '@/components/ReduxWrapper';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import 'slick-carousel/slick/slick-theme.css';
@@ -27,13 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryClientWrapper>
-          <AppContext>
-            <Header />
-            <AppContainer>{children}</AppContainer>
-            <Footer />
-          </AppContext>
-        </QueryClientWrapper>
+        <ReduxWrapper>
+          <QueryClientWrapper>
+            <AppContext>
+              <Header />
+              <AppContainer>{children}</AppContainer>
+              <Footer />
+            </AppContext>
+          </QueryClientWrapper>
+        </ReduxWrapper>
       </body>
     </html>
   );
