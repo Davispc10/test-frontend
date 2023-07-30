@@ -7,14 +7,13 @@ import { GoBack } from '@/components/go-back'
 import { cn } from '@/utils'
 import { until } from '@/utils/until'
 
-import { getCharacterById } from '../../api/get-character-by-id-'
-import { getCharacterComics } from '../../api/get-character-comics'
+import { getCharacterById } from '../../api/get-character-by-id'
 import { CardListSkeleton } from '../../components/card-list-skeleton'
-import { CardsGrid } from '../../components/cards-grid'
-import { ImageWithTitleCard } from '../../components/image-with-title-card'
-import { type Character, type Comic } from '../../schemas'
+import { type Character } from '../../schemas'
 import { getThumbnailAsString } from '../../utils'
 import { CharacterThumbnail } from './components/character-thumbnail'
+import { ComicList } from './components/comic-list'
+import { NoComicsFound } from './components/no-comics-found'
 
 export const generateMetadata = async ({
   params: { characterId },
@@ -93,44 +92,5 @@ export default async function CharacterDetailsPage({
         )}
       </section>
     </main>
-  )
-}
-
-const NoComicsFound = () => <p className="text-gray-600">No comics found.</p>
-
-type ComicListProps = {
-  characterId: Character['id']
-}
-
-const ComicList = async ({ characterId }: ComicListProps) => {
-  const [, comics = []] = await until(() => getCharacterComics(characterId))
-
-  if (!comics || comics.length === 0) {
-    return <NoComicsFound />
-  }
-
-  return (
-    <CardsGrid>
-      {comics.map((comic) => (
-        <ComicCard key={comic.id} comic={comic} />
-      ))}
-    </CardsGrid>
-  )
-}
-
-type ComicCardProps = {
-  comic: Comic
-}
-
-const ComicCard = ({ comic }: ComicCardProps) => {
-  const detailUrl = comic.urls.find((url) => url.type === 'detail')?.url ?? '#'
-
-  return (
-    <a href={detailUrl} target="_blank" rel="noreferrer noopener">
-      <ImageWithTitleCard
-        title={comic.title}
-        thumbnail={getThumbnailAsString(comic.thumbnail)}
-      />
-    </a>
   )
 }

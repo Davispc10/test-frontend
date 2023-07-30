@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { Icons } from '@/components/icons'
 import { cn, createSafeContext } from '@/utils'
 
-import { buttonVariants } from '../button'
+import { buttonVariants } from './button'
 
 type PaginationContextValue = {
   api: ReturnType<typeof pagination.connect>
