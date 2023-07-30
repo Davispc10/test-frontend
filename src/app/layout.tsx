@@ -13,7 +13,10 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: 'Marvel Characters',
+  title: {
+    template: '%s | Marvel Characters',
+    default: 'Marvel Characters',
+  },
   description: 'A list of Marvel characters.',
 }
 

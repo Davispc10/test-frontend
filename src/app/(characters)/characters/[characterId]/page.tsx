@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 
+import { type Metadata } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
@@ -14,6 +15,24 @@ import { CardsGrid } from '../../components/cards-grid'
 import { ImageWithTitleCard } from '../../components/image-with-title-card'
 import { type Character } from '../../schemas'
 import { getThumbnailAsString } from '../../utils'
+
+export const generateMetadata = async ({
+  params: { characterId },
+}: CharacterDetailsPageProps): Promise<Metadata> => {
+  const [error, character] = await until(() => getCharacterById(characterId))
+
+  if (error || !character) {
+    return {
+      title: 'Character details',
+      description: 'Character details',
+    }
+  }
+
+  return {
+    title: `${character.name}`,
+    description: character.description,
+  }
+}
 
 type CharacterDetailsPageProps = {
   params: {
