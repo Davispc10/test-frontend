@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { CharactersList } from './components/CharactersList/CharactersList'
+import { Filters } from './components/Filters/Filters'
 
 interface HomePropsSchema {
   searchParams: {
@@ -10,8 +11,11 @@ interface HomePropsSchema {
 
 export default async function Home({ searchParams }: HomePropsSchema) {
   return (
-    <Suspense fallback={<h1>LOADING...</h1>}>
-      <CharactersList page={searchParams.page} search={searchParams.search} />
-    </Suspense>
+    <>
+      <Filters />
+      <Suspense fallback={<h1>LOADING...</h1>}>
+        <CharactersList page={searchParams.page} search={searchParams.search} />
+      </Suspense>
+    </>
   )
 }

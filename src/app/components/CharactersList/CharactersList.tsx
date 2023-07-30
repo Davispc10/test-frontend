@@ -4,7 +4,6 @@ import {
   getCharacters
 } from '@/services/characters/charactersService'
 import { CharacterCard } from '../CharacterCard/CharacterCard'
-import { Filters } from '../Filters/Filters'
 
 interface CharactersListPropsSchema {
   page?: string
@@ -19,20 +18,17 @@ export const CharactersList = async (props: CharactersListPropsSchema) => {
   const characters = await getCharacters({ offset, filterName: props.search })
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-16">
-      <Filters />
-      <div className="flex flex-col gap-5">
-        <div className="grid grid-cols-5 gap-8 ">
-          {characters.data.results.map((character) => (
-            <CharacterCard key={character.id} character={character} />
-          ))}
-        </div>
-        <Pagination
-          currentPage={Number(props.page) || 1}
-          quantityItemsPerPage={QUANTITY_ITEMS_PER_PAGE}
-          totalItems={characters.data.total}
-        />
+    <div className="mx-auto flex max-w-7xl flex-col gap-5">
+      <div className="grid grid-cols-5 gap-8 ">
+        {characters.data.results.map((character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
       </div>
+      <Pagination
+        currentPage={Number(props.page) || 1}
+        quantityItemsPerPage={QUANTITY_ITEMS_PER_PAGE}
+        totalItems={characters.data.total}
+      />
     </div>
   )
 }

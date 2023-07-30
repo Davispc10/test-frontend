@@ -19,7 +19,7 @@ export const Filters = () => {
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="mb-10 flex items-center justify-between">
       <div className="">
         <h1 className="text-3xl font-bold text-red-500">Personagens</h1>
         <p className="text-white">
