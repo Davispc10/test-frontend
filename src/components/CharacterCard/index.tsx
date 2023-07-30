@@ -3,10 +3,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { tv } from "tailwind-variants";
 import HeroFrame from "../../../public/images/hero-frame.svg";
-import { anton } from "@/styles/fonts";
 import { Eye } from "@phosphor-icons/react";
 import Link from "next/link";
-import { APP_PAGES } from "@/utils/appPages";
+import MarvelLikeLabel from "../MarvelLikeLabel";
 
 interface CharacterCardProps {
   character: Character;
@@ -67,16 +66,14 @@ export default function CharacterCard({
         }}
         draggable={false}
       />
+      <MarvelLikeLabel className={nameStyle()}>
+        {character.name}
+      </MarvelLikeLabel>
       <h3
-        className={nameStyle({
-          className: anton.className,
-        })}
         style={{
           textShadow: "2px -2px red",
         }}
-      >
-        {character.name}
-      </h3>
+      ></h3>
       <Image
         src={HeroFrame}
         priority

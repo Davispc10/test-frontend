@@ -1,4 +1,5 @@
 import CharacterCard from "@/components/CharacterCard";
+import ErrorInfo from "@/components/ErrorInfo";
 import Gallery from "@/components/Gallery";
 import LoadSpinner from "@/components/LoadSpinner";
 import MyContainer from "@/components/MyContainer";
@@ -11,6 +12,7 @@ import { API_LINKS } from "@/utils/apiLinks";
 import { APP_PAGES } from "@/utils/appPages";
 import { PAGE_SIZE, STALE_TIME } from "@/utils/constants";
 import { transformCharactersResponse } from "@/utils/transformResponses";
+import { FileSearch } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
@@ -25,27 +27,28 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
       delay: 500,
     });
 
-  const { data, isLoading, isFetching } = useQuery<CharactersApiResult>({
-    queryKey: ["characters", page, debounceText],
-    keepPreviousData: true,
-    placeholderData: () => {
-      if (!debounceText && page === 0) return resultFromApi;
-    },
-    queryFn: async () => {
-      const { data } = await marvelApi.get<CharactersApiResult>(
-        API_LINKS.characters,
-        {
-          params: {
-            limit: PAGE_SIZE,
-            offset: (page + 1) * PAGE_SIZE - PAGE_SIZE,
-            nameStartsWith: debounceText ? debounceText : undefined,
-          },
-        }
-      );
+  const { data, isLoading, isFetching, isError } =
+    useQuery<CharactersApiResult>({
+      queryKey: ["characters", page, debounceText],
+      keepPreviousData: true,
+      placeholderData: () => {
+        if (!debounceText && page === 0) return resultFromApi;
+      },
+      queryFn: async () => {
+        const { data } = await marvelApi.get<CharactersApiResult>(
+          API_LINKS.characters,
+          {
+            params: {
+              limit: PAGE_SIZE,
+              offset: (page + 1) * PAGE_SIZE - PAGE_SIZE,
+              nameStartsWith: debounceText ? debounceText : undefined,
+            },
+          }
+        );
 
-      return transformCharactersResponse(data);
-    },
-  });
+        return transformCharactersResponse(data);
+      },
+    });
 
   const characters = data?.data?.results || [];
   const total = useMemo(
@@ -56,7 +59,7 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
   return (
     <MyContainer>
       <div className="max-w-lg w-full flex justify-center m-auto pb-4">
-        <SearchHeader onChange={setSearchText} value={searchText}/>
+        <SearchHeader onChange={setSearchText} value={searchText} />
       </div>
       <Gallery
         items={characters}
@@ -68,6 +71,15 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
           />
         )}
       />
+      {!isFetching && debounceText && characters.length === 0 && (
+        <p className="text-3xl flex gap-2">
+          <FileSearch size={32} />
+          No results for &quot;{debounceText}&quot;
+        </p>
+      )}
+
+      {isError && <ErrorInfo />}
+
       <div className="py-4 flex justify-end gap-2">
         {isLoading || (isFetching && <LoadSpinner />)}
         <Pagination index={page} onChangePage={handlePagination} size={total} />

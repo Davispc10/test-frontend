@@ -6,25 +6,27 @@ const base = {
 
 export const API_LINKS = {
   characters: base.characters,
-  characterComics: (characterId: number) =>
+  characterDetails: (characterId: string) =>
+    `${base.characters}/${characterId}`,
+  characterComics: (characterId: string) =>
     `${base.characters}/${characterId}/comics`,
-  characterEvents: (characterId: number) =>
+  characterEvents: (characterId: string) =>
     `${base.characters}/${characterId}/events`,
-  characterSeries: (characterId: number) =>
+  characterSeries: (characterId: string) =>
     `${base.characters}/${characterId}/series`,
-  characterStories: (characterId: number) =>
+  characterStories: (characterId: string) =>
     `${base.characters}/${characterId}/stories`,
 
   comics: base.comics,
-  comicCharacters: (comicId: number) => `${base.comics}/${comicId}/characters`,
-  comicCreators: (comicId: number) => `${base.comics}/${comicId}/creators`,
-  comicEvents: (comicId: number) => `${base.comics}/${comicId}/events`,
-  comicStories: (comicId: number) => `${base.comics}/${comicId}/stories`,
+  comicCharacters: (comicId: string) => `${base.comics}/${comicId}/characters`,
+  comicCreators: (comicId: string) => `${base.comics}/${comicId}/creators`,
+  comicEvents: (comicId: string) => `${base.comics}/${comicId}/events`,
+  comicStories: (comicId: string) => `${base.comics}/${comicId}/stories`,
 
   creators: base.creators,
-  creatorComics: (creatorId: number) => `${base.creators}/${creatorId}/comics`,
-  creatorEvents: (creatorId: number) => `${base.creators}/${creatorId}/events`,
-  creatorSeries: (creatorId: number) => `${base.creators}/${creatorId}/series`,
-  creatorStories: (creatorId: number) =>
+  creatorComics: (creatorId: string) => `${base.creators}/${creatorId}/comics`,
+  creatorEvents: (creatorId: string) => `${base.creators}/${creatorId}/events`,
+  creatorSeries: (creatorId: string) => `${base.creators}/${creatorId}/series`,
+  creatorStories: (creatorId: string) =>
     `${base.creators}/${creatorId}/stories`,
 };

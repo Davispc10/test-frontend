@@ -9,7 +9,7 @@
 body {
   color: #000;
   background: #f5f5f5;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   tap-highlight-color: rgba(0, 0, 0, 0);

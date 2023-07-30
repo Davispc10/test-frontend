@@ -5,13 +5,17 @@ export function transformCharactersResponse(
 ): CharactersApiResult {
   const resultsFormatted = apiResult.data.results.map((character) => {
     let thumb = character.thumbnail;
+    let description = character.description;
     if (character.thumbnail.path.includes("image_not_available")) {
       thumb = {
         path: "/images/marvel-placeholder",
         extension: "jpg",
       };
     }
-    return { ...character, thumbnail: thumb };
+    if (character.description === "") {
+      description = "No description available";
+    }
+    return { ...character, thumbnail: thumb, description };
   });
   return {
     ...apiResult,
