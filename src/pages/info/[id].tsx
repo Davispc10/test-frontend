@@ -8,10 +8,8 @@ import { transformCharactersResponse } from "@/utils/transformResponses";
 import CharacterView from "@/views/CharacterView";
 import { AxiosError } from "axios";
 import {
-  GetServerSideProps,
   GetServerSidePropsContext,
   GetStaticPaths,
-  InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from "next";
 import { useRouter } from "next/router";
@@ -58,21 +56,6 @@ export async function getStaticProps({
     }
 
     const ts = Date.now();
-    // const hash = generateMd5Hash(ts);
-    // const apikey = process.env.NEXT_PUBLIC_API_MARVEL_KEY || "";
-
-    // const rawResponse = await fetch(
-    //   `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${apikey}&ts=${ts}&hash=${hash}`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-
-    // const data = (await rawResponse.json()) as CharactersApiResult;
-
     const { data } = await marvelApi.get<CharactersApiResult>(
       API_LINKS.characterDetails(id),
       {

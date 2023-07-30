@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <Image
           src={BackgroundImage}
           alt="Marvel background"
-          objectFit="cover"
           priority
           sizes="(max-width: 640px) 640px, 1280px"
           placeholder="blur"

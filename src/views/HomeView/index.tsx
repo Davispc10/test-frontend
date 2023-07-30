@@ -7,15 +7,14 @@ import Pagination from "@/components/Pagination";
 import SearchHeader from "@/components/SearchHeader";
 import usePaginationAndSearch from "@/hooks/usePaginationAndSearch";
 import { marvelApi } from "@/services/marvelApi";
-import { Character, CharactersApiResult } from "@/types/Character";
+import { CharactersApiResult } from "@/types/Character";
 import { API_LINKS } from "@/utils/apiLinks";
 import { APP_PAGES } from "@/utils/appPages";
 import { PAGE_SIZE, STALE_TIME } from "@/utils/constants";
 import { transformCharactersResponse } from "@/utils/transformResponses";
 import { FileSearch } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 interface HomeViewProps {
   resultFromApi: CharactersApiResult;

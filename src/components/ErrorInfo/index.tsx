@@ -1,4 +1,3 @@
-import { anton } from "@/styles/fonts";
 import React from "react";
 import { tv } from "tailwind-variants";
 import MarvelLikeLabel from "../MarvelLikeLabel";

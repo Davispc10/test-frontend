@@ -5,7 +5,6 @@ import { marvelApi } from "@/services/marvelApi";
 import { CharactersApiResult } from "@/types/Character";
 import { ComicsApiResult } from "@/types/Comic";
 import { API_LINKS } from "@/utils/apiLinks";
-import { ArrowUUpLeft } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -66,7 +65,7 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
       </button> */}
       <button
         onClick={handleGoBack}
-        className="flex gap-4 items-center mb-4 [&:hover>svg]:stroke-red-500"
+        className="flex gap-4 items-center mb-4 [&:hover>svg]:stroke-red-500 border-none"
       >
         {/* <ArrowUUpLeft size={48}  /> */}
         <svg
@@ -127,7 +126,6 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
       <HorizontalScrollable
         characterName={character.name}
         comicsImages={distinctComicsImages}
-        totalComics={character.comics.items.length}
       />
     </MyContainer>
   );

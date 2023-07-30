@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { tv } from "tailwind-variants";
-import { Character } from "@/types/Character";
 
 interface HorizontalScrollableProps {
   comicsImages: string[];
   characterName: string;
-  totalComics: number;
 }
 
 const scrollableImagesStyle = tv({
@@ -19,7 +17,6 @@ const scrollableImagesStyle = tv({
 export default function HorizontalScrollable({
   comicsImages,
   characterName,
-  totalComics,
 }: HorizontalScrollableProps) {
   return (
     <div className={scrollableImagesStyle()}>

@@ -1,4 +1,3 @@
-import { notchedStyles } from "@/styles/notchedStyles";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import React from "react";
 import { tv } from "tailwind-variants";
