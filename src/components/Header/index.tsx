@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="flex justify-center lg:justify-between items-center p-8">
       <div className="lg:block hidden">
-        <Image src={Logo} width={250} alt="Logo Marvel" />
+        <Image src={Logo} width={250} alt="Logo Marvel" priority />
       </div>
 
       <div className="px-2 py-2 flex items-center justify-center w-fit border-red-500 border-[1px] rounded-md">
