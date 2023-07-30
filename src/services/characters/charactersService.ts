@@ -8,11 +8,13 @@ import { api } from '@/libs/api'
 export const QUANTITY_ITEMS_PER_PAGE = 30
 
 export const getCharacters = ({
-  offset
+  offset,
+  filterName
 }: GetCharactersResquestSchema): Promise<GetCharactersResponseSchema> =>
   api.get('/characters', {
     params: {
       limit: QUANTITY_ITEMS_PER_PAGE,
-      offset
+      offset,
+      nameStartsWith: filterName
     }
   })

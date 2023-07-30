@@ -3,13 +3,12 @@ import {
   QUANTITY_ITEMS_PER_PAGE,
   getCharacters
 } from '@/services/characters/charactersService'
-import Image from 'next/image'
-import Link from 'next/link'
 import { CharacterCard } from '../CharacterCard/CharacterCard'
 import { Filters } from '../Filters/Filters'
 
 interface CharactersListPropsSchema {
   page?: string
+  search?: string
 }
 
 export const CharactersList = async (props: CharactersListPropsSchema) => {
@@ -17,7 +16,7 @@ export const CharactersList = async (props: CharactersListPropsSchema) => {
     ? (Number(props.page) - 1) * QUANTITY_ITEMS_PER_PAGE
     : 0
 
-  const characters = await getCharacters({ offset })
+  const characters = await getCharacters({ offset, filterName: props.search })
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-16">

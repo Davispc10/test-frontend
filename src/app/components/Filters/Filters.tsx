@@ -13,7 +13,9 @@ export const Filters = () => {
     const formData = new FormData(event.currentTarget)
     const filterText = formData.get('filterText')
 
-    router.push(`/?search=${filterText}`)
+    const routePath = filterText !== '' ? `/?search=${filterText}` : '/'
+
+    router.push(routePath)
   }
 
   return (
@@ -21,7 +23,7 @@ export const Filters = () => {
       <div className="">
         <h1 className="text-3xl font-bold text-red-500">Personagens</h1>
         <p className="text-white">
-          Veja todos os personagens que a marvel ja criou!
+          Veja todos os personagens de quadrinhos que a marvel ja criou!
         </p>
       </div>
 
@@ -29,7 +31,6 @@ export const Filters = () => {
         <input
           name="filterText"
           type="text"
-          required
           placeholder="Filtrar por"
           className="rounded-lg border-2 border-solid border-gray-700 bg-gray-800 px-3 py-1  placeholder:text-gray-600"
         />

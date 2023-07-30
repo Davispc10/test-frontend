@@ -1,5 +1,6 @@
 export interface GetCharactersResquestSchema {
   offset?: number
+  filterName?: string
 }
 
 export interface GetCharactersResponseSchema {
