@@ -61,9 +61,6 @@ function Home() {
 		}
 	};
 
-	console.log('offset', offset);
-	console.log(select);
-
 	return (
 		<Layout>
 			<div className="h-full p-[8px]">
@@ -126,11 +123,6 @@ function Home() {
 						previousLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
 						nextLinkClassName="border-2 rounded border-blue-700 p-[8px] hover:border-rose-700"
 						pageClassName="border border-black rounded w-fit px-[8px]"
-						// disabledClassName="disabled"
-						// onPageChange={({ selected }) => setSelected(selected + 1)}
-						// containerClassName="border border-black"
-						// breakClassName={'page'}
-						// activeClassName={'active'}
 					/>
 				</div>
 			</div>

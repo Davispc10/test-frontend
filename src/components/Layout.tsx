@@ -3,7 +3,6 @@ import Link from 'next/link';
 function Layout({ children }: React.PropsWithChildren) {
 	return (
 		<div>
-		
 			<div className="w-full border-y border-black mb-[30px] shadow-md">
 				<Image
 					className="m-auto w-auto h-auto"
@@ -16,9 +15,6 @@ function Layout({ children }: React.PropsWithChildren) {
 				<div className="flex w-1/2 m-auto justify-evenly p-[8px]">
 					<Link className="text-lg " href="/" rel="preload">
 						Home
-					</Link>
-					<Link className="text-lg" href="/favorites" rel="preload">
-						Favorites
 					</Link>
 				</div>
 			</div>
