@@ -3,7 +3,7 @@ beforeEach(() => {
 });
 
 it('should be able to search for a character and see name suggestions', () => {
-  cy.wait(1000);
+  cy.wait(3000);
   cy.get('[data-testid=input-search]').type('spider');
   cy.wait(1000);
   cy.get('[data-testid=input-search-suggestion-box]', {
@@ -20,7 +20,7 @@ it('should be able to search for a character and see name suggestions', () => {
 });
 
 it('should be able to click on a name suggestion and see the character details', () => {
-  cy.wait(1000);
+  cy.wait(3000);
   cy.get('[data-testid=input-search]', {
     timeout: 10000,
   }).type('spider');
