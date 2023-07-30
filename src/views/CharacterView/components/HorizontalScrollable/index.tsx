@@ -21,9 +21,6 @@ export default function HorizontalScrollable({
   characterName,
   totalComics,
 }: HorizontalScrollableProps) {
-  console.log("comicsImages", comicsImages.length);
-  console.log("totalComics", totalComics);
-
   return (
     <div className={scrollableImagesStyle()}>
       {comicsImages?.map((comic) => (

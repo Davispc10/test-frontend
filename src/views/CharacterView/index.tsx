@@ -5,13 +5,11 @@ import { marvelApi } from "@/services/marvelApi";
 import { CharactersApiResult } from "@/types/Character";
 import { ComicsApiResult } from "@/types/Comic";
 import { API_LINKS } from "@/utils/apiLinks";
-import { APP_PAGES } from "@/utils/appPages";
-import { ArrowCircleLeft } from "@phosphor-icons/react";
+import { ArrowUUpLeft } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { tv } from "tailwind-variants";
 import HorizontalScrollable from "./components/HorizontalScrollable";
 
 interface CharacterViewProps {
@@ -51,15 +49,47 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
     };
   }, []);
 
-  // how the hell web doesn't have an api to check if can go back?
+  // how the heck web doesn't have an api to check if can go back?
   function handleGoBack() {
-    router.back();
+    router && router.back && router.back();
   }
 
+  // for any reason that doesn't make sense, the ArrowUUpLeft was causing a production error
+  // so I had to use a svg instead
+  // it was causing an error on Axios, like???? why????? 
+  // I tried to use the another icon from Phosphor but it was causing the same error
   return (
     <MyContainer>
-      <button onClick={handleGoBack} className="hover:scale-110 transition-all">
+      {/* <button onClick={handleGoBack} className="hover:scale-110 mb-2 transition-all">
         <ArrowCircleLeft size={48} className="fill-red-500" />
+      </button> */}
+      <button
+        onClick={handleGoBack}
+        className="flex gap-4 items-center mb-4 [&:hover>svg]:stroke-red-500"
+      >
+        {/* <ArrowUUpLeft size={48}  /> */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 256"
+          className="h-8 w-8 stroke-black"
+        >
+          <rect width="256" height="256" fill="none" />
+          <polyline
+            points="80 136 32 88 80 40"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
+          />
+          <path
+            d="M80,200h88a56,56,0,0,0,56-56h0a56,56,0,0,0-56-56H32"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
+          />
+        </svg>
+        <p className="text-2xl">Back</p>
       </button>
       <div className="flex gap-4 max-md:flex-col">
         <div className="relative aspect-[11/16] max-w-[22rem] w-full overflow-hidden">

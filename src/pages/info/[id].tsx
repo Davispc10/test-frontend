@@ -22,8 +22,6 @@ export default function CharacterInfo({
   const router = useRouter();
 
   if (router.isFallback) {
-    console.log("loading");
-
     return <h1 className="text-5xl">loading</h1>;
   }
 
@@ -60,6 +58,21 @@ export async function getStaticProps({
     }
 
     const ts = Date.now();
+    // const hash = generateMd5Hash(ts);
+    // const apikey = process.env.NEXT_PUBLIC_API_MARVEL_KEY || "";
+
+    // const rawResponse = await fetch(
+    //   `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${apikey}&ts=${ts}&hash=${hash}`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
+
+    // const data = (await rawResponse.json()) as CharactersApiResult;
+
     const { data } = await marvelApi.get<CharactersApiResult>(
       API_LINKS.characterDetails(id),
       {

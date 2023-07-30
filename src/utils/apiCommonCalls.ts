@@ -17,5 +17,6 @@ export async function getFirstEightCharacters(): Promise<CharactersApiResult> {
       },
     }
   );
+
   return data;
 }

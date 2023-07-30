@@ -1,7 +1,7 @@
 const base = {
-  characters: "/characters",
-  comics: "/comics",
-  creators: "/creators",
+  characters: "characters",
+  comics: "comics",
+  creators: "creators",
 };
 
 export const API_LINKS = {
