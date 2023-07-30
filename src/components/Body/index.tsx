@@ -1,52 +1,32 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { HeroesServices } from "@/services/heroes.service";
-import { getHeroesList } from "@/redux/heroesList/actions";
+import {
+  getHeroesList,
+  updateItemsOffset,
+  updateTotalPages,
+} from "@/redux/heroesList/actions";
 import { useLoading } from "@/hooks/useLoading";
-import { GetHeroesResponse, Hero } from "@/types/heroes";
+import { HeroesListReducer } from "@/types/heroes";
 import HeroesList from "../HeroesList";
-
-const HEROES_PER_PAGE = 8;
 
 const Body = () => {
   const { setLoading } = useLoading();
 
-  const heroesList = useSelector(
-    (state: { heroesListReducer: GetHeroesResponse }) => state.heroesListReducer
+  const { heroesList, page, perPage } = useSelector(
+    (rootReducer: HeroesListReducer) => rootReducer.heroesListReducer
   );
   const dispatch = useDispatch();
 
-  const [page, setPage] = useState<number>(1);
-
-  const handleSetHeroDefaultData = useCallback((heroesList: Hero[]) => {
-    const filteredData = heroesList.map((hero) => {
-      if (hero.description.length < 1) {
-        hero.description = "Descrição não informada";
-      }
-
-      if (hero.thumbnail.path.length < 0) {
-        hero.thumbnail.path = "";
-      }
-
-      return hero;
-    });
-
-    return filteredData;
-  }, []);
-
   const { isLoading, error } = useQuery(["heroesList", page], async () => {
-    const pageOffset = page * HEROES_PER_PAGE;
+    const pageOffset = page * perPage;
 
-    const { data } = await HeroesServices.getAll(pageOffset, HEROES_PER_PAGE);
+    const { data } = await HeroesServices.getAll(pageOffset, perPage);
 
-    const filledHeroes = handleSetHeroDefaultData(data.data.results);
-
-    const heroesList: GetHeroesResponse = Object.assign(data);
-    heroesList.data.results = filledHeroes;
-
-    dispatch(getHeroesList(heroesList));
+    dispatch(getHeroesList(data));
+    dispatch(updateTotalPages({ total: data.data.total, perPage }));
+    dispatch(updateItemsOffset(pageOffset));
   });
 
   useEffect(() => {
