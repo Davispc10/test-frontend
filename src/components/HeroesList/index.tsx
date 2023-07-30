@@ -5,10 +5,7 @@ import HeroCard from "../HeroCard";
 
 import Pagination from "../Pagination";
 import { useDispatch } from "react-redux";
-import {
-  changeHeroesPage,
-  updateItemsOffset,
-} from "@/redux/heroesList/actions";
+import { changePage, updateOffSet } from "@/redux/heroesList/slice";
 import { useSelector } from "react-redux";
 
 type Props = {
@@ -35,10 +32,10 @@ const HeroesList = ({ heroesList }: Props) => {
   );
 
   const handlePageClick = (event: { selected: number }): void => {
-    dispatch(changeHeroesPage(event.selected));
+    dispatch(changePage(event.selected));
 
     const newOffset = (event.selected * perPage) % heroesList.length;
-    dispatch(updateItemsOffset(newOffset));
+    dispatch(updateOffSet(newOffset));
   };
 
   return (

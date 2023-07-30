@@ -1,10 +1,16 @@
-import { useCallback } from "react";
-import { PayloadAction } from "@reduxjs/toolkit";
-import HeroesListActionTypes from "./action-types";
 import { GetHeroesResponse, Hero } from "@/types/heroes";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  heroesList: null,
+interface ReducerData {
+  heroesList: GetHeroesResponse;
+  page: number;
+  totalPages: number;
+  itemsOffset: number;
+  perPage: number;
+}
+
+const initialState: ReducerData = {
+  heroesList: [] as unknown as GetHeroesResponse,
   page: 0,
   totalPages: 0,
   itemsOffset: 0,
@@ -28,12 +34,11 @@ const handleSetHeroDefaultData = (heroesList: Hero[]) => {
   return filteredData;
 };
 
-const heroesListReducer = (
-  state = initialState,
-  action: PayloadAction<any>
-) => {
-  switch (action.type) {
-    case HeroesListActionTypes.GET:
+const heroesSlice = createSlice({
+  name: "heroesList",
+  initialState,
+  reducers: {
+    getHeroes: (state, action) => {
       const filledHeroesData = handleSetHeroDefaultData(
         action.payload.data.results
       );
@@ -41,22 +46,25 @@ const heroesListReducer = (
       const heroesList: GetHeroesResponse = Object.assign(action.payload);
       heroesList.data.results = filledHeroesData;
 
-      return { ...state, heroesList: heroesList };
+      state.heroesList = heroesList;
+    },
 
-    case HeroesListActionTypes.CHANGE_PAGE:
-      return { ...state, page: action.payload };
+    changePage: (state, action) => {
+      state.page = action.payload;
+    },
 
-    case HeroesListActionTypes.UPDATE_OFFSET:
-      return { ...state, itemsOffset: action.payload };
-
-    case HeroesListActionTypes.UPDATE_TOTAL_PAGES:
+    updateTotalPages: (state, action) => {
       const newTotalPages = action.payload.total / action.payload.perPage;
 
-      return { ...state, totalPages: newTotalPages };
+      state.totalPages = newTotalPages;
+    },
 
-    default:
-      return state;
-  }
-};
+    updateOffSet: (state, action) => {
+      state.itemsOffset = action.payload as number;
+    },
+  },
+});
 
-export default heroesListReducer;
+export default heroesSlice.reducer;
+export const { getHeroes, changePage, updateOffSet, updateTotalPages } =
+  heroesSlice.actions;
