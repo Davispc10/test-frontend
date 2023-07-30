@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
 import md5 from "md5";
 import { useDeferredValue } from "react";
-import { useSearch } from "./useSearch";
+import { useSearch } from "../hooks/useSearch";
 
 const fetcher = (offset: number): AxiosPromise<CharactersResponse> => {
   const publicKey = "4e40b49f1b98db89d8c51844520b45be";
@@ -15,16 +15,15 @@ const fetcher = (offset: number): AxiosPromise<CharactersResponse> => {
   const apiUrl = "https://gateway.marvel.com/v1/public";
 
   const params = {
-    apikey: publicKey,
-    ts: timestamp,
-    hash: hash,
-    limit: 50,
+    limit: 100,
     offset: offset,
   };
 
-  return axios.get(`${apiUrl}/characters`, { params });
+  const query = `ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
+
+  return axios.get(`${apiUrl}/characters?${query}`, { params });
 };
-export function useCharacters(offset: number) {
+export function useCharactersList(offset: number) {
   const { search } = useSearch();
   const searchDeferred = useDeferredValue(search?.toLowerCase());
   const { data } = useQuery({

@@ -1,12 +1,11 @@
 "use client";
 
-import axios from "axios";
-import md5 from "md5";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Character } from "@/types/character";
 import Logo from "../../../../public/logo.svg";
+import { useCharacterDetail } from "@/hooks/characterDetailQuery";
+import { useCharacterComics } from "@/hooks/useCharacterComics";
 
 interface CharacterDetailProps {
   params: {
@@ -16,65 +15,25 @@ interface CharacterDetailProps {
 function CharacterDetail({ params }: CharacterDetailProps) {
   const router = useRouter();
 
-  const [detail, setDetail] = useState<Character[] | undefined>();
-
-  const [comics, setComics] = useState<any | undefined>([]);
-
   const { characterId } = params;
+
+  const { data } = useCharacterDetail(characterId);
+
+  const { data: comics } = useCharacterComics(characterId);
 
   const handleNavigate = () => {
     router.push("/");
   };
 
-  const fetcher = (characterId: string) => {
-    const publicKey = "4e40b49f1b98db89d8c51844520b45be";
-    const privateKey = "90d65ffd631bbcc29c7014a6190fb693d12d2b17";
-    const timestamp = new Date().getTime();
-    const hash = md5(timestamp + privateKey + publicKey);
-
-    const apiUrl = "https://gateway.marvel.com/v1/public";
-
-    const query = `ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
-    axios
-      .get(`${apiUrl}/characters/${characterId}?${query}`)
-      .then((res) => setDetail(res.data.data.results));
-  };
-
-  const fetchComics = async (characterId: string) => {
-    const publicKey = "4e40b49f1b98db89d8c51844520b45be";
-    const privateKey = "90d65ffd631bbcc29c7014a6190fb693d12d2b17";
-    const timestamp = new Date().getTime();
-    const hash = md5(timestamp + privateKey + publicKey);
-
-    const apiUrl = "https://gateway.marvel.com/v1/public";
-
-    const query = `ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
-
-    try {
-      const res = await axios.get(
-        `${apiUrl}/characters/${characterId}/comics?${query}`
-      );
-      setComics(res.data.data.results);
-    } catch (error) {
-      console.error("Ocorreu um erro ao buscar os quadrinhos:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetcher(characterId);
-    fetchComics(characterId);
-  }, [characterId]);
-
   const verifyDescription =
-    detail && !!detail[0].description
-      ? detail[0].description
+    data && !!data[0].description
+      ? data[0].description
       : "Descrição não informada";
 
   const verifyImage =
-    detail && detail[0].thumbnail.path.includes("image_not_available")
+    data && data[0].thumbnail.path.includes("image_not_available")
       ? Logo
-      : detail &&
-        detail[0].thumbnail.path + "." + detail[0].thumbnail.extension;
+      : data && data[0].thumbnail.path + "." + data[0].thumbnail.extension;
 
   return (
     <div className="w-full h-screen flex justify-center">
@@ -85,7 +44,7 @@ function CharacterDetail({ params }: CharacterDetailProps) {
           </button>
         </div>
         <div>
-          {detail?.map((item: Character) => (
+          {data?.map((item: Character) => (
             <div key={item.id}>
               <div className="flex">
                 <Image

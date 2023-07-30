@@ -10,7 +10,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-gray-500 py-8 fixed w-full z-50">
+    <div className="bg-zinc-600 py-8 fixed w-full z-50">
       <div
         className="w-4/5 flex justify-between items-center flex-row"
         style={{ margin: "0 10%" }}
