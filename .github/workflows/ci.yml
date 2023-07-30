@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - '*'
+    paths: ['src/**/*', '.github/workflows/ci.yml']
   pull_request:
     branches: [main]
 
