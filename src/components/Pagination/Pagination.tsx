@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { PaginationPropsSchema } from './Pagination.chema'
 import { PaginationItem } from './components/PaginationItem/PaginationItem'
 import { generatePagesArray } from './utils/utils'
@@ -20,7 +20,14 @@ export function Pagination({
   quantityItemsPerPage
 }: PaginationPropsSchema) {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const queryParams = new URLSearchParams(searchParams.toString())
   const lastPage = Math.ceil(totalItems / quantityItemsPerPage)
+
+  const handleChangePage = (page: number) => {
+    queryParams.set('page', String(page))
+    router.push(`/?${queryParams.toString()}`)
+  }
 
   const previousPages =
     currentPage > 1
@@ -39,30 +46,27 @@ export function Pagination({
     <div className="flex w-full justify-center gap-2 text-white">
       {currentPage > 1 + SIBLINGS_COUNT && (
         <>
-          <PaginationItem
-            selectPage={(page) => router.push(`/?page=${page}`)}
-            pageNumber={1}
-          />
+          <PaginationItem selectPage={handleChangePage} pageNumber={1} />
           {currentPage > 2 + SIBLINGS_COUNT && <p className="px-2"> ...</p>}
         </>
       )}
       {previousPages.length > 0 &&
         previousPages.map((page) => (
           <PaginationItem
-            selectPage={(page) => router.push(`/?page=${page}`)}
+            selectPage={handleChangePage}
             key={page}
             pageNumber={page}
           />
         ))}
       <PaginationItem
-        selectPage={(page) => router.push(`/?page=${page}`)}
+        selectPage={handleChangePage}
         pageNumber={currentPage}
         isSelected
       />
       {nextPages.length > 0 &&
         nextPages.map((page) => (
           <PaginationItem
-            selectPage={(page) => router.push(`/?page=${page}`)}
+            selectPage={handleChangePage}
             key={page}
             pageNumber={page}
           />
@@ -73,7 +77,7 @@ export function Pagination({
             <p className="px-2"> ...</p>
           )}
           <PaginationItem
-            selectPage={(page) => router.push(`/?page=${page}`)}
+            selectPage={(page) => router.replace(`/?page=${page}`)}
             pageNumber={lastPage}
           />
         </>
