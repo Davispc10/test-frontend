@@ -16,14 +16,15 @@ export default function Home({
 
 export async function getStaticProps() {
   try {
+    const ts = Date.now();
     const { data } = await marvelApi.get<CharactersApiResult>(
       API_LINKS.characters,
       {
         params: {
           limit: PAGE_SIZE,
           offset: 0,
-          ts: Date.now(),
-          hash: generateMd5Hash(),
+          ts: ts,
+          hash: generateMd5Hash(ts),
         },
       }
     );

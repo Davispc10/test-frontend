@@ -21,23 +21,25 @@ export default function CharacterInfo({
 export async function getServerSideProps({
   params,
 }: GetServerSidePropsContext<{ id?: string }>) {
-  const { id } = params || {};
-
-  if (!id) {
-    return {
-      notFound: true,
-    };
-  }
-
   try {
+    const { id } = params || {};
+
+    if (!id) {
+      return {
+        notFound: true,
+      };
+    }
+
+    const ts = Date.now();
+
     const { data } = await marvelApi.get<CharactersApiResult>(
       API_LINKS.characterDetails(id),
       {
         params: {
           limit: PAGE_SIZE,
           offset: 0,
-          ts: Date.now(),
-          hash: generateMd5Hash(),
+          ts: ts,
+          hash: generateMd5Hash(ts),
         },
       }
     );
