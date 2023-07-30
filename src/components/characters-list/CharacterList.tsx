@@ -1,9 +1,9 @@
 'use client';
 
 import { retrieveCharactersList } from '@/services';
-import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
+import { useQuery } from 'react-query';
 
 import Button from '../ui/Button';
 import CharacterListCards from './CharacterListCards';
