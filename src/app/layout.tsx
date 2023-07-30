@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-gray-900 ${inter.className}`}>
         <Header />
-        {children}
+        <main className="py-3">{children}</main>
       </body>
     </html>
   )

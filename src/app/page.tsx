@@ -9,10 +9,8 @@ interface HomePropsSchema {
 
 export default async function Home(props: HomePropsSchema) {
   return (
-    <main className="py-14">
-      <Suspense fallback={<h1>LOADING...</h1>}>
-        <CharactersList page={props.searchParams.page} />
-      </Suspense>
-    </main>
+    <Suspense fallback={<h1>LOADING...</h1>}>
+      <CharactersList page={props.searchParams.page} />
+    </Suspense>
   )
 }
