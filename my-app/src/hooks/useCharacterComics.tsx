@@ -18,9 +18,9 @@ const fetcher = (characterId: string): AxiosPromise<CharactersResponse> => {
   return axios.get(`${apiUrl}/characters/${characterId}/comics?${query}`);
 };
 export function useCharacterComics(characterId: string) {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: () => fetcher(characterId),
     queryKey: ["comics", characterId],
   });
-  return { data: data?.data?.data?.results };
+  return { data: data?.data?.data?.results, isLoading };
 }

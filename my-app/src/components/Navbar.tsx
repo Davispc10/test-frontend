@@ -19,7 +19,7 @@ function Navbar() {
           Marvel Characters
         </h1>
         <input
-          className="border border-solid rounded-md h-10 w-1/3 px-4"
+          className="border border-solid rounded-md h-10 w-1/3 px-4 focus:outline-none"
           placeholder="Busque o Personagem da Marvel"
           type="text"
           value={search}

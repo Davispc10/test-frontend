@@ -26,7 +26,7 @@ const fetcher = (offset: number): AxiosPromise<CharactersResponse> => {
 export function useCharactersList(offset: number) {
   const { search } = useSearch();
   const searchDeferred = useDeferredValue(search?.toLowerCase());
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: () => fetcher(offset),
     queryKey: ["characters", offset],
   });
@@ -34,5 +34,6 @@ export function useCharactersList(offset: number) {
   const filterCharacters = characters?.filter((character) =>
     character.name.toLowerCase().includes(searchDeferred)
   );
-  return { data: filterCharacters };
+
+  return { data: filterCharacters, isLoading };
 }

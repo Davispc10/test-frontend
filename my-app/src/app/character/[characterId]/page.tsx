@@ -6,6 +6,7 @@ import { Character } from "@/types/character";
 import Logo from "../../../../public/logo.svg";
 import { useCharacterDetail } from "@/hooks/characterDetailQuery";
 import { useCharacterComics } from "@/hooks/useCharacterComics";
+import Loader from "@/components/Loader";
 
 interface CharacterDetailProps {
   params: {
@@ -17,9 +18,9 @@ function CharacterDetail({ params }: CharacterDetailProps) {
 
   const { characterId } = params;
 
-  const { data } = useCharacterDetail(characterId);
+  const { data, isLoading: loadingDetails } = useCharacterDetail(characterId);
 
-  const { data: comics } = useCharacterComics(characterId);
+  const { data: comics, isLoading: loadingComics } = useCharacterComics(characterId);
 
   const handleNavigate = () => {
     router.push("/");
@@ -36,6 +37,8 @@ function CharacterDetail({ params }: CharacterDetailProps) {
       : data && data[0].thumbnail.path + "." + data[0].thumbnail.extension;
 
   return (
+    <>
+    {loadingDetails && loadingComics && <Loader />}
     <div className="w-full h-screen flex justify-center">
       <div className="w-4/5  h-screen">
         <div className="my-8 h-12">
@@ -90,6 +93,8 @@ function CharacterDetail({ params }: CharacterDetailProps) {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 
