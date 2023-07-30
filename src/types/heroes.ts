@@ -1,3 +1,13 @@
+export interface HeroesListReducer {
+  heroesListReducer: {
+    heroesList: GetHeroesResponse;
+    page: number;
+    totalPages: number;
+    itemsOffset: number;
+    perPage: number;
+  };
+}
+
 export interface GetHeroesResponse {
   data: {
     offset: number;
