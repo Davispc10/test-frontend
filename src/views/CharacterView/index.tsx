@@ -69,9 +69,6 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
             fill
             sizes="100vw"
             className="object-cover"
-            // onLoadingComplete={() => {
-            //   setLoadComplete(true);
-            // }}
           />
         </div>
         <div className="flex flex-col py-8">

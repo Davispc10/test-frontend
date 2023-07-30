@@ -1,6 +1,6 @@
 import MD5 from "crypto-js/md5";
 
-export function generateMd5Hash(ts:number) {
+export function generateMd5Hash(ts: number): string {
   const seed =
     ts +
     (process.env.API_MARVEL_PRIVATE_KEY || "") +

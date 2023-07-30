@@ -23,7 +23,7 @@ export default function ErrorPage() {
   return (
     <MyContainer className="h-screen">
       <div className="h-full w-full gap-8 flex flex-col justify-center items-center">
-        <ErrorInfo />
+        <ErrorInfo errorMessage="The page you are looking for does not exist." />
         {!isHome && (
           <button className={buttonStyle()} onClick={handleReturnHome}>
             return to home page.

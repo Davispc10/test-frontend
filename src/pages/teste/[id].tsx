@@ -8,26 +8,16 @@ import { transformCharactersResponse } from "@/utils/transformResponses";
 import CharacterView from "@/views/CharacterView";
 import { AxiosError } from "axios";
 import {
-  GetServerSideProps,
   GetServerSidePropsContext,
   GetStaticPaths,
-  InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from "next";
-import { useRouter } from "next/router";
 
-export default function CharacterInfo({
+export default function Teste({
   apiResult,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const router = useRouter();
-
-  if (router.isFallback) {
-    console.log("loading");
-
-    return <h1 className="text-5xl">loading</h1>;
-  }
-
-  return <CharacterView resultFromApi={apiResult} />;
+  // return <CharacterView resultFromApi={apiResult} />;
+  return <h1>teste</h1>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -39,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         id: character.id.toString(),
       },
     };
-  });
+  })
 
   return {
     paths: paths || [],
@@ -60,6 +50,7 @@ export async function getStaticProps({
     }
 
     const ts = Date.now();
+
     const { data } = await marvelApi.get<CharactersApiResult>(
       API_LINKS.characterDetails(id),
       {
