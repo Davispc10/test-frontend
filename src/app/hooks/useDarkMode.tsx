@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { FaSun } from 'react-icons/fa';
 import { GiMoon } from 'react-icons/gi';
 
-import { ContextWrapper } from '../components/AppContext';
+import { ContextWrapper } from '../../components/AppContext';
 
 export default function useDarkMode() {
   const { setIsDarkMode, isDarkMode } = useContext(ContextWrapper);

@@ -1,6 +1,6 @@
 'use client';
 
-import useDarkMode from '@/hooks/useDarkMode';
+import useDarkMode from '@/app/hooks/useDarkMode';
 import Image from 'next/image';
 import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';

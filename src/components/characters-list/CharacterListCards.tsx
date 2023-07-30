@@ -1,4 +1,4 @@
-import useDarkMode from '@/hooks/useDarkMode';
+import useDarkMode from '@/app/hooks/useDarkMode';
 import { useRouter } from 'next/navigation';
 
 interface CharacterListCardProps {
