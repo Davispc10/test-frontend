@@ -12,7 +12,7 @@ import { generatePagesArray } from './utils/utils'
  * SIBLINGS_COUNT = 2 => 1 `2` `3` ... 10
  * SIBLINGS_COUNT = 1 => 1 `2` ... 10
  */
-const SIBLINGS_COUNT = 1
+const SIBLINGS_COUNT = 5
 
 export function Pagination({
   totalItems,
@@ -36,8 +36,7 @@ export function Pagination({
       : []
 
   return (
-    <div className="flex gap-2">
-      <p className="font-bold">Página</p>
+    <div className="flex w-full justify-center gap-2 text-white">
       {currentPage > 1 + SIBLINGS_COUNT && (
         <>
           <PaginationItem

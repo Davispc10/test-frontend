@@ -11,16 +11,16 @@ export function PaginationItem({
 }: PaginationItemPropsSchema) {
   if (isSelected)
     return (
-      <button
-        className="rounded-md border-[1px] border-solid border-primary-400 px-2 font-bold text-primary-400"
-        disabled
-      >
+      <button className="rounded-sm bg-red-900 px-3 py-1 font-bold" disabled>
         {pageNumber}
       </button>
     )
 
   return (
-    <button className="px-2" onClick={() => selectPage(pageNumber)}>
+    <button
+      className="rounded-sm bg-gray-800 px-3 py-1 hover:bg-red-950"
+      onClick={() => selectPage(pageNumber)}
+    >
       {pageNumber}
     </button>
   )
