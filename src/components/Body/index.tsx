@@ -19,15 +19,21 @@ const Body = () => {
   );
   const dispatch = useDispatch();
 
-  const { isLoading, error } = useQuery(["heroesList", page], async () => {
-    const pageOffset = page * perPage;
+  const { isLoading, error } = useQuery(
+    ["heroesList", page],
+    async () => {
+      const pageOffset = page * perPage;
 
-    const { data } = await HeroesServices.getAll(pageOffset, perPage);
+      const { data } = await HeroesServices.getAll(pageOffset, perPage);
 
-    dispatch(getHeroes(data));
-    dispatch(updateTotalPages({ total: data.data.total, perPage }));
-    dispatch(updateOffSet(pageOffset));
-  });
+      dispatch(getHeroes(data));
+      dispatch(updateTotalPages({ total: data.data.total, perPage }));
+      dispatch(updateOffSet(pageOffset));
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   useEffect(() => {
     setLoading(isLoading);
