@@ -16,6 +16,9 @@ module.exports = {
         'light-comics':
           'url("https://res.cloudinary.com/domwy2hmn/image/upload/v1690568831/marvel-light-bg_zajmvn.png")',
       },
+      transitionProperty: {
+        height: 'height',
+      },
       colors: {
         marvel: {
           primary: '#e23636',
@@ -72,6 +75,10 @@ module.exports = {
           '0%': { transform: 'scaleX(0)' },
           '100%': { transform: 'scaleX(1)' },
         },
+        delayHoverEffect: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
       },
       animation: {
         scaleIn: 'scaleIn 0.3s ease-in-out',
@@ -81,6 +88,7 @@ module.exports = {
         move: 'move 3s ease infinite alternate',
         gradient: 'gradient 10s ease infinite',
         scaleFromRight: 'scaleFromRight 0.6s ease-in-out',
+        delayHoverEffect: 'delayHoverEffect 0.5s ease-in-out',
       },
     },
   },

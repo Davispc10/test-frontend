@@ -49,7 +49,7 @@ export default function InputSearch({
         leaveFrom="scale-100"
         leaveTo="scale-0"
       >
-        <div className="absolute z-50 mt-2 h-auto max-h-[300px] w-full overflow-y-scroll bg-white p-3 text-black">
+        <div className="absolute z-50 mt-2 h-auto max-h-[300px] w-full overflow-y-scroll bg-white p-3 text-black shadow-2xl">
           {items?.length > 0 ? (
             items?.map((item) => (
               <div

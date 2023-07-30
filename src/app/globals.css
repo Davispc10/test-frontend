@@ -53,7 +53,7 @@ html {
 }
 
 .bnw-filter {
-  filter: grayscale(90%);
+  filter: grayscale(35%);
   transition:
     filter 0.5s ease,
     transform 0.5s ease;

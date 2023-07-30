@@ -1,7 +1,7 @@
 'use client';
 
-import useDarkMode from '@/app/hooks/useDarkMode';
 import { BsGithub } from 'react-icons/bs';
+import useDarkMode from '@/app/hooks/useDarkMode';
 
 export default function Header() {
   const { colorClasses, DarkModeIcons } = useDarkMode();
