@@ -14,26 +14,28 @@ export interface GetCharactersResponseSchema {
     limit: number
     total: number
     count: number
-    results: {
-      id: number
-      name: string
-      description: string
-      modified: string
-      thumbnail: {
-        path: string
-        extension: string
-      }
-      resourceURI: string
-      comics: ComicsSchema
-      series: SeriesSchema
-      stories: StoriesSchema
-      events: EventsSchema
-      urls: {
-        type: string
-        url: string
-      }[]
-    }[]
+    results: CharacterSchema[]
   }
+}
+
+export interface CharacterSchema {
+  id: number
+  name: string
+  description: string
+  modified: string
+  thumbnail: {
+    path: string
+    extension: string
+  }
+  resourceURI: string
+  comics: ComicsSchema
+  series: SeriesSchema
+  stories: StoriesSchema
+  events: EventsSchema
+  urls: {
+    type: string
+    url: string
+  }[]
 }
 
 export interface ComicsSchema {
