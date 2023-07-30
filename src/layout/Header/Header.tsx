@@ -27,7 +27,9 @@ const HEADER_SIZE = '60px'
 export const Header = () => {
   return (
     <header className="flex items-center" style={{ height: HEADER_SIZE }}>
-      <Image src={logo} alt="marvel" className="h-8 w-auto" />
+      <Link href={'/'} className="cursor-pointer">
+        <Image src={logo} alt="marvel" className="h-8 w-auto" />
+      </Link>
       <nav className="flex flex-1 justify-center">
         <ul className="flex gap-20 text-base text-white">
           {menus.map((menu) => (

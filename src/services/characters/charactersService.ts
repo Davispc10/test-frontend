@@ -1,4 +1,6 @@
 import {
+  GetCharacterResponseSchema,
+  GetCharacterResquestSchema,
   GetCharactersResponseSchema,
   GetCharactersResquestSchema
 } from './charactersService.schema'
@@ -18,3 +20,8 @@ export const getCharacters = ({
       nameStartsWith: filterName
     }
   })
+
+export const getCharacter = ({
+  id
+}: GetCharacterResquestSchema): Promise<GetCharacterResponseSchema> =>
+  api.get(`/characters/${id}}`)

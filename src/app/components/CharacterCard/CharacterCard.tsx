@@ -1,7 +1,7 @@
 import { CharacterSchema } from '@/services/characters/charactersService.schema'
+import { getCharacterImagePath } from '@/utils/getCharacterImagePath/getCharacterImagePath'
 import Image from 'next/image'
 import Link from 'next/link'
-import defaultPathImage from '@/assets/defaultCharacterImage.jpg'
 
 interface CharacterCardPropsSchema {
   character: CharacterSchema
@@ -10,9 +10,7 @@ interface CharacterCardPropsSchema {
 export const CharacterCard = ({ character }: CharacterCardPropsSchema) => {
   const thumbnailPath = `${character.thumbnail.path}.${character.thumbnail.extension}`
 
-  const imageNotFound = thumbnailPath.match(/\bimage_not_available\b/g)
-
-  const characterThumbnail = imageNotFound ? defaultPathImage : thumbnailPath
+  const characterThumbnail = getCharacterImagePath({ thumbnailPath })
 
   return (
     <Link

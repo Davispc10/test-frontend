@@ -19,6 +19,26 @@ export interface GetCharactersResponseSchema {
   }
 }
 
+export interface GetCharacterResquestSchema {
+  id: string
+}
+
+export interface GetCharacterResponseSchema {
+  code: number
+  status: string
+  copyright: string
+  attributionText: string
+  attributionHTML: string
+  etag: string
+  data: {
+    offset: number
+    limit: number
+    total: number
+    count: number
+    results: CharacterSchema[]
+  }
+}
+
 export interface CharacterSchema {
   id: number
   name: string
