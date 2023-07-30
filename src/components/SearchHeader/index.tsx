@@ -5,8 +5,16 @@ import Image from "next/image";
 
 import MarvelLogo from "../../../public/images/marvel-logo.png";
 
-export default function SearchHeader() {
+interface SearchHeaderProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+// TODO - if theres time, change state control to redux
+export default function SearchHeader({value, onChange}: SearchHeaderProps) {
   const { wrapper, content } = notchedStyles();
+
+  
   return (
     <div className={wrapper({ className: "w-full" })}>
       <div className={content()}>
@@ -17,9 +25,9 @@ export default function SearchHeader() {
             width={100}
             height={40}
             quality={100}
-            className=" h-full object-contain"
+            className=" h-full object-contain max-sm:hidden"
           />
-          <SearchInput />
+          <SearchInput value={value} onChange={onChange}/>
         </div>
       </div>
     </div>

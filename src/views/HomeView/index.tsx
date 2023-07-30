@@ -1,5 +1,6 @@
 import CharacterCard from "@/components/CharacterCard";
 import Gallery from "@/components/Gallery";
+import LoadSpinner from "@/components/LoadSpinner";
 import MyContainer from "@/components/MyContainer";
 import Pagination from "@/components/Pagination";
 import SearchHeader from "@/components/SearchHeader";
@@ -7,9 +8,11 @@ import usePaginationAndSearch from "@/hooks/usePaginationAndSearch";
 import { marvelApi } from "@/services/marvelApi";
 import { Character, CharactersApiResult } from "@/types/Character";
 import { API_LINKS } from "@/utils/apiLinks";
+import { APP_PAGES } from "@/utils/appPages";
 import { PAGE_SIZE, STALE_TIME } from "@/utils/constants";
 import { transformCharactersResponse } from "@/utils/transformResponses";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import React, { useMemo, useState } from "react";
 
 interface HomeViewProps {
@@ -22,7 +25,7 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
       delay: 500,
     });
 
-  const { data, isLoading, isPreviousData } = useQuery<CharactersApiResult>({
+  const { data, isLoading, isFetching } = useQuery<CharactersApiResult>({
     queryKey: ["characters", page, debounceText],
     keepPreviousData: true,
     placeholderData: () => {
@@ -52,21 +55,21 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
 
   return (
     <MyContainer>
-      {/* <input
-        type="text"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-      /> */}
-      <div className="max-w-lg w-full flex justify-center m-auto py-4">
-        <SearchHeader />
+      <div className="max-w-lg w-full flex justify-center m-auto pb-4">
+        <SearchHeader onChange={setSearchText} value={searchText}/>
       </div>
       <Gallery
         items={characters}
         render={(character) => (
-          <CharacterCard character={character} key={character.id} />
+          <CharacterCard
+            key={character.id}
+            character={character}
+            href={APP_PAGES.characterDetails(character.id)}
+          />
         )}
       />
-      <div className="py-4 flex justify-end">
+      <div className="py-4 flex justify-end gap-2">
+        {isLoading || (isFetching && <LoadSpinner />)}
         <Pagination index={page} onChangePage={handlePagination} size={total} />
       </div>
     </MyContainer>

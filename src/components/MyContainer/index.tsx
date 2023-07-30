@@ -7,7 +7,7 @@ interface MyContainerProps {
 }
 
 const containerStyle = tv({
-  base: "px-4 max-w-7xl m-auto",
+  base: "px-4 py-4 max-w-7xl m-auto",
 });
 
 export default function MyContainer({ children, className }: MyContainerProps) {

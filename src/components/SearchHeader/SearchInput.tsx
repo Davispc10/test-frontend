@@ -4,8 +4,8 @@ import React from "react";
 import { tv } from "tailwind-variants";
 
 interface SearchInputProps {
-  value?: string;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
   className?: string;
 }
 
@@ -32,12 +32,11 @@ export default function SearchInput({
         type="text"
         id="header-search-input"
         className={inputStyle(className)}
-        placeholder="Pesquisar"
+        onChange={(e) => onChange(e.target.value)}
+        value={value}
+        placeholder="Search for a character"
       />
-      <button
-        // type="submit"
-        className={"cursor-pointer transition hover:scale-110"}
-      >
+      <button className={"cursor-pointer transition hover:scale-110"}>
         <MagnifyingGlass size={24} />
       </button>
     </label>
