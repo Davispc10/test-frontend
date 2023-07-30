@@ -8,12 +8,14 @@ interface ButtonProps {
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
+  testid?: string;
 }
 
 export default function Button({
   children,
   href,
   disabled,
+  testid,
   onClick,
 }: ButtonProps) {
   const { buttonColorClasses } = useDarkMode();
@@ -21,6 +23,7 @@ export default function Button({
 
   return (
     <button
+      data-testid={testid}
       className={`${buttonColorClasses} ${
         disabled && 'pointer-events-none opacity-40'
       } flex max-w-[200px] items-center justify-between gap-x-3 px-5 py-3 font-medium transition-opacity hover:opacity-80`}

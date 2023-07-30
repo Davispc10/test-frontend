@@ -31,7 +31,11 @@ export default function CharacterListHeader({
         setValue={setValue}
         setItems={setItems}
       />
-      <Button disabled={!search} onClick={() => setName(search)}>
+      <Button
+        testid="confirm-search-btn"
+        disabled={!search}
+        onClick={() => setName(search)}
+      >
         <FaSearch />
       </Button>
     </div>

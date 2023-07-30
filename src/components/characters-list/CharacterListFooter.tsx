@@ -18,10 +18,14 @@ export default function CharacterListFooter({
 }: CharacterListFooterProps) {
   return (
     <div className="flex items-center justify-center gap-x-6">
-      <Button disabled={prevDisabled} onClick={previousPage}>
+      <Button
+        testid="previous-btn"
+        disabled={prevDisabled}
+        onClick={previousPage}
+      >
         <AiOutlineArrowLeft className="text-xl" />
       </Button>
-      <Button disabled={nextDisabled} onClick={nextPage}>
+      <Button testid="next-btn" disabled={nextDisabled} onClick={nextPage}>
         <AiOutlineArrowRight className="text-xl" />
       </Button>
     </div>

@@ -19,6 +19,7 @@ export default function CharacterListCards({
     >
       {characters?.map((character: any) => (
         <div
+          data-testid="character-card"
           className={`${colorClasses} bnw-filter group h-[190px] w-[150px] animate-scaleColorsIn cursor-pointer hover:z-10 hover:scale-125`}
           key={character?.id}
           onClick={() => router.push(`/${character?.id}`)}

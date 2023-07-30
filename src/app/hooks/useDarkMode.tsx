@@ -43,13 +43,20 @@ export default function useDarkMode() {
   const DarkModeIcons = useCallback(() => {
     return (
       <div
+        data-testid="dark-mode-switcher"
         className="flex cursor-pointer items-center justify-center"
         onClick={setDarkMode}
       >
         {isDarkMode ? (
-          <FaSun className="animate-scaleIn text-2xl text-white" />
+          <FaSun
+            data-testid="light-mode-icon"
+            className="animate-scaleIn text-2xl text-white"
+          />
         ) : (
-          <GiMoon className="animate-scaleIn text-2xl text-white" />
+          <GiMoon
+            data-testid="dark-mode-icon"
+            className="animate-scaleIn text-2xl text-white"
+          />
         )}
       </div>
     );

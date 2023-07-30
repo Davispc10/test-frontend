@@ -34,6 +34,7 @@ export default function InputSearch({
   return (
     <div className="relative z-50 w-full max-w-[360px]">
       <input
+        data-testid="input-search"
         type="text"
         placeholder="Find a character"
         className="w-full p-2 text-black focus:outline-none"
@@ -53,6 +54,7 @@ export default function InputSearch({
           {items?.length > 0 ? (
             items?.map((item) => (
               <div
+                data-testid="input-search-suggestion-box"
                 key={item}
                 className="cursor-pointer py-2 transition-all ease-in-out hover:bg-gray-600 hover:text-white"
                 onClick={() => {

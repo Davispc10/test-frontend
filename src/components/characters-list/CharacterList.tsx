@@ -112,6 +112,8 @@ export default function CharacterList() {
           </div>
         </div>
         <CharacterListFooter
+          prevDisabled={true}
+          nextDisabled={true}
           nextPage={() => setOffset('next')}
           previousPage={() => setOffset('previous')}
         />
@@ -140,6 +142,8 @@ export default function CharacterList() {
           </div>
         </div>
         <CharacterListFooter
+          prevDisabled={true}
+          nextDisabled={true}
           nextPage={() => setOffset('next')}
           previousPage={() => setOffset('previous')}
         />
