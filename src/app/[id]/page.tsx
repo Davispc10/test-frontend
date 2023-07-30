@@ -6,12 +6,7 @@ import { CharacterInfoPropsSchema } from './components/CharacterInfo.schema'
 import { data } from 'autoprefixer'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-
-export interface HeroPropsSchema {
-  params: {
-    id: string
-  }
-}
+import { HeroPropsSchema } from './page.schema'
 
 export default async function Hero({ params }: HeroPropsSchema) {
   try {
@@ -33,6 +28,10 @@ export default async function Hero({ params }: HeroPropsSchema) {
       {
         title: 'Séries',
         items: character.series.items
+      },
+      {
+        title: 'Eventos',
+        items: character.events.items
       }
     ]
 

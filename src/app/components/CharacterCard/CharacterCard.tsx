@@ -1,11 +1,7 @@
-import { CharacterSchema } from '@/services/characters/charactersService.schema'
 import { getCharacterImagePath } from '@/utils/getCharacterImagePath/getCharacterImagePath'
 import Image from 'next/image'
 import Link from 'next/link'
-
-interface CharacterCardPropsSchema {
-  character: CharacterSchema
-}
+import { CharacterCardPropsSchema } from './CharacterCard.schema'
 
 export const CharacterCard = ({ character }: CharacterCardPropsSchema) => {
   const thumbnailPath = `${character.thumbnail.path}.${character.thumbnail.extension}`

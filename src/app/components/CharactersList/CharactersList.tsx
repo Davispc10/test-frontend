@@ -4,11 +4,7 @@ import {
   getCharacters
 } from '@/services/characters/charactersService'
 import { CharacterCard } from '../CharacterCard/CharacterCard'
-
-interface CharactersListPropsSchema {
-  page?: string
-  search?: string
-}
+import { CharactersListPropsSchema } from './CharactersList.schema'
 
 export const CharactersList = async (props: CharactersListPropsSchema) => {
   const offset = !!props.page

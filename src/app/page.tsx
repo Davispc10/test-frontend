@@ -1,13 +1,7 @@
 import { Suspense } from 'react'
 import { CharactersList } from './components/CharactersList/CharactersList'
 import { Filters } from './components/Filters/Filters'
-
-interface HomePropsSchema {
-  searchParams: {
-    page?: string
-    search?: string
-  }
-}
+import { HomePropsSchema } from './page.schema'
 
 export default async function Home({ searchParams }: HomePropsSchema) {
   return (
