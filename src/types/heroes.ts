@@ -9,13 +9,15 @@ export interface HeroesListReducer {
 }
 
 export interface GetHeroesResponse {
-  data: {
-    offset: number;
-    limit: number;
-    total: number;
-    count: number;
-    results: Hero[];
-  };
+  data: HeroesResponse;
+}
+
+export interface HeroesResponse {
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
+  results: Hero[];
 }
 
 export interface Hero {
