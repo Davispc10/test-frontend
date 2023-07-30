@@ -17,10 +17,6 @@ const menus: NavItemSchema[] = [
     href: '#'
   },
   {
-    name: 'Filmes',
-    href: '#'
-  },
-  {
     name: 'Quadrinhos',
     href: '#'
   }
