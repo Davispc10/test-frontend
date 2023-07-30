@@ -1,3 +1,8 @@
+import { GetComicsResponse } from "./comics";
+import { GetEventsResponse } from "./events";
+import { GetSeriesResponse } from "./series";
+import { GetStoriesResponse } from "./stories";
+
 export interface HeroesListReducer {
   heroesListReducer: {
     heroesList: GetHeroesResponse;
@@ -6,6 +11,18 @@ export interface HeroesListReducer {
     itemsOffset: number;
     perPage: number;
   };
+}
+
+export interface SelectedHeroReducer {
+  selectedHeroReducer: SelectedHeroReducerData;
+}
+
+export interface SelectedHeroReducerData {
+  selectedHero: Hero;
+  comics: GetComicsResponse;
+  series: GetSeriesResponse;
+  stories: GetStoriesResponse;
+  events: GetEventsResponse;
 }
 
 export interface GetHeroesResponse {
