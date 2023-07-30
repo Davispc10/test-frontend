@@ -1,4 +1,6 @@
-export interface GetCharactersResquestSchema {}
+export interface GetCharactersResquestSchema {
+  offset?: number
+}
 
 export interface GetCharactersResponseSchema {
   code: number

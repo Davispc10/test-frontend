@@ -1,11 +1,17 @@
 import { Suspense } from 'react'
-import { CharactersCard } from './components/CharactersCard/CharactersCard'
+import { CharactersList } from './components/CharactersList/CharactersList'
 
-export default async function Home(props: any) {
+interface HomePropsSchema {
+  searchParams: {
+    page: string
+  }
+}
+
+export default async function Home(props: HomePropsSchema) {
   return (
     <main className="py-14">
       <Suspense fallback={<h1>LOADING...</h1>}>
-        <CharactersCard />
+        <CharactersList page={props.searchParams.page} />
       </Suspense>
     </main>
   )

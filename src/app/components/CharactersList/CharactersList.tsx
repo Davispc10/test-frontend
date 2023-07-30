@@ -1,9 +1,21 @@
-import { getCharacters } from '@/services/characters/charactersService'
+import { Pagination } from '@/components/Pagination/Pagination'
+import {
+  QUANTITY_ITEMS_PER_PAGE,
+  getCharacters
+} from '@/services/characters/charactersService'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const CharactersCard = async () => {
-  const characters = await getCharacters()
+interface CharactersListPropsSchema {
+  page?: string
+}
+
+export const CharactersList = async (props: CharactersListPropsSchema) => {
+  const offset = !!props.page
+    ? (Number(props.page) - 1) * QUANTITY_ITEMS_PER_PAGE
+    : 0
+
+  const characters = await getCharacters({ offset })
 
   return (
     <div className="mx-auto grid max-w-7xl grid-cols-5 gap-8 ">
@@ -25,6 +37,11 @@ export const CharactersCard = async () => {
           </h3>
         </Link>
       ))}
+      <Pagination
+        currentPage={Number(props.page) ?? 1}
+        quantityItemsPerPage={QUANTITY_ITEMS_PER_PAGE}
+        totalItems={characters.data.total}
+      />
     </div>
   )
 }
