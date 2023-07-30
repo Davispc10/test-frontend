@@ -60,7 +60,7 @@ export default function CharacterComics({ comics }: CharacterComicsProps) {
   }
 
   return (
-    <div className="max-w-[550px] px-4">
+    <section className="max-w-[550px] px-4">
       <Slider className="cursor-pointer" {...settings}>
         {comics.map((comic, i) => (
           <div
@@ -101,6 +101,6 @@ export default function CharacterComics({ comics }: CharacterComicsProps) {
           },
         }}
       />
-    </div>
+    </section>
   );
 }

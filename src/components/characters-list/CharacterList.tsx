@@ -41,7 +41,12 @@ export default function CharacterList() {
 
   const { isLoading, error, data, refetch } = useQuery(
     ['characters', offset, name],
-    getCharacters
+    getCharacters,
+    {
+      refetchOnWindowFocus: false,
+      refetchIntervalInBackground: false,
+      refetchOnMount: false,
+    }
   );
 
   useQuery(['characterNames', search], getCharactersNames, {
@@ -54,17 +59,17 @@ export default function CharacterList() {
     },
   });
 
-  function setName(name: string) {
-    dispatch({
-      type: 'character/setCharacterName',
-      payload: name,
-    });
-  }
-
   function setSearch(search: string) {
     dispatch({
       type: 'character/setSearchValue',
       payload: search,
+    });
+  }
+
+  function setName(name: string) {
+    dispatch({
+      type: 'character/setCharacterName',
+      payload: name,
     });
   }
 
@@ -82,6 +87,11 @@ export default function CharacterList() {
     }
   }
 
+  function setFilter(value: string) {
+    setName(value);
+    setSearch(value);
+  }
+
   useEffect(() => {
     if (search === '') {
       dispatch({
@@ -89,11 +99,11 @@ export default function CharacterList() {
         payload: '',
       });
     }
-  }, [search]);
+  }, [search, dispatch]);
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center max-[1160px]:h-[700px] max-[1160px]:justify-center">
         <div className="flex w-full gap-x-2">
           <CharacterListHeader
             value={search}
@@ -104,7 +114,7 @@ export default function CharacterList() {
             setName={setName}
           />
         </div>
-        <div className="mb-2 mt-5 flex h-[650px] w-full items-center justify-center">
+        <div className="mb-2 mt-5 flex h-[650px] w-full items-center justify-center max-[1160px]:h-[245px]">
           <div className="border-4 border-black bg-white px-3 py-6 text-center text-black">
             <h1 className="font-marvel text-2xl font-extrabold tracking-widest">
               LOADING CHARACTERS...
@@ -123,7 +133,7 @@ export default function CharacterList() {
 
   if (data?.length === 0) {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center max-[1160px]:h-[700px] max-[1160px]:justify-center">
         <div className="flex w-full gap-x-2">
           <CharacterListHeader
             value={search}
@@ -168,11 +178,11 @@ export default function CharacterList() {
   }
 
   return (
-    <div className="flex flex-col items-center max-[1160px]:h-auto max-[1160px]:justify-center">
+    <section className="flex flex-col items-center max-[1160px]:h-[700px] max-[1160px]:justify-center">
       <CharacterListHeader
         value={search}
         onChange={setSearch}
-        setValue={setSearch}
+        setValue={setFilter}
         items={characterNames}
         setItems={() => setCharacterNames([])}
         search={search}
@@ -186,6 +196,6 @@ export default function CharacterList() {
           offset !== 0 && setOffset('previous');
         }}
       />
-    </div>
+    </section>
   );
 }

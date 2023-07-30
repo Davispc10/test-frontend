@@ -2,7 +2,10 @@ import * as U from '@/utils';
 import Image from 'next/image';
 import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { BsFillClipboard2HeartFill } from 'react-icons/bs';
+import {
+  BsClipboard2CheckFill,
+  BsFillClipboard2HeartFill,
+} from 'react-icons/bs';
 import { FaWindowClose } from 'react-icons/fa';
 
 import BaseModal from '../ui/BaseModal';
@@ -38,7 +41,10 @@ export default function ShareModal({
 
   return (
     <BaseModal isOpen={isOpen}>
-      <div className="w-full max-w-[600px] bg-white py-3">
+      <div
+        className="w-full max-w-[600px] bg-white py-3"
+        data-testid="share-modal-view"
+      >
         <div className="flex w-full items-center justify-between px-3">
           <h1 className="text-xl font-bold">Share character</h1>
           <FaWindowClose
@@ -60,9 +66,15 @@ export default function ShareModal({
             Twitter
             <AiOutlineClose className="ml-2 text-2xl" />
           </Button>
-          <Button onClick={clipboard}>
-            {isCopied ? 'Copiado!' : 'Copiar link'}
-            <BsFillClipboard2HeartFill className="ml-2 text-2xl" />
+          <Button testid="share-copy-btn" onClick={clipboard}>
+            <span data-testid="share-copy-btn-text">
+              {isCopied ? 'Copied!' : 'Copy link'}
+            </span>
+            {isCopied ? (
+              <BsClipboard2CheckFill className="ml-2 text-2xl" />
+            ) : (
+              <BsFillClipboard2HeartFill className="ml-2 text-2xl" />
+            )}
           </Button>
         </div>
       </div>

@@ -43,8 +43,14 @@ export async function getCharacterComics(id: string) {
   }
 }
 
+interface CharacterResponse {
+  data: {
+    results: any[];
+  };
+}
+
 export async function retrieveCharactersList(offset: number, name?: string) {
-  const characters: any = await getCharactersList(offset, name);
+  const characters: CharacterResponse = await getCharactersList(offset, name);
   const charactersResults = characters?.data?.results;
   const charactersInfo = charactersResults.map((character: any) => {
     const { id, name, thumbnail } = character;
@@ -60,7 +66,7 @@ export async function retrieveCharactersList(offset: number, name?: string) {
 }
 
 export async function retrieveCharacterInfo(id: string) {
-  const character: any = await getCharacter(id);
+  const character: CharacterResponse = await getCharacter(id);
   const characterResults = character?.data?.results[0];
   const { name, description, thumbnail } = characterResults;
   const descriptionText =
@@ -78,7 +84,7 @@ export async function retrieveCharacterInfo(id: string) {
 }
 
 export async function retrieveCharacterComicsInfo(id: string) {
-  const comics: any = await getCharacterComics(id);
+  const comics: CharacterResponse = await getCharacterComics(id);
   const comicsResults = comics?.data?.results;
   const comicsInfo = comicsResults.map((comic: any) => {
     const { title, description, thumbnail } = comic;

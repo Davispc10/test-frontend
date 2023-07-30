@@ -23,7 +23,7 @@ export default function CharacterListHeader({
   search,
 }: InputSearchProps) {
   return (
-    <div className="flex w-full items-center justify-center max-[360px]:flex-col max-[360px]:gap-y-3">
+    <section className="flex w-full items-center justify-center max-[360px]:flex-col max-[360px]:gap-y-3">
       <InputSearch
         value={value}
         onChange={onChange}
@@ -38,6 +38,6 @@ export default function CharacterListHeader({
       >
         <FaSearch />
       </Button>
-    </div>
+    </section>
   );
 }

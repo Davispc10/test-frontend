@@ -1,4 +1,5 @@
 import useDarkMode from '@/app/hooks/useDarkMode';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface CharacterListCardProps {
@@ -14,7 +15,7 @@ export default function CharacterListCards({
   const router = useRouter();
 
   return (
-    <div
+    <section
       className={`mb-2 mt-5 flex h-[650px] w-full flex-wrap items-center justify-center gap-2 pt-2 max-[1160px]:h-auto max-[1160px]:max-w-[700px] max-[1160px]:flex-nowrap max-[1160px]:justify-start max-[1160px]:overflow-x-scroll max-[1160px]:rounded-xl max-[1160px]:bg-white max-[1160px]:px-2 max-[1160px]:pb-8`}
     >
       {characters?.map((character: any) => (
@@ -25,10 +26,13 @@ export default function CharacterListCards({
           onClick={() => router.push(`/${character?.id}`)}
         >
           <div className="h-[150px] w-full max-[1160px]:w-[150px]">
-            <img
+            <Image
               src={character?.image}
               alt="dare"
               className="h-full w-full object-fill"
+              layout="responsive"
+              width={150}
+              height={150}
             />
           </div>
           <div className="absolute inset-0 mb-5 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
@@ -43,6 +47,6 @@ export default function CharacterListCards({
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 }

@@ -17,7 +17,7 @@ export default function CharacterListFooter({
   nextDisabled,
 }: CharacterListFooterProps) {
   return (
-    <div className="flex items-center justify-center gap-x-6">
+    <section className="flex items-center justify-center gap-x-6">
       <Button
         testid="previous-btn"
         disabled={prevDisabled}
@@ -28,6 +28,6 @@ export default function CharacterListFooter({
       <Button testid="next-btn" disabled={nextDisabled} onClick={nextPage}>
         <AiOutlineArrowRight className="text-xl" />
       </Button>
-    </div>
+    </section>
   );
 }

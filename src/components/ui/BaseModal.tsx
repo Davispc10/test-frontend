@@ -1,4 +1,4 @@
-import { Dialog } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 
 interface BaseModalProps {
   isOpen: boolean;
