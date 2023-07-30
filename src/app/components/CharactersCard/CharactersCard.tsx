@@ -1,27 +1,29 @@
 import { getCharacters } from '@/services/characters/charactersService'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export const Characters = async () => {
+export const CharactersCard = async () => {
   const characters = await getCharacters()
 
   return (
     <div className="mx-auto grid max-w-7xl grid-cols-5 gap-8 ">
       {characters.data.results.map((character) => (
-        <div
+        <Link
+          href={''}
           key={character.id}
-          className="relative overflow-hidden rounded-md after:absolute after:inset-0  after:top-1/2 after:bg-gradient-to-b after:from-[transparent] after:to-black"
+          className="group relative overflow-hidden rounded-md after:absolute after:inset-0  after:top-1/2 after:bg-gradient-to-b after:from-[transparent] after:to-black after:transition-all after:hover:top-0 "
         >
           <Image
             height={800}
             width={400}
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name}
-            className="aspect-square h-64 w-auto object-cover"
+            className="aspect-square h-64 w-auto object-cover transition-all group-hover:scale-125"
           />
-          <h3 className="absolute bottom-2 left-1/2 z-10 -translate-x-1/2 font-semibold text-white">
+          <h3 className="absolute bottom-2 left-1/2 z-10 -translate-x-1/2 font-semibold text-white transition-[bottom] group-hover:bottom-1/2">
             {character.name}
           </h3>
-        </div>
+        </Link>
       ))}
     </div>
   )
