@@ -1,63 +1,49 @@
-# Teste Dinheirow
+## 💻 Projeto Desafio Marvel
 
-Olá Dev! Tudo bem?
+Esse projeto foi desenvolvido para testar as minhas habilidades técnicas. Trata-se de um projeto frontend, o projeto consiste na parte frontend(React) em listagem de personagens com paginação e possuindo um filtro que busca os dados pelo nome do personagem.
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso! Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+## 🎨 Layout
 
-Vamos ao teste!
+![layout](https://github.com/Mraimundo/social-network-feed/assets/53385345/0172465d-f157-4a2a-9204-1f10ade7d91e)
+![layout-2](https://github.com/Mraimundo/social-network-feed/assets/53385345/ad6e3a2b-8efe-4677-94c4-d7f0e9018256)
 
-## Desafio Marvel
+## Endpoint:
 
-Crie um aplicativo front-end conectado ao back-end Marvel desenvolvido usando dados e rotas obtidos pela API oficial da Marvel Comics.
+EndPoint usando no projeto: [https://developer.marvel.com/docs]
 
-API DOCS: https://developer.marvel.com/docs
+## 🥉: Tecnologias
 
-### 💻 Requisitos
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- A aplicação deverá conter uma página inicial com uma listagem de personagens com paginação e deverá possuir um filtro que busca os dados pelo nome do personagem.
-- Ao clicar em um personagem deverá ser exibida a página do personagem com detalhes (nome, descrição e as fotos dos quadrinhos)
-- Na página do personagem deverá conter um botão que volta para página inicial de listagem dos personangens
-- Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
-- caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel.
-  (atenção: não será permitido colocar essa validação nos componentes visuais)
-- caso o personagem não tenha descrição exbir o texto "descrição não informada".
-  (atenção: não será permitido colocar essa validação nos componentes visuais)
+- [Next](https://nextjs.org/docs)
+- [Typescript](https://www.typescriptlang.org/)
+- [tailwind css](https://v2.tailwindcss.com/docs)
+- [react query](https://tanstack.com/query/v3/docs/react/overview)
+- [jest](https://jestjs.io/docs/getting-started)
 
-### Critérios de avaliação
+## :notebook: Executando
 
-Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
+O **README** mostra como executar as aplicação.
 
-- gerenciamento de estado
-- componentização
-- responsividade
-- testes
-- Ui design
+```bash
+# Clone este repositório
+$ git@github.com:Mraimundo/test-frontend.git
 
-### Tecnologias Obrigatórias
+# Acesse a branch
+$ feat/mouzinho_raimundo
 
-- NextJs
-- Typescript
-- tailwind css
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd marvel-challenge
 
-### Tecnologias opcionais
+Como o projeto foi criado com o NExt, portanto depois de clonar o repositório digite em seu terminal:
+# Instale as dependências
+$ npm install
 
-- redux,
-- react query,
-- redux tookit
-- jest
-- testing library
+# Execute a aplicação
+$ npm run dev ou yarn dev
 
-### Difencial
+$ em seguida localhost:3000 em seu navegador.
 
-- Ui design agradável
-- conhecimento de Atomic Design
-- conhecimento de clean archtecture
-- testes automatizados
+```
 
-### Por onde começo?
-
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
-
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
-
-Boa sorte! :)
+Feito com horas em frente ao :computer: por [Mouzinho Raimundo](https://www.linkedin.com/in/mouzinho-raimundo/)
