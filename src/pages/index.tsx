@@ -1,30 +1,32 @@
 import { useFetchAllCharacters } from '@/lib/react-query/queries/characters'
+import { Atom } from '@/components/atoms'
+import { MagnifyingGlass } from '@phosphor-icons/react'
+import { fixNotAvailableInfo } from '@/utils'
 
-export default function Home() {
-  const { data } = useFetchAllCharacters(25)
-  console.log(data)
+export default function HomePage() {
+  const { data, isError, isLoading } = useFetchAllCharacters({
+    page: 1,
+  })
+  const characters = data ? fixNotAvailableInfo(data.data.results) : null
+  console.log(characters)
 
   return (
     <div className="min-h-screen w-full  bg-zinc-900/90 text-zinc-100">
-      {data?.data.results.map((character) => {
-        return (
-          <p key={character.id} title={String(character.id)}>
-            {character.name}
-          </p>
-        )
-      })}
-      <div
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        aria-hidden="true"
-      >
-        <div
-          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-red-600 to-zinc-950 opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
+      {characters &&
+        characters.map((character) => {
+          return (
+            <p key={character.id} title={String(character.id)}>
+              {character.name}
+            </p>
+          )
+        })}
+      <form action="">
+        <Atom.Input
+          type="search"
+          id="search"
+          icon={<MagnifyingGlass size={28} weight="duotone" />}
         />
-      </div>
+      </form>
     </div>
   )
 }
