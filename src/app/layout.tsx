@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 
 import { Header } from '@/components/header'
+import { siteConfig } from '@/config/site'
 import { cn } from '@/utils'
 
 import { Providers } from './providers'
@@ -18,6 +19,27 @@ export const metadata: Metadata = {
     default: 'Marvel Characters',
   },
   description: 'A list of Marvel characters.',
+  authors: [
+    {
+      name: 'Gabriel Moraes',
+      url: 'https://github.com/gabrielnafuzi',
+    },
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [`${siteConfig.url}/og.png`],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/og.png`],
+  },
 }
 
 type RootLayoutProps = {

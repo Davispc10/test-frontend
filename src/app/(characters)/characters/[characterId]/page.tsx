@@ -4,6 +4,7 @@ import { type Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
 import { GoBack } from '@/components/go-back'
+import { siteConfig } from '@/config/site'
 import { cn } from '@/utils'
 import { until } from '@/utils/until'
 
@@ -33,9 +34,11 @@ export const generateMetadata = async ({
     title: title,
     description: character.description,
     openGraph: {
+      type: 'website',
+      locale: 'en_US',
       title: title,
       description: character.description,
-      url: `https://dinherow-test.gabrielmoraes.dev/characters/${character.id}`,
+      url: `${siteConfig.url}/characters/${character.id}`,
       images: [
         {
           url: getThumbnailAsString(character.thumbnail),
