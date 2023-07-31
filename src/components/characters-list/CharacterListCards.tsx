@@ -30,7 +30,6 @@ export default function CharacterListCards({
               src={character?.image}
               alt="dare"
               className="h-full w-full object-fill"
-              layout="responsive"
               width={150}
               height={150}
             />
