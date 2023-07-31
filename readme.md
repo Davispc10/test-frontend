@@ -1,55 +1,42 @@
-# Teste Dinheirow
-Olá Dev! Tudo bem?
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso! Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+## Getting Started
 
-Vamos ao teste!
+First, run the development server:
 
-## Desafio Marvel
-Crie um aplicativo front-end conectado ao back-end Marvel desenvolvido usando dados e rotas obtidos pela API oficial da Marvel Comics.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-API DOCS: https://developer.marvel.com/docs
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 💻 Requisitos
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- A aplicação deverá conter uma página inicial com uma listagem de personagens com paginação e deverá possuir um filtro que busca os dados pelo nome do personagem.
-- Ao clicar em um personagem deverá ser exibida a página do personagem com detalhes (nome, descrição e as fotos dos quadrinhos)
-- Na página do personagem deverá conter um botão que volta para página inicial de listagem dos personangens
-- Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
-- caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel.
-(atenção: não será permitido colocar essa validação nos componentes visuais)
-- caso o personagem não tenha descrição exbir o texto "descrição não informada". 
-(atenção: não será permitido colocar essa validação nos componentes visuais)
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Critérios de avaliação
-Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
-  - gerenciamento de estado
-  - componentização
-  - responsividade
-  - testes
-  - Ui design
+## Learn More
 
-### Tecnologias Obrigatórias
- - NextJs
- - Typescript
- - tailwind css
+To learn more about Next.js, take a look at the following resources:
 
-### Tecnologias opcionais 
- - redux,
- - react query,
- - redux tookit
- - jest
- - testing library
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Difencial
- - Ui design agradável
- - conhecimento de Atomic Design 
- - conhecimento de clean archtecture
- - testes automatizados
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-### Por onde começo?
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
+## Deploy on Vercel
 
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Boa sorte! :)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## OBS
+
+This project uses husky for checking code, so you need to run:
+
+    ```bash
+    yarn husky install
+    ```

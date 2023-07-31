@@ -1,0 +1,6 @@
+
+  .pagination__link--disabled a {
+    color: rgb(198, 197, 202);
+    border: 1px solid rgb(198, 197, 202);
+  }
+  
