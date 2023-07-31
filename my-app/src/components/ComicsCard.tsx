@@ -8,7 +8,7 @@ interface ComicsProps {
 
 function ComicsCard({ title, src }: ComicsProps) {
   return (
-    <div className="flex flex-row lg:w-96 items-center m-4 justify-between border-dotted rounded-lg border-4 border-zinc-400">
+    <div className="flex flex-row w-72 lg:w-96 items-center m-4 justify-between border-dotted rounded-lg border-4 border-zinc-400">
       <div className="h-12">
         <p className="text-base text-center text-zinc-800 px-4">{title}</p>
       </div>

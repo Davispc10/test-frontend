@@ -77,7 +77,7 @@ function CharacterDetail({ params }: CharacterDetailProps) {
                   </div>
                 </div>
                 <div className="flex items-center my-10 justify-center">
-                  <h3 className="font-title text-3xl text-zinc-800">
+                  <h3 className="font-title text-center text-3xl text-zinc-800">
                     Confira alguns quadrinhos
                   </h3>
                 </div>
