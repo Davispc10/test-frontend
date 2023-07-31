@@ -15,7 +15,7 @@ export function Footer() {
             href="https://www.marvel.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accentLight rounded-lg px-1 py-1 hover:bg-black"
+            className="hover:text-accentLight rounded-lg px-1 py-1 hover:bg-zinc-900"
           >
             Marvel.
           </a>

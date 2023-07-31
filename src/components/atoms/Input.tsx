@@ -4,7 +4,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode
 }
 
-export function Input({ icon, ...rest }: IInput) {
+export function Input({ icon, ...props }: IInput) {
   return (
     <div
       className="focus-within:text-zinc-900' }
@@ -12,7 +12,7 @@ export function Input({ icon, ...rest }: IInput) {
     >
       {icon}
       <input
-        {...rest}
+        {...props}
         className="w-full border-none bg-transparent text-zinc-900 caret-red-500 outline-current focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:text-zinc-500/80"
       />
     </div>

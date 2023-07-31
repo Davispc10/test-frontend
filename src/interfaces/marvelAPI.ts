@@ -47,3 +47,16 @@ export interface MarvelApiResponse {
   }
   etag: string
 }
+
+export interface Comic {
+  id: number
+  title?: string
+  thumbnail: {
+    path: string
+    extension: string
+  }
+}
+
+export interface MarvelApiComics extends MarvelApiResponse {
+  results: Comic[]
+}

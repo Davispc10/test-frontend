@@ -1,7 +1,7 @@
-import { HeaderMain } from './HeaderMain'
+import { Header } from './Header'
 import { Footer } from './Footer'
 
 export const Organism = {
-  HeaderMain,
+  Header,
   Footer,
 }

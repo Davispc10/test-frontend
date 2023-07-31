@@ -1,4 +1,4 @@
-import { MarvelCharacter } from '@/interfaces/marvelAPI'
+import { Comic, MarvelCharacter } from '@/interfaces/marvelAPI'
 
 export function fixNotAvailableInfo(characters: MarvelCharacter[]) {
   const charactersFormatted = characters.map((character) => {
@@ -23,6 +23,43 @@ export function fixNotAvailableInfo(characters: MarvelCharacter[]) {
   })
 
   return charactersFormatted
+}
+
+export function fixNotAvailableInfoCharacter(character: MarvelCharacter) {
+  if (character.thumbnail.path.includes('image_not_available')) {
+    return {
+      ...character,
+      thumbnail: {
+        path: '/no-image',
+        extension: 'jpg',
+      },
+    }
+  }
+
+  if (!character.description) {
+    return {
+      ...character,
+      description: 'Descrição não informada',
+    }
+  }
+
+  return character
+}
+
+export function fixNotAvailableInfoComics(comics: Comic[]) {
+  const comicsFormatted = comics.map((comic) => {
+    if (comic.thumbnail.path.includes('image_not_available')) {
+      return {
+        ...comic,
+        thumbnail: {
+          path: '/no-image',
+          extension: 'jpg',
+        },
+      }
+    }
+    return comic
+  })
+  return comicsFormatted
 }
 
 export const quantityCharactersDisplay = (quantityCharacters: number) => {

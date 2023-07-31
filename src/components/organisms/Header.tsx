@@ -2,10 +2,15 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Atom } from '../atoms'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { ArrowLeft, MagnifyingGlass } from '@phosphor-icons/react'
 import { useCharactersStore } from '@/store/characters'
 
-export function HeaderMain() {
+interface IHeader {
+  isDetail?: boolean
+  comeBack?: () => void
+}
+
+export function Header({ isDetail, comeBack }: IHeader) {
   const [bg, setBg] = useState(false)
   const { query, setQuery } = useCharactersStore()
 
@@ -18,9 +23,7 @@ export function HeaderMain() {
   return (
     <header
       className={`${
-        bg
-          ? 'lg:drop-shadow-[0_35px_35px_rgba(184, 6, 6, 0.25)] max-h-20 bg-zinc-950/80 lg:backdrop-blur-lg'
-          : 'bg-zinc-950'
+        bg ? ' max-h-20 bg-zinc-950/80 lg:backdrop-blur-lg' : 'bg-zinc-950'
       } fixed z-10 flex h-24 w-full flex-col py-1`}
     >
       <div className="mx-auto flex h-full  w-full max-w-7xl items-center justify-between gap-3 px-2">
@@ -38,13 +41,22 @@ export function HeaderMain() {
           />
         </Link>
         <div>
-          <Atom.Input
-            type="search"
-            icon={<MagnifyingGlass size={28} weight="duotone" />}
-            placeholder="Pesquisar"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
+          {isDetail ? (
+            <Atom.Button
+              type="button"
+              icon={<ArrowLeft size={20} weight="bold" />}
+              onClick={comeBack}
+              text="Voltar"
+            />
+          ) : (
+            <Atom.Input
+              type="search"
+              icon={<MagnifyingGlass size={28} weight="duotone" />}
+              placeholder="Pesquisar"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          )}
         </div>
       </div>
     </header>
