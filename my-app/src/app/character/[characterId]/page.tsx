@@ -74,21 +74,25 @@ function CharacterDetail({ params }: CharacterDetailProps) {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center my-10 justify-center">
-                  <h3 className="font-title text-center text-3xl text-zinc-800">
-                    Confira alguns quadrinhos
-                  </h3>
-                </div>
-                <div className="flex w-full flex-wrap pt-8 justify-around">
-                  {comics?.map((item: any, index: number) => (
-                    <div key={index} className="flex">
-                      <ComicsCard
-                        title={item.title}
-                        src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                      />
+                {comics && comics?.length > 0 && (
+                  <>
+                    <div className="flex items-center my-10 justify-center">
+                      <h3 className="font-title text-center text-3xl text-zinc-800">
+                        Confira alguns quadrinhos
+                      </h3>
                     </div>
-                  ))}
-                </div>
+                    <div className="flex w-full flex-wrap pt-8 justify-around">
+                      {comics?.map((item: any, index: number) => (
+                        <div key={index} className="flex">
+                          <ComicsCard
+                            title={item.title}
+                            src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
