@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import { useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 import {
   makeCharactersQueryOptions,
@@ -21,12 +21,14 @@ import {
 } from '@/app/(characters)/constants'
 import { type Character, type OrderBy } from '@/app/(characters)/schemas'
 import { getThumbnailAsString } from '@/app/(characters)/utils'
+import { Button } from '@/components/ui/button'
 
 import { CharactersPagination } from './partials/character-pagination'
 
 export const CharacterList = () => {
   const searchParams = useSearchParams()
   const queryClient = useQueryClient()
+  const router = useRouter()
 
   const orderBy = (searchParams.get(ORDER_BY_SEARCH_PARAM) ??
     DEFAULT_ORDER_BY) as OrderBy
@@ -61,7 +63,17 @@ export const CharacterList = () => {
   }
 
   if (status === 'error') {
-    return <div>Error</div>
+    return (
+      <div className="mt-10 flex flex-col items-center justify-center gap-4">
+        <p className="text-xl">
+          Sorry, something went wrong. Please try again.
+        </p>
+
+        <Button onClick={router.refresh} variant="outline">
+          Retry
+        </Button>
+      </div>
+    )
   }
 
   if (data.total === 0) {

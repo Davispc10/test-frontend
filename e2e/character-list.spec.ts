@@ -212,3 +212,28 @@ test('go to character detail', async ({ page }) => {
 
   await expect(page).toHaveTitle(`${firstCharacterName} | Marvel Characters`)
 })
+
+test('show error message when api fails', async ({ page }) => {
+  await page.route(
+    `${process.env.NEXT_PUBLIC_MARVEL_API_URL}/characters*`,
+    (route) => {
+      return route.abort('failed')
+    },
+  )
+
+  await page.waitForTimeout(1000)
+
+  const searchInput = page.getByRole('textbox')
+  const searchButton = page.getByRole('button', { name: /search/i })
+
+  await searchInput.fill('error')
+  await searchButton.click()
+
+  await waitForLoading(page)
+  await page.waitForURL(/search=error/)
+  await page.waitForTimeout(1000)
+
+  expect(await page.getByRole('paragraph').innerText()).toBe(
+    'Sorry, something went wrong. Please try again.',
+  )
+})
