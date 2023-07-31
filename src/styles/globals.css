@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html {
+  overflow-y: scroll;
+} */
+
+body {
+  color: #000;
+  background: #f5f5f5;
+  /* min-height: 100vh; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+::selection {
+  background: #881016;
+  color: #fff;
+}
