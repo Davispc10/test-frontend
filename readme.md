@@ -1,55 +1,60 @@
-# Teste Dinheirow
-Olá Dev! Tudo bem?
+# Dinherow Marvel Challenge
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso! Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+## Description
 
-Vamos ao teste!
+This project is a technical assessment for a job application with Dinherow. The task was to create a front-end application connected to the Marvel back-end, utilizing data and routes from the official Marvel Comics API. The application demonstrates a variety of competencies, including pagination, data fetching, state management, componentization, and UI design.
 
-## Desafio Marvel
-Crie um aplicativo front-end conectado ao back-end Marvel desenvolvido usando dados e rotas obtidos pela API oficial da Marvel Comics.
+The application has a home page that lists Marvel characters, with a character search feature. When a character is selected, a detailed character page is displayed, including character name, description, and comic book images. There's a back button that returns the user to the character list, maintaining the state of any search or pagination.
 
-API DOCS: https://developer.marvel.com/docs
+Character images default to the Marvel logo if none are provided. Characters without descriptions display a default text. Note that these default behaviors are not handled in the visual components.
 
-### 💻 Requisitos
+## Live Demo
 
-- A aplicação deverá conter uma página inicial com uma listagem de personagens com paginação e deverá possuir um filtro que busca os dados pelo nome do personagem.
-- Ao clicar em um personagem deverá ser exibida a página do personagem com detalhes (nome, descrição e as fotos dos quadrinhos)
-- Na página do personagem deverá conter um botão que volta para página inicial de listagem dos personangens
-- Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
-- caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel.
-(atenção: não será permitido colocar essa validação nos componentes visuais)
-- caso o personagem não tenha descrição exbir o texto "descrição não informada". 
-(atenção: não será permitido colocar essa validação nos componentes visuais)
+The project is deployed at [Dinherow Test](https://dinherow-test.gabrielmoraes.dev).
 
-### Critérios de avaliação
-Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
-  - gerenciamento de estado
-  - componentização
-  - responsividade
-  - testes
-  - Ui design
+## Requirements
 
-### Tecnologias Obrigatórias
- - NextJs
- - Typescript
- - tailwind css
+`node` and `pnpm` must be installed on your system.
 
-### Tecnologias opcionais 
- - redux,
- - react query,
- - redux tookit
- - jest
- - testing library
+## Installation
 
-### Difencial
- - Ui design agradável
- - conhecimento de Atomic Design 
- - conhecimento de clean archtecture
- - testes automatizados
+Clone this repository:
 
-### Por onde começo?
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
+```bash
+git clone https://github.com/gabrielnafuzi/test-frontend.git
+```
 
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
+Move into the project directory:
 
-Boa sorte! :)
+```bash
+cd test-frontend
+```
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+## Configuration
+
+Create a `.env` file in the root directory and add the following:
+
+```bash
+NEXT_PUBLIC_MARVEL_API_URL=https://gateway.marvel.com/v1/public
+NEXT_PUBLIC_MARVEL_API_KEY=<your-marvel-api-key>
+MARVEL_API_PRIVATE_KEY=<your-marvel-api-private-key>
+```
+
+Replace `<your-marvel-api-key>` and `<your-marvel-api-private-key>` with your actual keys.
+You can get them at [Marvel Developer Portal](https://developer.marvel.com).
+
+## Usage
+
+To start the development server:
+
+```bash
+pnpm  dev
+```
+
+Open `http://localhost:3000` in your browser.
