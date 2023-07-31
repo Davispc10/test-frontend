@@ -25,11 +25,11 @@ export const CharacterThumbnail = ({
   const rotateY = useMotionValue(0)
 
   const onMouseMove = useCallback(
-    (e: MouseEvent<HTMLDivElement>) => {
-      const card = e.currentTarget
+    (event: MouseEvent<HTMLDivElement>) => {
+      const card = event.currentTarget
       const box = card.getBoundingClientRect()
-      const x = e.clientX - box.left
-      const y = e.clientY - box.top
+      const x = event.clientX - box.left
+      const y = event.clientY - box.top
       const centerX = box.width / 2
       const centerY = box.height / 2
 
@@ -56,12 +56,12 @@ export const CharacterThumbnail = ({
     >
       <div
         className={cn(
-          'pulse absolute -inset-2 rounded-lg bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] opacity-50 blur-xl',
+          'pulse absolute -inset-px rounded-lg bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] opacity-70 blur-xl',
         )}
         style={
           {
-            '--gradient-from': palette.data.vibrant ?? 'hsl(var(--secondary))',
-            '--gradient-to': palette.data.darkMuted ?? 'hsl(var(--secondary))',
+            '--gradient-from': palette.data.vibrant ?? 'hsl(var(--primary))',
+            '--gradient-to': palette.data.darkMuted ?? 'hsl(var(--primary))',
           } as Record<string, string>
         }
       />
