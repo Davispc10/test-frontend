@@ -23,4 +23,70 @@
   .main-bg {
     background-image: url('/bg.jpg');
   }
+  
+  /* pagination style */
+  .pagination {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .page-item.active .page-link {
+    background-color: #ee242c;
+    opacity: 0.7;
+    color: #fff;
+  }
+
+  .page-item.active :focus {
+    box-shadow: none;
+  }
+
+  .chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    color: #f4f4f5;
+    cursor: pointer;
+  }
+
+  .chevron.disabled {
+    color: #52525b;
+    cursor: not-allowed !important;
+  }
+
+  .chevron :focus {
+    box-shadow: none;
+  }
+
+  .chevron:not(.disabled):hover {
+    color: #ee242c;
+    opacity: 0.5;
+    transition: color 0.5s;
+  }
+
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 6px;
+    color: #f4f4f5;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .page-link:hover {
+    background: #f87171;
+    transition: 0.5s;
+  }
+
+  .break {
+    display: none;
+  }
 }

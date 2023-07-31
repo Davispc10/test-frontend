@@ -1,5 +1,7 @@
-import { CardsContainer } from './CardsContainer'
+import { HeaderMain } from './HeaderMain'
+import { Footer } from './Footer'
 
 export const Organism = {
-  CardsContainer,
+  HeaderMain,
+  Footer,
 }

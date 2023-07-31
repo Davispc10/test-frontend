@@ -10,7 +10,7 @@ export function Card({ character }: ICard) {
   const { id, name, thumbnail } = character
 
   return (
-    <article className="card-hover relative isolate flex flex-col justify-end overflow-hidden rounded-2xl border border-transparent bg-gray-900 px-8 pb-8 pt-80 hover:border hover:border-accent sm:pt-48 lg:pt-80">
+    <article className="card-hover relative isolate flex max-h-44 flex-col justify-end overflow-hidden rounded-2xl border border-transparent bg-gray-900 px-8 pb-8 pt-80 hover:border hover:border-accent sm:pt-48 lg:pt-80">
       <Image
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt={name}

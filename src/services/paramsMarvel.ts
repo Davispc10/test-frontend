@@ -13,7 +13,7 @@ export const getParams = ({ page, nameStartsWith }: IParams) => {
   const md5 = new Md5()
   const timestamp = new Date().getTime()
   const hash = md5.appendStr(timestamp + privateKey + publicKey).end()
-  const limit = 20
+  const limit = 8
   const offset = (page ? page - 1 : 0) * limit
 
   const params = {

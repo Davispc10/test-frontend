@@ -1,21 +1,20 @@
 import { create } from 'zustand'
-import { MarvelCharacter } from '@/interfaces/marvelAPI'
-
+import { persist } from 'zustand/middleware'
 interface ICharactersStore {
   query?: string
-  characters: MarvelCharacter[]
   page: number
   setQuery: (value?: string) => void
   setPage: (value: number) => void
-  setCharacters: (value: MarvelCharacter[]) => void
 }
 
-export const useCharactersStore = create<ICharactersStore>()((set) => ({
-  query: undefined,
-  page: 1,
-  characters: [],
-  setQuery: (value?: string) => set(() => ({ query: value })),
-  setPage: (value: number) => set(() => ({ page: value })),
-  setCharacters: (value: MarvelCharacter[]) =>
-    set(() => ({ characters: value })),
-}))
+export const useCharactersStore = create<ICharactersStore>()(
+  persist(
+    (set) => ({
+      query: undefined,
+      page: 1,
+      setQuery: (value?: string) => set(() => ({ query: value })),
+      setPage: (value: number) => set(() => ({ page: value })),
+    }),
+    { name: '@marvel-app' },
+  ),
+)
