@@ -27,9 +27,28 @@ export const generateMetadata = async ({
     }
   }
 
+  const title = `${character.name} | Marvel Characters`
+
   return {
-    title: `${character.name}`,
+    title: title,
     description: character.description,
+    openGraph: {
+      title: title,
+      description: character.description,
+      url: `https://dinherow-test.gabrielmoraes.dev/characters/${character.id}`,
+      images: [
+        {
+          url: getThumbnailAsString(character.thumbnail),
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: character.description,
+    },
   }
 }
 
