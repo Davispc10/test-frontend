@@ -12,15 +12,15 @@ function Navbar() {
   return (
     <div className="bg-zinc-600 py-8 fixed w-full z-50">
       <div
-        className="w-4/5 flex justify-between items-center flex-row"
+        className="w-4/5 flex justify-center text-center lg:text-start lg:justify-between items-center flex-col lg:flex-row"
         style={{ margin: "0 10%" }}
       >
-        <h1 className="w-auto font-title text-7xl flex justify-center text-white">
+        <h1 className="w-auto font-title text-5xl lg:text-7xl flex justify-center text-white pb-4 lg:pb-0 lg:pr-4">
           Marvel Characters
         </h1>
         <input
-          className="border border-solid rounded-md h-10 w-1/3 px-4 focus:outline-none"
-          placeholder="Busque o Personagem da Marvel"
+          className="border border-solid rounded-md h-10 lg:w-1/3 px-4 focus:outline-none"
+          placeholder="Pesquisa"
           type="text"
           value={search}
           onChange={(e) => handleChange(e)}

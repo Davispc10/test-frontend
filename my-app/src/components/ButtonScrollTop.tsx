@@ -6,9 +6,9 @@ const ScrollToTopButton = () => {
   };
 
   return (
-    <button
+   <button
       onClick={handleScrollToTop}
-      className="fixed bottom-10 right-10 p-3 bg-zinc-600 text-white rounded"
+      className="fixed bottom-0 lg:bottom-10 right-10 p-3 bg-zinc-600 rounded-lg text-white rounded"
     >
       Voltar ao Topo
     </button>
