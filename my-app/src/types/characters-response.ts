@@ -1,3 +1,4 @@
+import { Comics } from '@/types/character';
 import { Character } from "./character"
 
 export interface CharactersResponse {
@@ -7,3 +8,12 @@ export interface CharactersResponse {
 
   }
 }
+
+export interface ComicsResponse {
+  data:
+  {
+    results: Comics[]
+
+  }
+}
+

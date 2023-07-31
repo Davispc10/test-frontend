@@ -38,8 +38,6 @@ function CharacterDetail({ params }: CharacterDetailProps) {
       ? Logo
       : data && data[0].thumbnail.path + "." + data[0].thumbnail?.extension;
 
-  console.log(verifyImage);
-
   return (
     <>
       {loadingDetails && loadingComics && <Loader />}

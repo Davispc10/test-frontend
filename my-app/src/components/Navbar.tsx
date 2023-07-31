@@ -1,10 +1,10 @@
 import { SearchContext } from "@/contexts/search.context";
-import React, { useContext } from "react";
+import React, { ChangeEvent, useContext } from "react";
 
 function Navbar() {
   const { search, setSearch } = useContext(SearchContext);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearch(query);
   };

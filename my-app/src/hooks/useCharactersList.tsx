@@ -1,10 +1,11 @@
 "use client";
-import { CharactersResponse } from "@/types/characters-response";
+
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
 import md5 from "md5";
 import { useDeferredValue } from "react";
 import { useSearch } from "../hooks/useSearch";
+import { CharactersResponse } from "@/types/characters-response";
 
 const fetcher = (offset: number): AxiosPromise<CharactersResponse> => {
   const publicKey = "4e40b49f1b98db89d8c51844520b45be";

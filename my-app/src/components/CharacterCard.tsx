@@ -24,7 +24,7 @@ function CharacterCard({ character, onClick, src }: CharacterCardProps) {
           height={320}
           unoptimized
           priority
-          className="max-w-full	rounded-xl h-80	"
+          className="max-w-full	rounded-xl h-80 filter grayscale hover:grayscale-0	"
         />
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 p-2 text-white w-full text-center rounded-t-lg">
           <h2 className="text-xl">{character.name}</h2>
