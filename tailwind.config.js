@@ -5,7 +5,18 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {},
+  theme: {
+    extend: {
+      fontFamily: {
+        body: "'Lato', sans-serif",
+        display: "'Anton', sans-serif",
+        accent: "'Bangers', cursive",
+      },
+      colors: {
+        accent: '#ee242c',        
+      },
+    },
+  },
   plugins: [
     require('@tailwindcss/forms'),
   ],

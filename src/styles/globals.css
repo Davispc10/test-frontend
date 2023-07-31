@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-zinc-100 leading-6 bg-zinc-900 antialiased box-border;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-white font-display;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-bg {
+    background-image: url('/bg.jpg');
+  }
+}

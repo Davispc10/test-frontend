@@ -17,7 +17,7 @@ export function Input({ icon, error, ...rest }: IInput) {
       {icon}
       <input
         {...rest}
-        className="text-accent w-full border-none bg-transparent caret-blue-500 outline-current focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:text-slate-500/80"
+        className="w-full border-none bg-transparent text-accent caret-blue-500 outline-current focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:text-slate-500/80"
       />
     </div>
   )
