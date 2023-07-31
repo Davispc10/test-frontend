@@ -23,7 +23,7 @@ const HeroesList = ({ heroesList }: Props) => {
       return (
         <>
           {data.map((hero) => (
-            <HeroCard heroData={hero} />
+            <HeroCard key={hero.id} heroData={hero} />
           ))}
         </>
       );

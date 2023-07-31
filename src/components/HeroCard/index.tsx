@@ -17,7 +17,6 @@ const HeroCard = ({ heroData }: Props) => {
 
   return (
     <div
-      key={heroData.id}
       className="flex flex-col justify-center items-center gap-2 w-[250px] h-[250px] border-[1px] border-red rounded-lg p-2"
       onClick={handleSetHeroData}
       data-testid="hero-card"
