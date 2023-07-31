@@ -24,3 +24,10 @@ export function fixNotAvailableInfo(characters: MarvelCharacter[]) {
 
   return charactersFormatted
 }
+
+export const quantityCharactersDisplay = (quantityCharacters: number) => {
+  if (quantityCharacters === 0) return 'Não há registros'
+  else if (quantityCharacters === 1) {
+    return `${`${quantityCharacters}`.padStart(2, '0')} personagem`
+  } else return `${`${quantityCharacters}`.padStart(2, '0')} personagens`
+}

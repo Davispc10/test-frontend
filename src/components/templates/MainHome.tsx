@@ -26,6 +26,7 @@ export function MainHome() {
     <div className="main-bg h-full min-h-screen w-full bg-cover bg-fixed bg-center">
       <Organism.HeaderMain />
       <main className="mx-auto max-w-7xl px-4 pb-4 pt-32">
+        <Molecule.InfoPage title="Personagens" countCharacters={total} />
         <Molecule.CardsContainer characters={characters} />
         <Atom.Pagination setPage={setPage} pageCount={pageCount} />
       </main>
