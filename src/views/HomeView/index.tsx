@@ -6,6 +6,7 @@ import MyContainer from "@/components/MyContainer";
 import Pagination from "@/components/Pagination";
 import SearchHeader from "@/components/SearchHeader";
 import FileSearch from "@/components/icons/FileSearch";
+import useAllCharactersQuery from "@/hooks/querys/useAllCharactersQuery";
 import usePaginationAndSearch from "@/hooks/usePaginationAndSearch";
 import { marvelApi } from "@/services/marvelApi";
 import { CharactersApiResult } from "@/types/Character";
@@ -27,29 +28,11 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
       delay: 500,
     });
 
-  const { data, isLoading, isFetching, isError } =
-    useQuery<CharactersApiResult>({
-      queryKey: ["characters", page, debounceText],
-      keepPreviousData: true,
-      placeholderData: () => {
-        if (!debounceText && page === 0) return resultFromApi;
-      },
-      queryFn: async () => {
-        const ts = Date.now();
-        const { data } = await marvelApi.get<CharactersApiResult>(
-          API_LINKS.characters,
-          {
-            params: {
-              limit: PAGE_SIZE,
-              offset: (page + 1) * PAGE_SIZE - PAGE_SIZE,
-              nameStartsWith: debounceText ? debounceText : undefined,
-            },
-          }
-        );
-
-        return transformCharactersResponse(data);
-      },
-    });
+  const { data, isLoading, isFetching, isError } = useAllCharactersQuery({
+    page: page,
+    searchText: debounceText,
+    placeholderData: resultFromApi,
+  });
 
   const characters = data?.data?.results || [];
   const total = useMemo(
@@ -58,7 +41,7 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
   );
 
   return (
-    <MyContainer>
+    <MyContainer data-testid="homepage">
       <div className="max-w-lg w-full flex justify-center m-auto pb-4">
         <SearchHeader onChange={setSearchText} value={searchText} />
       </div>
