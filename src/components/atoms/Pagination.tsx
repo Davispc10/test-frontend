@@ -4,13 +4,14 @@ import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 interface IPagination {
   pageCount: number
   setPage: (page: number) => void
+  pageCurrent: number
 }
 
 interface IPageClick {
   selected: number
 }
 
-export function Pagination({ pageCount, setPage }: IPagination) {
+export function Pagination({ pageCount, setPage, pageCurrent }: IPagination) {
   const handlePageClick = ({ selected }: IPageClick) => {
     const currentPage = selected + 1
     setPage(currentPage)
@@ -33,6 +34,7 @@ export function Pagination({ pageCount, setPage }: IPagination) {
         nextClassName={'chevron'}
         nextLinkClassName={'chevron-link'}
         activeClassName={'active'}
+        initialPage={pageCurrent - 1}
       />
     </div>
   )
