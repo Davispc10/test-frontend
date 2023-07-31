@@ -28,15 +28,15 @@ export const generateMetadata = async ({
     }
   }
 
-  const title = `${character.name} | Marvel Characters`
+  const ogTitle = `${character.name} | Marvel Characters`
 
   return {
-    title: title,
+    title: character.name,
     description: character.description,
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      title: title,
+      title: ogTitle,
       description: character.description,
       url: `${siteConfig.url}/characters/${character.id}`,
       images: [
@@ -49,7 +49,7 @@ export const generateMetadata = async ({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description: character.description,
     },
   }
