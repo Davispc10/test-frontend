@@ -1,6 +1,6 @@
-import { MagnifyingGlass } from "@phosphor-icons/react";
 import React from "react";
 import { tv } from "tailwind-variants";
+import MagnifyingGlass from "../icons/MagnifyingGlass";
 
 interface SearchInputProps {
   value: string;

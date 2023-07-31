@@ -3,9 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { tv } from "tailwind-variants";
 import HeroFrame from "../../../public/images/hero-frame.svg";
-import { Eye } from "@phosphor-icons/react";
+
 import Link from "next/link";
 import MarvelLikeLabel from "../MarvelLikeLabel";
+import EyeIcon from "../icons/Eye";
 
 interface CharacterCardProps {
   character: Character;
@@ -82,7 +83,7 @@ export default function CharacterCard({
         draggable={false}
       />
       <div className={seeMoreStyle()}>
-        <Eye size={32} /> See more
+        <EyeIcon className="fill-white" size={32} /> See more
       </div>
     </Link>
   );

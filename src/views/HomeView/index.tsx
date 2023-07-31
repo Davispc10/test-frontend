@@ -5,14 +5,15 @@ import LoadSpinner from "@/components/LoadSpinner";
 import MyContainer from "@/components/MyContainer";
 import Pagination from "@/components/Pagination";
 import SearchHeader from "@/components/SearchHeader";
+import FileSearch from "@/components/icons/FileSearch";
 import usePaginationAndSearch from "@/hooks/usePaginationAndSearch";
 import { marvelApi } from "@/services/marvelApi";
 import { CharactersApiResult } from "@/types/Character";
 import { API_LINKS } from "@/utils/apiLinks";
 import { APP_PAGES } from "@/utils/appPages";
 import { PAGE_SIZE, STALE_TIME } from "@/utils/constants";
+import { generateMd5Hash } from "@/utils/generateHash";
 import { transformCharactersResponse } from "@/utils/transformResponses";
-import { FileSearch } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import React, { useMemo } from "react";
 
@@ -34,6 +35,7 @@ export default function HomeView({ resultFromApi }: HomeViewProps) {
         if (!debounceText && page === 0) return resultFromApi;
       },
       queryFn: async () => {
+        const ts = Date.now();
         const { data } = await marvelApi.get<CharactersApiResult>(
           API_LINKS.characters,
           {

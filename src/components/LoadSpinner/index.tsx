@@ -1,6 +1,6 @@
 import React from "react";
-import { CircleNotch } from "@phosphor-icons/react";
 import { tv } from "tailwind-variants";
+import CircleNotch from "../icons/CircleNotch";
 
 interface LoadSpinnerProps {
   className?: string;

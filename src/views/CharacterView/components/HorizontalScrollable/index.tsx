@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { tv } from "tailwind-variants";
+import EyeIcon from "@/components/icons/Eye";
 
 interface HorizontalScrollableProps {
   comicsImages: string[];
   characterName: string;
+  onSelectComicPhoto: (comicPhoto: number) => void;
 }
 
 const scrollableImagesStyle = tv({
@@ -14,18 +16,28 @@ const scrollableImagesStyle = tv({
   `,
 });
 
+const seePhotoStyle = tv({
+  base: `
+    see-more grid place-content-center invisible absolute inset-0 z-3 bg-[#0c1f38]/60
+    [&:hover>svg]:translate-y-0 [&:hover>svg]:opacity-100
+  `,
+});
+
 export default function HorizontalScrollable({
   comicsImages,
   characterName,
+  onSelectComicPhoto,
 }: HorizontalScrollableProps) {
   return (
     <div className={scrollableImagesStyle()}>
-      {comicsImages?.map((comic) => (
-        <ImageLoad
+      {comicsImages?.map((comic, i) => (
+        <div
           key={comic}
-          comicPhoto={comic}
-          charactersName={characterName}
-        />
+          className="cursor-pointer"
+          onClick={() => onSelectComicPhoto(i)}
+        >
+          <ImageLoad comicPhoto={comic} charactersName={characterName} />
+        </div>
       ))}
     </div>
   );
@@ -40,7 +52,7 @@ const ImageLoad = ({
 }) => {
   const [loadComplete, setLoadComplete] = useState(false);
   return (
-    <div className="aspect-[1/1.72] min-w-[100px] w-[100px] min-h-[172px] relative">
+    <div className="aspect-[1/1.72] min-w-[100px] w-[100px] min-h-[172px] relative [&:hover>.see-more]:visible">
       {!loadComplete && (
         <div className="absolute inset-0 animate-pulse bg-slate-600" />
       )}
@@ -54,6 +66,9 @@ const ImageLoad = ({
           setLoadComplete(true);
         }}
       />
+      <div className={seePhotoStyle()}>
+        <EyeIcon className="translate-y-4 transition-all opacity-50 fill-white" />
+      </div>
     </div>
   );
 };

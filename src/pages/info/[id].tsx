@@ -6,6 +6,7 @@ import { PAGE_SIZE } from "@/utils/constants";
 import { generateMd5Hash } from "@/utils/generateHash";
 import { transformCharactersResponse } from "@/utils/transformResponses";
 import CharacterView from "@/views/CharacterView";
+import CharacterViewSkeleton from "@/views/CharacterView/components/CharacterViewSkeleton";
 import { AxiosError } from "axios";
 import {
   GetServerSidePropsContext,
@@ -18,11 +19,9 @@ export default function CharacterInfo({
   apiResult,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
-
   if (router.isFallback) {
-    return <h1 className="text-5xl">loading</h1>;
+    return <CharacterViewSkeleton handleGoBack={router.back} />;
   }
-
   return <CharacterView resultFromApi={apiResult} />;
 }
 

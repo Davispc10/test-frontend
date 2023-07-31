@@ -1,6 +1,7 @@
 import React from "react";
 import { tv } from "tailwind-variants";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import CaretLeft from "../icons/CaretLeft";
+import CaretRight from "../icons/CaretRight";
 
 type PaginationProps = {
   className?: string;
@@ -13,7 +14,7 @@ const container = tv({
   base: "flex items-center gap-4",
 });
 
-<div className="border-"></div>
+<div className="border-"></div>;
 
 const pageButton = tv({
   base: `flex items-center justify-center min-w-[2rem] px-2 h-8 rounded

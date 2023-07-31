@@ -8,8 +8,13 @@ import { API_LINKS } from "@/utils/apiLinks";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HorizontalScrollable from "./components/HorizontalScrollable";
+import BackIcon from "./components/BackIcon";
+import Lightbox from "yet-another-react-lightbox";
+import { Counter, Zoom } from "yet-another-react-lightbox/plugins";
+import BodySkeleton from "./components/CharacterViewSkeleton";
+import { generateMd5Hash } from "@/utils/generateHash";
 
 interface CharacterViewProps {
   resultFromApi: CharactersApiResult;
@@ -17,18 +22,22 @@ interface CharacterViewProps {
 
 export default function CharacterView({ resultFromApi }: CharacterViewProps) {
   const router = useRouter();
+
+  const [selectedPhoto, setSelectedPhoto] = useState(NaN);
   const character = resultFromApi.data.results[0];
 
-  const { data, refetch } = useQuery<ComicsApiResult>({
+  const { data, refetch, error } = useQuery<ComicsApiResult>({
     queryKey: ["comics", character.id],
     enabled: false,
     queryFn: async () => {
+      const ts = Date.now();
       const { data } = await marvelApi.get<ComicsApiResult>(
         API_LINKS.characterComics(character.id.toString())
       );
       return data;
     },
   });
+
   const comicsImagesCanRepeat = data?.data.results?.map((comic, _, arr) => {
     if (comic.thumbnail.path.includes("image_not_available")) {
       return "/images/marvel-placeholder.jpg";
@@ -43,9 +52,6 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
 
   useEffect(() => {
     refetch();
-    return () => {
-      queryClient.invalidateQueries(["comics", character.id]);
-    };
   }, []);
 
   // how the heck web doesn't have an api to check if can go back?
@@ -53,42 +59,22 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
     router && router.back && router.back();
   }
 
+  function handleCloseLightbox() {
+    setSelectedPhoto(NaN);
+  }
   // for any reason that doesn't make sense, the ArrowUUpLeft was causing a production error
-  // so I had to use a svg instead
-  // it was causing an error on Axios, like???? why?????
+  // so I had to use a svg instead, i think the problem is that phosphor doesn't have proper
+  // integration with SSR
   // I tried to use the another icon from Phosphor but it was causing the same error
   // TODO - open an issue on Phosphor repo
+
   return (
     <MyContainer>
-      {/* <button onClick={handleGoBack} className="hover:scale-110 mb-2 transition-all">
-        <ArrowCircleLeft size={48} className="fill-red-500" />
-      </button> */}
       <button
         onClick={handleGoBack}
         className="flex gap-4 items-center mb-4 [&:hover>svg]:stroke-red-500 border-none"
       >
-        {/* <ArrowUUpLeft size={48}  /> */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 256 256"
-          className="h-8 w-8 stroke-black"
-        >
-          <rect width="256" height="256" fill="none" />
-          <polyline
-            points="80 136 32 88 80 40"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="16"
-          />
-          <path
-            d="M80,200h88a56,56,0,0,0,56-56h0a56,56,0,0,0-56-56H32"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="16"
-          />
-        </svg>
+        <BackIcon />
         <p className="text-2xl">Back</p>
       </button>
       <div className="flex gap-4 max-md:flex-col">
@@ -126,6 +112,23 @@ export default function CharacterView({ resultFromApi }: CharacterViewProps) {
       <HorizontalScrollable
         characterName={character.name}
         comicsImages={distinctComicsImages}
+        onSelectComicPhoto={setSelectedPhoto}
+      />
+      <Lightbox
+        open={!Number.isNaN(selectedPhoto)}
+        plugins={[Counter, Zoom]}
+        counter={{ container: { style: { top: "unset", bottom: 0 } } }}
+        controller={{
+          closeOnBackdropClick: true,
+        }}
+        index={selectedPhoto}
+        close={handleCloseLightbox}
+        slides={distinctComicsImages.map((i) => ({ src: i }))}
+        styles={{
+          container: {
+            backgroundColor: "rgba(0,0,0,0.92)",
+          },
+        }}
       />
     </MyContainer>
   );

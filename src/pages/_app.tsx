@@ -6,30 +6,37 @@ import type { AppProps } from "next/app";
 import BackgroundImage from "../../public/images/bg.webp";
 import Image from "next/image";
 
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/counter.css";
+import ErrorBoundary from "@/components/ErrorBondaury";
+import ErrorInfo from "@/components/ErrorInfo";
+
 export const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className={marvel.className}>
-        <Image
-          src={BackgroundImage}
-          alt="Marvel background"
-          priority
-          sizes="(max-width: 640px) 640px, 1280px"
-          placeholder="blur"
-          style={{
-            width: "100%",
-            height: "100%",
-            opacity: 0.1,
-            position: "fixed",
-            zIndex: -1,
-            inset: 0,
-            objectFit: "cover",
-          }}
-        />
-        <Component {...pageProps} />
-      </div>
-    </QueryClientProvider>
+    <ErrorBoundary fallback={<ErrorInfo />}>
+      <QueryClientProvider client={queryClient}>
+        <div className={marvel.className}>
+          <Image
+            src={BackgroundImage}
+            alt="Marvel background"
+            priority
+            sizes="(max-width: 640px) 640px, 1280px"
+            placeholder="blur"
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: 0.1,
+              position: "fixed",
+              zIndex: -1,
+              inset: 0,
+              objectFit: "cover",
+            }}
+          />
+          <Component {...pageProps} />
+        </div>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
