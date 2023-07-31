@@ -7,10 +7,10 @@ export interface Root {
   limit: number;
   total: number;
   count: number;
-  results: Result[];
+  results: Series[];
 }
 
-export interface Result {
+export interface Series {
   id: number;
   title: string;
   description?: string;

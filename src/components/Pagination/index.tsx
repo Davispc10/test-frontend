@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Pagination = ({ onChange }: Props) => {
-  const { totalPages } = useSelector(
+  const { page, totalPages } = useSelector(
     (state: HeroesListReducer) => state.heroesListReducer
   );
 
@@ -17,6 +17,7 @@ const Pagination = ({ onChange }: Props) => {
         pageCount={totalPages}
         pageRangeDisplayed={5}
         renderOnZeroPageCount={null}
+        forcePage={page}
         breakLabel="..."
         nextLabel="próximo >"
         previousLabel="< anterior"

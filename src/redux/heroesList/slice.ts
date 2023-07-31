@@ -17,15 +17,24 @@ const initialState: ReducerData = {
   perPage: 8,
 };
 
+const defaultThumbnailUrl = "/_next/static/media/placeholder.43193f81";
+const defaultThumbnailExtension = "jpg";
+
 const handleSetHeroDefaultData = (heroesList: Hero[]) => {
   const filteredData = heroesList.map((hero) => {
     if (hero.description.length < 1) {
       hero.description = "Descrição não informada";
     }
 
-    if (hero.thumbnail.path.length < 0) {
-      hero.thumbnail.path =
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg";
+    if (
+      hero.thumbnail.path.length < 0 ||
+      hero.thumbnail.path ===
+        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+    ) {
+      hero.thumbnail = {
+        path: defaultThumbnailUrl,
+        extension: defaultThumbnailExtension,
+      };
     }
 
     return hero;
@@ -38,13 +47,15 @@ const heroesSlice = createSlice({
   name: "heroesList",
   initialState,
   reducers: {
-    getHeroes: (state, action) => {
+    setHeroes: (state, action) => {
       const filledHeroesData = handleSetHeroDefaultData(
         action.payload.data.results
       );
 
-      const heroesList: GetHeroesResponse = Object.assign(action.payload);
-      heroesList.data.results = filledHeroesData;
+      const heroesList: GetHeroesResponse = {
+        ...action.payload,
+        heroesList: filledHeroesData,
+      };
 
       state.heroesList = heroesList;
     },
@@ -54,7 +65,9 @@ const heroesSlice = createSlice({
     },
 
     updateTotalPages: (state, action) => {
-      const newTotalPages = action.payload.total / action.payload.perPage;
+      const newTotalPages = Math.ceil(
+        action.payload.total / action.payload.perPage
+      );
 
       state.totalPages = newTotalPages;
     },
@@ -66,5 +79,5 @@ const heroesSlice = createSlice({
 });
 
 export default heroesSlice.reducer;
-export const { getHeroes, changePage, updateOffSet, updateTotalPages } =
+export const { setHeroes, changePage, updateOffSet, updateTotalPages } =
   heroesSlice.actions;

@@ -7,10 +7,10 @@ export interface Root {
   limit: number;
   total: number;
   count: number;
-  results: Result[];
+  results: Event[];
 }
 
-export interface Result {
+export interface Event {
   id: number;
   title: string;
   description: string;

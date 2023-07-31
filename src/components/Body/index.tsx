@@ -6,7 +6,7 @@ import { useLoading } from "@/hooks/useLoading";
 import { HeroesListReducer } from "@/types/heroes";
 import HeroesList from "../HeroesList";
 import {
-  getHeroes,
+  setHeroes,
   updateOffSet,
   updateTotalPages,
 } from "@/redux/heroesList/slice";
@@ -26,7 +26,7 @@ const Body = () => {
 
       const { data } = await HeroesServices.getAll(pageOffset, perPage);
 
-      dispatch(getHeroes(data));
+      dispatch(setHeroes(data));
       dispatch(updateTotalPages({ total: data.data.total, perPage }));
       dispatch(updateOffSet(pageOffset));
     },
