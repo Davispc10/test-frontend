@@ -74,7 +74,7 @@ export default async function CharacterDetailsPage({
 
   return (
     <main className="container my-10 space-y-10">
-      <GoBack />
+      <GoBack className="pl-0" />
 
       <section>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-[auto,1fr] sm:gap-10">
