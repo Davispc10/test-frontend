@@ -14,7 +14,7 @@ export const ImageWithTitleCard = ({
   return (
     <div className="group relative max-w-full transition-colors">
       <div className="overflow-hidden">
-        <figure className="relative h-52 overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-secondary">
+        <figure className="relative h-52 animate-placeholder-image-shimmer overflow-hidden bg-image-placeholder after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-secondary">
           <Image
             className="block h-full w-full scale-100 overflow-hidden object-cover object-[top_center] transition-all ease-linear group-hover:scale-105"
             src={thumbnail}

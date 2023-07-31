@@ -60,19 +60,24 @@ module.exports = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      backgroundImage: ({ theme }) => ({
+        'image-placeholder': `linear-gradient(
+          to right,
+          ${theme('colors.gray.100')} 0%,
+          ${theme('colors.gray.200')} 20%,
+          ${theme('colors.gray.100')} 40%,
+          ${theme('colors.gray.100')} 50%
+        )`,
+      }),
       keyframes: {
-        'accordion-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 },
+        'placeholder-image-shimmer': {
+          '0%': { backgroundPosition: '-40rem 0' },
+          '100%': { backgroundPosition: '40rem 0' },
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'placeholder-image-shimmer':
+          'placeholder-image-shimmer 6s linear infinite forwards',
       },
     },
   },
