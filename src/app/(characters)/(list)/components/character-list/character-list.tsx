@@ -65,7 +65,7 @@ export const CharacterList = () => {
   if (status === 'error') {
     return (
       <div className="mt-10 flex flex-col items-center justify-center gap-4">
-        <p className="text-xl">
+        <p className="text-center text-xl">
           Sorry, something went wrong. Please try again.
         </p>
 
