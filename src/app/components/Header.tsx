@@ -1,13 +1,17 @@
 'use client';
 
 import useDarkMode from '@/app/hooks/useDarkMode';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { BsGithub } from 'react-icons/bs';
 
 export default function Header() {
   const { colorClasses, DarkModeIcons } = useDarkMode();
 
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const offset = searchParams.get('offset');
+  const character = searchParams.get('character');
 
   return (
     <header
@@ -18,7 +22,13 @@ export default function Header() {
       </a>
       <h1
         className="linear-wipe mt-2 cursor-pointer font-marvel text-[3.5rem] text-marvel-white transition-all ease-in-out"
-        onClick={() => router.push('/')}
+        onClick={() =>
+          router.push(
+            !character
+              ? `/page/${offset ?? 0}`
+              : `/search/${character}?searchoffset=${offset}&character=${character}`
+          )
+        }
       >
         MARVEL
       </h1>

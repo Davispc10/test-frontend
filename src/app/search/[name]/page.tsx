@@ -1,3 +1,4 @@
+import CharacterList from '@/app/components/characters-list/CharacterList';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -24,6 +25,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <>app</>;
+export default function Home({
+  params,
+}: {
+  params: {
+    name: string;
+  };
+}) {
+  return (
+    <>
+      <CharacterList name={params.name} />
+    </>
+  );
 }

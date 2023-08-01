@@ -52,7 +52,7 @@ interface CharacterResponse {
 export async function retrieveCharactersList(offset: number, name?: string) {
   const characters: CharacterResponse = await getCharactersList(offset, name);
   const charactersResults = characters?.data?.results;
-  const charactersInfo = charactersResults.map((character: any) => {
+  const charactersInfo = charactersResults?.map((character: any) => {
     const { id, name, thumbnail } = character;
     const image = U.getThumbnailContent(thumbnail);
     return {
@@ -86,7 +86,7 @@ export async function retrieveCharacterInfo(id: string) {
 export async function retrieveCharacterComicsInfo(id: string) {
   const comics: CharacterResponse = await getCharacterComics(id);
   const comicsResults = comics?.data?.results;
-  const comicsInfo = comicsResults.map((comic: any) => {
+  const comicsInfo = comicsResults?.map((comic: any) => {
     const { title, description, thumbnail } = comic;
     const descriptionText =
       description || 'This comic does not have a description.';

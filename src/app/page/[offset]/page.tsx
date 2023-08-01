@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+import CharacterList from '../../components/characters-list/CharacterList';
+
 export const metadata: Metadata = {
   title: `Marvel Heroes`,
   description: 'Dinheirow Frontend Challenge',
@@ -24,6 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <>app</>;
+export default function Home({
+  params,
+}: {
+  params: {
+    offset: number;
+  };
+}) {
+  return (
+    <>
+      <CharacterList offset={params.offset} />
+    </>
+  );
 }

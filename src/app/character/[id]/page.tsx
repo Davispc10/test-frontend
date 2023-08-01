@@ -1,8 +1,7 @@
+import CharacterCard from '@/app/components/character/CharacterCard';
 import * as S from '@/services';
 import * as U from '@/utils';
 import { Metadata } from 'next';
-
-import CharacterCard from '../../components/character/CharacterCard';
 
 export const generateMetadata = async ({
   params,
@@ -30,12 +29,14 @@ export default async function TaskDetails({
   const comics = await S.retrieveCharacterComicsInfo(params.id);
 
   return (
-    <CharacterCard
-      name={mainName}
-      subName={subName}
-      description={descriptionText}
-      image={image}
-      comics={comics}
-    />
+    <>
+      <CharacterCard
+        name={mainName}
+        subName={subName}
+        description={descriptionText}
+        image={image}
+        comics={comics}
+      />
+    </>
   );
 }

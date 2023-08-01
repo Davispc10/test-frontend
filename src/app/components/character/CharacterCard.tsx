@@ -3,6 +3,7 @@
 import useDarkMode from '@/app/hooks/useDarkMode';
 import { shimmer, toBase64 } from '@/utils';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { BsFillClipboard2HeartFill } from 'react-icons/bs';
@@ -29,6 +30,9 @@ export default function CharacterCard({
 }: CharacterCardProps) {
   const { characterContainerClasses } = useDarkMode();
   const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const offset = searchParams.get('offset');
+  const character = searchParams.get('character');
 
   return (
     <main className="flex items-center justify-center max-[1500px]:flex-col-reverse max-[1500px]:gap-y-10 min-[1500px]:mt-16">
@@ -46,7 +50,13 @@ export default function CharacterCard({
           <p className="max-w-[550px] opacity-60">{description}</p>
           <div className="mt-5 flex max-[420px]:flex-col max-[420px]:space-y-4 min-[420px]:space-x-4">
             <div>
-              <Button href="/">
+              <Button
+                href={
+                  !character
+                    ? `/page/${offset}`
+                    : `/search/${character}?searchoffset=${offset}&character=${character}`
+                }
+              >
                 <AiOutlineArrowLeft />
                 Return
               </Button>
@@ -64,10 +74,7 @@ export default function CharacterCard({
       <div className="h-full w-full animate-move max-[1500px]:max-w-[550px]">
         <div className="parallelogram flex h-full w-full justify-end max-[1500px]:justify-center">
           <Image
-            src={
-              image ||
-              'https://res.cloudinary.com/domwy2hmn/image/upload/v1690702305/marvel-logo_o4rgqz.jpg'
-            }
+            src={image}
             alt="hero"
             width={500}
             height={500}
