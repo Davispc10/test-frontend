@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  transition:
+    color 0.2s ease-out,
+    background 0.2s ease-out;
+  height: 100%;
+}
+
+@font-face {
+  font-family: marvel;
+  src: url('/MarvelRegular.ttf') format('opentype');
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d1d5db;
+}
+
+.linear-wipe:hover {
+  background: linear-gradient(to right, #fff 20%, #ff0 40%, #ff0 60%, #fff 80%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.parallelogram {
+  @media (min-width: 1500px) {
+    transform: skew(-8deg);
+  }
+}
+
+.stroke-details {
+  -webkit-text-stroke: 1px #000;
+}
+
+.bnw-filter {
+  filter: grayscale(35%);
+  transition:
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+
+.bnw-filter:hover {
+  filter: grayscale(0%);
+}
