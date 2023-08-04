@@ -18,6 +18,6 @@ export default class CharacterController implements CharacterControllerProps {
         return await this.characterRepository.findByOne({id})
     }
     async findComic({id}: {id: number}) {
-        return await this.characterRepository.findByURI({id})
+        return await this.characterRepository.findComicById({id})
     }
 }

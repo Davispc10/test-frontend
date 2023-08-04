@@ -51,7 +51,7 @@ export default class CharacterRepository {
              console.error('Erro ao buscar personagens:', error);
         }
     }
-    async findByURI({id}: {id: number}) {
+    async findComicById({id}: {id: number}) {
         const URI = `https://gateway.marvel.com:443/v1/public/comics/${id}` + "?apikey=" + this.publicKey + "&ts=" + this.ts + "&hash=" + this.stringToHash
 
         try {
