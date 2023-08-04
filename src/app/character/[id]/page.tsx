@@ -2,13 +2,13 @@
 
 import { CharacterController } from "@/api/services/controller";
 import { Button, Heading, HeadingSkeleton } from "@/components/atoms";
-import { CardItem, CardItemSkeleton } from "@/components/molecules";
+import { CardItemSkeleton } from "@/components/molecules";
 import { CharacterContext } from "@/contexts/CharacterProvider";
 import { InitialStateProps } from "@/contexts/types";
-import { CharacterProps, Comics, Item } from "@/types/CharacterProps";
+import { Item } from "@/types/CharacterProps";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation"
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect } from "react";
 
 export default function Character() {
     const { back } = useRouter();

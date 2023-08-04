@@ -1,7 +1,6 @@
 import { InitialStateProps } from "@/contexts/types"
 import { Heading, HeadingSkeleton, InputBase } from "../../atoms"
 import ReactPaginate from "react-paginate";
-import { useCharacter } from "@/hooks/useCharacter";
 
 interface Props {
     state: InitialStateProps;

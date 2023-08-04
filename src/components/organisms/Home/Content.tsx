@@ -1,7 +1,6 @@
 import { CardItem, CardItemSkeleton, Wrapper } from "@/components/molecules"
 import { InitialStateProps } from "@/contexts/types"
 import { CharacterProps } from "@/types/CharacterProps"
-import ReactPaginate from "react-paginate";
 
 interface Props {
     state: InitialStateProps;
