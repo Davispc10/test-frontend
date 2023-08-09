@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useCharactersList } from "@/hooks/useCharactersList";
 import { Character } from "@/types/character";
 import { useRouter } from "next/navigation";
@@ -7,13 +7,13 @@ import CharacterCard from "./CharacterCard";
 import Button from "./Button";
 import ScrollToTopButton from "./ButtonScrollTop";
 import Loader from "./Loader";
+import { SearchContext } from "@/contexts/search.context";
 
 function CharactersList() {
   const router = useRouter();
 
-  const [page, setPage] = useState<number>(0);
-
-  const { data, isLoading } = useCharactersList(page);
+  const { page, setPage } = useContext(SearchContext);
+  const { data, isLoading } = useCharactersList(Number(page));
 
   const handleCharacterDetail = (id: any) => {
     router.push(`/character/${id}`);
@@ -28,9 +28,9 @@ function CharactersList() {
 
   const handleClick = (name: string) => {
     if (name === "prev") {
-      setPage(page - 100);
+      setPage(Number(page) - 100);
     } else {
-      setPage(page + 100);
+      setPage(Number(page) + 100);
     }
     return handleScrollToTop();
   };
@@ -46,13 +46,13 @@ function CharactersList() {
         <div className="w-full flex justify-center min-h-screen	">
           <div className="flex w-4/5 justify-between flex-wrap">
             {data?.map((character: Character) => (
-              <>
+              <div key={character.id}>
                 <CharacterCard
                   onClick={() => handleCharacterDetail(character.id)}
                   src={verifyImage(character)}
                   character={character}
                 />
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -61,7 +61,7 @@ function CharactersList() {
             <div className="w-full flex justify-center h-14 my-10 items-center">
               <Button
                 onClick={() => handleClick("prev")}
-                disabled={page === 0}
+                disabled={Number(page) === 0}
                 text={"Voltar"}
               />
               <Button
