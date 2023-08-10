@@ -1,7 +1,7 @@
 "use client";
 
-import fetcher from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
+import fetcher from "services/api";
 
 export function useCharacterComics(characterId: string) {
   const { data, isLoading } = useQuery({

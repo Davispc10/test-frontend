@@ -3,8 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useDeferredValue } from "react";
 import { useSearch } from "../hooks/useSearch";
-import fetcher from "@/services/api";
-import { Character } from "@/types/character";
+import fetcher from "services/api";
+import { Character } from "types/character";
+
 
 export function useCharactersList(offset: number) {
   const { search } = useSearch();

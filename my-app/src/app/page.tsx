@@ -1,7 +1,7 @@
 'use client'
 
-import Navbar from "@/components/Navbar";
-import CharactersList from "@/components/CharacterList";
+import CharactersList from "components/CharacterList";
+import Navbar from "components/Navbar";
 
 export default function Home() {
   return (

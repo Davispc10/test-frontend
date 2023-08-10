@@ -2,12 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Character } from "@/types/character";
 import Logo from "../../../../public/logo.svg";
-import { useCharacterDetail } from "@/hooks/characterDetailQuery";
-import { useCharacterComics } from "@/hooks/useCharacterComics";
-import Loader from "@/components/Loader";
-import ComicsCard from "@/components/ComicsCard";
+import { useCharacterDetail } from "hooks/characterDetailQuery";
+import ComicsCard from "components/ComicsCard";
+import Loader from "components/Loader";
+import { useCharacterComics } from "hooks/useCharacterComics";
+import { Character } from "types/character";
+
 
 interface CharacterDetailProps {
   params: {

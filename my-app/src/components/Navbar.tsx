@@ -1,4 +1,4 @@
-import { SearchContext } from "@/contexts/search.context";
+import { SearchContext } from "../contexts/search.context";
 import React, { ChangeEvent, useContext } from "react";
 
 function Navbar() {

@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { useCharactersList } from "@/hooks/useCharactersList";
-import { Character } from "@/types/character";
+
 import { useRouter } from "next/navigation";
 import Logo from "../../public/logo.svg";
 import CharacterCard from "./CharacterCard";
 import Button from "./Button";
 import ScrollToTopButton from "./ButtonScrollTop";
 import Loader from "./Loader";
-import { SearchContext } from "@/contexts/search.context";
+import { SearchContext } from "../contexts/search.context";
+import { useCharactersList } from "hooks/useCharactersList";
+import { Character } from "types/character";
 
 function CharactersList() {
   const router = useRouter();
