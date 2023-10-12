@@ -3,12 +3,12 @@ import { useRouter, useParams } from 'next/navigation'
 
 const Page = () => {
     const params = useParams()
-    console.log("params : ", params)
-    if (!params) return null
-    console.log("params")
+    console.log(params)
+    if (!params?.heroId) return
+    
     return (
         <h1>
-            <HeroDetails id={params.id} />
+            <HeroDetails id={Number(params.heroId)} />
         </h1>
     )
 }

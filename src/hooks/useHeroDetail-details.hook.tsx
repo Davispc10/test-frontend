@@ -20,20 +20,18 @@ type ResultHeroes = {
     }]
 }
 
+const apiKey = process.env.NEXT_PUBLIC_MARVEL_API_PUBLIC_KEY
+
 const useHeroDetail = (id : number) => {
-    const md5 = "bcfc1952c287a33315457c0c7b7b380e"
-    const apiKey = "1701e26487aff022e15b45fd1434f7ad"
-    const timeStamp = "1"
 
-    const teste = "http://gateway.marvel.com/v1/public/characters/1009146?ts=1&apikey=1701e26487aff022e15b45fd1434f7ad&hash=bcfc1952c287a33315457c0c7b7b380e"
+    const link = `http://gateway.marvel.com/v1/public/characters/${id}?apikey=${apiKey}`
 
-    const link = `http://gateway.marvel.com/v1/public/characters/${id}?ts=${timeStamp}&apikey=${apiKey}&hash=${md5}`
-
-    const { isLoading, error, data} = useQuery('heroDetailsData', () =>        
-        axios.get(teste)
+    const { isLoading, error, data} = useQuery(['heroDetailsData', id], () =>        
+        axios.get(link)
         .then((res) => {        
-            const results = res.data.data as ResultHeroes
+            const results = res.data.data as ResultHeroes         
             !results.results[0].description ? results.results[0].description = "Descrição não informada" : null
+            results.results[0].thumbnail.path.includes("image_not_available") ? "https://i.pinimg.com/originals/db/b2/12/dbb2129035f83c491af200bb58e257cc.jpg" : `${results.results[0].thumbnail.path}/portrait_incredible.${results.results[0].thumbnail.extension}`
             return (results)
         })
     )

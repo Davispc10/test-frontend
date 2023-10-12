@@ -5,10 +5,12 @@ import Link from "next/link"
 type HeroData = {
     id: number,
     name: string,
-    img: string
+    img: string,
+    extension: string
 }
 
-const HeroCard = ({id, name, img} : HeroData) => {
+const HeroCard = ({id, name, img, extension} : HeroData) => {
+    console.log(img)
     return(
         <motion.div
             initial={{ opacity: 0 }}
@@ -20,16 +22,16 @@ const HeroCard = ({id, name, img} : HeroData) => {
               }}
         >
             <Link href={{pathname: "/todos/[id]", query: {id: id}}}>
-                <div className="items-center rounded-xl p-2 bg-white">
+                <div className="items-center rounded-xl w-48 h-60 p-2 overflow-hidden bg-white">
                     <div className="align-middle">
                         <Image 
-                            className="w-full h-full rounded-t-2xl" 
+                            className="h-full w-full rounded-t-2xl" 
                             src={img} 
                             width={192} 
                             height={240} 
                             alt="Hero Image"
                             />
-                            <div className="sticky text-white text-center height-[100px] uppercase bg-black">
+                            <div className="sticky text-white text-center height-[150px] bottom-5 uppercase bg-black/60">
                                 <p className="">{name}</p>
                             </div>                   
                     </div>
