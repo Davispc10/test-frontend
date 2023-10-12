@@ -31,7 +31,7 @@ const useMarvelHeroes = (name?: string, offset?: number) => {
             const results: Array<{id: number, name: string, thumbnail: { extension: string, path: string}, comics: {
                 avaiable: number
             }}> = res.data.data.results
-            console.log(res)
+
             const listData = res.data.data
 
             listData.results = results.map((hero => {                

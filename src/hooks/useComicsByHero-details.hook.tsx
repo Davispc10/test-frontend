@@ -18,7 +18,6 @@ const useComicsByHero = (heroId : number) => {
         queryFn: () => 
         axios.get(`http://gateway.marvel.com/v1/public/characters/${heroId}/comics?apikey=${apiKey}`)
         .then((res) => {
-            console.log(res)
             return res.data.data as ResultHeroes
         }),
         cacheTime: 1000 * 60 * 60 * 24 * 30 
