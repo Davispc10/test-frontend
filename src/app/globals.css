@@ -12,3 +12,73 @@ body,
 	font-family: 'DM Sans', sans-serif;
 	@apply text-white;
 }
+
+.carousel {
+	scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+	display: none;
+}
+
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 1,
+		'wght' 100,
+		'GRAD' -25,
+		'opsz' 20;
+}
+
+.font-2xl {
+	font-size: 1.5rem /* 24px */;
+	line-height: 2rem /* 32px */;
+}
+
+/* Cards */
+.--card-corners-cut {
+	clip-path: polygon(0 4%, 6% 0, 100% 0%, 100% 96%, 94% 100%, 0 100%);
+}
+
+.--detail-card-corners-cut {
+	clip-path: polygon(0 0, 100% 0%, 100% 90%, 96% 100%, 0 100%);
+}
+
+/* Carousel Indicators */
+.--indicator-prev-corners-cut {
+	clip-path: polygon(0% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.--indicator-next-corners-cut {
+	clip-path: polygon(0% 0%, 50% 0%, 100% 50%, 50% 100%, 0% 100%);
+}
+
+/* Pagination */
+.--sm-pagination-corners-cut {
+	clip-path: polygon(0 40%, 24px 0, 100% 0%, 100% 60%, 92% 100%, 0 100%);
+}
+
+.--md-pagination-corners-cut {
+	clip-path: polygon(0 40%, 24px 0, 100% 0%, 100% 60%, 97% 100%, 0 100%);
+}
+
+.--pag-btn-corners-cut {
+	clip-path: polygon(0 40%, 15% 0, 100% 0%, 100% 60%, 85% 100%, 0 100%);
+}
+
+/* SearchBar */
+.--sm-search-input-corners-cut {
+	clip-path: polygon(0 20%, 5% 0, 100% 0%, 100% 100%, 0 100%);
+}
+
+.--md-search-input-corners-cut {
+	clip-path: polygon(0 35%, 7% 0, 99.5% 0%, 92% 38%, 92% 100%, 0% 100%);
+}
+
+.--sm-search-button-corners-cut {
+	clip-path: polygon(0 0%, 100% 0%, 100% 70%, 95% 100%, 0 100%);
+}
+
+.--md-search-button-corners-cut {
+	clip-path: polygon(0 40%, 14.5% 0, 100% 0%, 100% 60%, 85.5% 100%, 0 100%);
+}
+
