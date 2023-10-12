@@ -10,7 +10,6 @@ type HeroData = {
 }
 
 const HeroCard = ({id, name, img, extension} : HeroData) => {
-    console.log(img)
     return(
         <motion.div
             initial={{ opacity: 0 }}

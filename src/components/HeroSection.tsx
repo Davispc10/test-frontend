@@ -9,7 +9,6 @@ const HeroSection = () => {
     const [offset, setOffset] = useState<number>(0)
     const { data, error, isLoading } = useMarvelHeroes(search, offset)
 
-
     if (isLoading)
         return
 

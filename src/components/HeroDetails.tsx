@@ -22,7 +22,6 @@ const HeroDetails = ({id} : {id: number}) => {
     const prev = () => setCurr((curr) => (curr === 0 ? slidesLenght - 5 : curr - 1))
     const next = () => setCurr((curr) => (curr === slidesLenght -5 ? 0 : curr + 1))
 
-    console.log(curr)
     return(
         <section className="bg-details-pattern bg-no-repeat bg-center bg-cover">
             <Header/>
