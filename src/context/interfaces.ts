@@ -14,7 +14,4 @@ export interface ContextProps {
 	setNumberOfCharacters: Dispatch<SetStateAction<number>>
 	currentOffset: number
 	setCurrentOffset: Dispatch<SetStateAction<number>>
-	loading: boolean;
-  	setLoading: Dispatch<SetStateAction<boolean>>;
 }
-

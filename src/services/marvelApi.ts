@@ -59,12 +59,9 @@ export async function getCharactersTotal(characterName: string = ''): Promise<nu
 
 export async function getPaginatedCharacters(
 	page: number,
-	loading: boolean,
-	setLoading: Dispatch<SetStateAction<boolean>>,
-	characterName: string = '',
-	): Promise<Character[]> {
+	characterName: string = ''
+): Promise<Character[]> {
 	try {
-		setLoading(true);
 		const params: Record<string, any> = {
 			limit: pageSize,
 			offset: (page - 1) * pageSize,
@@ -82,8 +79,6 @@ export async function getPaginatedCharacters(
 	} catch (err) {
 		const { error } = (err as AxiosError<any, any>)?.response?.data
 		throw new Error(error)
-	} finally {
-		setLoading(false);
 	}
 }
 
@@ -134,4 +129,3 @@ export async function getComicsByCharacterId(characterId: string): Promise<Comic
 
 	return data.data.results
 }
-

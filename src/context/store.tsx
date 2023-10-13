@@ -20,8 +20,6 @@ const GlobalContext = createContext<ContextProps>({
 	setNumberOfCharacters: (): number => 1,
 	currentOffset: 0,
 	setCurrentOffset: (): number => 0,
-	loading: true,
-  	setLoading: (): boolean => true,
 })
 
 export const GlobalContextProvider = ({ children }: { children: ReactNode }) => {
@@ -35,7 +33,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 
 	useEffect(() => {
 		if (searchTerm === '') {
-			fetchCharacters({ currentPage, setterFn: setCharacters, loading, setLoading })
+			fetchCharacters({ currentPage, setterFn: setCharacters })
 		}
 	}, [currentPage, searchTerm, pagesNumber])
 
@@ -58,8 +56,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 				setNumberOfCharacters,
 				currentOffset,
 				setCurrentOffset,
-				loading,
-				setLoading,
 			}}
 		>
 			{children}
@@ -68,4 +64,3 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 }
 
 export const useGlobalContext = () => useContext(GlobalContext)
-

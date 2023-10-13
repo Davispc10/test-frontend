@@ -6,8 +6,8 @@ import { NotFound } from '../atoms'
 import { CharacterNotFoundImg } from 'public/assets'
 import Loading from '../atoms/Loading'
 
-const generateCardList = (characters: Character[], loading: boolean) =>
-	loading && (characters.length === 0)  ? (
+const generateCardList = (characters: Character[]) =>
+	characters.length === 0 ? (
 		<NotFound
 			image={CharacterNotFoundImg}
 			styles={'flex-col'}
@@ -33,12 +33,9 @@ const generateCardList = (characters: Character[], loading: boolean) =>
 	)
 
 export const CharactersList = () => {
-	const { characters, loading } = useGlobalContext()
+	const { characters } = useGlobalContext()
 
-	return <>
-			{loading ? <Loading /> : generateCardList(characters, loading)}
-		</>
+	return <>{generateCardList(characters)}</>
 }
 
 export default CharactersList
-
