@@ -20,11 +20,14 @@ const GlobalContext = createContext<ContextProps>({
 	setNumberOfCharacters: (): number => 1,
 	currentOffset: 0,
 	setCurrentOffset: (): number => 0,
+	loading: true,
+  	setLoading: (): boolean => true,
 })
 
 export const GlobalContextProvider = ({ children }: { children: ReactNode }) => {
 	const [characters, setCharacters] = useState<Character[]>([])
 	const [searchTerm, setSearchTerm] = useState('')
+	const [loading, setLoading] = useState(true)
 	const [pagesNumber, setNumberOfPages] = useState(1)
 	const [numberOfCharacters, setNumberOfCharacters] = useState(1)
 	const [currentPage, setCurrentPage] = useState(1)
@@ -32,7 +35,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 
 	useEffect(() => {
 		if (searchTerm === '') {
-			fetchCharacters({ currentPage, setterFn: setCharacters })
+			fetchCharacters({ currentPage, setterFn: setCharacters, loading, setLoading })
 		}
 	}, [currentPage, searchTerm, pagesNumber])
 
@@ -55,6 +58,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 				setNumberOfCharacters,
 				currentOffset,
 				setCurrentOffset,
+				loading,
+				setLoading,
 			}}
 		>
 			{children}

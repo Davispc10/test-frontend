@@ -5,9 +5,9 @@ import {
 } from '@/services/marvelApi'
 import { fetchCharactersType, calculateNumOfPagesType } from '@/context/types'
 
-export const fetchCharacters = async ({ currentPage, setterFn }: fetchCharactersType) => {
+export const fetchCharacters = async ({ currentPage, setterFn, loading, setLoading }: fetchCharactersType) => {
 	try {
-		const characters = await getPaginatedCharacters(currentPage)
+		const characters = await getPaginatedCharacters(currentPage, loading, setLoading)
 		setterFn(characters)
 	} catch (error) {
 		console.error('Erro ao buscar personagens:', error)

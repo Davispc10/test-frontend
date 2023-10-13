@@ -8,6 +8,19 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			height: {
+				'vh-25': '25vh',
+				'vh-50': '50vh',
+				'vh-75': '75vh',
+				'vh-100': '100vh',
+			  },
+			  width: {
+				'vw-25': '25vw',
+				'vw-50': '50vw',
+				'vw-75': '75vw',
+				'vw-100': '100vw',
+			  },
+
 			colors: {
 				'primary-100': '#F6F9E8',
 				'primary-200': '#ADADAA',
@@ -28,6 +41,9 @@ const config: Config = {
 				'background-3': "url('/assets/backgrounds/bg3.png')",
 				'background-4': "url('/assets/backgrounds/bg4.png')",
 			},
+			backgroundColor: {
+				'black-60': 'rgba(0, 0, 0, 0.6)',
+			  },
 			fontFamily: {
 				dmsans: ['DM Sans', 'sans-serif'],
 				montserrat: ['Montserrat', 'sans-serif'],

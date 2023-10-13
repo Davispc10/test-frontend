@@ -4,9 +4,10 @@ import { Character } from '@/interfaces/interfaces'
 import { CharacterCard } from '../molecules'
 import { NotFound } from '../atoms'
 import { CharacterNotFoundImg } from 'public/assets'
+import Loading from '../atoms/Loading'
 
-const generateCardList = (characters: Character[]) =>
-	characters.length === 0 ? (
+const generateCardList = (characters: Character[], loading: boolean) =>
+	loading && (characters.length === 0)  ? (
 		<NotFound
 			image={CharacterNotFoundImg}
 			styles={'flex-col'}
@@ -32,9 +33,11 @@ const generateCardList = (characters: Character[]) =>
 	)
 
 export const CharactersList = () => {
-	const { characters } = useGlobalContext()
+	const { characters, loading } = useGlobalContext()
 
-	return <>{generateCardList(characters)}</>
+	return <>
+			{loading ? <Loading /> : generateCardList(characters, loading)}
+		</>
 }
 
 export default CharactersList

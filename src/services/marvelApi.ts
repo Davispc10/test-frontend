@@ -1,5 +1,7 @@
 import axios, { AxiosError } from 'axios'
 
+import { Dispatch, SetStateAction } from 'react'
+
 import { pageSize, baseUrl, pubKey } from '@/services/constants'
 
 import { getHash, getTimestamp } from '@/helpers/hashGenerator'
@@ -57,9 +59,12 @@ export async function getCharactersTotal(characterName: string = ''): Promise<nu
 
 export async function getPaginatedCharacters(
 	page: number,
-	characterName: string = ''
-): Promise<Character[]> {
+	loading: boolean,
+	setLoading: Dispatch<SetStateAction<boolean>>,
+	characterName: string = '',
+	): Promise<Character[]> {
 	try {
+		setLoading(true);
 		const params: Record<string, any> = {
 			limit: pageSize,
 			offset: (page - 1) * pageSize,
@@ -77,6 +82,8 @@ export async function getPaginatedCharacters(
 	} catch (err) {
 		const { error } = (err as AxiosError<any, any>)?.response?.data
 		throw new Error(error)
+	} finally {
+		setLoading(false);
 	}
 }
 

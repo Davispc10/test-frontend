@@ -5,6 +5,8 @@ import { Character } from '@/interfaces/interfaces'
 export type fetchCharactersType = {
 	currentPage: number
 	setterFn: Dispatch<SetStateAction<Character[] | []>>
+	loading: boolean;
+  	setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export type calculateNumOfPagesType = {
