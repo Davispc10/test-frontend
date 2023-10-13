@@ -7,6 +7,8 @@ import NotFound from './NotFound'
 import PageNumber from './PageNumber'
 import PaginationButton from './PaginationButton'
 import SearchButton from './SearchButton'
+import CharacterNotFound from './CharacterNotFound'
+import ComicNotFound from './ComicNotFound'
 
 export {
 	BackButton,
@@ -18,4 +20,6 @@ export {
 	PageNumber,
 	PaginationButton,
 	SearchButton,
+	ComicNotFound,
 }
+

@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<GlobalContextProvider>
-				<body className={`${inter.className} bg-secondary-500 h-full`}>{children}</body>
+				<body className={`${inter.className} bg-secondary-500 h-auto`}>{children}</body>
 			</GlobalContextProvider>
 		</html>
 	)

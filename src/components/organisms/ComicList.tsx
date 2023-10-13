@@ -1,7 +1,7 @@
 import { Comic } from '@/interfaces/interfaces'
-import { marvelLogoNoImage2 } from 'public/assets'
 import { RefObject, FC } from 'react'
 import { ComicCard } from '../molecules'
+import { validateThumbnail } from '@/helpers/dataValidators'
 
 type ComicsCarousel = {
 	comics: Comic[]
@@ -9,11 +9,6 @@ type ComicsCarousel = {
 	activeIndex: number
 	updateIndex: (index: number) => void
 }
-
-const validateThumbnail = (comic: Comic) =>
-	comic.thumbnail.path.replace(/\//g, ' ').includes('image_not_available')
-		? marvelLogoNoImage2.src
-		: `${comic.thumbnail.path}.${comic.thumbnail.extension}`
 
 const ComicList: FC<ComicsCarousel> = ({ comics, comicRef, activeIndex, updateIndex }) => {
 	const activeComic = 'active bg-red-600'
@@ -26,7 +21,7 @@ const ComicList: FC<ComicsCarousel> = ({ comics, comicRef, activeIndex, updateIn
 		comics.map((comic, index) => (
 			<ComicCard
 				title={comic.title}
-				validatedThumbnail={validateThumbnail(comic)}
+				validatedThumbnail={validateThumbnail(comic.thumbnail)}
 				comicRef={comicRef}
 				activeIndex={activeIndex}
 				updateIndex={updateIndex}

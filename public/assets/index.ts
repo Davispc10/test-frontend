@@ -1,23 +1,13 @@
-import { bg1, bg2, bg3 } from './backgrounds'
-
-import {
-	marvelLogo,
-	marvelLogo2,
-	marvelComicLogo,
-	marvelHeroesLogo,
-	marvelLogoNoImage,
-	marvelLogoNoImage2,
-} from './logos/'
+import { marvelLogo2, marvelComicLogo, marvelHeroesLogo, marvelLogoNoImage2 } from './logos/'
+import CharacterNotFoundImg from './CapMarvel-NotFound.png'
+import ComicNotFoundImg from './CapAmerica-NotFound.png'
 
 export {
-	bg1,
-	bg2,
-	bg3,
-	marvelLogo,
 	marvelLogo2,
 	marvelComicLogo,
 	marvelHeroesLogo,
-	marvelLogoNoImage,
 	marvelLogoNoImage2,
+	ComicNotFoundImg,
+	CharacterNotFoundImg,
 }
 

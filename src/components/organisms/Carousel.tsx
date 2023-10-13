@@ -3,7 +3,8 @@
 import { Comic } from '@/interfaces/interfaces'
 import { FC, useState, useRef, useEffect } from 'react'
 import { ComicList } from '.'
-import { Indicators } from '../atoms'
+import { Indicators, ComicNotFound, NotFound } from '../atoms'
+import { ComicNotFoundImg } from 'public/assets'
 
 type KeyUpHandler = (e: KeyboardEvent) => void
 
@@ -57,34 +58,50 @@ const Carousel: FC<{ comics: Comic[] }> = ({ comics }) => {
 
 	return (
 		<>
-			<div className="flex items-center justify-center">
-				<button
-					className="mr-2 p-5 bg-primary-600 --indicator-prev-corners-cut "
-					onClick={prevItem}
-				></button>
-				<div
-					className="carousel flex gap-8 overflow-x-auto"
-					ref={comicRef}
-				>
-					<ComicList
-						comics={comics}
-						comicRef={comicRef}
+			{comics.length ? (
+				<>
+					<div className="flex items-center justify-center">
+						<button
+							className="mr-2 p-5 bg-primary-600 --indicator-prev-corners-cut "
+							onClick={prevItem}
+						></button>
+						<div
+							className="carousel flex gap-8 overflow-x-auto"
+							ref={comicRef}
+						>
+							<ComicList
+								comics={comics}
+								comicRef={comicRef}
+								activeIndex={activeIndex}
+								updateIndex={updateIndex}
+							/>
+						</div>
+						<button
+							className="ml-2 p-5 bg-primary-600 --indicator-next-corners-cut"
+							onClick={nextItem}
+						></button>
+					</div>
+					<Indicators
 						activeIndex={activeIndex}
 						updateIndex={updateIndex}
-					/>
-				</div>
-				<button
-					className="ml-2 p-5 bg-primary-600 --indicator-next-corners-cut"
-					onClick={nextItem}
-				></button>
-			</div>
-			<Indicators
-				activeIndex={activeIndex}
-				updateIndex={updateIndex}
-				comic={comicRef}
-			>
-				{comics}
-			</Indicators>
+						comic={comicRef}
+					>
+						{comics}
+					</Indicators>
+				</>
+			) : (
+				<NotFound
+					image={ComicNotFoundImg}
+					styles={'flex-row'}
+				>
+					<div className="flex flex-col justify-center items-center gap-10">
+						<p className="text-4xl font-extrabold text-secondary-700">Oh, no!</p>
+						<p className="text-xl font-semibold text-secondary-700 text-center">
+							Captain America don't have any <br /> comic of this character.
+						</p>
+					</div>
+				</NotFound>
+			)}
 		</>
 	)
 }
