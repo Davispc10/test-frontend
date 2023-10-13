@@ -13,7 +13,7 @@ const HomePage: FC<Props> = ({ styles }) => {
 	return (
 		<div className={styles}>
 			<Navbar />
-			<main className="flex flex-col mt-24 mb-2 items-center justify-between">
+			<main className="flex flex-col h-[950px] w-full mt-24 mb-2 items-center justify-between">
 				<SearchBar />
 				<CharactersList />
 				<Pagination />

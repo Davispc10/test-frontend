@@ -37,7 +37,6 @@ export const renderPagination = (
 			)
 		}
 		if (page === currentPage) {
-			console.log(`${page} ${currentPage}`)
 			paginationElements.push(
 				<span
 					onClick={() => setCurrentPage(page)}
