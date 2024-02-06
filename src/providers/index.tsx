@@ -1,9 +1,12 @@
 'use client'
-import { ReactNode } from 'react'
-import { QueryClientProvider } from 'react-query'
 
-import { queryClient } from '@/service/query-client'
+import { client } from '@/lib/client'
+import { QueryClientProvider } from '@tanstack/react-query'
 
-export const Providers = ({ children }: { children: ReactNode }) => {
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+type ProvidersProps = {
+  children: React.ReactNode
+}
+
+export const Providers = ({ children }: ProvidersProps) => {
+  return <QueryClientProvider client={client}>{children}</QueryClientProvider>
 }
