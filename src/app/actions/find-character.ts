@@ -8,7 +8,7 @@ type FindCharactersProps = {
 }
 
 export const findCharacter = async ({ characterId }: FindCharactersProps) => {
-  const findCharacter = await execute<FindCharacterProps>(`/characters/${characterId}`)
+  const findCharacter = await execute<FindCharacterProps>({ id: characterId, page: '1', isComic: false })
   const result = findCharacter.data.results[0]
 
   return result
