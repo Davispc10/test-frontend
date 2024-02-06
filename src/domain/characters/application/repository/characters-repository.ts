@@ -9,9 +9,11 @@ export type FindAllCharactersProps = {
 }
 export type FindCharacterByIdProps = {
   id: string
+  hash: string
+  ts: number
 }
 
 export interface CharactersRepository {
   findAll({ hash, limit, page, ts, search }: FindAllCharactersProps): Promise<CharacterEntity>
-  findById({ id }: FindCharacterByIdProps): Promise<CharacterEntity>
+  findById({ id, hash, ts }: FindCharacterByIdProps): Promise<CharacterEntity>
 }
