@@ -1,6 +1,6 @@
 'use server'
 
-import { ComicsProps } from '@/@types/characters'
+import { ComicsEntity } from '@/domain/comics/enterprise/comics.entity'
 import { execute } from '@/utils/execute'
 
 type FindComics = {
@@ -8,6 +8,6 @@ type FindComics = {
 }
 
 export const findComicsByCharacter = async ({ characterId }: FindComics) => {
-  const findCharacter = await execute<ComicsProps>(`/characters/${characterId}/comics`)
+  const findCharacter = await execute<ComicsEntity>({ page: '1', id: characterId, isComic: true })
   return findCharacter.data.results
 }
