@@ -22,12 +22,14 @@ export type CharactersProps = {
 export type FindCharacterProps = CharactersProps
 
 export type ComicProps = {
-  id: number
-  title: string
-  description: string
-  thumbnail: {
-    path: string
-    extension: string
+  comics: {
+    id: number
+    title: string
+    description: string
+    thumbnail: {
+      path: string
+      extension: string
+    }
   }
 }
 
