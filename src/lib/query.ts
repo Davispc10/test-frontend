@@ -5,7 +5,6 @@ export const query = <T, D>(actions: (data: D) => T) => {
     return await client.fetchQuery({
       queryKey,
       queryFn: () => actions(data),
-      staleTime: 10000,
     })
   }
 
