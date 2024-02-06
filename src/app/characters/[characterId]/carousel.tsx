@@ -11,7 +11,6 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { findComicsByCharacter } from '@/app/actions/find-comics-by-character'
-import { defaultImage } from '@/consts'
 import { query } from '@/lib/query'
 
 type CarouselProps = {
@@ -31,18 +30,10 @@ export const Carousel = async ({ characterId }: CarouselProps) => {
     >
       <CarouselContent>
         {comics.map((comic) => {
-          const imageNotFound = comic.thumbnail.path.includes('image_not_available')
-          const urlImage = `${comic.thumbnail.path}.${comic.thumbnail.extension}`
-
           return (
             <CarouselItem key={comic.id} className="md:basis-1/2 lg:basis-1/4">
               <Card className="relative h-96 w-full overflow-hidden rounded-md">
-                <Image
-                  src={!imageNotFound ? urlImage : defaultImage}
-                  alt=""
-                  fill
-                  className="object-cover object-center"
-                />
+                <Image src={comic.thumbnail.path} alt="" fill className="object-cover object-center" />
               </Card>
             </CarouselItem>
           )
