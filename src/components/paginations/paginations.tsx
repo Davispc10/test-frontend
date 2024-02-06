@@ -67,7 +67,7 @@ export const Paginations = ({ limit, total, className, ...props }: PaginationPro
       <PaginationRoot>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href={handleNextPage(pageActive - 1)} />
+            <PaginationPrevious data-testid="prev-btn" href={handleNextPage(pageActive - 1)} />
           </PaginationItem>
 
           {totalPages <= 3 &&
@@ -157,7 +157,7 @@ export const Paginations = ({ limit, total, className, ...props }: PaginationPro
           )}
 
           <PaginationItem>
-            <PaginationNext href={handleNextPage(pageActive + 1)} />
+            <PaginationNext data-testid="next-btn" href={handleNextPage(pageActive + 1)} />
           </PaginationItem>
         </PaginationContent>
       </PaginationRoot>
