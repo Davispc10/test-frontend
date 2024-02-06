@@ -10,12 +10,18 @@ import {
 } from '@/components/ui/carousel'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { ComicsProps } from '@/@types/characters'
-import { execute } from '@/utils/execute'
+import { findComicsByCharacter } from '@/app/actions/find-comics-by-character'
+import { defaultImage } from '@/consts'
+import { query } from '@/lib/query'
 
-export const Carousel = async ({ character }: { character: string }) => {
-  const findCharacter = await execute<ComicsProps>(`/characters/${character}/comics`)
-  const result = findCharacter.data.results
+type CarouselProps = {
+  characterId: string
+}
+
+export const Carousel = async ({ characterId }: CarouselProps) => {
+  const handle = query(findComicsByCharacter)
+  const comics = await handle({ characterId }, [`comics-${characterId}`])
+
   return (
     <CarouselRoot
       opts={{
@@ -24,7 +30,7 @@ export const Carousel = async ({ character }: { character: string }) => {
       className="w-full px-10 sm:px-0"
     >
       <CarouselContent>
-        {result.map((comic) => {
+        {comics.map((comic) => {
           const imageNotFound = comic.thumbnail.path.includes('image_not_available')
           const urlImage = `${comic.thumbnail.path}.${comic.thumbnail.extension}`
 
@@ -32,7 +38,7 @@ export const Carousel = async ({ character }: { character: string }) => {
             <CarouselItem key={comic.id} className="md:basis-1/2 lg:basis-1/4">
               <Card className="relative h-96 w-full overflow-hidden rounded-md">
                 <Image
-                  src={!imageNotFound ? urlImage : '/default-image.jpeg'}
+                  src={!imageNotFound ? urlImage : defaultImage}
                   alt=""
                   fill
                   className="object-cover object-center"
