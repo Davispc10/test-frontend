@@ -55,8 +55,15 @@ export const Search = () => {
         {isActuallyHome && (
           <div className="flex gap-3">
             <div className="relative w-full">
-              <Input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <Input
+                type="text"
+                placeholder="Buscar por um personagem"
+                name="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
               <button
+                aria-label="search"
                 data-isvisible={!!search}
                 className="pointer-events-none invisible absolute right-2 top-1/2 -translate-y-1/2 data-[isvisible=true]:pointer-events-auto data-[isvisible=true]:visible"
                 onClick={() => handleSearch('')}
