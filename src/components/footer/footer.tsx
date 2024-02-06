@@ -9,6 +9,7 @@ export const Footer = () => {
             <a
               key={item.name}
               href={item.href}
+              data-testid={item.name}
               target="_blank"
               className="text-muted-foreground hover:text-accent-foreground"
               rel="noreferrer"
