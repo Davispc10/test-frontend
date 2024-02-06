@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { CharactersProps } from '@/@types/characters'
-import { QueryParams } from '@/lib/utils'
-import { execute } from '@/utils/execute'
+import { query } from '@/lib/query'
+
+import { findCharacters } from './actions/find-characters'
 
 export type ListCharactersProps = {
   searchParams: {
@@ -20,35 +20,19 @@ export type ListCharactersProps = {
 }
 
 export const ListCharacters = async ({ searchParams: { page, search } }: ListCharactersProps) => {
-  const url = QueryParams.baseUrl('/characters')
-    .query({
-      query: 'limit',
-      value: '9',
-    })
-    .query({
-      query: 'offset',
-      value: page,
-    })
-    .query({
-      query: 'nameStartsWith',
-      value: search,
-    })
-    .value()
-
-  const characters = await execute<CharactersProps>(url)
+  const handle = query(findCharacters)
+  const { data: characters } = await handle({ page, search }, ['characters'])
 
   return (
     <Fragment>
-      <FadeInStagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {characters?.data.results.map((character) => {
-          const imageNotFound = character.thumbnail.path.includes('image_not_available')
-          const urlImage = `${character.thumbnail.path}.${character.thumbnail.extension}`
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        {characters.results.map((character) => {
           return (
             <FadeIn key={character.id}>
               <Card className="overflow-hidden">
                 <CardContent className="relative h-72 w-full p-0">
                   <Image
-                    src={!imageNotFound ? urlImage : '/default-image.jpeg'}
+                    src={`${character.thumbnail.path}`}
                     alt="Placeholder"
                     fill
                     className="rounded-t-md object-cover object-center"
@@ -56,9 +40,7 @@ export const ListCharacters = async ({ searchParams: { page, search } }: ListCha
                 </CardContent>
                 <CardHeader>
                   <CardTitle>{character.name}</CardTitle>
-                  <CardDescription className="line-clamp-1">
-                    {character.description || 'Descrição não disponível para este personagem'}
-                  </CardDescription>
+                  <CardDescription className="line-clamp-1">{character.description}</CardDescription>
                 </CardHeader>
                 <CardFooter>
                   <Button className="w-full" asChild>
@@ -69,9 +51,9 @@ export const ListCharacters = async ({ searchParams: { page, search } }: ListCha
             </FadeIn>
           )
         })}
-      </FadeInStagger>
+      </div>
       <Suspense>
-        <Paginations total={characters?.data.total} limit={9} />
+        <Paginations total={characters.total} limit={9} />
       </Suspense>
     </Fragment>
   )
