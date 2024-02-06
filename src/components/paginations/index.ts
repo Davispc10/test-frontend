@@ -1,0 +1,1 @@
+export { Paginations } from './paginations'
