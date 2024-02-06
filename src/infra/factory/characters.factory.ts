@@ -1,7 +1,7 @@
 import { FindAllCharactersUseCase } from '@/domain/characters/application/use-cases/find-all-characters.use-case'
 import { FindCharacterByIdUseCase } from '@/domain/characters/application/use-cases/find-character-by-id.use-case'
 
-import { CharactersController } from '../controller/characters.controller'
+import { CharactersController } from '../controller/characters/characters.controller'
 import { CharactersGateway } from '../gateway/characters.gateway'
 import { HttpService } from '../http/http.service'
 
