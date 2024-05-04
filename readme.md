@@ -18,34 +18,34 @@ API DOCS: https://developer.marvel.com/docs
 - Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
 - caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel.
 (atenção: não será permitido colocar essa validação nos componentes visuais)
-- caso o personagem não tenha descrição exbir o texto "descrição não informada". 
+- Caso o personagem não tenha descrição exbir o texto "descrição não informada". 
 (atenção: não será permitido colocar essa validação nos componentes visuais)
 
 ### Critérios de avaliação
 Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
-  - gerenciamento de estado
-  - componentização
-  - responsividade
-  - testes
-  - Ui design
+  - Gerenciamento de estado
+  - Componentização
+  - Responsividade
+  - Testes
+  - UI design
 
 ### Tecnologias Obrigatórias
  - NextJs
  - Typescript
- - tailwind css
+ - Tailwind css
 
 ### Tecnologias opcionais 
- - redux,
- - react query,
- - redux tookit
- - jest
- - testing library
+ - Redux,
+ - React query,
+ - Redux tookit
+ - Jest
+ - Testing library
 
 ### Difencial
- - Ui design agradável
- - conhecimento de Atomic Design 
- - conhecimento de clean archtecture
- - testes automatizados
+ - UI design agradável
+ - Conhecimento de Atomic Design 
+ - Conhecimento de clean archtecture
+ - Testes automatizados
 
 ### Por onde começo?
 Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
