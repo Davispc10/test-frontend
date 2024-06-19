@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import Favicon from '@/assets/imgs/favicon.png'
 import './globals.css'
+import { Header } from '@/components/layout'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <Header />
+        <div className="pt-12">{children}</div>
+      </body>
     </html>
   )
 }
