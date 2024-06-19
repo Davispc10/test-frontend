@@ -1,0 +1,1 @@
+export { HeroHome } from './heroHome'
