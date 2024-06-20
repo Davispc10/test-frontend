@@ -1,11 +1,14 @@
 import { Container } from '@/components/ui'
-import { HeroHome } from './modules'
+import { HeroHome, ListPersonages, PaginationPersonages } from './modules'
 
 export default function Home() {
   return (
-    <main className="h-full">
+    <main className=" flex-1">
       <HeroHome />
-      <Container>Listagem</Container>
+      <Container>
+        <PaginationPersonages />
+        <ListPersonages />
+      </Container>
     </main>
   )
 }
