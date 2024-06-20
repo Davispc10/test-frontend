@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={`${poppins.className} flex flex-col bg-gray-100`}>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <div className="pt-12">{children}</div>
+          <div className="pt-12 flex-1 flex flex-col">{children}</div>
         </QueryClientProvider>
       </body>
     </html>
