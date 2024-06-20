@@ -3,6 +3,8 @@ import { Poppins } from 'next/font/google'
 import Favicon from '@/assets/imgs/favicon.png'
 import './globals.css'
 import { Header } from '@/components/layout'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClient } from '@/services/queryClient'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,9 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} flex flex-col`}>
-        <Header />
-        <div className="pt-12 flex-1">{children}</div>
+      <body className={`${poppins.className} flex flex-col bg-gray-100`}>
+        <QueryClientProvider client={queryClient}>
+          <Header />
+          <div className="pt-12">{children}</div>
+        </QueryClientProvider>
       </body>
     </html>
   )
