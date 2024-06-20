@@ -1,0 +1,1 @@
+export { getPersonages } from './getPersonages'
