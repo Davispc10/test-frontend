@@ -20,3 +20,7 @@ html,
 input{
   outline: none;
 }
+
+button, a{
+  transition: all 0.3s;
+}
