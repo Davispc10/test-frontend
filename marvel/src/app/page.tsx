@@ -5,7 +5,7 @@ import { HeroHome, ListPersonages, PaginationPersonages } from './modules'
 import { useHome } from './useHome'
 
 export default function Home() {
-  const { data, isError, isLoading, pages, changePage, currentPage } = useHome()
+  const { data, isLoading, pages } = useHome()
 
   return (
     <main className="flex-1">
@@ -13,17 +13,9 @@ export default function Home() {
       {isLoading && <ListSkeleton />}
       {!isLoading && data && (
         <Container className="py-4">
-          <PaginationPersonages
-            pages={pages}
-            currentPage={currentPage}
-            changePage={changePage}
-          />
+          <PaginationPersonages pages={pages} />
           <ListPersonages data={data} />
-          <PaginationPersonages
-            pages={pages}
-            currentPage={currentPage}
-            changePage={changePage}
-          />
+          <PaginationPersonages pages={pages} />
         </Container>
       )}
     </main>

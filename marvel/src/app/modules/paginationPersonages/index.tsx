@@ -1,18 +1,18 @@
 import { Button } from '@/components/ui'
+import { PersonageContext } from '@/contexts/personageContext'
+import { useContext } from 'react'
 
 interface PaginationPersonagesProps {
   pages: number
-  currentPage: number
-  changePage: (page: number) => void
 }
 
-export function PaginationPersonages({
-  pages,
-  currentPage,
-  changePage,
-}: PaginationPersonagesProps) {
+export function PaginationPersonages({ pages }: PaginationPersonagesProps) {
+  const { changePage, currentPage } = useContext(PersonageContext)
+
   const endButton = currentPage <= 5 ? 11 : currentPage + 5
   const startButton = currentPage <= 5 ? 1 : currentPage - 5
+
+  if (pages <= 1) return <></>
 
   return (
     <div className="flex gap-2 items-center justify-center">

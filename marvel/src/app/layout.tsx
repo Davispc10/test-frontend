@@ -5,6 +5,7 @@ import './globals.css'
 import { Header } from '@/components/layout'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@/services/queryClient'
+import { PersonageProvider } from '@/contexts/personageContext'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -31,8 +32,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} flex flex-col bg-gray-100`}>
         <QueryClientProvider client={queryClient}>
-          <Header />
-          <div className="pt-12 flex-1 flex flex-col">{children}</div>
+          <PersonageProvider>
+            <Header />
+            <div className="pt-12 flex-1 flex flex-col">{children}</div>
+          </PersonageProvider>
         </QueryClientProvider>
       </body>
     </html>

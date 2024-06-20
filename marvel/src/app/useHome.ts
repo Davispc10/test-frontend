@@ -1,37 +1,17 @@
-import { getPersonages } from '@/functions'
-import { validateImage } from '@/utils'
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { PersonageContext } from '@/contexts/personageContext'
+import { useContext } from 'react'
 
 export function useHome() {
-  const [currentPage, setCurrentPage] = useState(1)
+  const { personages, dataPersonages, isLoadingPersonages, isErrorPersonages } =
+    useContext(PersonageContext)
 
-  const { data, isLoading, isError, refetch } = useQuery({
-    queryKey: ['personages', currentPage],
-    queryFn: () => getPersonages({ offset: (currentPage - 1) * 20 }),
-  })
-
-  const validateData = data?.results?.map((personage) => ({
-    ...personage,
-    description: personage.description || 'uninformed description',
-    thumbnail: validateImage(personage.thumbnail),
-  }))
-
-  const allPersonages = data?.total || 0
+  const allPersonages = dataPersonages?.total || 0
   const pages = Math.ceil(allPersonages / 20)
 
-  function changePage(page: number) {
-    setCurrentPage(page)
-    refetch()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return {
-    data: validateData,
-    isLoading,
-    isError,
+    data: personages,
+    isLoading: isLoadingPersonages,
+    isError: isErrorPersonages,
     pages,
-    currentPage,
-    changePage,
   }
 }
