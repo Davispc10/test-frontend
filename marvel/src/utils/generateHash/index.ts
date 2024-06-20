@@ -1,0 +1,1 @@
+export { generateHashMarvel } from './generateHashMarvel'
