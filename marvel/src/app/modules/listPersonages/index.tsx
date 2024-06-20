@@ -1,20 +1,12 @@
-'use client'
-
 import Link from 'next/link'
 import { CardPersonage } from './modules'
-import { useListPersonages } from './useListPersonages'
-import { Grid, ListSkeleton } from '@/components/ui'
+import { Grid } from '@/components/ui'
+import { ListPersonageProps } from '@/components/types'
 
-export function ListPersonages() {
-  const { data, isError, isLoading } = useListPersonages()
-
-  if (isLoading) return <ListSkeleton />
-
-  if (!data || isError) return <>Erro na busca</>
-
+export function ListPersonages({ data }: { data: ListPersonageProps }) {
   return (
     <Grid>
-      {data.map((personage) => (
+      {data?.map((personage) => (
         <Link
           href={`/details-personage/${personage.id}`}
           key={personage.id}
