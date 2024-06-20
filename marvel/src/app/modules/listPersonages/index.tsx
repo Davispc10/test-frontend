@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { CardPersonage, ListSkeleton } from './modules'
+import { CardPersonage } from './modules'
 import { useListPersonages } from './useListPersonages'
-import { Grid } from '@/components/ui'
+import { Grid, ListSkeleton } from '@/components/ui'
 
 export function ListPersonages() {
   const { data, isError, isLoading } = useListPersonages()
