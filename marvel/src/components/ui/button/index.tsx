@@ -15,8 +15,8 @@ export function Button({
   return (
     <button
       className={clsx(
-        `bg-primary-200 rounded px-2 py-1 text-white flex items-center justify-center hover:bg-primary-400/60 ${className}`,
-        notActive && 'bg-primary-400/20',
+        `bg-primary-200 rounded px-2 py-1 text-white flex items-center justify-center hover:bg-primary-400/80 ${className}`,
+        notActive && 'bg-primary-400/50',
       )}
       {...rest}
     >
