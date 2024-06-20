@@ -5,14 +5,12 @@ interface ItemsProps {
 
 type ListItemsProps = ItemsProps[]
 
-interface ComicsEventsProps {
+interface SeriesStoriesComicsEventsProps {
   avaliable: number
   collectionURI: string
   items: ListItemsProps
   returned: number
 }
-
-type ListSeriesStoriesComicsEventsProps = ComicsEventsProps[]
 
 interface ThumbnailProps {
   extension: string
@@ -29,13 +27,13 @@ type ListUrlsProps = UrlProps[]
 interface PersonageProps {
   readonly id: number
   description: string
-  comics: ListSeriesStoriesComicsEventsProps
+  comics: SeriesStoriesComicsEventsProps
   modified: string
   name: string
   resourceURI: string
-  events: ListSeriesStoriesComicsEventsProps
-  stories: ListSeriesStoriesComicsEventsProps
-  series: ListSeriesStoriesComicsEventsProps
+  events: SeriesStoriesComicsEventsProps
+  stories: SeriesStoriesComicsEventsProps
+  series: SeriesStoriesComicsEventsProps
   thumbnail: ThumbnailProps
   urls: ListUrlsProps
 }
@@ -44,10 +42,9 @@ type ListPersonageProps = PersonageProps[]
 
 export type {
   ListPersonageProps,
-  ListSeriesStoriesComicsEventsProps,
+  SeriesStoriesComicsEventsProps,
   ThumbnailProps,
   PersonageProps,
-  ComicsEventsProps,
   ListItemsProps,
   ItemsProps,
 }
