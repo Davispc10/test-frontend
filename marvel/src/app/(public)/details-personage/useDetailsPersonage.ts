@@ -36,8 +36,6 @@ export function useDetailsPersonage({ id }: { id: string }) {
       }
     : null
 
-  console.log('COMICS RESULT', dataComic)
-
   const comics = dataComic?.results?.map((comic) => ({
     ...comic,
     thumbnail: validateImage(comic.thumbnail),
