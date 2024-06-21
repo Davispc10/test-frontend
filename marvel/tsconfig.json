@@ -17,7 +17,7 @@
     "jsx": "preserve",
     "incremental": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "plugins": [
       {
         "name": "next"
