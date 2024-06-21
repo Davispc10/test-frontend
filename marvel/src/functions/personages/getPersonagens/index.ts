@@ -16,5 +16,5 @@ export async function getPersonages({
     `${nameParam}offset=${offset}`,
   )
   const responseJSON = await response.json()
-  return responseJSON.data as ResponsePersonageProps
+  return responseJSON.data
 }

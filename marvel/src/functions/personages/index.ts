@@ -1,3 +1,3 @@
-export { getPersonages } from './getPersonages'
+export { getPersonages } from './getPersonagens'
 export { getPersonage } from './getPersonage'
 export { getComics } from './getComics'
