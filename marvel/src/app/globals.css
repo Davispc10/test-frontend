@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+}
+input{
+  outline: none;
+}
+
+button, a{
+  transition: all 0.3s;
+}
