@@ -1,6 +1,5 @@
 import { PersonageProps } from '@/components/types'
-import { getPersonage } from '@/functions'
-import { getComics } from '@/functions/personages/getComics'
+import { getComics, getPersonage } from '@/functions'
 import { validateImage } from '@/utils'
 import { useQueries } from '@tanstack/react-query'
 
@@ -37,7 +36,9 @@ export function useDetailsPersonage({ id }: { id: string }) {
       }
     : null
 
-  const comics = dataComic?.results.map((comic) => ({
+  console.log('COMICS RESULT', dataComic)
+
+  const comics = dataComic?.results?.map((comic) => ({
     ...comic,
     thumbnail: validateImage(comic.thumbnail),
   }))
