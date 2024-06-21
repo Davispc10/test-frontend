@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui'
 import { PersonageContext } from '@/contexts/personageContext'
 import { useContext } from 'react'
+import { usePaginationButtons } from './usePaginationButtons'
 
 interface PaginationPersonagesProps {
   pages: number
@@ -8,9 +9,9 @@ interface PaginationPersonagesProps {
 
 export function PaginationPersonages({ pages }: PaginationPersonagesProps) {
   const { changePage, currentPage } = useContext(PersonageContext)
-
-  const endButton = currentPage <= 5 ? 11 : currentPage + 5
-  const startButton = currentPage <= 5 ? 1 : currentPage - 5
+  const { endButton, startButton } = usePaginationButtons({
+    currentPage,
+  })
 
   if (pages <= 1) return <></>
 
@@ -20,6 +21,7 @@ export function PaginationPersonages({ pages }: PaginationPersonagesProps) {
         onClick={() => changePage(currentPage - 1)}
         disabled={currentPage === 1}
         notActive={currentPage === 1}
+        className="hidden sm:flex"
       >
         Back
       </Button>
@@ -38,6 +40,7 @@ export function PaginationPersonages({ pages }: PaginationPersonagesProps) {
         onClick={() => changePage(currentPage + 1)}
         disabled={pages - 1 === currentPage}
         notActive={pages - 1 === currentPage}
+        className="hidden sm:flex"
       >
         Next
       </Button>
