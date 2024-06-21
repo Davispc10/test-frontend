@@ -1,7 +1,19 @@
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import { Button } from '.'
 
 describe('<Button>', () => {
+  it('should call onClick when button is clicked', () => {
+    const onClickMock = jest.fn()
+    const { getByRole } = render(
+      <Button onClick={onClickMock}>Click me</Button>,
+    )
+    const buttonElement = getByRole('button')
+
+    fireEvent.click(buttonElement)
+
+    expect(onClickMock).toHaveBeenCalledTimes(1)
+  })
+
   it('should render button', () => {
     const { getByText, getByRole } = render(<Button>Text button</Button>)
 
