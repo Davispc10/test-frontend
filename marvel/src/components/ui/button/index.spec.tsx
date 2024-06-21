@@ -1,15 +1,7 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { Button } from '.'
 
 describe('<Button>', () => {
-  // it('should ', () => {
-  //   const { getByRole } = render(<Button>Text button</Button>)
-
-  //   const buttonElement = getByRole('button')
-
-  //   fireEvent(buttonElement, () => {})
-  // })
-
   it('should render button', () => {
     const { getByText, getByRole } = render(<Button>Text button</Button>)
 
