@@ -35,11 +35,10 @@ Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
  - Tailwind css
 
 ### Tecnologias opcionais 
- - Redux,
  - React query,
- - Redux tookit
  - Jest
  - Testing library
+ - Cypress
 
 ### Difencial
  - UI design agradável
