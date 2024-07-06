@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'darl-700': '#131313',
+        'dark-700': '#131313',
         'dark-900': '#000000',
       },
       backgroundImage: {

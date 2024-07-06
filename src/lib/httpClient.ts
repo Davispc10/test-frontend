@@ -1,8 +1,11 @@
+import { md5 } from "@/utils/createMd5Hash";
 import axios from "axios";
 
 export const httpClient= axios.create({
-  baseURL: process.env.NEXT_MARVEL_API_URL,
+  baseURL: 'http://gateway.marvel.com/v1/public/',
   params: {
-    apiKey: process.env.NEXT_PUBLIC_MARVEL_API_KEY
+    ts: new Date().getTime(),
+    apikey: '778f3a844b4fdeac52207bd47f390715',
+    hash: md5(new Date().getTime() + 'e5b649a7701d6d00bb9ae686e8d6d2d08f1490fd' + '778f3a844b4fdeac52207bd47f390715').toLowerCase()
   }
 })
