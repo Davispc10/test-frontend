@@ -1,5 +1,5 @@
-import { getAllCharacters } from "./characterService";
+import { getAllCharacters } from './characterService';
 
 export const characterService = {
-  getAllCharacters
-}
+  getAllCharacters,
+};

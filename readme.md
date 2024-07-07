@@ -1,4 +1,5 @@
 # Teste Dinheirow
+
 Olá Dev! Tudo bem?
 
 Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso! Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
@@ -6,6 +7,7 @@ Nós estamos sempre em busca de profissionais interessantes e interessados, com 
 Vamos ao teste!
 
 ## Desafio Marvel
+
 Crie um aplicativo front-end conectado ao back-end Marvel desenvolvido usando dados e rotas obtidos pela API oficial da Marvel Comics.
 
 API DOCS: https://developer.marvel.com/docs
@@ -17,36 +19,42 @@ API DOCS: https://developer.marvel.com/docs
 - Na página do personagem deverá conter um botão que volta para página inicial de listagem dos personangens
 - Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
 - caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel.
-(atenção: não será permitido colocar essa validação nos componentes visuais)
-- Caso o personagem não tenha descrição exbir o texto "descrição não informada". 
-(atenção: não será permitido colocar essa validação nos componentes visuais)
+  (atenção: não será permitido colocar essa validação nos componentes visuais)
+- Caso o personagem não tenha descrição exbir o texto "descrição não informada".
+  (atenção: não será permitido colocar essa validação nos componentes visuais)
 
 ### Critérios de avaliação
+
 Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
-  - Gerenciamento de estado
-  - Componentização
-  - Responsividade
-  - Testes
-  - UI design
+
+- Gerenciamento de estado
+- Componentização
+- Responsividade
+- Testes
+- UI design
 
 ### Tecnologias Obrigatórias
- - NextJs
- - Typescript
- - Tailwind css
 
-### Tecnologias opcionais 
- - React query,
- - Jest
- - Testing library
- - Cypress
+- NextJs
+- Typescript
+- Tailwind css
+
+### Tecnologias opcionais
+
+- React query,
+- Jest
+- Testing library
+- Cypress
 
 ### Difencial
- - UI design agradável
- - Conhecimento de Atomic Design 
- - Conhecimento de clean archtecture
- - Testes automatizados
+
+- UI design agradável
+- Conhecimento de Atomic Design
+- Conhecimento de clean archtecture
+- Testes automatizados
 
 ### Por onde começo?
+
 Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
 
 Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.

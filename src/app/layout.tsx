@@ -1,22 +1,22 @@
-import './globals.css'
+import './globals.css';
 
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import type React from 'react'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import type React from 'react';
 
-import Providers from './providers'
+import Providers from './providers';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Marvel App',
   description: 'App for marvel characters',
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -24,5 +24,5 @@ export default function RootLayout({
         <Providers>{children}</Providers>
       </body>
     </html>
-  )
+  );
 }

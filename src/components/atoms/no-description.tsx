@@ -1,3 +1,3 @@
 export function NoDescription() {
-  return <p>No description found</p>
+  return <p>No description found</p>;
 }

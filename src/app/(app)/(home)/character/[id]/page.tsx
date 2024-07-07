@@ -1,3 +1,3 @@
 export default function Page({ params }: { params: { id: string } }) {
-  return <div>Character {params.id}</div>
+  return <div>Character {params.id}</div>;
 }

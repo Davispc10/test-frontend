@@ -1,7 +1,7 @@
 type TitleProps = {
-  text?: string
-}
+  text?: string;
+};
 
 export function Title({ text }: TitleProps) {
-  return <h2>{text}</h2>
+  return <h2>{text}</h2>;
 }

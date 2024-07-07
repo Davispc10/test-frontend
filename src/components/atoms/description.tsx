@@ -1,7 +1,7 @@
 type DescriptionProps = {
-  text?: string
-}
+  text?: string;
+};
 
 export function Description({ text }: DescriptionProps) {
-  return <p className="text-white">{text}</p>
+  return <p className="text-white">{text}</p>;
 }

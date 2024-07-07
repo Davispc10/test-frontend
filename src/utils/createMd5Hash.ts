@@ -3,8 +3,8 @@ export function md5(d: string): string {
 }
 
 function rstr2hex(d: string): string {
-  const hexChars = "0123456789ABCDEF";
-  let hexStr = "";
+  const hexChars = '0123456789ABCDEF';
+  let hexStr = '';
   for (let i = 0; i < d.length; i++) {
     const charCode = d.charCodeAt(i);
     hexStr += hexChars.charAt((charCode >>> 4) & 0x0f) + hexChars.charAt(charCode & 0x0f);
@@ -15,22 +15,22 @@ function rstr2hex(d: string): string {
 function rstr2binl(d: string): number[] {
   const bin: number[] = Array(d.length >> 2).fill(0);
   for (let i = 0; i < d.length * 8; i += 8) {
-    bin[i >> 5] |= (d.charCodeAt(i / 8) & 0xff) << (i % 32);
+    bin[i >> 5] |= (d.charCodeAt(i / 8) & 0xff) << i % 32;
   }
   return bin;
 }
 
 function binl2rstr(bin: number[]): string {
-  let str = "";
+  let str = '';
   for (let i = 0; i < bin.length * 32; i += 8) {
-    str += String.fromCharCode((bin[i >> 5] >>> (i % 32)) & 0xff);
+    str += String.fromCharCode((bin[i >> 5] >>> i % 32) & 0xff);
   }
   return str;
 }
 
 function binl_md5(x: number[], len: number): number[] {
-  x[len >> 5] |= 0x80 << (len % 32);
-  x[14 + ((len + 64) >>> 9 << 4)] = len;
+  x[len >> 5] |= 0x80 << len % 32;
+  x[14 + (((len + 64) >>> 9) << 4)] = len;
 
   let a = 1732584193;
   let b = -271733879;
@@ -120,19 +120,51 @@ function md5_cmn(q: number, a: number, b: number, x: number, s: number, t: numbe
   return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
 }
 
-function md5_ff(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+function md5_ff(
+  a: number,
+  b: number,
+  c: number,
+  d: number,
+  x: number,
+  s: number,
+  t: number,
+): number {
   return md5_cmn((b & c) | (~b & d), a, b, x, s, t);
 }
 
-function md5_gg(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+function md5_gg(
+  a: number,
+  b: number,
+  c: number,
+  d: number,
+  x: number,
+  s: number,
+  t: number,
+): number {
   return md5_cmn((b & d) | (c & ~d), a, b, x, s, t);
 }
 
-function md5_hh(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+function md5_hh(
+  a: number,
+  b: number,
+  c: number,
+  d: number,
+  x: number,
+  s: number,
+  t: number,
+): number {
   return md5_cmn(b ^ c ^ d, a, b, x, s, t);
 }
 
-function md5_ii(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+function md5_ii(
+  a: number,
+  b: number,
+  c: number,
+  d: number,
+  x: number,
+  s: number,
+  t: number,
+): number {
   return md5_cmn(c ^ (b | ~d), a, b, x, s, t);
 }
 
