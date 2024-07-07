@@ -33,7 +33,7 @@ export function PaginationContent({
           </Button>
           <Button
             onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
+            disabled={currentPage === pages}
           >
             Next Page
             <ChevronsRight />
