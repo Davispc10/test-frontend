@@ -1,5 +1,3 @@
-
-import { Input } from '@/components/atoms/input'
 import { CardList } from '@/components/molecules/card-list'
 import { InputFilter } from '@/components/molecules/input-filter'
 

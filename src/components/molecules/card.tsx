@@ -1,4 +1,5 @@
 import Image from "next/image"
+
 import { Description } from "../atoms/description"
 import { NoDescription } from "../atoms/no-description"
 import { Title } from "../atoms/title"

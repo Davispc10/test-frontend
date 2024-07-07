@@ -1,11 +1,13 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query";
-import { Card } from "./card";
-import { characterService } from "@/services";
-import { Pagination } from "../organism/pagination";
-import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+
+import { characterService } from "@/services";
+
+import { Pagination } from "../organism/pagination";
+import { Card } from "./card";
 
 export function CardList() {
   const [currentPage, setCurrentPage] = useState(1)

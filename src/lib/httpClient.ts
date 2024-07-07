@@ -1,5 +1,6 @@
-import { md5 } from "@/utils/createMd5Hash";
 import axios from "axios";
+
+import { md5 } from "@/utils/createMd5Hash";
 
 export const httpClient= axios.create({
   baseURL: 'http://gateway.marvel.com/v1/public/',

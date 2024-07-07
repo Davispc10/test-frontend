@@ -1,8 +1,9 @@
 'use client'
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { Input } from "../atoms/input";
+import { usePathname, useRouter,useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+
+import { Input } from "../atoms/input";
 
 export function InputFilter() {
   const searchParams = useSearchParams()
