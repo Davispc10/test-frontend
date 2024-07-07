@@ -1,3 +1,4 @@
+import { PAGE_SIZE } from "@/components/molecules/pagination-content";
 import { httpClient } from "@/lib/httpClient";
 
 type Character = {
@@ -20,11 +21,18 @@ type CharacterResponse = {
   }
 }
 
-export async function getAllCharacters() {
+type CharacterParams = {
+  name: string | null
+  limit: number
+  offset: number
+}
+
+export async function getAllCharacters({limit, offset, name}: CharacterParams) {
   const { data } = await httpClient.get<CharacterResponse>('/characters', {
     params: {
-      limit: 10,
-      offset: 0,
+      limit,
+      offset,
+      nameStartsWith: name
     } 
   })
   return data.data
