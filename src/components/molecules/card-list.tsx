@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-import { characterService } from '@/services';
+import { characterService } from '@/services/charactersService';
 
 import { Pagination } from '../organism/pagination';
 import { Card } from './card';
