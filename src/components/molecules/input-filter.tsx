@@ -24,6 +24,7 @@ export function InputFilter() {
 
   return (
     <Input
+      name="input-name"
       className="mx-auto mb-10 w-2/4"
       placeholder="Search for a character"
       onChange={(e) => handleNameChange(e.target.value)}

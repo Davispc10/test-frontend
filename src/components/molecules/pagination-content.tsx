@@ -26,11 +26,19 @@ export function PaginationContent({
       </div>
 
       <div className="flex items-center gap-2">
-        <Button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+        <Button
+          data-cy="previous-page"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
           <ChevronsLeft />
           Previous Page
         </Button>
-        <Button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === pages}>
+        <Button
+          data-cy="next-page"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === pages}
+        >
           Next Page
           <ChevronsRight />
         </Button>

@@ -21,7 +21,11 @@ export function Card({ thumbnail, id, name }: CardProps) {
     : `${thumbnail.path}.${thumbnail.extension}`;
 
   return (
-    <Link href={`/character/${id}`} className="relative h-96 w-full overflow-hidden rounded-sm">
+    <Link
+      data-cy="card"
+      href={`/character/${id}`}
+      className="relative h-96 w-full overflow-hidden rounded-sm"
+    >
       <CardTitle name={name} />
       <Image
         priority
