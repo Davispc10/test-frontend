@@ -3,11 +3,9 @@ import { InputFilter } from '@/components/molecules/input-filter';
 
 export default function HomePage() {
   return (
-    <div>
-      <section className="mt-6 flex flex-col gap-8">
-        <InputFilter />
-        <CardList />
-      </section>
-    </div>
+    <section className="mt-6 flex flex-col gap-8">
+      <InputFilter />
+      <CardList />
+    </section>
   );
 }

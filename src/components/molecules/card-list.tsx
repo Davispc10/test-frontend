@@ -8,6 +8,7 @@ import { characterService } from '@/services/charactersService';
 
 import { Pagination } from '../organism/pagination';
 import { Card } from './card';
+import { CardListSkeleton } from './card-list-skeleton';
 
 export function CardList() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +26,7 @@ export function CardList() {
     setCurrentPage(page);
   };
 
-  if (isLoadingCharacters) return null;
+  if (isLoadingCharacters) return <CardListSkeleton />;
 
   return (
     <div>
