@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import type React from 'react';
 
 import Providers from './providers';
+import { Header } from '@/components/molecules/header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-dark-900`}>
+        <Header />
         <Providers>{children}</Providers>
       </body>
     </html>

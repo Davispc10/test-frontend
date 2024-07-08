@@ -29,7 +29,7 @@ export function CardList() {
 
   return (
     <div>
-      <ul className="relative grid grid-cols-3 gap-8">
+      <ul className="relative grid grid-cols-5 gap-8">
         {characters?.results?.map((character) => (
           <Card
             key={character.id}

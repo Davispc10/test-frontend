@@ -1,8 +1,4 @@
 import Image from 'next/image';
-
-import { Description } from '../atoms/description';
-import { NoDescription } from '../atoms/no-description';
-import { Title } from '../atoms/title';
 import Link from 'next/link';
 
 type CardProps = {
@@ -15,22 +11,19 @@ type CardProps = {
   };
 };
 
-export function Card({ thumbnail, description, id, name }: CardProps) {
+export function Card({ thumbnail, id, name }: CardProps) {
   return (
-    <Link
-      href={`/character/${id}`}
-      className="relative flex aspect-square h-full w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-sm bg-dark-700 p-5"
-    >
+    <Link href={`/character/${id}`} className="relative h-96 w-full overflow-hidden rounded-sm">
+      <div className="absolute z-10 bg-red-500">
+        <h3 className="px-4 text-sm font-bold">{name}</h3>
+      </div>
       <Image
         src={`${thumbnail.path}.${thumbnail.extension}`}
         alt={name}
-        objectFit="contain"
-        width={200}
-        height={120}
-        className="mb-8"
+        objectFit="cover"
+        fill
+        className="transition-transform hover:scale-[1.05] hover:opacity-75"
       />
-      <Title text={name} />
-      {description.length > 0 ? <Description text={description} /> : <NoDescription />}
     </Link>
   );
 }
