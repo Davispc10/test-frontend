@@ -11,12 +11,15 @@
   "dependencies": {
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "lucide-react": "^0.403.0",
+    "md5": "^2.3.0",
     "next": "14.2.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-query": "^3.39.3"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.5",
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
