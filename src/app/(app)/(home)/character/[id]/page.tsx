@@ -34,7 +34,7 @@ export default function Page({ params }: CharacterPageProps) {
         Back to home
       </Link>
 
-      <div className="relative mb-20 flex h-80 items-center justify-center gap-32 rounded-md bg-gradient-to-r from-neutral-800/50 to-neutral-900/10 p-10">
+      <div className="relative mb-20 flex flex-col items-center justify-center gap-4 rounded-md bg-gradient-to-r from-neutral-800/50 to-neutral-900/10 p-4 md:h-80 md:flex-row md:gap-32 md:p-10">
         <Image
           loader={imageLoader}
           loading="lazy"
@@ -46,14 +46,14 @@ export default function Page({ params }: CharacterPageProps) {
         />
 
         <div className="flex flex-col gap-10">
-          <div>
-            <p className="text-2xl font-bold">{character?.name}</p>
-            <p className="italic">
+          <div className="flex flex-col gap-2">
+            <p className="text-lg font-bold md:text-2xl">{character?.name}</p>
+            <p className="text-sm italic text-neutral-400 md:text-base">
               {character?.description || 'no description found for this character'}
             </p>
           </div>
 
-          <div className="flex w-40 flex-col items-center gap-2 rounded-md border-2 p-2">
+          <div className="flex flex-col items-center gap-2 rounded-md border-2 p-2 md:w-40">
             <span className="text text-4xl text-red-500">{character?.comics?.available}</span>
             <BookOpenText />
             <p>comics</p>
@@ -63,8 +63,8 @@ export default function Page({ params }: CharacterPageProps) {
 
       <div className="flex flex-col gap-8">
         <div className="flex items-center gap-4">
-          <BookOpenText size={32} />
-          <h2 className="text-3xl font-bold">Comics</h2>
+          <BookOpenText className="size-6 md:size-12" />
+          <h2 className="text-lg font-bold md:text-3xl">Comics</h2>
         </div>
         <ComicList characterId={characterId} />
       </div>
