@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import logo from '@/assets/marvel_not_found.png';
 import { CardTitle } from '../atoms/card-title';
+import { rgbDataURL } from '@/utils/rgbcreate';
 
 type CardProps = {
   id: number;
@@ -23,6 +24,9 @@ export function Card({ thumbnail, id, name }: CardProps) {
     <Link href={`/character/${id}`} className="relative h-96 w-full overflow-hidden rounded-sm">
       <CardTitle name={name} />
       <Image
+        priority
+        blurDataURL={rgbDataURL(236, 29, 36)}
+        placeholder="blur"
         src={image}
         alt={name}
         fill
