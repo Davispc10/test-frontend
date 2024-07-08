@@ -1,0 +1,48 @@
+import { ChevronsLeft, ChevronsRight } from 'lucide-react';
+
+import { Button } from '../atoms/button';
+
+export const PAGE_SIZE = 10;
+
+type PaginationContentProps = {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+};
+
+export function PaginationContent({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationContentProps) {
+  const pages = Math.ceil(totalPages / PAGE_SIZE) || 1;
+
+  return (
+    <div className="mt-8 flex flex-col items-center justify-end gap-4">
+      <div className="flex items-center gap-2 md:w-full">
+        <div className="text-sm">
+          Page {currentPage} of {pages}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <Button
+          data-cy="previous-page"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <ChevronsLeft />
+          Previous Page
+        </Button>
+        <Button
+          data-cy="next-page"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === pages}
+        >
+          Next Page
+          <ChevronsRight />
+        </Button>
+      </div>
+    </div>
+  );
+}
