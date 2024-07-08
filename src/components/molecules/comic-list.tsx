@@ -35,6 +35,8 @@ export function ComicList({ characterId }: ComicListProps) {
           </div>
         </li>
       ))}
+
+      {comics.results?.length === 0 && <p>No comics found</p>}
     </ul>
   );
 }

@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import logo from '@/assets/marvel_not_found.png';
+import { CardTitle } from '../atoms/card-title';
+
 type CardProps = {
   id: number;
   name: string;
@@ -12,17 +15,18 @@ type CardProps = {
 };
 
 export function Card({ thumbnail, id, name }: CardProps) {
+  const image = thumbnail.path.includes('image_not_available')
+    ? logo
+    : `${thumbnail.path}.${thumbnail.extension}`;
+
   return (
     <Link href={`/character/${id}`} className="relative h-96 w-full overflow-hidden rounded-sm">
-      <div className="absolute z-10 bg-red-500">
-        <h3 className="px-4 text-sm font-bold">{name}</h3>
-      </div>
+      <CardTitle name={name} />
       <Image
-        src={`${thumbnail.path}.${thumbnail.extension}`}
+        src={image}
         alt={name}
-        objectFit="cover"
         fill
-        className="transition-transform hover:scale-[1.05] hover:opacity-75"
+        className="object-cover transition-transform hover:scale-[1.05] hover:opacity-75"
       />
     </Link>
   );
