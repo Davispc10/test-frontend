@@ -1,4 +1,3 @@
-import { PAGE_SIZE } from '@/components/molecules/pagination-content';
 import { httpClient } from '@/lib/httpClient';
 
 type Character = {
