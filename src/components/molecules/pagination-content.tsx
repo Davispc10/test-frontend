@@ -18,27 +18,22 @@ export function PaginationContent({
   const pages = Math.ceil(totalPages / PAGE_SIZE) || 1;
 
   return (
-    <div className="mt-8 flex items-center justify-end gap-4">
-      <span className="text-sm">Total pages: {pages}</span>
-
-      <div className="flex items-center gap-4">
+    <div className="mt-8 flex flex-col items-center justify-end gap-4">
+      <div className="flex items-center gap-2 md:w-full">
         <div className="text-sm">
           Page {currentPage} of {pages}
         </div>
+      </div>
 
-        <div className="flex items-center gap-2">
-          <Button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
-            <ChevronsLeft />
-            Previous Page
-          </Button>
-          <Button
-            onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === pages}
-          >
-            Next Page
-            <ChevronsRight />
-          </Button>
-        </div>
+      <div className="flex items-center gap-2">
+        <Button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+          <ChevronsLeft />
+          Previous Page
+        </Button>
+        <Button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === pages}>
+          Next Page
+          <ChevronsRight />
+        </Button>
       </div>
     </div>
   );
