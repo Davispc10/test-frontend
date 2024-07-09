@@ -15,7 +15,7 @@ const generatePages = (page: number, totalPages: number) => {
   }
 
   if (current > total - 2) {
-    return [1, 2, L_ELLIPISIS, total - 1, total];
+    return [1, 2, L_ELLIPISIS, total - 2, total - 1, total];
   }
 
   if (current === total - 2) {
@@ -36,7 +36,13 @@ const generatePages = (page: number, totalPages: number) => {
 export const usePagination = (page: number, limit: number, total: number) => {
   const totalPages = Math.ceil(total / limit);
   const pages = generatePages(page, totalPages);
-  const isCurrentPage = (n: number) => n === page;
+  const isCurrentPage = (n: number) => {
+    if (page === 0) {
+      return n === page + 1;
+    } else {
+      return n === page;
+    }
+  };
 
   return { pages, isCurrentPage };
 };
