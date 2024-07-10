@@ -1,7 +1,11 @@
 "use client";
 
-import { descriptionValidation } from "@/libs/DescriptionValidation";
+import SkeletonCharacterDetail from "@/components/organisms/skeletonCharacterDetail";
+import CharacterDetailsTemplate from "@/components/templates/CharacterDetailsTemplate";
+import ComicTemplate from "@/components/templates/ComicTemplate";
+import { descriptionValidation } from "@/libs/descriptionValidation";
 import { fetchCharacterById } from "@/libs/fetchCharacterById";
+import { fechCharacterComics } from "@/libs/fetchCharacterComics";
 import { imagePathValidation } from "@/libs/ImagePathValidation";
 import { Undo2 } from "lucide-react";
 import Image from "next/image";
@@ -13,9 +17,6 @@ const CharacterDetails = ({ params }: { params: { id: string } }) => {
   const { isLoading, data } = useQuery(["character" + params.id], () =>
     fetchCharacterById(params.id)
   );
-  const { data: comicsData, isLoading: IsLoadingComics } = useQuery([
-    "characterComic" + params.id,
-  ]);
 
   const router = useRouter();
 
@@ -28,29 +29,14 @@ const CharacterDetails = ({ params }: { params: { id: string } }) => {
         >
           Voltar <Undo2 />
         </button>
-        <div>
-          {data?.results.map((char) => {
-            return (
-              <div key={char.id} className="flex  justify-between">
-                <div>
-                  <h2 className="text-3xl font-semibold">{char.name}</h2>
-                  <p>{descriptionValidation(char.description)}</p>
-                </div>
 
-                <Image
-                  src={imagePathValidation(
-                    char.thumbnail?.path,
-                    char.thumbnail?.extension
-                  )}
-                  width={400}
-                  height={400}
-                  className="rounded-md hover:shadow-lg hover:shadow-slate-50/25 hover:scale-105 duration-300 "
-                  alt={`Foto do personagem: ${char.name}`}
-                />
-              </div>
-            );
-          })}
-        </div>
+        {isLoading ? (
+          <SkeletonCharacterDetail />
+        ) : (
+          <CharacterDetailsTemplate data={data?.results} />
+        )}
+
+        <ComicTemplate charId={params.id} />
       </div>
     </div>
   );

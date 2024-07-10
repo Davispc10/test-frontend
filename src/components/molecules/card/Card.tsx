@@ -7,6 +7,7 @@ import React from "react";
 const Card = ({ char }: { char: Character }) => {
   return (
     <div
+      data-cy="card"
       className="w-80 bg-neutral-800 p-4 rounded duration-300 hover:shadow-lg hover:shadow-slate-600 text-neutral-50 flex flex-col justify-center items-center gap-4"
       key={char.id}
     >

@@ -4,7 +4,7 @@ import {
 } from "@/interfaces/CharacterComics";
 import api from "@/services/api";
 
-const fetchCharacters = async (
+const fechCharacterComics = async (
   id: number
 ): Promise<IComicCharacterDataContainer> => {
   try {
@@ -18,4 +18,4 @@ const fetchCharacters = async (
   }
 };
 
-export { fetchCharacters };
+export { fechCharacterComics };

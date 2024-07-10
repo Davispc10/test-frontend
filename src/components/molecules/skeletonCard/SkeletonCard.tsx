@@ -1,7 +1,6 @@
-import SkeletonButtonCard from "@/components/atoms/skeletonCard/SkeletonButtonCard";
-import SkeletonDescriptionCard from "@/components/atoms/skeletonCard/SkeletonButtonCard";
-import SkeletonLogoCard from "@/components/atoms/skeletonCard/SkeletonLogoCard";
-import SkeletonNameCard from "@/components/atoms/skeletonCard/SkeletonNameCard";
+import SkeletonButtonCard from "@/components/atoms/skeleton/SkeletonButtonCard";
+import SkeletonLogoCard from "@/components/atoms/skeleton/SkeletonLogoCard";
+import SkeletonNameCard from "@/components/atoms/skeleton/SkeletonNameCard";
 import React from "react";
 
 const SkeletonCard = () => {

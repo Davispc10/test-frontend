@@ -2,7 +2,7 @@ import { L_ELLIPISIS, R_ELLIPISIS } from "@/constants/Ellipisis";
 
 const generatePages = (page: number, totalPages: number) => {
   const current = Math.min(page, totalPages);
-  const total = Math.max(1, totalPages);
+  const total = Math.max(1, totalPages - 1);
 
   if (total <= 7) {
     return Array.from({ length: total }).map((_, i) => i + 1);
