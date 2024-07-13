@@ -13,7 +13,6 @@ const ComicCard: React.FC<ComicCardProps> = ({ id, title, thumbnail }) => {
       <CustomImage
         src={thumbnail}
         alt={title}
-        fallbackSrc="/marvel-logo.png"
         width={150}
         height={225}
       />

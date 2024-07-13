@@ -15,7 +15,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ id, name, thumbnail }) =>
         <CustomImage
           src={thumbnail}
           alt={name}
-          fallbackSrc="/marvel-logo.png"
           width={200}
           height={200}
         />
