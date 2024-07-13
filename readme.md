@@ -27,21 +27,27 @@ Para começar a usar este projeto, siga os passos abaixo:
     cd test-frontend/marvel-challenge
   ```
 
-3. Instale as dependências:
+3. Configure as variáveis de ambiente:
+  ```sh
+    NEXT_PUBLIC_KEY=sua_public_key_aqui
+    NEXT_PUBLIC_HASH=seu_hash_aqui
+  ```
+
+4. Instale as dependências:
   ```sh
     npm install
   ```
-4. Execute os testes Jest:
+5. Execute os testes Jest:
   ```sh
     npm test
   ```
 
-5. Para executar os testes Cypress:
+6. Para executar os testes Cypress:
   ```sh
     npx cypress run
   ```
 
-6. Para iniciar o servidor de desenvolvimento e ver o aplicativo em   ação, execute:
+7. Para iniciar o servidor de desenvolvimento e ver o aplicativo em   ação, execute:
   ```sh
     npm run dev
   ```
