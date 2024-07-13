@@ -1,3 +1,14 @@
+import { getCharacters, getCharacterDetails, getCharacterComics } from './marvelAPI';
+import api from './api';
+
+
+jest.mock('./api');
+
+describe('Marvel API Services', () => {
+  // Limpa mock 
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
 
   describe('getCharacters', () => {
     it('Buscar os personagens', async () => {
@@ -108,3 +119,42 @@
       expect(result.description).toBe('Descrição não informada');
     });
   });
+
+  describe('getCharacterComics', () => {
+    it('buscar os comics de um personagem', async () => {
+      const mockResponse = {
+        data: {
+          data: {
+            results: [
+              {
+                id: 1,
+                title: 'Iron Man #1',
+                thumbnail: { path: 'http://example.com/comic1', extension: 'jpg' }
+              },
+              {
+                id: 2,
+                title: 'Iron Man #2',
+                thumbnail: { path: 'http://example.com/image_not_available', extension: 'jpg' }
+              }
+            ]
+          }
+        }
+      };
+
+      (api.get as jest.Mock).mockResolvedValue(mockResponse);
+
+      const result = await getCharacterComics(1);
+
+      expect(api.get).toHaveBeenCalledWith('/characters/1/comics', {
+        params: {
+          limit: 10,
+        }
+      });
+
+      expect(result).toEqual([
+        { id: 1, title: 'Iron Man #1', thumbnail: 'http://example.com/comic1.jpg' },
+        { id: 2, title: 'Iron Man #2', thumbnail: '/marvel-logo.png' }
+      ]);
+    });
+  });
+});
