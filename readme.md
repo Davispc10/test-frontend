@@ -24,7 +24,7 @@ Para começar a usar este projeto, siga os passos abaixo:
 
 2. Navegue até o diretório do projeto:
   ```sh
-    cd marvel-challenge
+    cd test-frontend/marvel-challenge
   ```
 
 3. Instale as dependências:
