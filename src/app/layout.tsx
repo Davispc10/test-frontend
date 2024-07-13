@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body style={inter.style} className="bg-zinc-900 text-zinc-100">
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

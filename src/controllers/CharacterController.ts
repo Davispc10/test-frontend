@@ -3,11 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 
 const characterRepository = new CharacterRepository()
 
-export function useFetchCharacters() {
+export function useFetchCharacters(offset: number) {
   return useQuery({
     queryKey: ['characters'],
-    queryFn: () => characterRepository.getAll(),
-    refetchOnWindowFocus: false,
-    staleTime: 1000 * 30 // 30 seconds
+    queryFn: () => characterRepository.getAll(offset),
+    staleTime: Infinity
   })
 }
