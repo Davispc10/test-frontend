@@ -1,0 +1,12 @@
+{
+  "tailwindAttributes": [
+    "className"
+  ],
+  "tailwindFunctions": [
+    "clsx"
+  ],
+  "semi": false,
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ]
+}
