@@ -53,3 +53,58 @@
       });
     });
   });
+
+  describe('getCharacterDetails', () => {
+    it('buscar detalhes dos personagens', async () => {
+      const mockResponse = {
+        data: {
+          data: {
+            results: [
+              {
+                id: 1,
+                name: 'Iron Man',
+                description: 'Genius billionaire',
+                thumbnail: { path: 'http://example.com/ironman', extension: 'jpg' }
+              }
+            ]
+          }
+        }
+      };
+
+      (api.get as jest.Mock).mockResolvedValue(mockResponse);
+
+      const result = await getCharacterDetails(1);
+
+      expect(api.get).toHaveBeenCalledWith('/characters/1');
+
+      expect(result).toEqual({
+        id: 1,
+        name: 'Iron Man',
+        description: 'Genius billionaire',
+        thumbnail: 'http://example.com/ironman.jpg'
+      });
+    });
+
+    it('deve trabalhar bem se nao tiver descrição', async () => {
+      const mockResponse = {
+        data: {
+          data: {
+            results: [
+              {
+                id: 1,
+                name: 'Iron Man',
+                description: '',
+                thumbnail: { path: 'http://example.com/ironman', extension: 'jpg' }
+              }
+            ]
+          }
+        }
+      };
+
+      (api.get as jest.Mock).mockResolvedValue(mockResponse);
+
+      const result = await getCharacterDetails(1);
+
+      expect(result.description).toBe('Descrição não informada');
+    });
+  });
