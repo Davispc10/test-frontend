@@ -1,4 +1,3 @@
-// Importando as funções necessárias do testing-library/react
 import { render, screen } from '@testing-library/react';
 import ComicCard from './ComicCard';
 
