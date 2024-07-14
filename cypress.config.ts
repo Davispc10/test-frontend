@@ -7,4 +7,11 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
+  defaultCommandTimeout: 6000,
+  component: {
+    devServer: {
+      framework: "next",
+      bundler: "webpack",
+    },
+  },
 });

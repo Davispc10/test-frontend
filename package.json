@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run:e2e": "cypress run --e2e",
+    "cy:run:comp": "cypress run --component"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",

@@ -7,7 +7,13 @@ const nextConfig = {
         hostname: "i.annihil.us",
         port: "",
         pathname: "/u/prod/marvel/**",
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/photo-*",
+      },
     ]
   }
 };
