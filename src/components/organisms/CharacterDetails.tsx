@@ -8,7 +8,10 @@ type Props = {
 
 export function CharacterDetails({ character }: Props) {
   return (
-    <div className="mt-4 flex w-4/5 items-center justify-between gap-8 rounded-xl bg-red-900 p-8 shadow shadow-white">
+    <div
+      id="character-details-card"
+      className="mt-4 flex w-4/5 items-center justify-between gap-8 rounded-xl bg-red-900 p-8 shadow shadow-white"
+    >
       <div className="relative size-96 shadow shadow-black">
         <CharacterImage thumbnail={character.thumbnail} isButton={false} />
       </div>

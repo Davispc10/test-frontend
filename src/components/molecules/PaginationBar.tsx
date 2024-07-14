@@ -9,7 +9,10 @@ type Props = {
 
 export function PaginationBar({ totalPages }: Props) {
   return (
-    <div className="flex w-64 flex-row justify-between py-8">
+    <div
+      id="pagination-bar"
+      className="flex w-64 flex-row justify-between py-8"
+    >
       <ImageIcon iconFileName={leftArrowIcon} />
       <PaginationNumber number={1} active />
       <PaginationNumber number={2} />

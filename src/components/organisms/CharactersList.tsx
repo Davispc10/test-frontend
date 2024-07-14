@@ -7,7 +7,10 @@ type Props = {
 
 export function CharactersList({ characters }: Props) {
   return (
-    <div className="flex w-11/12 flex-wrap items-center justify-center gap-5">
+    <div
+      id="character-list"
+      className="flex w-11/12 flex-wrap items-center justify-center gap-5"
+    >
       {characters.length > 0 ? (
         characters.map((character) => (
           <CharacterCard key={character.id} character={character} />
