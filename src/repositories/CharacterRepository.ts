@@ -15,8 +15,8 @@ type CharacterComicsResponseType = {
 export class CharacterRepository {
   private apiUrl = (path: string) => createApiUrl(path)
 
-  async getAll(offset: number): Promise<CharactersResponseType> {
-    const response = await axios.get(this.apiUrl("characters") + `&offset=${offset}`)
+  async getAll(offset: number, keyword: string): Promise<CharactersResponseType> {
+    const response = await axios.get(this.apiUrl("characters") + `&offset=${offset}` + (keyword && `&nameStartsWith=${keyword}`))
     return { results: response.data.data.results, total: response.data.data.total }
   }
 

@@ -4,6 +4,7 @@ import { PaginationBar } from "../molecules/PaginationBar"
 import { SearchBar } from "../molecules/SearchBar"
 import { CharactersList } from "../organisms/CharactersList"
 import { Loading } from "../atoms/Loading"
+import { Dispatch, SetStateAction } from "react"
 
 type Props = {
   data: {
@@ -14,6 +15,8 @@ type Props = {
   previousPage: () => void
   nextPage: () => void
   isLoading: boolean
+  setKeyword: Dispatch<SetStateAction<string>>
+  keyword: string
 }
 
 export function HomePage({
@@ -22,10 +25,12 @@ export function HomePage({
   nextPage,
   previousPage,
   isLoading,
+  setKeyword,
+  keyword,
 }: Props) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-start">
-      <SearchBar />
+      <SearchBar setKeyword={setKeyword} keyword={keyword} />
 
       <PaginationBar
         totalPages={Math.ceil(data.total / 20)}

@@ -41,8 +41,8 @@ function optmizeComics(comics: ComicDTO[]): ComicType[] {
 }
 
 export const characterService = {
-  getAllCharacters: async (offset: number) => {
-    const data = await characterRepository.getAll(offset)
+  getAllCharacters: async (offset: number, keyword: string) => {
+    const data = await characterRepository.getAll(offset, keyword)
 
     const charactersAdjusted = processingCharactersImage(data.results)
 

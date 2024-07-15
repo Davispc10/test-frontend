@@ -5,8 +5,10 @@ import { useEffect, useState } from "react"
 
 export default function Home() {
   const [page, setPage] = useState(0)
+  const [keyword, setKeyword] = useState("")
   const { data, isError, isLoading, error, refetch } = useFetchCharacters(
     20 * page,
+    keyword,
   )
 
   function previousPage() {
@@ -28,13 +30,14 @@ export default function Home() {
 
   return (
     <main>
-      {/* <button onClick={() => refetch()}>Teste</button> */}
       <HomePage
         data={data || { results: [], total: 0 }}
         previousPage={previousPage}
         nextPage={nextPage}
         page={page}
         isLoading={isLoading}
+        setKeyword={setKeyword}
+        keyword={keyword}
       />
     </main>
   )

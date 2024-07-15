@@ -1,10 +1,10 @@
 import { characterService } from "@/services/characterService";
 import { useQuery } from "@tanstack/react-query";
 
-export function useFetchCharacters(offset: number) {
+export function useFetchCharacters(offset: number, keyword: string) {
   return useQuery({
-    queryKey: ['characters', offset],
-    queryFn: async () => await characterService.getAllCharacters(offset),
+    queryKey: ['characters', offset, keyword],
+    queryFn: async () => await characterService.getAllCharacters(offset, keyword),
   })
 }
 
