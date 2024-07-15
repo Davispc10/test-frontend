@@ -1,3 +1,35 @@
+# My Instructions to run and test
+
+## I just push the `.env.exmaple`, copy it and rename to `.env` (fill the keys and URL of marvel developer to use this application)
+
+```
+cp .env.example .env
+```
+
+## Run the application
+
+```
+npm run dev
+```
+
+## Cypress commands to see the tests
+
+- Run the e2e tests (2 pages / 5 tests)
+
+```
+npm run cy:run:e2e
+```
+
+- Run the components tests (4 components / 9 tests)
+
+```
+npm run cy:run:comp
+```
+
+___
+___
+___
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
