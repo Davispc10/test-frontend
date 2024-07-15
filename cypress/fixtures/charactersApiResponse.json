@@ -1,0 +1,182 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2024 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2024 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2024 MARVEL</a>",
+  "etag": "bde0f4477acc21704a64368e0e66bbfd5a624def",
+  "data": {
+    "offset": 0,
+    "limit": 1,
+    "total": 1564,
+    "count": 1,
+    "results": [
+      {
+        "id": 1011334,
+        "name": "3-D Man",
+        "description": "custom description",
+        "modified": "2014-04-29T14:18:17-0400",
+        "thumbnail": {
+          "path": "https://images.unsplash.com/photo-1612036781997-c3c7622682fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hcnZlbHxlbnwwfHwwfHx8MA%3D%3D",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011334",
+        "comics": {
+          "available": 12,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
+              "name": "Avengers: The Initiative (2007) #14"
+            }
+          ],
+          "returned": 2
+        },
+        "series": {
+          "available": 3,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/1945",
+              "name": "Avengers: The Initiative (2007 - 2010)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/2005",
+              "name": "Deadpool (1997 - 2002)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/2045",
+              "name": "Marvel Premiere (1972 - 1981)"
+            }
+          ],
+          "returned": 3
+        },
+        "stories": {
+          "available": 21,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/19947",
+              "name": "Cover #19947",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/19948",
+              "name": "The 3-D Man!",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/events",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/events/269",
+              "name": "Secret Invasion"
+            }
+          ],
+          "returned": 1
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/characters/74/3-d_man?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          },
+          {
+            "type": "wiki",
+            "url": "http://marvel.com/universe/3-D_Man_(Chandler)?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          },
+          {
+            "type": "comiclink",
+            "url": "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          }
+        ]
+      },
+      {
+        "id": 1011334,
+        "name": "3-D Man",
+        "description": "custom description",
+        "modified": "2014-04-29T14:18:17-0400",
+        "thumbnail": {
+          "path": "https://images.unsplash.com/photo-1612036781997-c3c7622682fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hcnZlbHxlbnwwfHwwfHx8MA%3D%3D",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011334",
+        "comics": {
+          "available": 12,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
+              "name": "Avengers: The Initiative (2007) #14"
+            }
+          ],
+          "returned": 2
+        },
+        "series": {
+          "available": 3,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/series",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/1945",
+              "name": "Avengers: The Initiative (2007 - 2010)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/2005",
+              "name": "Deadpool (1997 - 2002)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/series/2045",
+              "name": "Marvel Premiere (1972 - 1981)"
+            }
+          ],
+          "returned": 3
+        },
+        "stories": {
+          "available": 21,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/19947",
+              "name": "Cover #19947",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/19948",
+              "name": "The 3-D Man!",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/events",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/events/269",
+              "name": "Secret Invasion"
+            }
+          ],
+          "returned": 1
+        },
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/characters/74/3-d_man?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          },
+          {
+            "type": "wiki",
+            "url": "http://marvel.com/universe/3-D_Man_(Chandler)?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          },
+          {
+            "type": "comiclink",
+            "url": "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=7c21a580ba468b057331c9bcd27adbe2"
+          }
+        ]
+      }
+    ]
+  }
+}
