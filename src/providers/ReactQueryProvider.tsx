@@ -8,7 +8,7 @@ export function ReactQueryProvider({ children }: React.PropsWithChildren) {
       defaultOptions: {
         queries: {
           refetchOnWindowFocus: false,
-          staleTime: 1000 * 30,
+          // staleTime: 1000 * 30,
         },
       },
     }),

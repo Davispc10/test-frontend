@@ -5,21 +5,31 @@ import { PaginationNumber } from "../atoms/PaginationNumber"
 
 type Props = {
   totalPages: number
+  page: number
+  nextPage: () => void
+  previousPage: () => void
 }
 
-export function PaginationBar({ totalPages }: Props) {
+export function PaginationBar({
+  totalPages,
+  page,
+  nextPage,
+  previousPage,
+}: Props) {
   return (
     <div
       id="pagination-bar"
-      className="flex w-64 flex-row justify-between py-8"
+      className="flex flex-row gap-4 self-end py-8 pr-32"
     >
-      <ImageIcon iconFileName={leftArrowIcon} />
-      <PaginationNumber number={1} active />
-      <PaginationNumber number={2} />
-      <PaginationNumber number={3} />
-      <PaginationNumber />
-      <PaginationNumber number={totalPages} />
-      <ImageIcon iconFileName={rightArrowIcon} />
+      <div onClick={() => previousPage()}>
+        <ImageIcon iconFileName={leftArrowIcon} />
+      </div>
+
+      <PaginationNumber number={page + 1} active />
+
+      <div onClick={() => nextPage()}>
+        <ImageIcon iconFileName={rightArrowIcon} />
+      </div>
     </div>
   )
 }
