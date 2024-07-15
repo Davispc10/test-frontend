@@ -1,6 +1,6 @@
 import { CharacterImage } from "../atoms/CharacterImage"
 import { CharacterName } from "../atoms/CharacterName"
-import { CharacterType } from "@/types/character"
+import { CharacterType } from "@/models/character"
 import Link from "next/link"
 
 type Props = {

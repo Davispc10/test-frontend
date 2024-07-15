@@ -1,15 +1,15 @@
-import { ComicType } from "@/types/comic";
-import { CharacterType } from "@/types/character";
+import { ComicDTO } from "@/models/comic";
+import { CharacterDTO } from "@/models/character";
 import { createApiUrl } from "@/utils/apiUrl";
 import axios from "axios";
 
 type CharactersResponseType = {
-  results: CharacterType[]
+  results: CharacterDTO[]
   total: number
 }
 
 type CharacterComicsResponseType = {
-  results: ComicType[]
+  results: ComicDTO[]
 }
 
 export class CharacterRepository {
@@ -22,11 +22,10 @@ export class CharacterRepository {
 
   async getById(characterId: string): Promise<CharactersResponseType> {
     const response = await axios.get(this.apiUrl(`characters/${characterId}`))
-    console.log("Single Character: ", response.data)
     return { results: response.data.data.results, total: response.data.data.total}
   }
 
-  async getCharacterComics(characterId: string): Promise<CharacterComicsResponseType> {
+  async getComics(characterId: string): Promise<CharacterComicsResponseType> {
     const response = await axios.get(this.apiUrl(`characters/${characterId}/comics`))
     return { results: response.data.data.results }
   }

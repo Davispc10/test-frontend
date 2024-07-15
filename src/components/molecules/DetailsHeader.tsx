@@ -22,13 +22,3 @@ export function DetailsHeader({ title }: Props) {
     </div>
   )
 }
-
-{
-  // BLUR
-  /* <div className="flex h-20 w-24 items-center justify-center">
-        <div className="fixed h-8 w-40 bg-red-600 blur-2xl"></div>
-        <p className="relative z-10 bg-transparent font-bold text-zinc-100">
-          Character
-        </p>
-      </div> */
-}

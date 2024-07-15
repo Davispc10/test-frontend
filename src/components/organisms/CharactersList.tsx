@@ -1,4 +1,4 @@
-import { CharacterType } from "@/types/character"
+import { CharacterType } from "@/models/character"
 import { CharacterCard } from "../molecules/CharacterCard"
 
 type Props = {

@@ -1,4 +1,4 @@
-import { CharacterType } from "@/types/character"
+import { CharacterType } from "@/models/character"
 import { CharacterImage } from "../atoms/CharacterImage"
 import { ComicsList } from "./ComicsList"
 
@@ -18,9 +18,7 @@ export function CharacterDetails({ character }: Props) {
 
       <div className="flex size-96 h-fit flex-1 flex-col items-center gap-4">
         <p className="text-3xl font-bold">{character.name}</p>
-        <p className="px-8 text-base text-zinc-200">
-          {character.description || "----------"}
-        </p>
+        <p className="px-8 text-base text-zinc-200">{character.description}</p>
 
         <ComicsList characterId={character.id} />
       </div>

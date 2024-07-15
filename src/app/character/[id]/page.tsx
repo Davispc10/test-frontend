@@ -29,7 +29,7 @@ export default function Character({ params }: Props) {
 
   return (
     <main>
-      <CharacterDetailsPage character={characterQuery.data!.results[0]} />
+      <CharacterDetailsPage character={characterQuery.data!} />
     </main>
   )
 }

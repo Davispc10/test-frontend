@@ -4,6 +4,18 @@ export type CharacterType = {
   id: string
   name: string
   description: string
+  thumbnail: string
+  comics: {
+    available: number
+    items: ComicItem[]
+    returned: number
+  }
+}
+
+export type CharacterDTO = {
+  id: string
+  name: string
+  description: string
   thumbnail: {
     path: string
     extension: string
@@ -15,16 +27,4 @@ export type CharacterType = {
     items: ComicItem[]
     returned: number
   }
-//   series: {
-//     available: number
-//     collectionURI: string
-//     items: Serie[]
-//     returned: number
-//   }
-//   stories: {
-//     available: number
-//     collectionURI: string
-//     items: Story[]
-//     returned: number
-//   }
 }

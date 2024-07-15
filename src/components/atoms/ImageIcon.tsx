@@ -9,7 +9,6 @@ type Props = {
 
 
 export function ImageIcon({ iconFileName, position, className }: Props) {
-  console.log(iconFileName)
   return (
     <Image
       src={iconFileName}

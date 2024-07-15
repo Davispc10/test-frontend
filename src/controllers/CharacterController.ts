@@ -1,27 +1,23 @@
-import { CharacterRepository } from "@/repositories/CharacterRepository";
+import { characterService } from "@/services/characterService";
 import { useQuery } from "@tanstack/react-query";
-
-const characterRepository = new CharacterRepository()
 
 export function useFetchCharacters(offset: number) {
   return useQuery({
     queryKey: ['characters'],
-    queryFn: () => characterRepository.getAll(offset),
-    staleTime: Infinity
+    queryFn: async () => await characterService.getAllCharacters(offset),
   })
 }
 
 export function useFetchCharacter(characterId: string) {
   return useQuery({
     queryKey: ['character'],
-    queryFn: () => characterRepository.getById(characterId),
-    // staleTime: Infinity
+    queryFn: async () => await characterService.getCharacter(characterId)
   })
 }
 
 export function useFetchCharacterComics(characterId: string) {
   return useQuery({
     queryKey: ["character", "comics"],
-    queryFn: () => characterRepository.getCharacterComics(characterId)
+    queryFn: async () => await characterService.getCharacterComics(characterId)
   })
 }

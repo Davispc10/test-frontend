@@ -1,6 +1,5 @@
-import { CharacterType } from "@/types/character"
+import { CharacterType } from "@/models/character"
 import { Footer } from "../molecules/Footer"
-import { Header } from "../molecules/Header"
 import { PaginationBar } from "../molecules/PaginationBar"
 import { SearchBar } from "../molecules/SearchBar"
 import { CharactersList } from "../organisms/CharactersList"

@@ -1,6 +1,6 @@
 import { DetailsHeader } from "@/components/molecules/DetailsHeader"
 import { CharacterDetails } from "@/components/organisms/CharacterDetails"
-import { CharacterType } from "@/types/character"
+import { CharacterType } from "@/models/character"
 
 type Props = {
   character: CharacterType
