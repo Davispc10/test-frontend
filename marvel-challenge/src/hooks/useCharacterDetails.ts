@@ -13,5 +13,7 @@ export const useCharacterDetails = (id: number) => {
     queryKey: ['character', id],
     queryFn: () => getCharacterDetails(id),
     enabled: !!id,
+    staleTime: 10 * 60 * 100, // 10 minutos
+    gcTime: 30 * 60 * 100 // 30 minutos
   });
 };

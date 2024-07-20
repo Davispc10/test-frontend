@@ -12,5 +12,7 @@ export const useCharacterComics = (id: number) => {
     queryKey: ['characterComics', id],
     queryFn: () => getCharacterComics(id),
     enabled: !!id,
+    staleTime: 10 * 60 * 100, // 10 minutos
+    gcTime: 30 * 60 * 100 // 30 minuut
   });
 };
