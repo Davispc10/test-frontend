@@ -1,11 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 interface SearchBarProps {
   onSearch: (term: string) => void;
+  initialSearchTerm: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, initialSearchTerm }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = initialSearchTerm;
+    }
+  }, [initialSearchTerm]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           ref={inputRef}
           placeholder="Buscar personagem..."
           className="flex-grow px-4 py-3 text-gray-700 focus:outline-none"
+          defaultValue={initialSearchTerm}
         />
         <button
           type="submit"
