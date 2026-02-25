@@ -30,20 +30,23 @@ Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
   - UI design
 
 ### Tecnologias Obrigatórias
- - NextJs (versão 12)
+ - NextJs (versão 15+)
+ - react (versão 18+)
  - Typescript
  - Tailwind css
- - Cypress
- - React query
+ - shadcn
+ - Tanstack/react-query
 
-### Tecnologias opcionais 
+### Tecnologias opcionais
+ - Tanstack/form
+ - zustand
  - Jest
- - Testing library
+ - playwright
 
 ### Difencial
  - UI design agradável
- - Conhecimento de Atomic Design 
- - Conhecimento de clean archtecture
+ - Conhecimento de AI
+ - conhecimento em Vue.js (básico)
 
 ### Por onde começo?
 Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
