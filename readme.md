@@ -5,19 +5,19 @@ Nós estamos sempre em busca de profissionais interessantes e interessados, com 
 
 Vamos ao teste!
 
-## Desafio Marvel
-Crie um aplicativo front-end conectado ao back-end Marvel desenvolvido usando dados e rotas obtidos pela API oficial da Marvel Comics.
+## Desafio Pokémon
+Crie um aplicativo front-end conectado ao back-end Pokemon desenvolvido usando dados e rotas obtidos pela PokéAPI.
 
-API DOCS: https://developer.marvel.com/docs
+API DOCS: https://pokeapi.co/docs/v2
 
 ### 💻 Requisitos 
 
-- A aplicação deverá conter uma página inicial com uma listagem de personagens com paginação e deverá possuir um filtro que busca os dados pelo nome do personagem.
-- Ao clicar em um personagem deverá ser exibida a página do personagem com detalhes (nome, descrição e as fotos dos quadrinhos)
-- Na página do personagem deverá conter um botão que volta para página inicial de listagem dos personangens
-- Ao voltar para a página da listagem dos personagens o filtro que busca o nome dos dados e a página da listagem deverão ser o mesmo que estavam antes do usuário entrar na página de detalhes do personagem.
-- caso o personagem não tenha foto deverá ser colocada uma foto do lotipo da Marvel. (atenção: não será permitido colocar essa validação nos componentes visuais)
-- Caso o personagem não tenha descrição exbir o texto "descrição não informada". (atenção: não será permitido colocar essa validação nos componentes visuais)
+- A aplicação deverá conter uma página inicial com uma listagem de Pokémons com paginação e deverá possuir um filtro que busca os dados pelo nome do Pokémon.
+- Ao clicar em um Pokémon deverá ser exibida a página de detalhes com (nome, descrição e sprites/imagens do Pokémon)
+- Na página de detalhes deverá conter um botão que volta para página inicial de listagem dos Pokémons
+- Ao voltar para a página da listagem dos Pokémons o filtro por nome e a página da listagem deverão ser os mesmos que estavam antes do usuário entrar na página de detalhes.
+- Caso o Pokémon não tenha imagem deverá ser exibida uma imagem padrão de Pokémon. (atenção: não será permitido colocar essa validação nos componentes visuais)
+- Caso o Pokémon não tenha descrição exibir o texto "descrição não informada". (atenção: não será permitido colocar essa validação nos componentes visuais)
 - Todas as rotas usadas deverão ter cacheamento de pelo menos 30 segundos.
 
 ### Critérios de avaliação
@@ -54,3 +54,4 @@ Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta 
 Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
 
 Boa sorte! :)
+
