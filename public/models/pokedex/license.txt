@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pokedex
+* source:	https://sketchfab.com/3d-models/pokedex-d098961d2f7e4f71ad9ba052f2f1ef40
+* author:	TuMankito77 (https://sketchfab.com/TuMankito77)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pokedex" (https://sketchfab.com/3d-models/pokedex-d098961d2f7e4f71ad9ba052f2f1ef40) by TuMankito77 (https://sketchfab.com/TuMankito77) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

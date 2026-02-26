@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spiderman
+* source:	https://sketchfab.com/3d-models/spiderman-53a321fad8e34d199005c0aa389c0c72
+* author:	daihao008 (https://sketchfab.com/daihao008)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spiderman" (https://sketchfab.com/3d-models/spiderman-53a321fad8e34d199005c0aa389c0c72) by daihao008 (https://sketchfab.com/daihao008) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
