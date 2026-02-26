@@ -1,0 +1,11 @@
+Model Information:
+* title:	Marvel Logo
+* source:	https://sketchfab.com/3d-models/marvel-logo-ffb798fdd2674e6fa17d812b78708064
+* author:	Anthony Yanez (https://sketchfab.com/paulyanez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Marvel Logo" (https://sketchfab.com/3d-models/marvel-logo-ffb798fdd2674e6fa17d812b78708064) by Anthony Yanez (https://sketchfab.com/paulyanez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

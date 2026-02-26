@@ -1,0 +1,43 @@
+// src/lib/pokemon-types.ts
+
+export const typeHexColors: Record<string, string> = {
+    bug: "#92BC2C",
+    dark: "#595761",
+    dragon: "#0C69C8",
+    electric: "#F2D94E",
+    fairy: "#EE90E6",
+    fighting: "#D3425F",
+    fire: "#FBA54C",
+    flying: "#A1BBEC",
+    ghost: "#5F6DBC",
+    grass: "#5FBD58",
+    ground: "#DA7C4D",
+    ice: "#75D0C1",
+    normal: "#A0A29F",
+    poison: "#B763CF",
+    psychic: "#FA8581",
+    rock: "#C9BB8A",
+    steel: "#5695A3",
+    water: "#539DDF",
+};
+
+export const typeClasses: Record<string, string> = {
+    bug: "bg-[#92BC2C]",
+    dark: "bg-[#595761]",
+    dragon: "bg-[#0C69C8]",
+    electric: "bg-[#F2D94E]",
+    fairy: "bg-[#EE90E6]",
+    fighting: "bg-[#D3425F]",
+    fire: "bg-[#FBA54C]",
+    flying: "bg-[#A1BBEC]",
+    ghost: "bg-[#5F6DBC]",
+    grass: "bg-[#5FBD58]",
+    ground: "bg-[#DA7C4D]",
+    ice: "bg-[#75D0C1]",
+    normal: "bg-[#A0A29F]",
+    poison: "bg-[#B763CF]",
+    psychic: "bg-[#FA8581]",
+    rock: "bg-[#C9BB8A]",
+    steel: "bg-[#5695A3]",
+    water: "bg-[#539DDF]",
+};
