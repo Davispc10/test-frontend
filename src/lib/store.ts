@@ -12,30 +12,37 @@ interface PokemonStore {
     setTypeFilter: (type: string) => void;
     rarityFilter: Rarity;
     setRarityFilter: (rarity: Rarity) => void;
+    page: number;
+    setPage: (page: number) => void;
     resetFilters: () => void;
 }
 
 export const usePokemonStore = create<PokemonStore>((set) => ({
     searchQuery: "",
-    setSearchQuery: (query) => set({ searchQuery: query }),
+    setSearchQuery: (query) => set({ searchQuery: query, page: 1 }),
     minId: undefined,
     maxId: undefined,
-    setRegion: (min, max) => set({ minId: min, maxId: max }),
+    setRegion: (min, max) => set({ minId: min, maxId: max, page: 1 }),
     typeFilters: [],
     setTypeFilter: (type) => set((state) => ({
+        page: 1,
         typeFilters: state.typeFilters.includes(type)
             ? state.typeFilters.filter(t => t !== type)
             : [...state.typeFilters, type]
     })),
     rarityFilter: null,
     setRarityFilter: (rarity) => set((state) => ({
+        page: 1,
         rarityFilter: state.rarityFilter === rarity ? null : rarity
     })),
+    page: 1,
+    setPage: (page) => set({ page }),
     resetFilters: () => set({
         minId: undefined,
         maxId: undefined,
         typeFilters: [],
         rarityFilter: null,
-        searchQuery: ""
+        searchQuery: "",
+        page: 1
     }),
 }));
