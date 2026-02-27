@@ -2,7 +2,8 @@
 
 import { CharacterList } from "@/components/character-list";
 import { RegionBanners } from "@/components/region-banners";
-import { useMarvelStore } from "@/lib/store";
+import { usePokemonStore } from "@/lib/store";
+import { useShallow } from "zustand/react/shallow";
 import { PokedexScene } from "@/components/pokedex-scene";
 import NextImage from "next/image";
 import Link from "next/link";
@@ -13,9 +14,20 @@ import { typeIcons } from "@/lib/type-icons";
 import { typeClasses } from "@/lib/pokemon-types";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { getTranslatedType } from "@/lib/translations";
 
 export default function Home() {
-  const { setRegion, minId, maxId, typeFilters, setTypeFilter, resetFilters, searchQuery } = useMarvelStore();
+  const { setRegion, minId, maxId, typeFilters, setTypeFilter, resetFilters, searchQuery } = usePokemonStore(
+    useShallow((state) => ({
+      setRegion: state.setRegion,
+      minId: state.minId,
+      maxId: state.maxId,
+      typeFilters: state.typeFilters,
+      setTypeFilter: state.setTypeFilter,
+      resetFilters: state.resetFilters,
+      searchQuery: state.searchQuery,
+    }))
+  );
   const [showPokedex, setShowPokedex] = useState(false);
 
   // Auto-show Pokedex when searching
@@ -150,7 +162,7 @@ export default function Home() {
                             className="w-3.5 h-3.5 flex items-center justify-center shrink-0 brightness-150"
                             dangerouslySetInnerHTML={{ __html: typeIcons[type.toLowerCase()] || "" }}
                           />
-                          <span>{type}</span>
+                          <span>{getTranslatedType(type)}</span>
                           <button
                             onClick={() => setTypeFilter(type)}
                             className="hover:bg-black/20 p-0.5 rounded-full transition-colors flex items-center justify-center cursor-pointer"

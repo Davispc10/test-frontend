@@ -10,6 +10,7 @@ import { typeHexColors, typeClasses } from "@/lib/pokemon-types";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { TypeMatchupModal } from "./type-matchup-modal";
+import { getTranslatedType } from "@/lib/translations";
 
 interface CharacterProps {
     id: number;
@@ -71,7 +72,7 @@ export function CharacterCard({ id, name, imageUrl }: CharacterProps) {
                                             <div className="w-3 h-3 flex items-center justify-center shrink-0 brightness-150"
                                                 dangerouslySetInnerHTML={{ __html: typeIcons[t.type.name] || '' }}
                                             />
-                                            {t.type.name}
+                                            {getTranslatedType(t.type.name)}
                                         </button>
                                     ))
                                 )}

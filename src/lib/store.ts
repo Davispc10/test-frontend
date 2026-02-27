@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export type Rarity = "legendary" | "mythical" | "ultrabeast" | null;
 
-interface MarvelStore {
+interface PokemonStore {
     searchQuery: string;
     setSearchQuery: (query: string) => void;
     minId: number | undefined;
@@ -15,7 +15,7 @@ interface MarvelStore {
     resetFilters: () => void;
 }
 
-export const useMarvelStore = create<MarvelStore>((set) => ({
+export const usePokemonStore = create<PokemonStore>((set) => ({
     searchQuery: "",
     setSearchQuery: (query) => set({ searchQuery: query }),
     minId: undefined,

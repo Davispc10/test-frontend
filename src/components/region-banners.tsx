@@ -231,21 +231,15 @@ export function RegionBanners({ onSelectRegion, activeRegion }: RegionBannersPro
                     {/* Active State Neon Line */}
                     {activeRegion === region.id && (
                         <div
-                            className="absolute bottom-0 left-0 right-0 h-1 animate-pulse rounded-b-[2.5rem]"
+                            className="absolute bottom-0 left-0 right-0 h-[1px] animate-pulse rounded-b-[1rem]"
                             style={{
                                 background: `linear-gradient(90deg, transparent, ${region.color}, transparent)`,
-                                boxShadow: `0 0 15px ${region.color}`
+                                boxShadow: `0 0 10px ${region.color}`
                             }}
                         />
                     )}
 
-                    {/* Active Badge */}
-                    {activeRegion === region.id && (
-                        <div className="absolute top-4 right-6 flex items-center gap-1.5 px-2 py-1 bg-white/10 border border-white/20 rounded-md backdrop-blur-md animate-in fade-in zoom-in duration-300 shadow-xl">
-                            <div className="w-1.5 h-1.5 rounded-full animate-pulse shadow-[0_0_8px_white]" style={{ backgroundColor: region.color }} />
-                            <span className="text-[7px] font-black uppercase tracking-tighter text-white/80">Monitorando</span>
-                        </div>
-                    )}
+
                 </button>
             ))}
 

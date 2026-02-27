@@ -5,9 +5,9 @@ export const revalidate = 3600;
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
-    const id = params.id;
+    const id = (await params).id;
 
     try {
         const data = await getItemDetails(id);

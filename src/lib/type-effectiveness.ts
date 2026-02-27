@@ -69,3 +69,46 @@ export function getTypeDetails(type: string) {
         immunities: entry.immunities
     };
 }
+
+export interface AdvancedMatchups {
+    weaknesses4x: string[];
+    weaknesses2x: string[];
+    resistances05x: string[];
+    resistances025x: string[];
+    immunities: string[];
+}
+
+export function getAdvancedMatchups(types: string[]): AdvancedMatchups {
+    const scores: Record<string, number> = {};
+
+    // Initialize all types to 1x multiplier
+    Object.keys(typeChart).forEach(type => scores[type] = 1);
+
+    // Apply multipliers for each of the Pokemon's types
+    types.forEach(pokemonType => {
+        const entry = typeChart[pokemonType.toLowerCase()];
+        if (!entry) return;
+
+        entry.weaknesses.forEach(w => scores[w] *= 2);
+        entry.resistances.forEach(r => scores[r] *= 0.5);
+        entry.immunities.forEach(i => scores[i] *= 0);
+    });
+
+    const result: AdvancedMatchups = {
+        weaknesses4x: [],
+        weaknesses2x: [],
+        resistances05x: [],
+        resistances025x: [],
+        immunities: []
+    };
+
+    Object.entries(scores).forEach(([type, multiplier]) => {
+        if (multiplier === 4) result.weaknesses4x.push(type);
+        else if (multiplier === 2) result.weaknesses2x.push(type);
+        else if (multiplier === 0.5) result.resistances05x.push(type);
+        else if (multiplier === 0.25) result.resistances025x.push(type);
+        else if (multiplier === 0) result.immunities.push(type);
+    });
+
+    return result;
+}

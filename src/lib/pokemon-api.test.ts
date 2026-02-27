@@ -9,6 +9,17 @@ describe('Pokemon API Integration Tests', () => {
     });
 
     describe('getPokemonDetails', () => {
+        let originalWarn: typeof console.warn;
+
+        beforeEach(() => {
+            originalWarn = console.warn;
+            console.warn = jest.fn(); // Suppress expected translation warnings in tests
+        });
+
+        afterEach(() => {
+            console.warn = originalWarn;
+        });
+
         it('should return a default image if official-artwork is missing', async () => {
             const mockBasicInfo = {
                 id: 9999,

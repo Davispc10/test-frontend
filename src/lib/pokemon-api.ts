@@ -143,7 +143,7 @@ export interface MegaEvolution {
     imageUrl: string;
 }
 
-export const LEGENDARY_IDS = [144, 145, 146, 150, 243, 244, 245, 249, 250, 377, 378, 379, 380, 381, 382, 383, 384, 480, 481, 482, 483, 484, 485, 486, 487, 488, 638, 639, 640, 641, 642, 645, 646, 716, 717, 718, 772, 773, 785, 786, 787, 788, 789, 790, 791, 792, 800, 888, 889, 890, 891, 892, 894, 895, 896, 897, 898, 905, 1001, 1002, 1003, 1004, 1007, 1008, 1014, 1015, 1016, 1017, 1024];
+export const LEGENDARY_IDS = [144, 145, 146, 150, 243, 244, 245, 249, 250, 377, 378, 379, 380, 381, 382, 383, 384, 480, 481, 482, 483, 484, 485, 486, 487, 488, 638, 639, 640, 641, 642, 643, 644, 645, 646, 716, 717, 718, 772, 773, 785, 786, 787, 788, 789, 790, 791, 792, 800, 888, 889, 890, 891, 892, 894, 895, 896, 897, 898, 905, 1001, 1002, 1003, 1004, 1007, 1008, 1014, 1015, 1016, 1017, 1024];
 
 export const MYTHICAL_IDS = [151, 251, 385, 386, 489, 490, 491, 492, 493, 494, 647, 648, 649, 719, 720, 721, 801, 802, 807, 808, 809, 893, 1025];
 
@@ -301,6 +301,30 @@ export async function getPokemons(
 }
 
 /**
+ * Função utilitária para traduzir texto usando a API gratuita MyMemory.
+ * Usamos para traduzir descrições e categorias do inglês para o português.
+ */
+async function translateText(text: string): Promise<string> {
+    if (!text || text === "Unknown" || text === "Descrição não informada") return text;
+
+    try {
+        const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt-BR&dt=t&q=' + encodeURIComponent(text);
+
+        const res = await fetch(url);
+        if (res.ok) {
+            const data = await res.json();
+            if (data && data[0]) {
+                return data[0].map((s: any) => s[0]).join('');
+            }
+        }
+    } catch (e) {
+        console.warn("Translation failed for text:", text.substring(0, 20) + "...");
+    }
+
+    return text;
+}
+
+/**
  * Busca os detalhes estruturais e status de um único Pokémon.
  * Integra dados de espécie (descrição/categoria).
  * @param id ou name do Pokémon.
@@ -341,15 +365,24 @@ export async function getPokemonDetails(id: string | number): Promise<PokemonDet
         if (speciesRes.ok) {
             speciesData = await speciesRes.json();
             if (speciesData) {
-                // Pegar a primeira descrição em inglês ou português se disponível
-                flavor = speciesData.flavor_text_entries.find(e => e.language.name === "en")?.flavor_text ||
-                    speciesData.flavor_text_entries[0]?.flavor_text || "Descrição não informada";
-
-                flavor = flavor.replace(/\f/g, ' '); // Limpar caracteres de controle
+                let nativeFlavor = speciesData.flavor_text_entries.find(e => e.language.name === "pt-BR" || e.language.name === "pt")?.flavor_text;
+                if (!nativeFlavor) {
+                    const fallbackFlavor = speciesData.flavor_text_entries.find(e => e.language.name === "en")?.flavor_text ||
+                        speciesData.flavor_text_entries[0]?.flavor_text || "Descrição não informada";
+                    flavor = await translateText(fallbackFlavor.replace(/\f/g, ' '));
+                } else {
+                    flavor = nativeFlavor.replace(/\f/g, ' ');
+                }
 
                 // Pegar a categoria (Genus)
-                category = speciesData.genera.find(g => g.language.name === "en")?.genus ||
-                    speciesData.genera[0]?.genus || "Unknown";
+                let nativeCategory = speciesData.genera.find(g => g.language.name === "pt-BR" || g.language.name === "pt")?.genus;
+                if (!nativeCategory) {
+                    const fallbackCategory = speciesData.genera.find(g => g.language.name === "en")?.genus ||
+                        speciesData.genera[0]?.genus || "Unknown";
+                    category = await translateText(fallbackCategory);
+                } else {
+                    category = nativeCategory;
+                }
 
                 genderRate = speciesData.gender_rate;
 
@@ -393,8 +426,17 @@ export async function getPokemonDetails(id: string | number): Promise<PokemonDet
                 const abRes = await fetch(a.ability.url, { next: { revalidate: 3600 } });
                 if (abRes.ok) {
                     const abData = await abRes.json();
-                    const description = abData.effect_entries.find((e: any) => e.language.name === "en")?.short_effect ||
-                        abData.flavor_text_entries.find((e: any) => e.language.name === "en")?.flavor_text || "";
+                    const ptDesc = abData.flavor_text_entries.find((e: any) => e.language.name === "pt-BR" || e.language.name === "pt")?.flavor_text;
+                    let description = "";
+
+                    if (ptDesc) {
+                        description = ptDesc;
+                    } else {
+                        const fallbackDesc = abData.effect_entries.find((e: any) => e.language.name === "en")?.short_effect ||
+                            abData.flavor_text_entries.find((e: any) => e.language.name === "en")?.flavor_text || "";
+                        description = await translateText(fallbackDesc);
+                    }
+
                     return { ...a, description };
                 }
             } catch (e) {

@@ -4,16 +4,29 @@ import React from "react";
 import { SearchBar } from "@/components/search-bar";
 import { CharacterList } from "@/components/character-list";
 import { Filter, SlidersHorizontal, Trash2, X, ChevronLeft } from "lucide-react";
-import { useMarvelStore } from "@/lib/store";
+import { usePokemonStore } from "@/lib/store";
+import { useShallow } from "zustand/react/shallow";
 import { SearchFilters } from "@/components/search-filters";
 import { useRouter } from "next/navigation";
 import { typeIcons } from "@/lib/type-icons";
 import { typeClasses } from "@/lib/pokemon-types";
 import { cn } from "@/lib/utils";
+import { getTranslatedType } from "@/lib/translations";
 
 export default function SearchPage() {
     const router = useRouter();
-    const { minId, maxId, typeFilters, rarityFilter, resetFilters, setRegion, setTypeFilter, setRarityFilter } = useMarvelStore();
+    const { minId, maxId, typeFilters, rarityFilter, resetFilters, setRegion, setTypeFilter, setRarityFilter } = usePokemonStore(
+        useShallow((state) => ({
+            minId: state.minId,
+            maxId: state.maxId,
+            typeFilters: state.typeFilters,
+            rarityFilter: state.rarityFilter,
+            resetFilters: state.resetFilters,
+            setRegion: state.setRegion,
+            setTypeFilter: state.setTypeFilter,
+            setRarityFilter: state.setRarityFilter,
+        }))
+    );
 
     const getActiveRegion = () => {
         if (minId === 1 && maxId === 151) return "kanto";
@@ -72,7 +85,7 @@ export default function SearchPage() {
                                             className="w-3.5 h-3.5 flex items-center justify-center shrink-0 brightness-150"
                                             dangerouslySetInnerHTML={{ __html: typeIcons[type.toLowerCase()] || "" }}
                                         />
-                                        <span>{type}</span>
+                                        <span>{getTranslatedType(type)}</span>
                                         <button
                                             onClick={() => setTypeFilter(type)}
                                             className="hover:bg-black/20 p-0.5 rounded-full transition-colors flex items-center justify-center cursor-pointer"

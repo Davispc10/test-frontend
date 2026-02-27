@@ -3,7 +3,7 @@
 import { Map, Info, TreeDeciduous, Waves, Mountain, Wind, X, ExternalLink } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { REGIONS } from "@/lib/pokemon-api";
-import { useMarvelStore } from "@/lib/store";
+import { usePokemonStore } from "@/lib/store";
 import { RegionBanners } from "@/components/region-banners";
 import React from "react";
 
@@ -81,7 +81,7 @@ const regionDetails: Record<string, {
 
 export default function RegionsPage() {
     const router = useRouter();
-    const { setRegion, setRarityFilter, resetFilters, minId, maxId } = useMarvelStore();
+    const { setRegion, setRarityFilter, resetFilters, minId, maxId } = usePokemonStore();
 
     const handleSeeMoreLegendaries = () => {
         const activeRegion = getActiveRegion();

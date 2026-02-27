@@ -13,12 +13,13 @@ import { useRouter } from "next/navigation";
 import { typeIcons } from "@/lib/type-icons";
 import { typeHexColors, typeClasses } from "@/lib/pokemon-types";
 import { cn } from "@/lib/utils";
-import { getWeaknesses, getStrengths } from "@/lib/type-effectiveness";
+import { getAdvancedMatchups } from "@/lib/type-effectiveness";
 import { PokemonCryButton } from "@/components/pokemon-cry-button";
 import { PokeballTransition } from "@/components/pokeball-transition";
 import { TypeMatchupModal } from "@/components/type-matchup-modal";
 import { TeamRocketError } from "@/components/team-rocket-error";
 import { getPokemonRegion } from "@/lib/pokemon-api";
+import { getTranslatedType } from "@/lib/translations";
 
 const habitatTranslations: Record<string, string> = {
     "cave": "Caverna",
@@ -134,8 +135,7 @@ export default function PokemonDetail({ params }: { params: Promise<{ id: string
     const types = pokemon?.types || [];
     const mainType = types[0]?.type.name || 'normal';
     const accentColor = typeHexColors[mainType] || "#ef4444";
-    const weaknesses = getWeaknesses(types.map((t: any) => t.type.name));
-    const strengths = getStrengths(types.map((t: any) => t.type.name));
+    const advancedMatchups = getAdvancedMatchups(types.map((t: any) => t.type.name));
 
     // GIF Sources (using Showdown)
     const gifUrl = showShiny
@@ -237,6 +237,33 @@ export default function PokemonDetail({ params }: { params: Promise<{ id: string
                     </span>
                 </div>
 
+                {/* Mega Evolutions Indicators (Moved out of central sprite container to flow better) */}
+                {pokemon.mega_evolutions && pokemon.mega_evolutions.length > 0 && (
+                    <div className="absolute left-8 lg:left-32 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
+                        {pokemon.mega_evolutions.map((mega: any) => (
+                            <button
+                                key={mega.id}
+                                onClick={() => router.push(`/character/${mega.id}`)}
+                                className="relative group/mega"
+                                title={`Mega Evoluir para ${mega.name}`}
+                            >
+                                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-[3px] border-white/10 bg-black/40 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-[1.15] hover:border-blue-400/50 hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] flex items-center justify-center group-hover/mega:z-50 relative">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover/mega:opacity-100 transition-opacity" />
+                                    {/* Ícone customizado de Mega Evolução fornecido pelo usuário */}
+                                    <img
+                                        src="https://ih1.redbubble.net/image.4851243487.6970/raf,360x360,075,t,fafafa:ca443f4786.u1.jpg"
+                                        alt="Mega Evolution Symbol"
+                                        className="w-[85%] h-[85%] object-cover mix-blend-screen opacity-70 group-hover/mega:opacity-100 transition-opacity"
+                                    />
+                                </div>
+                                <span className="absolute left-full top-1/2 -translate-y-1/2 ml-4 bg-black/90 text-white text-[11px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-xl opacity-0 pointer-events-none group-hover/mega:opacity-100 transition-all duration-300 whitespace-nowrap border border-white/10 backdrop-blur-xl shadow-2xl translate-x-2 group-hover/mega:translate-x-0">
+                                    {mega.name.replace(' MEGA', '')}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                )}
+
                 <div className="relative w-64 h-64 md:w-80 md:h-80 z-20 group">
                     <div className="absolute inset-0 bg-white/5 rounded-full blur-3xl scale-75 group-hover:scale-110 transition-transform duration-1000" />
 
@@ -317,7 +344,7 @@ export default function PokemonDetail({ params }: { params: Promise<{ id: string
                                         className="w-4 h-4 flex items-center justify-center brightness-150"
                                         dangerouslySetInnerHTML={{ __html: typeIcons[t.type.name] }}
                                     />
-                                    {t.type.name}
+                                    {getTranslatedType(t.type.name)}
                                 </button>
                             ))}
                         </div>
@@ -448,47 +475,95 @@ export default function PokemonDetail({ params }: { params: Promise<{ id: string
                                 </div>
                             </div>
 
-                            {/* Defenses Section */}
+                            {/* Defenses Section - Advanced Matchups */}
                             <section className="space-y-6 pt-4 border-t border-white/10 mt-8">
-                                <h3 className="text-sm font-black uppercase tracking-[0.4em] text-white/20 text-center">Vantagens de Tipo</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="space-y-4">
-                                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-green-500/50 text-center">Forte Contra</h4>
-                                        <div className="flex flex-wrap justify-center gap-3">
-                                            {strengths.length > 0 ? strengths.map((s: any) => (
-                                                <button
-                                                    key={s}
-                                                    onClick={() => setSelectedType(s)}
-                                                    className={cn(
-                                                        "w-12 h-12 rounded-2xl flex items-center justify-center border border-white/10 shadow-2xl transition-transform hover:scale-110 hover:brightness-125 shrink-0 focus:outline-none cursor-pointer",
-                                                        typeClasses[s]
-                                                    )}
-                                                    title={s}
-                                                >
-                                                    <div className="w-6 h-6 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[s] }} />
-                                                </button>
-                                            )) : <span className="text-white/20 text-xs italic">Nenhuma</span>}
-                                        </div>
-                                    </div>
+                                <h3 className="text-sm font-black uppercase tracking-[0.4em] text-white/20 text-center">Eficácia em Combate (Defesa)</h3>
 
-                                    <div className="space-y-4">
-                                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-red-500/50 text-center">Fraco Contra</h4>
-                                        <div className="flex flex-wrap justify-center gap-3">
-                                            {weaknesses.map(w => (
-                                                <button
-                                                    key={w}
-                                                    onClick={() => setSelectedType(w)}
-                                                    className={cn(
-                                                        "w-12 h-12 rounded-2xl flex items-center justify-center border border-white/10 shadow-2xl transition-transform hover:scale-110 hover:brightness-125 shrink-0 focus:outline-none cursor-pointer",
-                                                        typeClasses[w]
-                                                    )}
-                                                    title={w}
-                                                >
-                                                    <div className="w-6 h-6 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[w] }} />
-                                                </button>
-                                            ))}
+                                <div className="flex flex-wrap justify-center gap-4">
+                                    {/* 4x Weaknesses */}
+                                    {advancedMatchups.weaknesses4x.length > 0 && (
+                                        <div className="flex-[1_1_250px] max-w-sm bg-white/5 border border-red-500/30 p-5 rounded-[2rem] relative overflow-hidden transition-all hover:bg-white/10">
+                                            <div className="absolute top-0 left-0 w-1.5 h-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-red-500 mb-4 ml-3">
+                                                Dano Quádruplo (4x)
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2 ml-3">
+                                                {advancedMatchups.weaknesses4x.map((w: string) => (
+                                                    <button key={w} onClick={() => setSelectedType(w)} className={cn("w-10 h-10 rounded-[14px] flex items-center justify-center shadow-lg transition-transform hover:scale-110", typeClasses[w])} title={w}>
+                                                        <div className="w-5 h-5 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[w] }} />
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
+
+                                    {/* 2x Weaknesses */}
+                                    {advancedMatchups.weaknesses2x.length > 0 && (
+                                        <div className="flex-[1_1_250px] max-w-sm bg-white/5 border border-white/5 hover:border-orange-400/30 p-5 rounded-[2rem] relative overflow-hidden transition-all hover:bg-white/10">
+                                            <div className="absolute top-0 left-0 w-1 h-full bg-orange-400" />
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-400 mb-4 ml-3">
+                                                Dano Dobrado (2x)
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2 ml-3">
+                                                {advancedMatchups.weaknesses2x.map((w: string) => (
+                                                    <button key={w} onClick={() => setSelectedType(w)} className={cn("w-10 h-10 rounded-[14px] flex items-center justify-center shadow-lg transition-transform hover:scale-110", typeClasses[w])} title={w}>
+                                                        <div className="w-5 h-5 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[w] }} />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 0.5x Resistances */}
+                                    {advancedMatchups.resistances05x.length > 0 && (
+                                        <div className="flex-[1_1_250px] max-w-sm bg-white/5 border border-white/5 hover:border-blue-400/30 p-5 rounded-[2rem] relative overflow-hidden transition-all hover:bg-white/10">
+                                            <div className="absolute top-0 left-0 w-1 h-full bg-blue-400" />
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 mb-4 ml-3">
+                                                Resistência (0.5x)
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2 ml-3">
+                                                {advancedMatchups.resistances05x.map((r: string) => (
+                                                    <button key={r} onClick={() => setSelectedType(r)} className={cn("w-10 h-10 rounded-[14px] flex items-center justify-center shadow-lg transition-transform hover:scale-110", typeClasses[r])} title={r}>
+                                                        <div className="w-5 h-5 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[r] }} />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 0.25x Resistances */}
+                                    {advancedMatchups.resistances025x.length > 0 && (
+                                        <div className="flex-[1_1_250px] max-w-sm bg-white/5 border border-green-500/20 p-5 rounded-[2rem] relative overflow-hidden transition-all hover:bg-white/10">
+                                            <div className="absolute top-0 left-0 w-1.5 h-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.3)]" />
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-green-500 mb-4 ml-3">
+                                                Super Resistência (0.25x)
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2 ml-3">
+                                                {advancedMatchups.resistances025x.map((r: string) => (
+                                                    <button key={r} onClick={() => setSelectedType(r)} className={cn("w-10 h-10 rounded-[14px] flex items-center justify-center shadow-lg transition-transform hover:scale-110", typeClasses[r])} title={r}>
+                                                        <div className="w-5 h-5 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[r] }} />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Immunities */}
+                                    {advancedMatchups.immunities.length > 0 && (
+                                        <div className="flex-[1_1_250px] max-w-sm bg-white/5 border border-slate-300/20 p-5 rounded-[2rem] relative overflow-hidden transition-all hover:bg-white/10">
+                                            <div className="absolute top-0 left-0 w-1 h-full bg-slate-300" />
+                                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 mb-4 ml-3">
+                                                Imune (0x)
+                                            </h4>
+                                            <div className="flex flex-wrap gap-2 ml-3">
+                                                {advancedMatchups.immunities.map((i: string) => (
+                                                    <button key={i} onClick={() => setSelectedType(i)} className={cn("w-10 h-10 rounded-[14px] flex items-center justify-center shadow-lg transition-transform hover:scale-110", typeClasses[i])} title={i}>
+                                                        <div className="w-5 h-5 flex items-center justify-center brightness-150 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-contain" dangerouslySetInnerHTML={{ __html: typeIcons[i] }} />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </section>
                         </div>
