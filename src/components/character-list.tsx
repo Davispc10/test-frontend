@@ -54,6 +54,7 @@ export function CharacterList() {
                             id={pokemon.id}
                             name={pokemon.name}
                             imageUrl={pokemon.imageUrl}
+                            types={pokemon.types}
                         />
                     ))}
                 </div>

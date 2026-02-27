@@ -7,6 +7,11 @@ export interface PokemonListItem {
     url: string;
     id: number;
     imageUrl: string;
+    types: {
+        type: {
+            name: string;
+        };
+    }[];
 }
 
 export interface PokemonListResponse {
@@ -262,11 +267,26 @@ export async function getPokemons(
 
         const paginated = filtered.slice(offset, offset + limit);
 
+        // Fetch basic info (types) for the paginated results in parallel
+        const resultsWithTypes = await Promise.all(
+            paginated.map(async (p: any) => {
+                try {
+                    const basicInfo = await getPokemonBasicInfo(p.id);
+                    return {
+                        ...p,
+                        types: basicInfo.types
+                    };
+                } catch (err) {
+                    return { ...p, types: [] };
+                }
+            })
+        );
+
         return {
             count: filtered.length,
             next: filtered.length > offset + limit ? "has_more" : null,
             previous: offset > 0 ? "has_prev" : null,
-            results: paginated
+            results: resultsWithTypes
         };
     }
 
@@ -284,20 +304,46 @@ export async function getPokemons(
 
     const data = await res.json();
 
-    const transformedResults = data.results.map((pokemon: any) => {
-        const parts = pokemon.url.split('/');
-        const id = parseInt(parts[parts.length - 2], 10);
-        return {
-            ...pokemon,
-            id,
-            imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-        };
-    });
+    // Fetch basic info (types) for the paginated results in parallel
+    const transformedResults = await Promise.all(
+        data.results.map(async (pokemon: any) => {
+            const parts = pokemon.url.split('/');
+            const id = parseInt(parts[parts.length - 2], 10);
+            try {
+                const basicInfo = await getPokemonBasicInfo(id);
+                return {
+                    ...pokemon,
+                    id,
+                    imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+                    types: basicInfo.types
+                };
+            } catch (err) {
+                return {
+                    ...pokemon,
+                    id,
+                    imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+                    types: []
+                };
+            }
+        })
+    );
 
     return {
         ...data,
         results: transformedResults
     };
+}
+
+/**
+ * Versão leve de busca de detalhes, contendo apenas o essencial para a listagem (tipos).
+ * Evita o processamento pesado de tradução e dados de espécie.
+ */
+async function getPokemonBasicInfo(id: string | number) {
+    const res = await fetch(`${POKEAPI_BASE_URL}/pokemon/${id}`, {
+        next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error("Failed to fetch basic pokemon info");
+    return res.json();
 }
 
 /**

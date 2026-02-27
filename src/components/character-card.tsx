@@ -16,14 +16,18 @@ interface CharacterProps {
     id: number;
     name: string;
     imageUrl: string;
+    types: {
+        type: {
+            name: string;
+        };
+    }[];
 }
 
-export function CharacterCard({ id, name, imageUrl }: CharacterProps) {
-    const { data: pokemon, isLoading } = usePokemon(id);
+export function CharacterCard({ id, name, imageUrl, types }: CharacterProps) {
+    // Retiramos o usePokemon(id) que fazia 20 requisições extras no navegador!
     const [selectedType, setSelectedType] = useState<string | null>(null);
     const [isImageLoading, setIsImageLoading] = useState(true);
 
-    const types = pokemon?.types || [];
     const mainType = types[0]?.type.name || 'normal';
     const accentColor = typeHexColors[mainType] || "#ef4444";
     const paddedId = id.toString().padStart(3, '0');
@@ -53,29 +57,25 @@ export function CharacterCard({ id, name, imageUrl }: CharacterProps) {
                             </div>
 
                             <div className="flex gap-1.5 flex-wrap">
-                                {isLoading ? (
-                                    <Skeleton className="h-5 w-16 bg-white/5 rounded-full" />
-                                ) : (
-                                    pokemon?.types.map((t: any) => (
-                                        <button
-                                            key={t.type.name}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                e.stopPropagation();
-                                                setSelectedType(t.type.name);
-                                            }}
-                                            className={cn(
-                                                "text-white text-[9px] font-black uppercase py-1 px-3 rounded-full flex items-center gap-1.5 border border-white/5 backdrop-blur-md shadow-lg hover:brightness-125 hover:scale-105 transition-all cursor-pointer",
-                                                typeClasses[t.type.name]
-                                            )}
-                                        >
-                                            <div className="w-3 h-3 flex items-center justify-center shrink-0 brightness-150"
-                                                dangerouslySetInnerHTML={{ __html: typeIcons[t.type.name] || '' }}
-                                            />
-                                            {getTranslatedType(t.type.name)}
-                                        </button>
-                                    ))
-                                )}
+                                {types.map((t: any) => (
+                                    <button
+                                        key={t.type.name}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setSelectedType(t.type.name);
+                                        }}
+                                        className={cn(
+                                            "text-white text-[9px] font-black uppercase py-1 px-3 rounded-full flex items-center gap-1.5 border border-white/5 backdrop-blur-md shadow-lg hover:brightness-125 hover:scale-105 transition-all cursor-pointer",
+                                            typeClasses[t.type.name]
+                                        )}
+                                    >
+                                        <div className="w-3 h-3 flex items-center justify-center shrink-0 brightness-150"
+                                            dangerouslySetInnerHTML={{ __html: typeIcons[t.type.name] || '' }}
+                                        />
+                                        {getTranslatedType(t.type.name)}
+                                    </button>
+                                ))}
                             </div>
                         </div>
 

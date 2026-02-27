@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { PokemonDetail, PokemonListResponse } from "@/lib/pokemon-api";
 
 export function usePokemons(
@@ -38,6 +38,7 @@ export function usePokemons(
             return res.json();
         },
         staleTime: 30000,
+        placeholderData: keepPreviousData,
     });
 }
 

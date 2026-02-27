@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { ItemDetail, ItemListResponse } from "@/lib/pokemon-api";
 
 export function useItems(
@@ -20,6 +20,7 @@ export function useItems(
             return res.json();
         },
         staleTime: 60000,
+        placeholderData: keepPreviousData,
     });
 }
 
