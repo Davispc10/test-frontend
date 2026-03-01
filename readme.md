@@ -2,6 +2,10 @@
 
 Uma aplicação front-end moderna para explorar Pokémon, conectada à PokéAPI, com listagem, busca, filtros avançados e modal de detalhes.
 
+## 🚀 Deploy
+
+**[Acessar aplicação em produção](https://test-frontend-phi-three.vercel.app)**
+
 ## Stack Tecnológica
 
 - **Node.js** (LTS)
