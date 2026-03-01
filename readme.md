@@ -1,57 +1,53 @@
-# Teste Dinheirow
-Olá Dev! Tudo bem?
+# Pokédex — Dinheirow Challenge
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso! Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+Uma aplicação front-end moderna para explorar Pokémon, conectada à PokéAPI, com listagem, busca, filtros avançados e modal de detalhes.
 
-Vamos ao teste!
+## 🚀 Deploy
 
-## Desafio Pokémon
-Crie um aplicativo front-end conectado ao back-end Pokemon desenvolvido usando dados e rotas obtidos pela PokéAPI.
+**[Acessar aplicação em produção](https://test-frontend-phi-three.vercel.app)**
 
-API DOCS: https://pokeapi.co/docs/v2
+## Stack Tecnológica
 
-### 💻 Requisitos 
+- **Node.js** (LTS)
+- **Next.js 15** — App Router, Server Components
+- **React 18** — Hooks, Suspense
+- **TypeScript** — Tipagem estática
+- **Tailwind CSS** — Estilização
+- **TanStack Query** — Cache e estado assíncrono
+- **shadcn/ui** — Componentes acessíveis
+- **Vitest** — Testes unitários e de UI
 
-- A aplicação deverá conter uma página inicial com uma listagem de Pokémons com paginação e deverá possuir um filtro que busca os dados pelo nome do Pokémon.
-- Ao clicar em um Pokémon deverá ser exibida a página de detalhes com (nome, descrição e sprites/imagens do Pokémon)
-- Na página de detalhes deverá conter um botão que volta para página inicial de listagem dos Pokémons
-- Ao voltar para a página da listagem dos Pokémons o filtro por nome e a página da listagem deverão ser os mesmos que estavam antes do usuário entrar na página de detalhes.
-- Caso o Pokémon não tenha imagem deverá ser exibida uma imagem padrão de Pokémon. (atenção: não será permitido colocar essa validação nos componentes visuais)
-- Caso o Pokémon não tenha descrição exibir o texto "descrição não informada". (atenção: não será permitido colocar essa validação nos componentes visuais)
-- Todas as rotas usadas deverão ter cacheamento de pelo menos 30 segundos.
+## Checklist de Requisitos
 
-### Critérios de avaliação
-O cumprimento de todos os requisitos é obrigatório e acarretará a eliminação do candidato que não os cumprir.
-Além dos requisitos levantados acima, iremos avaliar os seguintes critérios:
-  - Gerenciamento de estado
-  - Componentização
-  - Responsividade
-  - Testes automatizados
-  - UI design
+- [x] Listagem de Pokémons com paginação
+- [x] Busca por nome
+- [x] Filtros avançados (tipo, geração, cor, habitat, ataque, experiência)
+- [x] Super Modal com dados avançados (taxa de captura, grupos de ovos, cadeia evolutiva)
+- [x] Layout responsivo
+- [x] Página de detalhes (nome, descrição, sprites)
+- [x] Botão voltar para listagem
+- [x] Persistência de filtros e página na URL
+- [x] Imagem padrão quando não há sprite
+- [x] Descrição padrão quando não informada
+- [x] Cache de 30 segundos (TanStack Query)
 
-### Tecnologias Obrigatórias
- - NextJs (versão 15+)
- - react (versão 18+)
- - Typescript
- - Tailwind css
- - shadcn
- - Tanstack/react-query
+## Como rodar
 
-### Tecnologias opcionais
- - Tanstack/form
- - zustand
- - Jest
- - playwright
+```bash
+# Instalação
+npm install
 
-### Difencial
- - UI design agradável
- - Conhecimento de AI
- - conhecimento em Vue.js (básico)
+# Desenvolvimento
+npm run dev
 
-### Por onde começo?
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
+# Build
+npm run build
 
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
+# Testes
+npm run test
+npm run test:run
+```
 
-Boa sorte! :)
+## Arquitetura
 
+Consulte [ARCHITECTURE.md](./ARCHITECTURE.md) para detalhes sobre Clean Architecture, SOLID e padrões de projeto.
